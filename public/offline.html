@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offline — NIYO IREME UNIT COMPANY LTD</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0b1b3d" />
+    <style>
+      :root {
+        color-scheme: light;
+        --navy: #0b1b3d;
+        --navy-soft: #12294f;
+        --orange: #ff5b00;
+        --paper: #f8fafc;
+        --muted: #cbd5e1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        background: var(--navy);
+        color: #ffffff;
+        font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* A quiet blueprint field: grid, then a single technical drawing. The
+         drawing is inline so this page still works with no network at all. */
+      .bg {
+        position: fixed;
+        inset: 0;
+        background-color: var(--navy);
+        background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 48px 48px;
+      }
+
+      .bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 27, 61, 0.35) 0%,
+          rgba(11, 27, 61, 0.82) 60%,
+          var(--navy) 100%
+        );
+      }
+
+      .drawing {
+        position: absolute;
+        right: -60px;
+        bottom: -20px;
+        width: min(760px, 90vw);
+        height: auto;
+        opacity: 0.16;
+        color: #ffffff;
+        pointer-events: none;
+      }
+
+      .card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 34rem;
+        padding: 2.5rem 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 1.5rem;
+        background: rgba(11, 27, 61, 0.62);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.38);
+        backdrop-filter: blur(14px);
+        animation: card-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        text-align: left;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .brand svg {
+        width: 42px;
+        height: 42px;
+        flex: none;
+      }
+
+      .brand span {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        line-height: 1.5;
+        text-transform: uppercase;
+        color: #e2e8f0;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 1.6rem 0 0;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--orange);
+      }
+
+      .status::before {
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 999px;
+        background: var(--orange);
+        animation: status-pulse 2.4s ease-in-out infinite;
+      }
+
+      h1 {
+        margin: 0.65rem 0 0;
+        font-size: clamp(1.9rem, 5vw, 2.6rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      .lede {
+        margin: 1rem 0 0;
+        font-size: 0.98rem;
+        line-height: 1.75;
+        color: var(--muted);
+      }
+
+      .rw {
+        margin: 0.6rem 0 0;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: #94a3b8;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.8rem;
+      }
+
+      .actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0.75rem 1.4rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+      }
+
+      .primary {
+        background: var(--orange);
+        color: #ffffff;
+      }
+
+      .primary:hover {
+        background: #e05100;
+      }
+
+      .secondary {
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+      }
+
+      .secondary:hover {
+        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .slogan {
+        margin: 1.8rem 0 0;
+        padding-top: 1.2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.78rem;
+        font-style: italic;
+        font-weight: 600;
+        color: var(--orange);
+      }
+
+      @keyframes card-in {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes status-pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.35;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .card,
+        .status::before {
+          animation: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 2rem 1.4rem;
+        }
+
+        .actions a {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+
+    <svg
+      class="drawing"
+      viewBox="0 0 700 420"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="square"
+      aria-hidden="true"
+    >
+      <path d="M0 360H700M0 400H700" stroke-opacity="0.45" />
+      <path d="M80 360V230L210 160L340 230V360" />
+      <path d="M80 230H340M210 160V360" stroke-opacity="0.55" />
+      <path d="M120 360V270H180V360M250 360V270H310V360" stroke-opacity="0.7" />
+      <path d="M470 360V80M430 360H510M470 80H640" />
+      <path d="M470 120L400 80M470 120L540 80" stroke-opacity="0.7" />
+      <path d="M640 80V150M620 150H660M640 150V250" />
+      <path d="M612 250H668V300H612Z" />
+      <path d="M470 140H500M470 190H500M470 240H500" stroke-opacity="0.5" />
+      <path d="M80 160H50M80 200H50M80 240H50" stroke-opacity="0.4" />
+      <path d="M630 300V360" stroke-opacity="0.5" />
+    </svg>
+
+    <main class="card">
+      <div class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="NIYO IREME UNIT COMPANY LTD">
+          <rect x="0" y="0" width="120" height="120" rx="26" fill="#0B1B3D" />
+          <g transform="translate(14.40 33.68)">
+            <path
+              d="M 0 9.64 L 45.60 0 L 91.20 9.64"
+              fill="none"
+              stroke="#FF5B00"
+              stroke-width="3.15"
+              stroke-linejoin="miter"
+              stroke-linecap="butt"
+            />
+          </g>
+          <g transform="translate(14.40 50.82) scale(0.3707)">
+            <defs>
+              <clipPath id="offline-niu-clip">
+                <rect x="0" y="0" width="92" height="100" />
+              </clipPath>
+            </defs>
+            <g clip-path="url(#offline-niu-clip)">
+              <rect x="0" y="0" width="26" height="100" fill="#FFFFFF" />
+              <rect x="66" y="0" width="26" height="100" fill="#FFFFFF" />
+              <path
+                d="M 20.92 6.15 L 92.92 117.75"
+                stroke="#FFFFFF"
+                stroke-width="26"
+                stroke-linecap="butt"
+                fill="none"
+              />
+            </g>
+            <rect x="110" y="0" width="26" height="100" fill="#FFFFFF" />
+            <rect x="154" y="0" width="26" height="100" fill="#FFFFFF" />
+            <rect x="220" y="0" width="26" height="100" fill="#FFFFFF" />
+            <rect x="154" y="74" width="92" height="26" fill="#FFFFFF" />
+          </g>
+        </svg>
+        <span>NIYO IREME UNIT COMPANY LTD</span>
+      </div>
+
+      <p class="status">No connection</p>
+      <h1>You are offline</h1>
+      <p class="lede">
+        The connection dropped before this page could load. Reconnect and try again, or reach us
+        directly — we can still discuss your project.
+      </p>
+      <p class="rw">Nta murandasi uhari. Ongera ugerageze cyangwa uduhamagare kuri telefoni.</p>
+
+      <div class="actions">
+        <a class="primary" href="/">Try again</a>
+        <a class="secondary" href="tel:+250781294928">Call +250 781 294 928</a>
+      </div>
+
+      <p class="slogan">Ubwiza, Ubunyamwuga n'Ireme mu Mirimo Yacu!</p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:3000/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/services</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/services?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/services?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/services?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/services/finishing</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/services/finishing?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/services/finishing?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/services/finishing?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/services/painting</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/services/painting?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/services/painting?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/services/painting?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/services/construction</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/services/construction?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/services/construction?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/services/construction?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/services/workforce</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/services/workforce?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/services/workforce?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/services/workforce?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/quote</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/quote?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/quote?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/quote?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/contact</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/contact?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/contact?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/contact?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/about</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/about?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/about?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/about?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/team</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/team?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/team?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/team?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/gallery</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/gallery?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/gallery?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/gallery?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/faq</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/faq?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/faq?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/faq?lang=en" />
+  </url>
+  <url>
+    <loc>http://localhost:3000/privacy</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:3000/privacy?lang=en" />
+    <xhtml:link rel="alternate" hreflang="rw" href="http://localhost:3000/privacy?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:3000/privacy?lang=en" />
+  </url>
+</urlset>

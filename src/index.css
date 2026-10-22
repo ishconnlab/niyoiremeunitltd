@@ -1,0 +1,581 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — use `bg-brand-navy`, `text-brand-orange`, `border-brand-navy-card` … */
+  --color-brand-orange: #ff5b00;
+  --color-brand-orange-dark: #d94e00;
+  --color-brand-navy: #0b1b3d;
+  --color-brand-navy-card: #0e224e;
+  --color-brand-navy-soft: #16295c;
+
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Space Grotesk", "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --radius-3xl: 1.25rem;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 7rem;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  /* Visible, consistent focus ring for keyboard users only. */
+  :focus-visible {
+    outline: 3px solid var(--color-brand-orange);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* Never remove focus rings without an equally visible replacement. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-orange);
+    color: #ffffff;
+  }
+}
+
+/* Diagonal hazard / technical hatch stripes */
+.bg-hazard-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.04) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+.bg-hazard-stripes-orange {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 91, 0, 0.15),
+    rgba(255, 91, 0, 0.15) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* Architectural ruler / measuring scale texture */
+.bg-ruler-scale {
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(11, 27, 61, 0.15) 0px,
+    rgba(11, 27, 61, 0.15) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+  background-size: 100% 12px;
+  background-repeat: repeat-x;
+}
+
+/* Reference card chamfer / slant cut corners */
+.chamfer-tl {
+  clip-path: polygon(36px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 36px);
+}
+
+.chamfer-tr {
+  clip-path: polygon(0% 0%, calc(100% - 36px) 0%, 100% 36px, 100% 100%, 0% 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Hero background: an automatic, cross-fading photo sequence (pure CSS, no
+   JavaScript timers). Five frames share a 30 second cycle — each image is on
+   screen for roughly six seconds with a one second cross-fade and a slow
+   drift, so the hero never sits on a flat colour.
+   --------------------------------------------------------------------------- */
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: hero-fade 30s linear infinite;
+}
+
+.hero-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+.hero-slide:nth-child(2) {
+  animation-delay: 6s;
+}
+.hero-slide:nth-child(3) {
+  animation-delay: 12s;
+}
+.hero-slide:nth-child(4) {
+  animation-delay: 18s;
+}
+.hero-slide:nth-child(5) {
+  animation-delay: 24s;
+}
+
+@keyframes hero-fade {
+  0% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  4% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.09);
+  }
+  24% {
+    opacity: 0;
+    transform: scale(1.11);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.11);
+  }
+}
+
+/* With reduced motion the sequence is frozen on a single, still frame. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    animation: none !important;
+    opacity: 0;
+    transform: none !important;
+  }
+
+  .hero-slide:first-child {
+    opacity: 1;
+  }
+}
+
+/* Home hero: a quiet entrance for the copy and a very slow drift on the
+   photograph. Both are disabled when the visitor prefers reduced motion. */
+@keyframes home-reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-reveal {
+  animation: home-reveal-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.home-reveal-1 {
+  animation-delay: 90ms;
+}
+
+.home-reveal-2 {
+  animation-delay: 160ms;
+}
+
+/* Hero slideshow: each frame crossfades and drifts slowly so the band feels
+   alive without a video. Only the active frame is opaque. */
+.home-hero-slide {
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1400ms ease-in-out, transform 5200ms ease-out;
+  will-change: opacity, transform;
+}
+
+.home-hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-reveal {
+    animation: none;
+  }
+
+  .home-hero-slide {
+    transition: none;
+    transform: none;
+  }
+
+  .home-hero-slide:not(:first-child) {
+    opacity: 0;
+  }
+
+  .home-hero-slide:first-child {
+    opacity: 1;
+  }
+}
+
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(11, 27, 61, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-grid-pattern-dark {
+  background-image: radial-gradient(rgba(255, 91, 0, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Technical construction drawings used as background visuals. The image itself
+   is chosen per section with a Tailwind `bg-[url(...)]` utility; this class
+   only handles the repeating, sizing and placement. */
+@layer components {
+  .bg-blueprint-drawing {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Unified card system — every content card on the site shares one shape:
+     16px radius, 1px slate border, white surface and a soft shadow. Use
+     `card` for static cards and `card-hover` for cards that react to
+     interaction. Utilities (bg-*, border-*, shadow-*) always override these. */
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+  }
+
+  .card-hover {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition-colors duration-300 hover:border-brand-navy/25;
+  }
+
+}
+
+/* The loader mark holds the centre of the screen with a very small,
+   deliberate lift rather than a bounce. */
+@keyframes loader-mark-lift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.loader-mark {
+  animation: loader-mark-lift 3.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-mark {
+    animation: none;
+  }
+}
+
+/* Progress sweep used by the boot loader and the route fallback. */
+@keyframes loader-progress {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+/* Hero marquee: a slow, continuous index of the service divisions. */
+@keyframes hero-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.hero-marquee {
+  animation: hero-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee {
+    animation: none;
+  }
+}
+
+/* Services marquee: a fast, never-ending strip of logo-styled service cards.
+   The track holds the list twice and slides exactly -50%, so the loop is
+   seamless no matter how many cards there are. */
+@keyframes service-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.service-marquee-track {
+  animation: service-marquee 18s linear infinite;
+  will-change: transform;
+}
+
+.service-marquee:hover .service-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Client review sheets — each card rises into place, draws its top rule and
+   fills its quality ticks. The delay per card comes from --review-delay. */
+@keyframes sheet-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tick-fill {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scan-sweep {
+  0% {
+    transform: translateY(-130%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.6;
+  }
+  88% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(130%);
+    opacity: 0;
+  }
+}
+
+/* Cards stay hidden until the section is actually on screen, so the stagger
+   is seen rather than played out below the fold. */
+.reviews-section .review-card {
+  opacity: 0;
+}
+
+.reviews-section.is-visible .review-card {
+  animation: sheet-rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--review-delay, 0ms);
+}
+
+.reviews-section .review-card__rule {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.reviews-section.is-visible .review-card__rule {
+  animation: rule-draw 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--review-delay, 0ms) + 120ms);
+}
+
+.reviews-section .review-card__tick {
+  opacity: 0;
+}
+
+.reviews-section.is-visible .review-card__tick {
+  animation: tick-fill 0.4s ease-out both;
+  animation-delay: calc(var(--review-delay, 0ms) + 260ms + var(--tick-index, 0) * 70ms);
+}
+
+/* On hover a fine orange scan passes down the review sheet, echoing the
+   scanning beam on the drawing. Nothing moves or jumps. */
+@keyframes review-scan {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+.review-card {
+  position: relative;
+}
+
+.review-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 91, 0, 0.08) 45%,
+    rgba(255, 91, 0, 0.12) 50%,
+    rgba(255, 91, 0, 0.08) 55%,
+    transparent 100%
+  );
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.review-card:hover::after,
+.review-card:focus-within::after {
+  animation: review-scan 1.4s ease-out;
+}
+
+.review-sheet__scan {
+  animation: scan-sweep 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-section .review-card,
+  .reviews-section .review-card__rule,
+  .reviews-section .review-card__tick {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .review-card:hover::after,
+  .review-card:focus-within::after,
+  .review-sheet__scan {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Reviews carousel: two cards in view, the rest slide horizontally. The track
+   holds the cards twice over and drifts half its width, so the loop is seamless.
+   The carousel is a size container, so every card takes its width from the
+   visible area (cqw) at all breakpoints — never from the track, which grows to
+   fit its children. Motion pauses on hover/focus and is abandoned entirely for
+   reduced-motion. */
+.reviews-carousel {
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: reviews-slide var(--reviews-duration, 44s) linear infinite;
+  will-change: transform;
+}
+
+.reviews-track:hover,
+.reviews-track:focus-within {
+  animation-play-state: paused;
+}
+
+.reviews-track > .review-card {
+  flex: 0 0 auto;
+  /* One full card on the smallest screens, exactly two up once the column can
+     hold them. The subtracted 0.75rem is half the 1.5rem gap. */
+  width: 100cqw;
+}
+
+@container (min-width: 30rem) {
+  .reviews-track > .review-card {
+    width: calc(50cqw - 0.75rem);
+  }
+}
+
+@keyframes reviews-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-carousel {
+    overflow-x: auto;
+  }
+
+  .reviews-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Screen-reader-only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Respect the user's reduced-motion preference across all decorative motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}

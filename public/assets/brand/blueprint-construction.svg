@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" fill="none" role="img" aria-label="Technical line drawing of a house under construction">
+  <title>House under construction — technical elevation drawing</title>
+  <desc>Blueprint style line art showing a two storey house under construction with scaffolding, roof trusses, a tower crane, material stacks and dimension lines.</desc>
+
+  <g stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke">
+
+    <!-- Ground line and hatching -->
+    <path d="M40 812 H1560" stroke-width="3" />
+    <g stroke-width="1.5" stroke-opacity="0.6">
+      <path d="M60 812 l-24 26" />
+      <path d="M120 812 l-24 26" />
+      <path d="M180 812 l-24 26" />
+      <path d="M240 812 l-24 26" />
+      <path d="M300 812 l-24 26" />
+      <path d="M360 812 l-24 26" />
+      <path d="M420 812 l-24 26" />
+      <path d="M480 812 l-24 26" />
+      <path d="M540 812 l-24 26" />
+      <path d="M600 812 l-24 26" />
+      <path d="M660 812 l-24 26" />
+      <path d="M720 812 l-24 26" />
+      <path d="M780 812 l-24 26" />
+      <path d="M840 812 l-24 26" />
+      <path d="M900 812 l-24 26" />
+      <path d="M960 812 l-24 26" />
+      <path d="M1020 812 l-24 26" />
+      <path d="M1080 812 l-24 26" />
+      <path d="M1140 812 l-24 26" />
+      <path d="M1200 812 l-24 26" />
+      <path d="M1260 812 l-24 26" />
+      <path d="M1320 812 l-24 26" />
+      <path d="M1380 812 l-24 26" />
+      <path d="M1440 812 l-24 26" />
+      <path d="M1500 812 l-24 26" />
+    </g>
+
+    <!-- House body -->
+    <g>
+      <path d="M360 812 V430 L640 250 L920 430 V812" />
+      <path d="M360 430 H920" stroke-opacity="0.7" />
+      <path d="M360 620 H920" stroke-opacity="0.7" />
+
+      <!-- Roof overhang and ridge -->
+      <path d="M330 430 L640 228 L950 430" />
+      <path d="M640 250 V812" stroke-opacity="0.55" stroke-dasharray="12 10" />
+
+      <!-- Ground floor openings -->
+      <path d="M420 812 V690 H520 V812" />
+      <path d="M760 812 V690 H860 V812" />
+      <path d="M420 690 H520 M760 690 H860" stroke-opacity="0.6" />
+
+      <!-- Upper floor openings -->
+      <path d="M420 600 V500 H520 V600 Z" />
+      <path d="M470 500 V600 M420 550 H520" stroke-opacity="0.6" />
+      <path d="M760 600 V500 H860 V600 Z" />
+      <path d="M810 500 V600 M760 550 H860" stroke-opacity="0.6" />
+
+      <!-- Gable window -->
+      <path d="M590 400 L640 350 L690 400 V430 H590 Z" stroke-opacity="0.75" />
+      <path d="M640 350 V430" stroke-opacity="0.5" />
+    </g>
+
+    <!-- Scaffolding -->
+    <g stroke-opacity="0.85">
+      <path d="M300 812 V300" />
+      <path d="M300 300 L960 300" />
+      <path d="M960 300 V812" />
+      <path d="M300 520 H960" />
+      <path d="M300 690 H960" />
+      <path d="M300 300 L960 812" stroke-opacity="0.45" stroke-dasharray="14 12" />
+      <path d="M960 300 L300 812" stroke-opacity="0.45" stroke-dasharray="14 12" />
+      <path d="M410 300 V812 M520 300 V812 M630 300 V812 M740 300 V812 M850 300 V812" stroke-opacity="0.35" />
+      <path d="M300 620 H960" stroke-opacity="0.35" />
+    </g>
+
+    <!-- Tower crane -->
+    <g>
+      <path d="M1180 812 V150" stroke-width="3" />
+      <path d="M1150 812 H1210" stroke-width="3" />
+      <path d="M1128 812 l-16 26 M1232 812 l16 26" stroke-opacity="0.7" />
+      <path d="M1180 150 H1500" stroke-width="3" />
+      <path d="M1180 150 L1140 230 H1220 Z" stroke-opacity="0.8" />
+      <path d="M1300 150 L1360 150" stroke-opacity="0.5" />
+      <path d="M1420 150 V330" stroke-width="1.5" />
+      <path d="M1400 330 H1440 V370 H1400 Z" stroke-opacity="0.8" />
+      <path d="M1410 370 V400 M1430 370 V400" stroke-opacity="0.7" />
+      <path d="M1400 400 H1440" stroke-opacity="0.7" />
+      <path d="M1180 200 l40 0 M1180 260 l40 0 M1180 320 l40 0 M1180 380 l40 0 M1180 440 l40 0 M1180 500 l40 0 M1180 560 l40 0 M1180 620 l40 0 M1180 680 l40 0 M1180 740 l40 0" stroke-opacity="0.45" />
+      <path d="M1180 200 L1220 260 M1180 260 L1220 200 M1180 320 L1220 380 M1180 380 L1220 320 M1180 440 L1220 500 M1180 500 L1220 440 M1180 560 L1220 620 M1180 620 L1220 560 M1180 680 L1220 740 M1180 740 L1220 680" stroke-opacity="0.4" />
+    </g>
+
+    <!-- Material stacks -->
+    <g stroke-opacity="0.8">
+      <path d="M1010 812 V742 H1100 V812 Z" />
+      <path d="M1010 742 L1055 712 L1100 742" />
+      <path d="M1020 812 l-18 24 M1090 812 l18 24" stroke-opacity="0.6" />
+      <path d="M1024 776 H1086 M1024 754 H1086" stroke-opacity="0.5" />
+      <path d="M1180 812 V766 H1240 V812 Z" stroke-opacity="0.7" />
+      <path d="M1180 766 L1210 744 L1240 766" stroke-opacity="0.7" />
+    </g>
+
+    <!-- Dimension lines -->
+    <g stroke-width="1.5" stroke-opacity="0.7">
+      <path d="M360 872 H920" />
+      <path d="M360 862 V882 M920 862 V882" />
+      <path d="M360 866 l18 -6 v12 Z" fill="#ffffff" fill-opacity="0.7" stroke="none" />
+      <path d="M920 866 l-18 -6 v12 Z" fill="#ffffff" fill-opacity="0.7" stroke="none" />
+
+      <path d="M320 430 V812" />
+      <path d="M310 430 H330 M310 812 H330" />
+      <path d="M314 436 l-6 18 h12 Z" fill="#ffffff" fill-opacity="0.7" stroke="none" />
+      <path d="M314 806 l-6 -18 h12 Z" fill="#ffffff" fill-opacity="0.7" stroke="none" />
+
+      <path d="M640 196 V120" stroke-opacity="0.55" stroke-dasharray="10 8" />
+      <path d="M1000 812 V120" stroke-opacity="0.55" stroke-dasharray="10 8" />
+      <path d="M640 130 H1000" />
+      <path d="M640 120 V140 M1000 120 V140" />
+    </g>
+
+    <!-- Drawing annotations -->
+    <g stroke-width="1.5" stroke-opacity="0.6">
+      <path d="M60 180 H420" />
+      <path d="M60 200 H320" />
+      <path d="M60 220 H380" />
+      <path d="M60 240 H260" />
+      <circle cx="60" cy="180" r="5" />
+      <circle cx="60" cy="200" r="5" />
+      <circle cx="60" cy="220" r="5" />
+      <circle cx="60" cy="240" r="5" />
+
+      <path d="M1080 300 h-40 v40" />
+      <path d="M1000 500 h30 v30" />
+      <path d="M1000 700 h-30 v-30" />
+    </g>
+  </g>
+</svg>

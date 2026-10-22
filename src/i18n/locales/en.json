@@ -1,0 +1,838 @@
+{
+  "meta": {
+    "siteName": "NIYO IREME UNIT COMPANY LTD",
+    "defaultTitle": "NIYO IREME UNIT COMPANY LTD | Construction & House Finishing in Kigali, Rwanda",
+    "defaultDescription": "NIYO IREME UNIT COMPANY LTD is a construction company in Kimironko, Kigali, Rwanda: house finishing and decoration, painting, construction and renovation, paint materials supply and skilled worker matching.",
+    "localeName": "English",
+    "routes": {
+      "home": {
+        "title": "NIYO IREME UNIT COMPANY LTD | Construction & House Finishing in Kigali",
+        "description": "Construction company in Kigali, Rwanda offering house finishing and decoration, painting, construction and renovation, paint materials supply and worker recruitment. Call +250 781 294 928."
+      },
+      "about": {
+        "title": "About Us | NIYO IREME UNIT COMPANY LTD",
+        "description": "NIYO IREME UNIT COMPANY LTD is a Rwandan construction company in Kimironko, Kigali, delivering quality workmanship, professional service, quality materials and customer satisfaction."
+      },
+      "services": {
+        "title": "Our Services | Construction, Finishing & Painting in Rwanda",
+        "description": "House finishing and decoration, painting services, construction services and worker recruitment in Kigali, Rwanda. See our service scope and request a free quotation."
+      },
+      "serviceDetails": {
+        "title": "{{service}} | NIYO IREME UNIT COMPANY LTD",
+        "description": "{{service}} in Kigali, Rwanda by NIYO IREME UNIT COMPANY LTD. Request a free quotation for your project."
+      },
+      "gallery": {
+        "title": "Gallery | Sample Finishing & Construction Work in Rwanda",
+        "description": "Illustrative samples of the house finishing, painting and construction work NIYO IREME UNIT COMPANY LTD delivers across Kigali, Rwanda."
+      },
+      "quote": {
+        "title": "Request a Free Quotation | NIYO IREME UNIT COMPANY LTD",
+        "description": "Request a free project quotation from NIYO IREME UNIT COMPANY LTD in Kigali, Rwanda. Tell us about your house finishing, painting or construction project."
+      },
+      "contact": {
+        "title": "Contact Us | NIYO IREME UNIT COMPANY LTD in Kigali, Rwanda",
+        "description": "Contact NIYO IREME UNIT COMPANY LTD in Kimironko, Kigali. Call or WhatsApp +250 781 294 928 for construction, house finishing and painting services."
+      },
+      "faq": {
+        "title": "Frequently Asked Questions | NIYO IREME UNIT COMPANY LTD",
+        "description": "Answers about house finishing, painting, construction and worker recruitment services in Kigali, Rwanda, including how to request a free site quotation."
+      },
+      "privacy": {
+        "title": "Privacy Policy | NIYO IREME UNIT COMPANY LTD",
+        "description": "How NIYO IREME UNIT COMPANY LTD collects, uses and protects the personal information you submit through this website."
+      },
+      "notFound": {
+        "title": "Page Not Found | NIYO IREME UNIT COMPANY LTD",
+        "description": "The page you are looking for could not be found. Return to the home page of NIYO IREME UNIT COMPANY LTD."
+      },
+      "team": {
+        "title": "Our Team | Site Supervision, Finishing & Workforce in Kigali",
+        "description": "Meet the supervisors, finishing specialists and workforce coordinators behind NIYO IREME UNIT COMPANY LTD in Kimironko, Kigali, and see how our teams work on every site."
+      }
+    },
+    "ogImageAlt": "NIYO IREME UNIT COMPANY LTD — construction, house finishing and painting in Kigali, Rwanda"
+  },
+  "common": {
+    "requestQuote": "Request a Quote",
+    "contactUs": "Contact Us",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "readMore": "Read more",
+    "viewDetails": "View details",
+    "sendMessage": "Send message",
+    "loading": "Loading…",
+    "backToHome": "Back to home",
+    "backToServices": "Back to services",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "skipToContent": "Skip to main content",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "whatsapp": "WhatsApp",
+    "language": "Language",
+    "switchToEnglish": "Switch to English",
+    "switchToKinyarwanda": "Switch to Kinyarwanda",
+    "required": "required",
+    "optional": "optional",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "closeGallery": "Close gallery",
+    "expandImage": "Open full-screen image",
+    "galleryImageAlt": "Sample image {{index}} of {{total}}",
+    "notConfiguredTitle": "Online form is not configured yet",
+    "notConfiguredBody": "Our email service is not set up on this deployment yet. Please contact us directly and we will reply promptly.",
+    "submitFailedTitle": "We could not send your message",
+    "submitFailedBody": "Something went wrong while sending. Please try again, or contact us by phone or WhatsApp.",
+    "submitSuccessTitle": "Thank you — your message has been sent",
+    "submitSuccessBody": "We have received your request and will contact you shortly.",
+    "sendAnother": "Send another message",
+    "scrollToTop": "Back to top",
+    "install": "Install app",
+    "dismiss": "Dismiss",
+    "getInTouch": "Get in touch"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "services": "Services",
+    "gallery": "Gallery",
+    "faq": "FAQ",
+    "quote": "Request a quote",
+    "contact": "Contact",
+    "privacy": "Privacy policy",
+    "team": "Our team"
+  },
+  "header": {
+    "callUs": "Call us",
+    "cta": "Get a free quote",
+    "mobileCta": "Quote",
+    "menu": "Menu",
+    "languageLabel": "Choose language",
+    "socialLabel": "Social media",
+    "primaryNav": "Primary navigation",
+    "mobileNav": "Mobile navigation"
+  },
+  "footer": {
+    "aboutTitle": "About the company",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "quickLinks": "Quick links",
+    "followUs": "Stay connected",
+    "rights": "© {{year}} NIYO IREME UNIT COMPANY LTD. All rights reserved.",
+    "developerCredit": "Website by <dev>{{name}}</dev>",
+    "closingSlogan": "Ubwiza bw'inzu yawe ni intego yacu!",
+    "closingSloganTranslation": "The beauty of your home is our goal!"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Construction company in Kigali, Rwanda",
+      "titleTop": "Quality workmanship",
+      "titleBottom": "for every home we build",
+      "intro": "{{intro}}",
+      "introTranslated": "{{introTranslated}}",
+      "ctaPrimary": "Request a free quotation",
+      "ctaSecondary": "Call {{phone}}",
+      "badgeLocation": "Based in {{location}}",
+      "badgeService": "Serving Kigali and Rwanda",
+      "heroPhotoAlt": "Construction team reviewing architectural drawings on a building site",
+      "playLabel": "View our work",
+      "sloganLabel": "Slogan",
+      "stats": {
+        "supervisionValue": "100%",
+        "supervisionLabel": "Turnkey Supervision",
+        "artisansValue": "Vetted",
+        "artisansLabel": "Certified Rwandan Artisans",
+        "reachValue": "Nationwide",
+        "reachLabel": "Kigali & All Provinces"
+      }
+    },
+    "services": {
+      "eyebrow": "Our services",
+      "title": "Nine services, one standard of quality",
+      "subtitle": "From finishing and decoration to construction, ceilings, tiling, glass and workforce recruitment, every service is delivered with the same care.",
+      "cta": "View all services"
+    },
+    "why": {
+      "eyebrow": "Why choose us",
+      "title": "Reasons to choose NIYO IREME",
+      "subtitle": "These are the commitments we hold ourselves to on every project."
+    },
+    "process": {
+      "eyebrow": "How we work",
+      "title": "From first visit to final handover",
+      "steps": [
+        {
+          "title": "Visit and assessment",
+          "body": "We visit your site in Kigali, listen to what you need, measure the space and agree the scope in writing before any work starts."
+        },
+        {
+          "title": "Plan, materials and execution",
+          "body": "We agree the materials, schedule and price, then carry out the work with qualified workers and close supervision."
+        },
+        {
+          "title": "Check and handover",
+          "body": "We walk the finished work with you, resolve any remaining details and hand over a clean, ready-to-use result."
+        }
+      ]
+    },
+    "gallery": {
+      "eyebrow": "Sample work",
+      "title": "The kind of finish we deliver",
+      "subtitle": "Illustrative samples of our house finishing, painting and construction work.",
+      "cta": "Open the gallery"
+    },
+    "contact": {
+      "eyebrow": "Get in touch",
+      "title": "Tell us about your project",
+      "subtitle": "Send us the details and we will come back to you with a free, itemised quotation for your site in Kigali."
+    },
+    "closingBand": {
+      "title": "Ready to start your project?",
+      "body": "Tell us what you need and we will arrange a free site visit in Kimironko, Kigali."
+    },
+    "location": {
+      "eyebrow": "Find us in Kimironko",
+      "title": "Our workshop is in Kimironko, Kigali",
+      "body": "We are based in Kimironko, Kigali, and we travel across Rwanda for larger sites. Site visits, material collection and quotations are arranged directly with the people doing the work — no call centre in between.",
+      "cta": "Get directions"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About the company",
+      "title": "Rooted in Kigali. Built for Rwanda.",
+      "subtitle": "NIYO IREME UNIT COMPANY LTD is a Rwandan company delivering house finishing, painting, construction and workforce services."
+    },
+    "story": {
+      "eyebrow": "Our purpose",
+      "title": "Raising the standard of building work in Rwanda",
+      "body1": "NIYO IREME UNIT COMPANY LTD was founded in Kigali to give Rwandan homeowners and contractors a dependable option for finishing and construction work: skilled labour, good materials, clear prices and work that is supervised rather than left to chance.",
+      "body2": "We work on residential and commercial sites across Kigali and elsewhere in Rwanda. Whether it is a gypsum ceiling, a fresh coat of paint, a tiled terrace or a crew of workers for your site, the approach is the same — agree the scope, use good materials, supervise the work and hand over something we are proud of.",
+      "body3": "NIYO IREME UNIT COMPANY LTD provides professional construction, house finishing, decoration, and painting services in Kigali, Rwanda. Our services include house construction and renovation, interior and exterior decoration, ceiling installation, terrace construction, tile and glass installation, decorative wall finishes, and the sale of paint and painting materials. We also help connect skilled workers with employers based on their needs. We are committed to quality workmanship, professional service, quality materials, and customer satisfaction. Our goal is to make your home beautiful through quality, professionalism, and attention to detail.",
+      "locationLabel": "Company location",
+      "locationValue": "Kimironko, Kigali, Rwanda"
+    },
+    "values": {
+      "eyebrow": "Our pillars",
+      "title": "What stands behind every job",
+      "items": [
+        {
+          "title": "Ubwiza (Beauty)",
+          "body": "Careful, clean finishes and decorations that make a home feel considered rather than merely completed."
+        },
+        {
+          "title": "Ubunyamwuga (Professionalism)",
+          "body": "Clear written scope, agreed prices, respectful timelines and a professional site presence from start to finish."
+        },
+        {
+          "title": "Ireme (Quality)",
+          "body": "Reliable materials and workmanship that stands up to Rwanda's climate and to daily use."
+        },
+        {
+          "title": "Ubufatanye (Partnership)",
+          "body": "Regular updates, honest advice and a single point of contact for the whole project."
+        }
+      ]
+    },
+    "sloganBand": {
+      "translation": "Beauty, Professionalism, and Quality in Everything We Build!"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Service divisions",
+      "title": "Our construction, finishing and painting services",
+      "subtitle": "Nine clearly defined services covering the whole journey of your building project in Rwanda."
+    },
+    "items": {
+      "finishing": {
+        "title": "House Finishing and Decoration",
+        "shortLabel": "Finishing & Decor",
+        "imageAlt": "Modern house interior finishing and decoration.",
+        "description": "We supervise and follow up on your house project from beginning to completion. Our team provides modern interior and exterior decoration and helps you choose the colours that suit your home.",
+        "points": [
+          "We supervise and follow up on your house project from beginning to completion.",
+          "We provide modern interior and exterior house decoration.",
+          "We help you choose colours that complement your home.",
+          "We advise on interior design, finishing choices and colour selection."
+        ]
+      },
+      "painting": {
+        "title": "Painting Services",
+        "shortLabel": "Painting",
+        "imageAlt": "Professional painter applying paint to an interior wall.",
+        "description": "Professional interior and exterior painting, decorative wall finishes and expert paint application. We advise on the colours and materials that suit your walls and can supply the paint and tools.",
+        "points": [
+          "Interior and exterior house painting.",
+          "Decorative wall painting and finishes.",
+          "Professional paint application.",
+          "Advice on suitable paint colours and materials.",
+          "Supply of paint and painting materials."
+        ]
+      },
+      "construction": {
+        "title": "Construction and Renovation",
+        "shortLabel": "Construction",
+        "imageAlt": "Residential construction and renovation work.",
+        "description": "House construction and renovation, terrace construction, and general construction and finishing work, delivered with close supervision from the first day to handover.",
+        "points": [
+          "House construction.",
+          "House renovation and improvement.",
+          "Terrace construction.",
+          "General construction and finishing work.",
+          "Related building services we offer."
+        ]
+      },
+      "ceilings": {
+        "title": "Gypsum Ceilings and Ceiling Finishing",
+        "shortLabel": "Gypsum Ceilings",
+        "imageAlt": "Decorative gypsum ceiling installation.",
+        "description": "Gypsum ceiling installation, decorative ceiling designs, and the finishing and related installation work that gives a room its final look.",
+        "points": [
+          "Gypsum ceiling installation.",
+          "Decorative ceiling designs.",
+          "Ceiling finishing and related installation work."
+        ]
+      },
+      "tiling": {
+        "title": "Tile Installation",
+        "shortLabel": "Tile Installation",
+        "imageAlt": "Professional floor tile installation.",
+        "description": "Floor and wall tile installation for the residential spaces where it matters most, finished to a clean, level and durable standard.",
+        "points": [
+          "Floor tile installation.",
+          "Wall tile installation.",
+          "Tile installation for relevant residential spaces.",
+          "Professional tile finishing."
+        ]
+      },
+      "glass": {
+        "title": "Glass Installation",
+        "shortLabel": "Glass Installation",
+        "imageAlt": "Glass window installation in a modern building.",
+        "description": "Glass installation for windows and suitable glass panels, fitted securely and neatly as part of the building's finishing work.",
+        "points": [
+          "Glass installation.",
+          "Glass windows and suitable glass panels.",
+          "Glass partitions where the project requires them."
+        ]
+      },
+      "materials": {
+        "title": "Paint and Painting Materials Supply",
+        "shortLabel": "Materials Supply",
+        "imageAlt": "Paint cans and professional painting tools.",
+        "description": "Supply of paint, brushes, rollers and the painting tools and materials your project needs, with guidance on choosing the right products for each surface.",
+        "points": [
+          "Paint supply.",
+          "Brushes, rollers and relevant painting materials.",
+          "Painting tools and materials.",
+          "Guidance on selecting suitable paint products."
+        ]
+      },
+      "plastering": {
+        "title": "Plastering and Wall Finishing",
+        "shortLabel": "Plastering",
+        "imageAlt": "Worker applying plaster to an interior wall.",
+        "description": "Wall plastering, surface preparation, smoothing and finishing, including wall repairs, so that every wall is ready for paint or decoration.",
+        "points": [
+          "Wall plastering.",
+          "Wall surface preparation.",
+          "Wall smoothing and finishing.",
+          "Wall repairs and related finishing work."
+        ]
+      },
+      "workforce": {
+        "title": "Worker Recruitment and Employer Matching",
+        "shortLabel": "Workforce Matching",
+        "imageAlt": "Skilled construction workers working as a team.",
+        "description": "We help employers find skilled and experienced workers, and we connect workers with employers according to the needs of both sides.",
+        "points": [
+          "We help employers find skilled and experienced workers.",
+          "We connect workers and employers according to the needs of both sides."
+        ]
+      }
+    },
+    "whyChoose": {
+      "eyebrow": "Why choose us",
+      "title": "Reasons to choose NIYO IREME",
+      "items": [
+        {
+          "title": "Skilled and professional workmanship"
+        },
+        {
+          "title": "Quality materials"
+        },
+        {
+          "title": "Professional workers"
+        },
+        {
+          "title": "Close supervision of your project"
+        },
+        {
+          "title": "Commitment to customer satisfaction"
+        }
+      ]
+    },
+    "detail": {
+      "eyebrow": "Service division",
+      "scopeTitle": "What this service includes",
+      "ctaTitle": "Need this service?",
+      "ctaBody": "Send us the details of your project and we will come back with a free, itemised quotation.",
+      "otherServices": "Other services",
+      "notFoundTitle": "Service not found",
+      "notFoundBody": "That service does not exist. Browse our services instead."
+    },
+    "consultBand": {
+      "title": "Not sure which service you need?",
+      "body": "Describe what you want to achieve and we will advise you on the materials, the approach and a realistic budget.",
+      "cta": "Talk to us"
+    }
+  },
+  "gallery": {
+    "hero": {
+      "eyebrow": "Sample imagery",
+      "title": "A look at the finish we deliver",
+      "subtitle": "Illustrative examples of house finishing, painting, construction and workforce work."
+    },
+    "filterLabel": "Filter imagery by service",
+    "categories": {
+      "all": "All samples",
+      "finishing": "Finishing and decoration",
+      "painting": "Painting",
+      "construction": "Construction",
+      "workforce": "Workforce"
+    },
+    "captions": {
+      "project1": "Modern house interior finishing and decoration.",
+      "project2": "Interior living space with decorated walls and ceiling.",
+      "project3": "Interior finishing detail and modern decoration.",
+      "project4": "Professional interior wall painting.",
+      "project5": "Decorative painted wall finish during renovation.",
+      "project6": "Fresh wall paint on a house decoration project.",
+      "project7": "Residential construction and renovation work.",
+      "project8": "Technical construction drawing and planning.",
+      "project9": "Decorative gypsum ceiling installation.",
+      "project10": "Ceiling finishing and design detail.",
+      "project11": "Professional floor tile installation.",
+      "project12": "Precise tile installation and finishing.",
+      "project13": "Masons installing floor tiles on site.",
+      "project14": "Glass window installation in a modern building.",
+      "project15": "Glass panel installation and fitting.",
+      "project16": "Worker applying plaster to an interior wall.",
+      "project17": "Skilled construction workers working as a team."
+    },
+    "emptyTitle": "No images found",
+    "emptyBody": "Try a different filter.",
+    "ctaTitle": "Like what you see?",
+    "ctaBody": "Tell us about your own project and we will arrange a free site visit in Kigali."
+  },
+  "quote": {
+    "hero": {
+      "eyebrow": "Free quotation",
+      "title": "Request a quotation for your project",
+      "subtitle": "Tell us what you need. We will review it, visit your site in Kigali and come back with an itemised, transparent price."
+    },
+    "steps": {
+      "step": "Step {{current}} of {{total}}"
+    },
+    "calculator": {
+      "title": "Project scope",
+      "serviceLabel": "Service needed",
+      "projectTypeLabel": "Type of project",
+      "tierLabel": "Finish standard",
+      "areaLabel": "Approximate area",
+      "areaValue": "{{area}} m²",
+      "workersLabel": "Number of workers needed",
+      "workersValue": "{{count}} workers",
+      "durationLabel": "Contract length",
+      "durationValue": "{{weeks}} weeks",
+      "materialsLabel": "Include materials in the estimate",
+      "materialsHelp": "Gypsum boards, primers, paint, adhesives and finishing materials",
+      "estimateTitle": "Indicative estimate",
+      "breakdownTitle": "Estimated breakdown",
+      "notesTitle": "What this estimate assumes",
+      "breakdown": {
+        "workforceLabour": "Direct artisan compensation ({{count}} workers × {{weeks}} weeks)",
+        "workforceSafety": "Site safety gear and compliance (PPE)",
+        "workforceCoordinator": "Dedicated NIYO IREME workforce coordinator",
+        "materials": "Materials and surface compounds",
+        "labour": "Master craftsman and skilled labour",
+        "supervision": "Quality supervision, logistics and tooling",
+        "labourOnly": "Master craftsman and skilled labour execution",
+        "supervisionOnly": "Project supervision and tool equipment"
+      },
+      "notes": {
+        "materialsProvided": "You provide the agreed base materials; NIYO IREME provides specialised tooling and skilled labour.",
+        "outsideKigali": "Projects outside Kigali may include modest site lodging and transport logistics.",
+        "siteInspection": "A physical site inspection confirms the exact final bill of quantities.",
+        "verification": "All candidates undergo technical verification before site dispatch.",
+        "replacement": "Replacement within 24 hours if a worker does not meet your specifications."
+      },
+      "durationEstimate": "Indicative duration: about {{weeks}} weeks",
+      "disclaimer": "This is an indicative market estimate in Rwandan Francs, not a contract price. The final price is confirmed after a free site visit and a written bill of quantities.",
+      "copy": "Copy summary",
+      "copied": "Summary copied",
+      "whatsapp": "Send via WhatsApp"
+    },
+    "form": {
+      "title": "Your details",
+      "name": "Full name",
+      "namePlaceholder": "e.g. Jean Pierre Habimana",
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Telephone",
+      "phonePlaceholder": "+250 781 294 928",
+      "location": "Project location",
+      "locationPlaceholder": "e.g. Kimironko, Gasabo District, Kigali",
+      "service": "Service needed",
+      "timeline": "Preferred start",
+      "message": "Project description",
+      "messagePlaceholder": "Tell us what you would like done, the size of the job and any timing you have in mind.",
+      "submit": "Request my quotation",
+      "submitting": "Sending…",
+      "whatsappAlternative": "Prefer WhatsApp? Send your request directly.",
+      "successTitle": "Your quotation request has been sent",
+      "successBody": "Thank you, {{name}}. We have received your request and will contact you on {{phone}} to arrange a site visit.",
+      "reference": "Your reference",
+      "timelineOptions": {
+        "immediate": "As soon as possible",
+        "twoWeeks": "Within two weeks",
+        "nextMonth": "Next month",
+        "planning": "Still planning"
+      }
+    },
+    "projectTypes": {
+      "residential": "Residential house or apartment",
+      "commercial": "Commercial building or office",
+      "renovation": "Renovation and remodelling",
+      "exterior": "Exterior facade, terrace or balcony"
+    },
+    "tiers": {
+      "standard": "Standard — reliable and cost-effective",
+      "premium": "Premium — recommended for Kigali homes",
+      "luxury": "Luxury — top-grade materials and finishes"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact us",
+      "title": "Talk to our team in Kigali",
+      "subtitle": "Questions about a project, a site visit or a team of workers? We are ready to help."
+    },
+    "detailsTitle": "Company details",
+    "addressLabel": "Location",
+    "addressValue": "Kimironko, Kigali, Rwanda",
+    "addressNote": "Our exact premises address is shared on confirmation of your site visit.",
+    "phoneLabel": "Telephone and WhatsApp",
+    "emailLabel": "Email",
+    "emailNote": "Contact email to be confirmed by the company — please use the phone number for the fastest reply.",
+    "hoursLabel": "Working hours",
+    "hoursValue": "Monday – Saturday, 8:00 AM – 6:00 PM",
+    "responseNote": "We normally reply within one working day.",
+    "formTitle": "Send us a message",
+    "name": "Full name",
+    "namePlaceholder": "Your full name",
+    "email": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "phone": "Telephone",
+    "phonePlaceholder": "+250 781 294 928",
+    "subject": "Subject or service",
+    "subjectOptions": {
+      "finishing": "House finishing and decoration",
+      "painting": "Painting services",
+      "construction": "Construction services",
+      "workforce": "Worker recruitment",
+      "other": "Something else"
+    },
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project, location and timing.",
+    "submit": "Send message",
+    "submitting": "Sending…",
+    "whatsappAlternative": "Prefer to talk? Message us on WhatsApp.",
+    "mapTitle": "Find us in Kimironko",
+    "mapNote": "The map shows our location in Kimironko, Kigali. We confirm the exact meeting point when we schedule your site visit.",
+    "viewOnGoogleMaps": "View on Google Maps",
+    "getDirections": "Get directions",
+    "openInMaps": "Open in OpenStreetMap"
+  },
+  "faq": {
+    "hero": {
+      "eyebrow": "Help and answers",
+      "title": "Frequently asked questions",
+      "subtitle": "Straight answers about our services in Kigali, our materials, our prices and how to get started."
+    },
+    "searchLabel": "Search questions",
+    "searchPlaceholder": "Search a question…",
+    "categories": {
+      "all": "All questions",
+      "general": "General and quotations",
+      "finishing": "Finishing and decoration",
+      "painting": "Painting",
+      "construction": "Construction",
+      "workforce": "Worker recruitment"
+    },
+    "emptyTitle": "No matching questions",
+    "emptyBody": "Try a different search term, or contact us directly.",
+    "clearSearch": "Clear search",
+    "items": {
+      "faq-1": {
+        "question": "How do I request a site visit and a quotation?",
+        "answer": "Use the Request a Quotation page on this website, send us a message from the Contact page, or call or WhatsApp us on +250 781 294 928. We visit sites in Kigali and elsewhere in Rwanda, measure the work, and reply with a written, itemised quotation."
+      },
+      "faq-2": {
+        "question": "What does your house finishing and decoration service cover?",
+        "answer": "We supervise your project from start to finish and provide modern interior and exterior decoration. We also advise you on the colours that suit your home. Specific finishes such as ceilings, tiles or painting are quoted according to what your site needs."
+      },
+      "faq-3": {
+        "question": "Do you sell paint and painting materials as well as painting services?",
+        "answer": "Yes. We provide professional painting services, create different decorative finishes on walls, and supply paint and painting materials at competitive prices. We also advise customers on suitable colours and painting materials for their walls."
+      },
+      "faq-4": {
+        "question": "Which construction work do you take on?",
+        "answer": "We handle house construction and renovation, terrace construction, ceiling installation and finishing, tile installation, Slings and other related construction work, and glass installation."
+      },
+      "faq-5": {
+        "question": "How does your worker recruitment and employer matching work?",
+        "answer": "We help employers find skilled and experienced workers, and we connect workers and employers according to the needs of both sides. Tell us how many workers you need, which trade, and for how long, and we will propose suitable people."
+      },
+      "faq-6": {
+        "question": "What does the company slogan mean?",
+        "answer": "\"Ubwiza, Ubunyamwuga n'Ireme mu Mirimo Yacu!\" means beauty, professionalism and quality in everything we build. It is the standard we apply to every job, whether it is a single room or a full build."
+      }
+    },
+    "ctaTitle": "Still have a question?",
+    "ctaBody": "Call us or send a message and we will answer directly.",
+    "ctaButton": "Contact us"
+  },
+  "privacy": {
+    "hero": {
+      "eyebrow": "Legal",
+      "title": "Privacy policy",
+      "subtitle": "What this website collects, why, and what we do with it."
+    },
+    "updated": "Last updated: {{date}}",
+    "sections": {
+      "intro": {
+        "title": "About this policy",
+        "body": "NIYO IREME UNIT COMPANY LTD is based in Kimironko, Kigali, Rwanda. This policy explains how the information you give us through this website is collected and used."
+      },
+      "collected": {
+        "title": "Information we collect",
+        "body": "When you submit a quotation request or a contact message we collect the details you type in — typically your name, email address, telephone number, project location, the service you are interested in and the description you write. We do not collect payment card details and we do not use cookies to track you across other websites."
+      },
+      "emailjs": {
+        "title": "Email delivery",
+        "body": "Messages submitted through this website are delivered to our inbox using the EmailJS service. EmailJS acts as the transport for the form: it receives what you submit and forwards it to us. Please do not include sensitive personal or financial information in the free-text fields."
+      },
+      "maps": {
+        "title": "Maps and external links",
+        "body": "The map on our contact page is served by OpenStreetMap, and the map buttons open Google Maps. When you follow those links, the map provider's own privacy policy applies. We do not embed advertising or analytics trackers on this website."
+      },
+      "retention": {
+        "title": "How long we keep your details",
+        "body": "We keep enquiry details only as long as they are needed to answer your request and to follow up on a project. We do not sell or rent your information to third parties."
+      },
+      "rights": {
+        "title": "Your rights",
+        "body": "You can ask us at any time what information we hold about you, ask us to correct it, or ask us to delete it. Contact us by phone on +250 781 294 928 or via the contact page."
+      },
+      "children": {
+        "title": "Children",
+        "body": "This website is a business website and is not intended for children. We do not knowingly collect information from anyone under 16."
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "body": "We may update this policy as the website changes. The date at the top of this page always shows the most recent version."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "Questions about this policy can be sent to NIYO IREME UNIT COMPANY LTD, Kimironko, Kigali, Rwanda, or by telephone on +250 781 294 928."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist, or it has moved. Use the navigation above, or head back to the home page.",
+    "homeCta": "Go to the home page",
+    "servicesCta": "See our services"
+  },
+  "validation": {
+    "required": "This field is required.",
+    "nameMin": "Please enter your full name.",
+    "emailInvalid": "Please enter a valid email address.",
+    "phoneInvalid": "Please enter a valid telephone number.",
+    "messageMin": "Please write a little more so we can help.",
+    "locationMin": "Please tell us where the project is.",
+    "selectRequired": "Please choose an option.",
+    "serviceRequired": "Please choose the service you need.",
+    "areaRange": "Please enter an area between 10 and 10,000 m².",
+    "workersRange": "Please enter between 1 and 100 workers.",
+    "weeksRange": "Please enter between 1 and 52 weeks.",
+    "termsRequired": "Please accept the privacy policy to continue."
+  },
+  "whatsapp": {
+    "defaultMessage": "Hello NIYO IREME UNIT COMPANY LTD, I would like to discuss a project in Kigali.",
+    "quoteMessage": "Hello NIYO IREME UNIT COMPANY LTD, I would like a quotation for {{service}} in {{location}}.",
+    "finishing": "Hello NIYO IREME UNIT COMPANY LTD, I would like a quotation for house finishing and decoration.",
+    "painting": "Hello NIYO IREME UNIT COMPANY LTD, I would like a quotation for painting services.",
+    "construction": "Hello NIYO IREME UNIT COMPANY LTD, I would like a quotation for construction work.",
+    "workforce": "Hello NIYO IREME UNIT COMPANY LTD, I need workers for my site.",
+    "chatTitle": "Quick enquiry",
+    "chatBody": "Choose a topic and we will open WhatsApp with your message ready to send.",
+    "chatCta": "Start WhatsApp chat",
+    "online": "Online",
+    "office": "Kigali office"
+  },
+  "pwa": {
+    "installTitle": "Install NIYO IREME",
+    "installBody": "Get quicker access to our construction services and contact information from your home screen.",
+    "installCta": "Install App",
+    "installDismiss": "Not now",
+    "installFooterCta": "Install NIYO IREME App",
+    "installInstalled": "App installed",
+    "installIosTitle": "Add to your Home Screen",
+    "installIosBody": "Tap the Share button in Safari, then choose \"Add to Home Screen\".",
+    "installIosShare": "Share",
+    "updateTitle": "A new version is available",
+    "updateBody": "Reload the page to get the latest version of the site.",
+    "updateCta": "Reload",
+    "offlineTitle": "You are offline",
+    "offlineBody": "Some pages are not available without a connection. Reconnect and try again."
+  },
+  "social": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "youtube": "YouTube",
+    "linkedin": "LinkedIn",
+    "x": "X (Twitter)",
+    "whatsapp": "WhatsApp",
+    "github": "GitHub"
+  },
+  "prefooter": {
+    "eyebrow": "Before you call",
+    "title": "The questions we are asked most",
+    "body": "Costs, timelines, materials and what happens on site — the answers every client asks us for first are on one page.",
+    "faqCta": "Read the FAQ",
+    "quoteCta": "Request a quotation",
+    "phoneCta": "Call {{phone}}"
+  },
+  "team": {
+    "hero": {
+      "badge": "Engineering & craft leadership",
+      "title": "The craftsmen & supervisors",
+      "titleAccent": "behind every milestone",
+      "subtitle": "Site engineers, finishing specialists and workforce coordinators bring Rwandan construction experience to your project."
+    },
+    "section": {
+      "badge": "Leadership team",
+      "title": "Supervisors on site,",
+      "titleAccent": "at every stage",
+      "subtitle": "Supervisors who inspect daily operations, enforce safety, and make sure every detail meets our benchmark."
+    },
+    "card": {
+      "responsibilities": "Responsibilities"
+    },
+    "recruit": {
+      "badge": "Recruiting artisans",
+      "title": "Are you a painter, mason, or gypsum artisan in Rwanda?",
+      "body": "We vet and onboard disciplined craftspeople for residential and commercial sites across Kigali and the regional districts. Join our roster of artisans.",
+      "cta": "Apply to the artisan pool"
+    },
+    "members": {
+      "supervision": {
+        "role": "Site supervision & handover",
+        "specialty": "Site visits, measurement and quality checks",
+        "bio": "Our supervisors visit your site in Kimironko or on your plot, agree the scope in writing and check the work at every stage before handover.",
+        "badge": "Supervision",
+        "responsibilities": [
+          "Free site visit and measurement",
+          "Written scope, schedule and price",
+          "Stage-by-stage quality checks"
+        ]
+      },
+      "finishing": {
+        "role": "House finishing & decoration",
+        "specialty": "Plastering, gypsum, tiling and ceilings",
+        "bio": "Finishing specialists prepare walls, ceilings and floors — plastering, gypsum boards, tiling, painting and the final decorative details.",
+        "badge": "Finishing",
+        "responsibilities": [
+          "Plastering and gypsum board ceilings",
+          "Tiling, skirting and paint preparation",
+          "Final decoration and clean handover"
+        ]
+      },
+      "painting": {
+        "role": "Painting & surface coating",
+        "specialty": "Interior and exterior coating systems",
+        "bio": "Painters prepare surfaces, apply primer, filler and finish coats, and protect furniture and floors while the work is carried out.",
+        "badge": "Painting",
+        "responsibilities": [
+          "Surface preparation and primer",
+          "Interior and exterior coats",
+          "Protective covering and clean-up"
+        ]
+      },
+      "workforce": {
+        "role": "Workforce coordination & recruitment",
+        "specialty": "Vetting, rostering and deployment of artisans",
+        "bio": "We vet artisans, match them to the skills your site needs, and roster them for the agreed duration with a supervisor on site throughout.",
+        "badge": "Workforce",
+        "responsibilities": [
+          "Vetting of artisan skills",
+          "Deployment by trade and duration",
+          "Supervision on site throughout"
+        ]
+      }
+    }
+  },
+  "reviews": {
+    "eyebrow": "Client feedback",
+    "title": "What clients say about our work",
+    "subtitle": "Verified feedback from clients whose projects NIYO IREME has completed.",
+    "sheetLabel": "Review sheet",
+    "indexLabel": "Review",
+    "qualityLabel": "Quality",
+    "cardLabel": "Verified client",
+    "drawingAlt": "Technical section drawing of a finished interior",
+    "drawingCaption": "Each review is recorded like a detail on an architect's drawing sheet.",
+    "legend": [
+      "Feedback is published only with the client's agreement.",
+      "Ratings reflect the quality of the final handover.",
+      "Project details stay private unless the client chooses to share them."
+    ],
+    "emptyLabel": "Awaiting client feedback",
+    "emptyTitle": "Reviews are published after handover",
+    "emptyBody": "We only publish feedback from real clients once their project is complete and they have agreed to share it. Ask us during your site visit and we will be glad to connect you with a recent client.",
+    "emptyCta": "Start your own project",
+    "emptyNote": "No testimonial on this site is invented or paid for.",
+    "entries": {
+      "ariceKicukiro": {
+        "attribution": "Arice M. — Kicukiro",
+        "project": "Full interior plastering & painting",
+        "quote": "They repaired the walls, applied plaster and wall master, then finished with silk and weatherguard paint. The rooms look clean and the finish is holding up well."
+      },
+      "joselineRusororo": {
+        "attribution": "Joseline U. — Rusororo",
+        "project": "Ceiling, plaster & interior and exterior painting",
+        "quote": "The team installed the ceiling, plastered the house and painted both the inside and outside. They protected the furniture and left the site tidy."
+      },
+      "jackMurugando": {
+        "attribution": "Jack — Murugando",
+        "project": "Wall repairs & specialist coatings",
+        "quote": "My house had badly finished walls and cracks. They corrected the plaster, applied wall master and epoxy, and the surface now looks properly finished."
+      },
+      "ingabireNoroveje": {
+        "attribution": "Ingabire P. — Noroveje",
+        "project": "Full-house plastering & painting",
+        "quote": "They plastered the whole house, applied wall master inside and out, and finished with a clean coat of paint. The work was organised and the result is beautiful."
+      },
+      "kalekezBumbogo": {
+        "attribution": "Kalekez — Bumbogo",
+        "project": "Gypsum ceiling, plaster & decoration",
+        "quote": "They fitted the gypsum ceiling, plastered the walls and completed the decoration with matt and silk finishes. The house feels completely transformed."
+      }
+    }
+  }
+}
