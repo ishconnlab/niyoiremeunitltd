@@ -13,6 +13,10 @@ export default defineConfig(() => {
     },
     build: {
       sourcemap: false,
+      cssCodeSplit: true,
+      modulePreload: {
+        polyfill: false,
+      },
       rollupOptions: {
         output: {
           manualChunks(id: string) {
@@ -22,8 +26,9 @@ export default defineConfig(() => {
               return 'forms';
             }
             if (id.includes('lucide-react')) return 'icons';
+            if (id.includes('@emailjs')) return 'emailjs';
             if (id.includes('react-router') || id.includes('react-dom') || id.includes('/react/')) {
-              return 'react';
+              return 'react-vendor';
             }
             return undefined;
           },
