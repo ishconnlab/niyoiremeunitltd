@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
+﻿import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -139,7 +139,7 @@ function markDismissed() {
   try {
     window.localStorage.setItem(DISMISS_KEY, String(Date.now()));
   } catch {
-    /* Storage may be unavailable — the dismissal simply lasts for this session. */
+    /* Storage may be unavailable â€” the dismissal simply lasts for this session. */
   }
   emit();
 }
@@ -187,3 +187,4 @@ export function useInstallPrompt(): InstallPromptState {
     dismiss: markDismissed,
   };
 }
+

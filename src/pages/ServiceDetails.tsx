@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+﻿import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Check, Users, Wrench } from 'lucide-react';
@@ -162,7 +162,7 @@ export const ServiceDetails: React.FC = () => {
     return `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 
-  // Equipment page — show equipment cards with rental/purchase CTAs
+  // Equipment page â€” show equipment cards with rental/purchase CTAs
   if (serviceId === 'equipment') {
     return (
       <>
@@ -291,7 +291,7 @@ export const ServiceDetails: React.FC = () => {
     );
   }
 
-  // Workforce page — show recruitment cards instead of generic service division
+  // Workforce page â€” show recruitment cards instead of generic service division
   if (serviceId === 'workforce') {
     return (
       <>
@@ -481,3 +481,4 @@ export const ServiceDetails: React.FC = () => {
     </>
   );
 };
+

@@ -1,4 +1,4 @@
-import test from 'node:test';
+﻿import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
@@ -177,5 +177,6 @@ test('buildQuoteSummaryText contains the client details and the official slogan'
   assert.ok(summary.includes('Jean Pierre Habimana'));
   assert.ok(summary.includes('Gacuriro, Kigali'));
   assert.ok(summary.includes('Kunoza umurimo ni inshingano zacu!'));
-  assert.ok(summary.includes('120 m²'));
+  assert.ok(summary.includes('120 mÂ²'));
 });
+

@@ -1,4 +1,4 @@
-import { COMPANY_INFO } from '../data/company';
+﻿import { COMPANY_INFO } from '../data/company';
 import { SUPPORTED_LANGUAGES, type SupportedLanguage } from '../i18n';
 
 /** Origin without a trailing slash. */
@@ -65,3 +65,4 @@ export const setJsonLd = (data: unknown): void => {
   script.textContent = JSON.stringify(data);
   document.head.appendChild(script);
 };
+

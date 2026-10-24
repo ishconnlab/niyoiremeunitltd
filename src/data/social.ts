@@ -48,3 +48,4 @@ export const WHATSAPP_LINK: SocialLink = {
   labelKey: 'social.whatsapp',
   url: `https://wa.me/${COMPANY_INFO.whatsappNumber}`,
 };
+

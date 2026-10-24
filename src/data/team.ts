@@ -1,4 +1,4 @@
-import { TeamMember } from '../types';
+﻿import { TeamMember } from '../types';
 
 /**
  * The leadership and the teams that carry out our work.
@@ -96,3 +96,4 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
   },
 ];
+

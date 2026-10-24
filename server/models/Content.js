@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 
 const contentSchema = new mongoose.Schema(
   {
@@ -44,3 +44,4 @@ const contentSchema = new mongoose.Schema(
 );
 
 export default mongoose.model('Content', contentSchema);
+

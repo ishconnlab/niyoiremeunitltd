@@ -1,10 +1,10 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface CraneHookProps {
   className?: string;
 }
 
-/** Decorative crane hook — original site decoration, kept as a pure ornament. */
+/** Decorative crane hook â€” original site decoration, kept as a pure ornament. */
 export const CraneHook: React.FC<CraneHookProps> = ({ className = 'w-16 h-28' }) => {
   return (
     <div className={`pointer-events-none select-none flex flex-col items-center ${className}`}>
@@ -35,3 +35,4 @@ export const CraneHook: React.FC<CraneHookProps> = ({ className = 'w-16 h-28' })
     </div>
   );
 };
+

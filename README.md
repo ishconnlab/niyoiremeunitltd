@@ -1,9 +1,9 @@
-# NIYO IREME UNIT COMPANY LTD - Official Website
+﻿# NIYO IREME UNIT COMPANY LTD - Official Website
 
 > **Official Slogan:** *"Kunoza umurimo ni inshingano zacu!"*
 > *(Doing every job well is our responsibility!)*
 > **Client:** NIYO IREME UNIT COMPANY LTD
-> **Developer:** IshConnect ([https://www.ishconnect.rw/](https://www.ishconnect.rw/))
+> **Developer:** IshConnect ([https://ishconnct.com/](https://ishconnct.com/))
 > **Location:** Kimironko, Kigali, Rwanda
 > **Phone:** +250 781 294 928
 
@@ -30,16 +30,16 @@ All company copy (slogans, service descriptions, "why choose us" reasons) is the
 
 ## 2. Technology Stack
 
-- **React 19 + TypeScript (strict)** — component-driven, typed UI.
-- **Vite 8** — dev server and production build.
-- **Tailwind CSS v4** — `@theme` design tokens, Plus Jakarta Sans + Space Grotesk.
-- **React Router 7** — lazy-loaded routes.
-- **i18next / react-i18next** — bilingual routing via `?lang=rw` / `?lang=en`.
-- **React Hook Form + Zod** — validated contact and quotation forms.
-- **EmailJS** — form delivery (falls back to phone / WhatsApp when not configured).
-- **Custom service worker** — offline app shell, offline page, update prompt.
-- **Node test runner (`node:test`)** — unit tests for the quotation engine.
-- **sharp** — generation of the brand asset set (logos, icons, OG image).
+- **React 19 + TypeScript (strict)** â€” component-driven, typed UI.
+- **Vite 8** â€” dev server and production build.
+- **Tailwind CSS v4** â€” `@theme` design tokens, Plus Jakarta Sans + Space Grotesk.
+- **React Router 7** â€” lazy-loaded routes.
+- **i18next / react-i18next** â€” bilingual routing via `?lang=rw` / `?lang=en`.
+- **React Hook Form + Zod** â€” validated contact and quotation forms.
+- **EmailJS** â€” form delivery (falls back to phone / WhatsApp when not configured).
+- **Custom service worker** â€” offline app shell, offline page, update prompt.
+- **Node test runner (`node:test`)** â€” unit tests for the quotation engine.
+- **sharp** â€” generation of the brand asset set (logos, icons, OG image).
 
 ---
 
@@ -68,7 +68,7 @@ Every page is available in both languages: `?lang=rw` and `?lang=en`.
 npm install          # install dependencies (no --legacy-peer-deps needed)
 
 npm run dev          # dev server on http://localhost:3000
-npm run build        # sitemap → i18n check → typecheck → vite build → post-build SEO/SW stamping → PWA check
+npm run build        # sitemap â†’ i18n check â†’ typecheck â†’ vite build â†’ post-build SEO/SW stamping â†’ PWA check
 npm run preview      # serve the production build on http://localhost:4173
 
 npm run typecheck    # tsc --noEmit
@@ -88,7 +88,7 @@ Copy `.env.example` to `.env` (or `.env.local`) and set the values below. All va
 | Variable | Purpose | Default |
 |---|---|---|
 | `VITE_SITE_URL` | Public origin used for canonical URLs, hreflang, sitemap, Open Graph | `http://localhost:3000` |
-| `VITE_CONTACT_EMAIL` | Verified company email shown in the footer, contact page and form footers | `info@niyoireme.rw` |
+| `VITE_CONTACT_EMAIL` | Verified company email shown in the footer, contact page and form footers | `info@niyoiremeunitltd.com` |
 | `VITE_EMAILJS_SERVICE_ID` | EmailJS service ID for the contact / quote forms | empty (forms fall back to phone + WhatsApp) |
 | `VITE_EMAILJS_TEMPLATE_ID` | EmailJS template ID | empty |
 | `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key | empty |
@@ -98,7 +98,7 @@ Copy `.env.example` to `.env` (or `.env.local`) and set the values below. All va
 
 ## 6. Bilingual Behaviour
 
-- Language resolution order: `?lang=` query parameter → `localStorage` (`niyoireme.lang`) → browser navigator → `<html lang>`.
+- Language resolution order: `?lang=` query parameter â†’ `localStorage` (`niyoireme.lang`) â†’ browser navigator â†’ `<html lang>`.
 - The chosen language is persisted and reflected in `<html lang>`, the Open Graph locale, the canonical URL, `hreflang` alternates and the JSON-LD payload.
 - Canonical and `hreflang` tags are written at runtime (crawlers that execute JavaScript see them); the static `sitemap.xml` already lists both languages for every route.
 - All UI strings live in `src/i18n/locales/{en,rw}.json`; `npm run i18n:check` fails the build if a key, placeholder or array shape drifts between the two files or is missing from the code.
@@ -108,19 +108,19 @@ Copy `.env.example` to `.env` (or `.env.local`) and set the values below. All va
 ## 7. PWA, SEO & Accessibility
 
 - **PWA:** `public/manifest.webmanifest`, branded icons (192/512 + maskable), `apple-touch-icon`, install prompt, update prompt, offline banner, offline fallback page, network-first navigation with runtime caching.
-- **SEO:** per-route title/description, canonical + hreflang, Open Graph / Twitter cards with an absolute 1200×630 image, LocalBusiness JSON-LD, bilingual `sitemap.xml`, `robots.txt`.
+- **SEO:** per-route title/description, canonical + hreflang, Open Graph / Twitter cards with an absolute 1200Ã—630 image, LocalBusiness JSON-LD, bilingual `sitemap.xml`, `robots.txt`.
 - **Accessibility (WCAG 2.2 AA):** skip link, visible focus rings, focus-trapped lightbox, keyboard-operable navigation and menus, labelled form fields with inline error summaries, `prefers-reduced-motion` support, 320 px responsive layouts.
 
 ---
 
 ## 8. Items Pending Client Confirmation
 
-1. **`Slings`** — the term is kept verbatim in the construction service scope; please confirm the intended meaning/English equivalent.
-2. **Premises address** — currently "Kimironko, Kigali, Rwanda"; send the street address if it should be displayed and mapped.
-3. **Verified email** — the site shows `VITE_CONTACT_EMAIL` (default `info@niyoireme.rw`); confirm the monitored mailbox.
-4. **Production domain** — set `VITE_SITE_URL` to the final domain so canonical URLs, sitemap and social cards point at it.
-5. **Email account** — provide the service ID, template ID and public key to enable in-browser form delivery (the forms currently fall back to phone/WhatsApp).
-6. **Gallery photography** — current images are the client's own photos in `public/projects/`; confirm they may be published and, where helpful, supply higher-resolution or additional shots.
+1. **`Slings`** â€” the term is kept verbatim in the construction service scope; please confirm the intended meaning/English equivalent.
+2. **Premises address** â€” currently "Kimironko, Kigali, Rwanda"; send the street address if it should be displayed and mapped.
+3. **Verified email** â€” the site shows `VITE_CONTACT_EMAIL` (default `info@niyoiremeunitltd.com`); confirm the monitored mailbox.
+4. **Production domain** â€” set `VITE_SITE_URL` to the final domain so canonical URLs, sitemap and social cards point at it.
+5. **Email account** â€” provide the service ID, template ID and public key to enable in-browser form delivery (the forms currently fall back to phone/WhatsApp).
+6. **Gallery photography** â€” current images are the client's own photos in `public/projects/`; confirm they may be published and, where helpful, supply higher-resolution or additional shots.
 
 ---
 
@@ -128,8 +128,8 @@ Copy `.env.example` to `.env` (or `.env.local`) and set the values below. All va
 
 The platform has **two** submitting forms, both delivered by EmailJS:
 
-1. **Contact form** — `src/components/forms/ContactForm.tsx`, rendered on `/contact` (6 EmailJS variables, 5 input fields).
-2. **Quotation form** — `src/components/forms/QuoteForm.tsx`, rendered on `/quote` (17 EmailJS variables, 6 input fields + calculator scope).
+1. **Contact form** â€” `src/components/forms/ContactForm.tsx`, rendered on `/contact` (6 EmailJS variables, 5 input fields).
+2. **Quotation form** â€” `src/components/forms/QuoteForm.tsx`, rendered on `/quote` (17 EmailJS variables, 6 input fields + calculator scope).
 
 Every other input on the site (e.g. the FAQ search box) is client-side only and never submits.
 
@@ -139,9 +139,9 @@ Both forms submit through a single helper, `src/utils/emailjs.ts`, which calls `
 
 | Variable | Purpose | Default |
 |---|---|---|
-| `VITE_EMAILJS_SERVICE_ID` | EmailJS **service** ID (e.g. `service_xxxxxxx`) | empty → forms report "not configured" |
+| `VITE_EMAILJS_SERVICE_ID` | EmailJS **service** ID (e.g. `service_xxxxxxx`) | empty â†’ forms report "not configured" |
 | `VITE_EMAILJS_TEMPLATE_ID` | EmailJS **template** ID (e.g. `template_xxxxxxx`) | empty |
-| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS **public key** (Account → API Keys) | empty |
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS **public key** (Account â†’ API Keys) | empty |
 
 The helper (`src/utils/emailjs.ts`) reads them at build time and considers email configured only when **all three** are non-empty:
 
@@ -162,7 +162,7 @@ export const isEmailConfigured = (): boolean =>
 sendEmail(templateParams: Record<string, unknown>): Promise<void>
 ```
 
-- Resolves **only** when EmailJS returns HTTP `200`/`201` — a success message is never shown for a failed send.
+- Resolves **only** when EmailJS returns HTTP `200`/`201` â€” a success message is never shown for a failed send.
 - Throws `EmailNotConfiguredError` when credentials are missing (the form shows its "not configured" state and points the visitor to phone/WhatsApp).
 - Throws `EmailDeliveryError` for any other failure.
 
@@ -174,7 +174,7 @@ await sendEmail({
   reply_to: values.email || values.phone,
   email: values.email,
   phone: values.phone,
-  /* …form-specific fields… */
+  /* â€¦form-specific fieldsâ€¦ */
   source: 'contact-page',      // or 'quotation-page'
 });
 ```
@@ -195,7 +195,7 @@ Derived fields (not on-screen inputs):
 
 | Template variable | Type | Value |
 |---|---|---|
-| `reply_to` | string | `email` when provided, otherwise `phone` — bind this to the template **Reply-To** |
+| `reply_to` | string | `email` when provided, otherwise `phone` â€” bind this to the template **Reply-To** |
 | `source` | string | Always `contact-page` |
 
 So the complete EmailJS variable list for the **Contact** template is:
@@ -223,10 +223,10 @@ Calculator / scope inputs (not free-text; drive the estimate and the summary):
 | Service category | `quote-service` | `service` (localised title) |
 | Project type | `quote-project-type` | `project_type` (localised label) |
 | Finishing tier | `quote-tier` | `tier` (localised label) |
-| Area (m²) — non-workforce | `quote-area` | `area` |
-| Workers — workforce only | `quote-workers` | `workers` |
-| Duration (weeks) — workforce only | `quote-duration` | `weeks` |
-| Include materials (checkbox) — non-workforce | — | `materials_included` |
+| Area (mÂ²) â€” non-workforce | `quote-area` | `area` |
+| Workers â€” workforce only | `quote-workers` | `workers` |
+| Duration (weeks) â€” workforce only | `quote-duration` | `weeks` |
+| Include materials (checkbox) â€” non-workforce | â€” | `materials_included` |
 
 Full EmailJS variable list for the **Quotation** template:
 
@@ -242,9 +242,9 @@ Full EmailJS variable list for the **Quotation** template:
 | `service` | string | always | Service title (localised label), e.g. "House Finishing & Decoration" |
 | `project_type` | string | always | Localised label, e.g. `residential` \| `commercial` \| `renovation` \| `exterior` |
 | `tier` | string | always | Localised finishing tier label |
-| `estimate` | string | always | Formatted RWF range, e.g. `1,200,000 – 1,800,000 RWF` |
+| `estimate` | string | always | Formatted RWF range, e.g. `1,200,000 â€“ 1,800,000 RWF` |
 | `duration_weeks` | number | always | Suggested duration in weeks |
-| `area` | number | non-workforce | Area in m² (clamped) |
+| `area` | number | non-workforce | Area in mÂ² (clamped) |
 | `workers` | number | workforce only | Worker count (clamped) |
 | `weeks` | number | workforce only | Duration in weeks (clamped) |
 | `materials_included` | boolean | non-workforce | Whether materials are included in the estimate |
@@ -267,7 +267,7 @@ Timeline: {{timeline}}
 Service:          {{service}}
 Project type:     {{project_type}}
 Tier:             {{tier}}
-Area (m²):        {{area}}
+Area (mÂ²):        {{area}}
 Workers:          {{workers}}
 Weeks:            {{weeks}}
 Materials:        {{materials_included}}
@@ -280,13 +280,14 @@ Message:
 
 ### 9.6 Setup checklist
 
-1. Create an EmailJS account and add an **Email Service** (e.g. Gmail) → copy the **Service ID**.
-2. Create a **Template**, paste the variable names from §9.3 / §9.4 into it → copy the **Template ID**.
+1. Create an EmailJS account and add an **Email Service** (e.g. Gmail) â†’ copy the **Service ID**.
+2. Create a **Template**, paste the variable names from Â§9.3 / Â§9.4 into it â†’ copy the **Template ID**.
 3. Set the template **To Email** to `VITE_CONTACT_EMAIL` and **Reply-To** to `{{reply_to}}`.
-4. Copy the **Public Key** from Account → API Keys.
-5. Put all three values into `.env`, then restart the dev server (`npm run dev`) — Vite inlines env vars at startup.
+4. Copy the **Public Key** from Account â†’ API Keys.
+5. Put all three values into `.env`, then restart the dev server (`npm run dev`) â€” Vite inlines env vars at startup.
 6. Submit both forms and confirm delivery; the UI shows success only on HTTP 200/201.
 
 ---
 
-*Engineered with precision by **IshConnect** ([https://www.ishconnct.rw/](https://www.ishconnct.rw/))*
+*Engineered with precision by **IshConnect** ([https://ishconnct.com/](https://ishconnct.com/))*
+

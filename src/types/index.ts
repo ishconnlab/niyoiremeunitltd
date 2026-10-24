@@ -1,4 +1,4 @@
-export type ServiceCategory = 'finishing' | 'painting' | 'construction' | 'workforce';
+﻿export type ServiceCategory = 'finishing' | 'painting' | 'construction' | 'workforce';
 
 export type FinishingTier = 'standard' | 'premium' | 'luxury_executive';
 
@@ -59,7 +59,7 @@ export interface WhyChooseItem {
 
 export interface TeamMember {
   id: string;
-  /** i18n keys — every string lives in the locale files. */
+  /** i18n keys â€” every string lives in the locale files. */
   roleKey: string;
   specialtyKey: string;
   bioKey: string;
@@ -111,3 +111,4 @@ export interface BlogPost {
   author: string;
   featured: boolean;
 }
+

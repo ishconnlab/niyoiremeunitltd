@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MapPin } from 'lucide-react';
 
@@ -123,3 +123,4 @@ export const About: React.FC = () => {
     </>
   );
 };
+

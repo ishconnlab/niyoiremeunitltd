@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { COMPANY_INFO } from '../../data/company';
 
@@ -51,3 +51,4 @@ export const AppLoader: React.FC = () => (
     </div>
   </div>
 );
+

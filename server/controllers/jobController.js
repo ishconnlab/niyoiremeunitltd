@@ -1,4 +1,4 @@
-import asyncHandler from 'express-async-handler';
+﻿import asyncHandler from 'express-async-handler';
 import Job from '../models/Job.js';
 
 // @desc    Get all jobs
@@ -76,3 +76,4 @@ export const deleteJob = asyncHandler(async (req, res) => {
   await job.deleteOne();
   res.status(200).json({ success: true, data: {} });
 });
+

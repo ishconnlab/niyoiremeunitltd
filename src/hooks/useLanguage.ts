@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+﻿import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { LANGUAGE_STORAGE_KEY, isSupportedLanguage, type SupportedLanguage } from '../i18n';
@@ -24,7 +24,7 @@ export function useLanguage(): LanguageApi {
       try {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, next);
       } catch {
-        /* Storage can be unavailable in private browsing — language still applies. */
+        /* Storage can be unavailable in private browsing â€” language still applies. */
       }
     },
     [i18n]
@@ -36,3 +36,4 @@ export function useLanguage(): LanguageApi {
 
   return { language, isKinyarwanda: language === 'rw', setLanguage, toggleLanguage };
 }
+

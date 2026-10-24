@@ -1,4 +1,4 @@
-{
+﻿{
   "compilerOptions": {
     "target": "ES2022",
     "experimentalDecorators": true,
@@ -25,3 +25,4 @@
   },
   "include": ["src", "scripts", "vite.config.ts"]
 }
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Users, CheckCircle2, ArrowRight } from 'lucide-react';
 
@@ -178,3 +178,4 @@ export const Team: React.FC = () => {
     </div>
   );
 };
+

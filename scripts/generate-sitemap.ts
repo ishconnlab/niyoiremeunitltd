@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -34,7 +34,7 @@ const env = {
 const siteUrl = (
   env.VITE_SITE_URL ||
   env.SITE_URL ||
-  'https://www.niyoiremeunitcompanyltd.rw'
+  'https://niyoiremeunitltd.vercel.app'
 ).replace(/\/+$/, '');
 
 const ROUTES: { path: string; priority: string; changefreq: string }[] = [
@@ -119,3 +119,4 @@ fs.writeFileSync(path.join(PUBLIC_DIR, 'robots.txt'), robots, 'utf8');
 
 console.log(`sitemap.xml written for ${siteUrl} (${ROUTES.length} routes x ${LANGUAGES.length} languages)`);
 console.log('robots.txt updated');
+

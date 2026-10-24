@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -9,7 +9,7 @@ interface CircularTouchBadgeProps {
   to?: string;
 }
 
-/** Rotating circular "get in touch" badge — original site ornament. */
+/** Rotating circular "get in touch" badge â€” original site ornament. */
 export const CircularTouchBadge: React.FC<CircularTouchBadgeProps> = ({
   className = '',
   to = '/quote',
@@ -39,7 +39,7 @@ export const CircularTouchBadge: React.FC<CircularTouchBadgeProps> = ({
         />
         <text className="text-[7.5px] font-black uppercase tracking-[2.5px] fill-slate-300">
           <textPath href="#textCircle" startOffset="0%">
-            {`${label.toUpperCase()} • ${label.toUpperCase()} • `}
+            {`${label.toUpperCase()} â€¢ ${label.toUpperCase()} â€¢ `}
           </textPath>
         </text>
       </svg>
@@ -51,3 +51,4 @@ export const CircularTouchBadge: React.FC<CircularTouchBadgeProps> = ({
     </LocalizedLink>
   );
 };
+

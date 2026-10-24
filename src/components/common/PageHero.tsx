@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { cn } from '../../utils/cn';
 
@@ -85,3 +85,4 @@ export const PageHero: React.FC<PageHeroProps> = ({
     </div>
   </section>
 );
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Blocks,
@@ -85,7 +85,7 @@ const MATERIALS_ITEMS: EquipmentItem[] = [
 /**
  * Modern construction equipment section.
  *
- * Only equipment and building materials are shown here — no other services.
+ * Only equipment and building materials are shown here â€” no other services.
  * Every card offers a contextual WhatsApp inquiry for the action the item
  * actually supports (rental for equipment, purchase for materials), with the
  * item name prefilled into the message. Content-matched icons replace generic
@@ -214,3 +214,4 @@ export const EquipmentShowcase: React.FC = () => {
     </section>
   );
 };
+

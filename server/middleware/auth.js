@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+﻿import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';
 import Admin from '../models/Admin.js';
 
@@ -42,3 +42,4 @@ export const authorize = (...roles) => {
     next();
   };
 };
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -39,3 +39,4 @@ export const Layout: React.FC = () => {
     </div>
   );
 };
+

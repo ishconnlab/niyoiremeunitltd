@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+﻿import { useCallback } from 'react';
 
 import { useLanguage } from './useLanguage';
 
@@ -24,3 +24,4 @@ export function useLocalizedPath(): (path: string) => string {
     [language]
   );
 }
+

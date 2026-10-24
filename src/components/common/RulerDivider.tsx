@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface RulerDividerProps {
   className?: string;
@@ -13,3 +13,4 @@ export const RulerDivider: React.FC<RulerDividerProps> = ({ className = '' }) =>
     />
   );
 };
+

@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -127,3 +127,4 @@ if (problems.length > 0) {
 }
 
 console.log('\nAll locale keys, placeholders and code references are consistent.');
+

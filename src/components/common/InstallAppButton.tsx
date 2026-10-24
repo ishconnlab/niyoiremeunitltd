@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Check, Download, Share } from 'lucide-react';
 
@@ -62,3 +62,4 @@ export const InstallAppButton: React.FC = () => {
     </div>
   );
 };
+

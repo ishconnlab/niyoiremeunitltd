@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ExternalLink, MapPin, Navigation } from 'lucide-react';
 
@@ -73,3 +73,4 @@ export const MapEmbed: React.FC<MapEmbedProps> = ({ title, note, className }) =>
     </div>
   );
 };
+

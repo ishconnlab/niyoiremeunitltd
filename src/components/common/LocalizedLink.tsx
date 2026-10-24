@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link, type LinkProps } from 'react-router-dom';
 
 import { useLocalizedPath } from '../../hooks/useLocalizedPath';
@@ -14,3 +14,4 @@ export const LocalizedLink: React.FC<LocalizedLinkProps> = ({ to, ...rest }) => 
 
   return <Link to={localize(to)} {...rest} />;
 };
+

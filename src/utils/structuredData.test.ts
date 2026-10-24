@@ -1,4 +1,4 @@
-import test from 'node:test';
+﻿import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
@@ -23,7 +23,7 @@ test('organization node is a GeneralContractor with verified contact details', (
 
   assert.ok(types.includes('GeneralContractor'));
   assert.equal(node.telephone, '+250 781 294 928');
-  assert.equal(node.email, 'info@niyoireme.rw');
+  assert.equal(node.email, 'info@niyoiremeunitltd.com');
   assert.equal(roundTrip(node).address.addressCountry, 'RW');
   assert.equal(roundTrip(node).address.addressLocality, 'Kimironko');
 });
@@ -85,3 +85,4 @@ test('faq node reflects only the supplied visible question and answer pairs', ()
   assert.equal(node.mainEntity[0]['@type'], 'Question');
   assert.equal(node.mainEntity[0].acceptedAnswer.text, 'It depends on scope.');
 });
+

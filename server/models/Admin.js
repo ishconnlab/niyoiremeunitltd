@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -52,3 +52,4 @@ adminSchema.methods.getSignedJwtToken = function () {
 };
 
 export default mongoose.model('Admin', adminSchema);
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { HelpCircle, Phone } from 'lucide-react';
 
@@ -8,8 +8,8 @@ import { PillButton } from '../common/PillButton';
 /**
  * Band that sits directly above the footer.
  *
- * It carries the FAQ link as a button — the FAQ deliberately stays out of the
- * header navigation — together with the two other next steps a visitor can
+ * It carries the FAQ link as a button â€” the FAQ deliberately stays out of the
+ * header navigation â€” together with the two other next steps a visitor can
  * take: request a quotation or call the office.
  */
 export const PreFooterBand: React.FC = () => {
@@ -61,3 +61,4 @@ export const PreFooterBand: React.FC = () => {
     </section>
   );
 };
+

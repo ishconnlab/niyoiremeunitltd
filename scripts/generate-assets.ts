@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import path from 'node:path';
 import { Buffer } from 'node:buffer';
 import { fileURLToPath } from 'node:url';
@@ -404,3 +404,4 @@ main().catch((err) => {
   console.error(err);
   throw err;
 });
+

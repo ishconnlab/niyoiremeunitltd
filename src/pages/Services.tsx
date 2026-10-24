@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+﻿import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Check } from 'lucide-react';
 
@@ -161,3 +161,4 @@ export const Services: React.FC = () => {
     </>
   );
 };
+

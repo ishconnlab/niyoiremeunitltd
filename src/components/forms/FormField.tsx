@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export const inputClasses =
   'w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-colors placeholder:text-slate-400 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/30';
@@ -54,3 +54,4 @@ export const FormField: React.FC<FormFieldProps> = ({
     ) : null}
   </div>
 );
+

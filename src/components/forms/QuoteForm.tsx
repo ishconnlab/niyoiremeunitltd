@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+﻿import React, { useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -91,7 +91,7 @@ export const QuoteForm: React.FC = () => {
     tier === 'luxury_executive' ? 'quote.tiers.luxury' : `quote.tiers.${tier}`
   );
 
-  const estimateRange = `${formatRWF(estimate.estimatedMinRWF, locale)} – ${formatRWF(
+  const estimateRange = `${formatRWF(estimate.estimatedMinRWF, locale)} â€“ ${formatRWF(
     estimate.estimatedMaxRWF,
     locale
   )}`;
@@ -536,3 +536,4 @@ export const QuoteForm: React.FC = () => {
     </div>
   );
 };
+

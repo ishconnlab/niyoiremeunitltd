@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Quote } from 'lucide-react';
 
@@ -112,7 +112,7 @@ const ReviewCard: React.FC<{
  * Client feedback, presented as an architect's drawing sheet: a technical
  * section drawing on the left and the review annotations on the right.
  *
- * Only feedback that NIYO IREME has actually received is published here — the
+ * Only feedback that NIYO IREME has actually received is published here â€” the
  * list in `src/data/reviews.ts` stays empty until real, agreed reviews are
  * added, so the page never shows an invented testimonial.
  */
@@ -200,7 +200,7 @@ export const ClientFeedback: React.FC = () => {
                 className="w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-[1.03]"
               />
 
-              {/* Scanning beam — the drawing "reads" itself */}
+              {/* Scanning beam â€” the drawing "reads" itself */}
               <span
                 className="review-sheet__scan pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-transparent via-brand-orange/25 to-transparent"
                 aria-hidden="true"
@@ -346,3 +346,4 @@ export const ClientFeedback: React.FC = () => {
     </section>
   );
 };
+

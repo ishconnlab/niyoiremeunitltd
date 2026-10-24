@@ -1,4 +1,4 @@
-import { ServiceDefinition } from '../types';
+﻿import { ServiceDefinition } from '../types';
 
 /**
  * The services the company delivers.
@@ -128,3 +128,4 @@ export const SERVICE_BY_ID = SERVICES_DATA.reduce<Record<string, ServiceDefiniti
   },
   {}
 );
+

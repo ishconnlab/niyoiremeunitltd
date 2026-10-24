@@ -1,4 +1,4 @@
-import asyncHandler from 'express-async-handler';
+﻿import asyncHandler from 'express-async-handler';
 import Content from '../models/Content.js';
 
 // @desc    Get all content
@@ -78,3 +78,4 @@ export const deleteContent = asyncHandler(async (req, res) => {
   await content.deleteOne();
   res.status(200).json({ success: true, data: {} });
 });
+

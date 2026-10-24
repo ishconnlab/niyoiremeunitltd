@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Clock, Image } from 'lucide-react';
 
@@ -13,7 +13,7 @@ export const CATEGORY_LABELS: Record<BlogCategory, { en: string; rw: string }> =
   completed: { en: 'Completed Projects', rw: 'Imirimo Yarabayeje' },
   'in-progress': { en: 'Projects in Progress', rw: 'Imirimo Inyenyeranyije' },
   equipment: { en: 'Equipment Rental', rw: 'Gukodesha Ibikoresho' },
-  trends: { en: 'Industry Trends', rw: 'Ibitekerezo by’Indama' },
+  trends: { en: 'Industry Trends', rw: 'Ibitekerezo byâ€™Indama' },
 };
 
 export const Blog: React.FC = () => {
@@ -139,7 +139,7 @@ export const Blog: React.FC = () => {
                     <div className="flex items-center gap-2 mb-2">
                       <Clock className="h-3.5 w-3.5 text-slate-400" aria-hidden="true" />
                       <span className="text-xs text-slate-500">
-                        {formatDate(post.date)} • {post.readTime}
+                        {formatDate(post.date)} â€¢ {post.readTime}
                       </span>
                     </div>
                     <h3 className="font-heading text-lg font-black text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
@@ -204,7 +204,7 @@ export const Blog: React.FC = () => {
                     <div className="flex items-center gap-2 mb-2">
                       <Clock className="h-3.5 w-3.5 text-slate-400" aria-hidden="true" />
                       <span className="text-xs text-slate-500">
-                        {formatDate(post.date)} • {post.readTime}
+                        {formatDate(post.date)} â€¢ {post.readTime}
                       </span>
                     </div>
                     <h3 className="font-heading text-lg font-black text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
@@ -267,3 +267,4 @@ export const Blog: React.FC = () => {
     </div>
   );
 };
+

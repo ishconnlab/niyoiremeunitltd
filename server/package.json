@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "niyoireme-backend",
   "version": "1.0.0",
   "type": "module",
@@ -21,3 +21,4 @@
     "validator": "^13.11.0"
   }
 }
+

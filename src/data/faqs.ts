@@ -1,4 +1,4 @@
-import { FaqDefinition } from '../types';
+﻿import { FaqDefinition } from '../types';
 
 /**
  * FAQ entries. Questions and answers are translated content and therefore live
@@ -24,3 +24,4 @@ export const FAQ_CATEGORIES = [
   { id: 'construction', labelKey: 'faq.categories.construction' },
   { id: 'workforce', labelKey: 'faq.categories.workforce' },
 ] as const;
+

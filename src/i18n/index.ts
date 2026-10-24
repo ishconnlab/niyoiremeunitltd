@@ -1,4 +1,4 @@
-import i18n from 'i18next';
+﻿import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
@@ -49,3 +49,4 @@ applyDocumentLanguage(i18n.resolvedLanguage ?? i18n.language);
 i18n.on('languageChanged', applyDocumentLanguage);
 
 export default i18n;
+

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight, X } from 'lucide-react';
@@ -150,7 +150,7 @@ export const ServiceMegaMenu: React.FC<{
       aria-expanded={isOpen}
       className="relative inline-block w-full xl:w-auto"
     >
-      {/* Backdrop — covers viewport when open, closes on click */}
+      {/* Backdrop â€” covers viewport when open, closes on click */}
       {isOpen ? (
         <div
           className="fixed inset-0 z-[59] bg-black/25 backdrop-blur-sm"
@@ -159,7 +159,7 @@ export const ServiceMegaMenu: React.FC<{
         />
       ) : null}
 
-      {/* Trigger button — always visible */}
+      {/* Trigger button â€” always visible */}
       <button
         type="button"
         aria-expanded={isOpen}
@@ -175,7 +175,7 @@ export const ServiceMegaMenu: React.FC<{
         />
       </button>
 
-      {/* Panel — nested dropdown below trigger */}
+      {/* Panel â€” nested dropdown below trigger */}
       {isOpen ? (
         <div
           ref={menuRef}
@@ -309,3 +309,4 @@ export const ServiceMegaMenu: React.FC<{
     </nav>
   );
 };
+

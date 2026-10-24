@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -33,7 +33,7 @@ const env = {
 const siteUrl = (
   env.VITE_SITE_URL ||
   env.SITE_URL ||
-  'https://www.niyoiremeunitcompanyltd.rw'
+  'https://niyoiremeunitltd.vercel.app'
 ).replace(/\/+$/, '');
 
 if (!fs.existsSync(DIST_INDEX)) {
@@ -103,3 +103,4 @@ if (fs.existsSync(distSw)) {
 }
 
 console.log(`Absolute social image URLs written into dist/index.html for ${siteUrl}`);
+

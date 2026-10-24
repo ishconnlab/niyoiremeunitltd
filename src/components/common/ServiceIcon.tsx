@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import {
   BrickWall,
   BrushCleaning,
@@ -43,3 +43,4 @@ export const ServiceIcon: React.FC<ServiceIconProps> = ({ name, className }) => 
   const Icon = ICONS[name] ?? Building2;
   return <Icon className={className} aria-hidden="true" />;
 };
+

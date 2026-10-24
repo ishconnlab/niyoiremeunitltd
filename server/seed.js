@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import Admin from './models/Admin.js';
 import Content from './models/Content.js';
@@ -10,7 +10,7 @@ const seed = async () => {
     console.log('MongoDB connected for seeding');
 
     // Seed super admin
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@niyoireme.rw';
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@niyoiremeunitltd.com';
     const adminPassword = process.env.ADMIN_PASSWORD || 'AdminNiyoIreme2026!';
 
     let admin = await Admin.findOne({ email: adminEmail });
@@ -118,3 +118,4 @@ const seed = async () => {
 };
 
 seed();
+

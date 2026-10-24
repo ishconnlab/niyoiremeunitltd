@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { cn } from '../../utils/cn';
 
@@ -65,3 +65,4 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     </div>
   );
 };
+

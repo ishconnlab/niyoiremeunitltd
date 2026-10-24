@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -22,7 +22,7 @@ const readIfExists = (file: string): string | null =>
 /* -------------------------------------------------------- route table source */
 const appSource = readIfExists(path.join(ROOT, 'src', 'App.tsx'));
 if (!appSource) {
-  problems.push('src/App.tsx is missing — cannot verify the route table');
+  problems.push('src/App.tsx is missing â€” cannot verify the route table');
 } else {
   // Literal public routes declared on <Route path="..." />. Dynamic segments
   // are handled explicitly below.
@@ -35,7 +35,7 @@ if (!appSource) {
   // The sitemap must cover every literal route except the 404 catch-all.
   const sitemap = readIfExists(path.join(PUBLIC_DIR, 'sitemap.xml'));
   if (!sitemap) {
-    problems.push('public/sitemap.xml is missing — run npm run sitemap');
+    problems.push('public/sitemap.xml is missing â€” run npm run sitemap');
   } else {
     const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
     const paths = locs.map((loc) => {
@@ -92,7 +92,7 @@ if (!appSource) {
 /* -------------------------------------------------------------------- robots */
 const robots = readIfExists(path.join(PUBLIC_DIR, 'robots.txt'));
 if (!robots) {
-  problems.push('public/robots.txt is missing — run npm run sitemap');
+  problems.push('public/robots.txt is missing â€” run npm run sitemap');
 } else {
   if (!/Sitemap:\s*\S+/i.test(robots)) {
     problems.push('robots.txt has no Sitemap: directive');
@@ -135,3 +135,4 @@ if (problems.length > 0) {
 
 console.log('SEO check passed: routes, sitemap, robots and structured data are consistent.');
 notes.forEach((note) => console.log(`  note: ${note}`));
+

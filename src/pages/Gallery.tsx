@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Expand } from 'lucide-react';
 
@@ -133,3 +133,4 @@ export const Gallery: React.FC = () => {
     </>
   );
 };
+

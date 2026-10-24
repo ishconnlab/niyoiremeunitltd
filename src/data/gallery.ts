@@ -1,4 +1,4 @@
-import { GalleryItem } from '../types';
+﻿import { GalleryItem } from '../types';
 
 /**
  * Gallery imagery.
@@ -120,3 +120,4 @@ export const GALLERY_CATEGORIES = [
   { id: 'construction', labelKey: 'gallery.categories.construction' },
   { id: 'workforce', labelKey: 'gallery.categories.workforce' },
 ] as const;
+

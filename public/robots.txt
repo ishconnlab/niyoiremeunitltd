@@ -4,4 +4,4 @@ Allow: /
 # No private, admin or staging routes are published on this origin.
 Disallow: /api/
 
-Sitemap: https://www.niyoiremeunitcompanyltd.rw/sitemap.xml
+Sitemap: https://niyoiremeunitltd.vercel.app/sitemap.xml

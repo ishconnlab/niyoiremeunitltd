@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const en = JSON.parse(fs.readFileSync('src/i18n/locales/en.json', 'utf8'));
 const rw = JSON.parse(fs.readFileSync('src/i18n/locales/rw.json', 'utf8'));
 
@@ -21,3 +21,4 @@ rw.common.notConfiguredBody = 'Ifishi ntibakoreshwa ubu. Mutwandikire kuri telef
 fs.writeFileSync('src/i18n/locales/en.json', JSON.stringify(en, null, 2) + '\n');
 fs.writeFileSync('src/i18n/locales/rw.json', JSON.stringify(rw, null, 2) + '\n');
 console.log('ok');
+

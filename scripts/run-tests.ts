@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -29,3 +29,4 @@ const child = spawn(
 );
 
 child.on('exit', (code) => process.exit(code ?? 1));
+

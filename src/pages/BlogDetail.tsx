@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+﻿import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Clock, ChevronLeft } from 'lucide-react';
@@ -172,3 +172,4 @@ export const BlogDetail: React.FC = () => {
     </div>
   );
 };
+

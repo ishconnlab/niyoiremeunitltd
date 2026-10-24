@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 
 const jobSchema = new mongoose.Schema(
   {
@@ -62,3 +62,4 @@ const jobSchema = new mongoose.Schema(
 );
 
 export default mongoose.model('Job', jobSchema);
+

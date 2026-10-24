@@ -1,4 +1,4 @@
-import asyncHandler from 'express-async-handler';
+﻿import asyncHandler from 'express-async-handler';
 import Admin from '../models/Admin.js';
 import jwt from 'jsonwebtoken';
 
@@ -107,3 +107,4 @@ const getSignedJwtToken = (admin) => {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };
+

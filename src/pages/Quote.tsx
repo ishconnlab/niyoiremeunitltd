@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useSeo } from '../hooks/useSeo';
@@ -31,3 +31,4 @@ export const Quote: React.FC = () => {
     </>
   );
 };
+

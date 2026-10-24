@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ServiceIcon } from './ServiceIcon';
@@ -48,3 +48,4 @@ export const ServiceMedia: React.FC<ServiceMediaProps> = ({
     </div>
   );
 };
+

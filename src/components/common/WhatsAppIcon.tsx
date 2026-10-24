@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export interface WhatsAppIconProps {
   className?: string;
@@ -24,3 +24,4 @@ export const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({ className }) => {
     </svg>
   );
 };
+

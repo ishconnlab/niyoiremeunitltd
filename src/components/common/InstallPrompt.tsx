@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Download, Share, X } from 'lucide-react';
 
@@ -12,7 +12,7 @@ const SHOW_DELAY_MS = 10_000;
  * First-visit installation toast.
  *
  * It only appears when a real installation path exists (a captured
- * `beforeinstallprompt`, or iOS where the manual Share → Add to Home Screen
+ * `beforeinstallprompt`, or iOS where the manual Share â†’ Add to Home Screen
  * flow is available), after a short delay, and never while the visitor has
  * dismissed it inside the cooldown window. The permanent footer button stays
  * available regardless.
@@ -108,3 +108,4 @@ export const InstallPrompt: React.FC = () => {
     </div>
   );
 };
+

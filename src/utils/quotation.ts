@@ -1,4 +1,4 @@
-import {
+﻿import {
   QuotationCalculationInput,
   QuotationEstimateResult,
   FinishingTier,
@@ -99,7 +99,7 @@ export function calculateQuotationEstimate(
     return {
       estimatedMinRWF: totalMin,
       estimatedMaxRWF: totalMax,
-      formattedRangeRWF: `${formatRWF(totalMin)} – ${formatRWF(totalMax)}`,
+      formattedRangeRWF: `${formatRWF(totalMin)} â€“ ${formatRWF(totalMax)}`,
       suggestedDurationWeeks: weeks,
       breakdown,
       noteKeys,
@@ -167,7 +167,7 @@ export function calculateQuotationEstimate(
   return {
     estimatedMinRWF: adjustedMin,
     estimatedMaxRWF: adjustedMax,
-    formattedRangeRWF: `${formatRWF(adjustedMin)} – ${formatRWF(adjustedMax)}`,
+    formattedRangeRWF: `${formatRWF(adjustedMin)} â€“ ${formatRWF(adjustedMax)}`,
     suggestedDurationWeeks: estimatedDuration,
     breakdown,
     noteKeys,
@@ -197,7 +197,7 @@ export function buildQuoteSummaryText(
 ): string {
   const lines: string[] = [];
 
-  lines.push('*NIYO IREME UNIT COMPANY LTD — QUOTATION REQUEST*');
+  lines.push('*NIYO IREME UNIT COMPANY LTD â€” QUOTATION REQUEST*');
   lines.push('--------------------------------------');
 
   if (context.name) lines.push(`*Name:* ${context.name}`);
@@ -214,7 +214,7 @@ export function buildQuoteSummaryText(
       )} weeks`
     );
   } else {
-    lines.push(`*Approximate area:* ${clampArea(input.areaSquareMeters)} m²`);
+    lines.push(`*Approximate area:* ${clampArea(input.areaSquareMeters)} mÂ²`);
     lines.push(
       `*Materials included:* ${input.needMaterialsIncluded ? 'Yes' : 'No (labour and supervision only)'}`
     );
@@ -242,3 +242,4 @@ export const PROJECT_TYPE_KEYS: Record<ProjectType, string> = {
   renovation: 'quote.projectTypes.renovation',
   exterior: 'quote.projectTypes.exterior',
 };
+

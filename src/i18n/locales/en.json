@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "siteName": "NIYO IREME UNIT COMPANY LTD",
     "defaultTitle": "NIYO IREME UNIT COMPANY LTD | Construction & House Finishing in Kigali, Rwanda",
@@ -54,7 +54,7 @@
         "description": "Read about completed projects, works in progress, equipment rental availability, and construction industry trends from NIYO IREME UNIT COMPANY LTD in Kigali, Rwanda."
       }
     },
-    "ogImageAlt": "NIYO IREME UNIT COMPANY LTD — construction, house finishing and painting in Kigali, Rwanda"
+    "ogImageAlt": "NIYO IREME UNIT COMPANY LTD â€” construction, house finishing and painting in Kigali, Rwanda"
   },
   "common": {
     "requestQuote": "Request a Quote",
@@ -64,7 +64,7 @@
     "readMore": "Read more",
     "viewDetails": "View details",
     "sendMessage": "Send message",
-    "loading": "Loading…",
+    "loading": "Loadingâ€¦",
     "backToHome": "Back to home",
     "backToServices": "Back to services",
     "openMenu": "Open navigation menu",
@@ -88,7 +88,7 @@
     "notConfiguredBody": "Our email service is not set up on this deployment yet. Please contact us directly and we will reply promptly.",
     "submitFailedTitle": "We could not send your message",
     "submitFailedBody": "Something went wrong while sending. Please try again, or contact us by phone or WhatsApp.",
-    "submitSuccessTitle": "Thank you — your message has been sent",
+    "submitSuccessTitle": "Thank you â€” your message has been sent",
     "submitSuccessBody": "We have received your request and will contact you shortly.",
     "sendAnother": "Send another message",
     "scrollToTop": "Back to top",
@@ -111,14 +111,14 @@
   "megaMenu": {
     "label": "WHAT WE DO",
     "heading": "Building better spaces, from start to finish.",
-    "description": "From finishing and painting to construction, supervision, equipment rental and building materials — every service is delivered with close supervision and care.",
+    "description": "From finishing and painting to construction, supervision, equipment rental and building materials â€” every service is delivered with close supervision and care.",
     "exploreAll": "Explore All Services"
   },
   "blog": {
     "hero": {
       "badge": "Latest Updates",
       "title": "Insights, Projects & Industry News",
-      "subtitle": "From completed client projects and works in progress to equipment rental availability and industry trends — stay informed about NIYO IREME UNIT COMPANY LTD."
+      "subtitle": "From completed client projects and works in progress to equipment rental availability and industry trends â€” stay informed about NIYO IREME UNIT COMPANY LTD."
     },
     "featured": {
       "title": "Featured Stories",
@@ -162,7 +162,7 @@
     "contact": "Contact",
     "quickLinks": "Quick links",
     "followUs": "Stay connected",
-    "rights": "© {{year}} NIYO IREME UNIT COMPANY LTD. All rights reserved.",
+    "rights": "Â© {{year}} NIYO IREME UNIT COMPANY LTD. All rights reserved.",
     "developerCredit": "Website by <dev>{{name}}</dev>",
     "closingSlogan": "Kunoza umurimo ni inshingano zacu!",
     "closingSloganTranslation": "Doing every job well is our responsibility!"
@@ -193,7 +193,7 @@
     "services": {
       "eyebrow": "Our services",
       "title": "Every service your project needs",
-      "subtitle": "From finishing, painting and tiles to wallpaper, terrazzo, cleaning, supervision, equipment rental and building materials — delivered with the same care.",
+      "subtitle": "From finishing, painting and tiles to wallpaper, terrazzo, cleaning, supervision, equipment rental and building materials â€” delivered with the same care.",
       "cta": "View all services"
     },
     "why": {
@@ -237,7 +237,7 @@
     "location": {
       "eyebrow": "Find us in Kimironko",
       "title": "Our workshop is in Kimironko, Kigali",
-      "body": "We are based in Kimironko, Kigali, and we travel across Rwanda for larger sites. Site visits, material collection and quotations are arranged directly with the people doing the work — no call centre in between.",
+      "body": "We are based in Kimironko, Kigali, and we travel across Rwanda for larger sites. Site visits, material collection and quotations are arranged directly with the people doing the work â€” no call centre in between.",
       "cta": "Get directions"
     }
   },
@@ -300,7 +300,7 @@
       "eyebrow": "Our purpose",
       "title": "Raising the standard of building work in Rwanda",
       "body1": "NIYO IREME UNIT COMPANY LTD was founded in Kigali to give Rwandan homeowners and contractors a dependable option for finishing and construction work: skilled labour, good materials, clear prices and work that is supervised rather than left to chance.",
-      "body2": "We work on residential and commercial sites across Kigali and elsewhere in Rwanda. Whether it is a gypsum ceiling, a fresh coat of paint, a tiled terrace or a crew of workers for your site, the approach is the same — agree the scope, use good materials, supervise the work and hand over something we are proud of.",
+      "body2": "We work on residential and commercial sites across Kigali and elsewhere in Rwanda. Whether it is a gypsum ceiling, a fresh coat of paint, a tiled terrace or a crew of workers for your site, the approach is the same â€” agree the scope, use good materials, supervise the work and hand over something we are proud of.",
       "body3": "NIYO IREME UNIT COMPANY LTD provides professional construction, house finishing, decoration and painting services in Kigali, Rwanda. Our services include construction and renovation, ceilings, tiling, wallpaper, terrazzo, glass, plastering, cleaning, project supervision and the sale of building materials. We also use and rent available modern construction equipment, and we connect skilled workers with employers according to their needs. We are committed to quality workmanship, professional service, quality materials and customer satisfaction.",
       "locationLabel": "Company location",
       "locationValue": "Kimironko, Kigali, Rwanda"
@@ -335,7 +335,7 @@
     "hero": {
       "eyebrow": "Services we provide",
       "title": "Our construction, finishing and painting services",
-      "subtitle": "Clearly defined services covering the whole journey of your building project in Rwanda — from first sketch to final clean-up."
+      "subtitle": "Clearly defined services covering the whole journey of your building project in Rwanda â€” from first sketch to final clean-up."
     },
     "items": {
       "finishing": {
@@ -591,7 +591,7 @@
       "projectTypeLabel": "Type of project",
       "tierLabel": "Finish standard",
       "areaLabel": "Approximate area",
-      "areaValue": "{{area}} m²",
+      "areaValue": "{{area}} mÂ²",
       "workersLabel": "Number of workers needed",
       "workersValue": "{{count}} workers",
       "durationLabel": "Contract length",
@@ -602,7 +602,7 @@
       "breakdownTitle": "Estimated breakdown",
       "notesTitle": "What this estimate assumes",
       "breakdown": {
-        "workforceLabour": "Direct artisan compensation ({{count}} workers × {{weeks}} weeks)",
+        "workforceLabour": "Direct artisan compensation ({{count}} workers Ã— {{weeks}} weeks)",
         "workforceSafety": "Site safety gear and compliance (PPE)",
         "workforceCoordinator": "Dedicated NIYO IREME workforce coordinator",
         "materials": "Materials and surface compounds",
@@ -639,7 +639,7 @@
       "message": "Project description",
       "messagePlaceholder": "Tell us what you would like done, the size of the job and any timing you have in mind.",
       "submit": "Request my quotation",
-      "submitting": "Sending…",
+      "submitting": "Sendingâ€¦",
       "whatsappAlternative": "Prefer WhatsApp? Send your request directly.",
       "successTitle": "Your quotation request has been sent",
       "successBody": "Thank you, {{name}}. We have received your request and will contact you on {{phone}} to arrange a site visit.",
@@ -658,9 +658,9 @@
       "exterior": "Exterior facade, terrace or balcony"
     },
     "tiers": {
-      "standard": "Standard — reliable and cost-effective",
-      "premium": "Premium — recommended for Kigali homes",
-      "luxury": "Luxury — top-grade materials and finishes"
+      "standard": "Standard â€” reliable and cost-effective",
+      "premium": "Premium â€” recommended for Kigali homes",
+      "luxury": "Luxury â€” top-grade materials and finishes"
     }
   },
   "contact": {
@@ -675,9 +675,9 @@
     "addressNote": "Our exact premises address is shared on confirmation of your site visit.",
     "phoneLabel": "Telephone and WhatsApp",
     "emailLabel": "Email",
-    "emailNote": "Contact email to be confirmed by the company — please use the phone number for the fastest reply.",
+    "emailNote": "Contact email to be confirmed by the company â€” please use the phone number for the fastest reply.",
     "hoursLabel": "Working hours",
-    "hoursValue": "Monday – Saturday, 8:00 AM – 6:00 PM",
+    "hoursValue": "Monday â€“ Saturday, 8:00 AM â€“ 6:00 PM",
     "responseNote": "We normally reply within one working day.",
     "callNow": "Call 0781 294 928",
     "whatsappChat": "Chat on WhatsApp",
@@ -708,7 +708,7 @@
     "message": "Message",
     "messagePlaceholder": "Tell us about your project, location and timing.",
     "submit": "Send message",
-    "submitting": "Sending…",
+    "submitting": "Sendingâ€¦",
     "whatsappAlternative": "Prefer to talk? Message us on WhatsApp.",
     "mapTitle": "Find us in Kimironko",
     "mapNote": "The map shows our location in Kimironko, Kigali. We confirm the exact meeting point when we schedule your site visit.",
@@ -723,7 +723,7 @@
       "subtitle": "Straight answers about our services in Kigali, our materials, our prices and how to get started."
     },
     "searchLabel": "Search questions",
-    "searchPlaceholder": "Search a question…",
+    "searchPlaceholder": "Search a questionâ€¦",
     "categories": {
       "all": "All questions",
       "general": "General and quotations",
@@ -791,7 +791,7 @@
       },
       "collected": {
         "title": "Information we collect",
-        "body": "When you submit a quotation request or a contact message we collect the details you type in — typically your name, email address, telephone number, project location, the service you are interested in and the description you write. We do not collect payment card details and we do not use cookies to track you across other websites."
+        "body": "When you submit a quotation request or a contact message we collect the details you type in â€” typically your name, email address, telephone number, project location, the service you are interested in and the description you write. We do not collect payment card details and we do not use cookies to track you across other websites."
       },
       "emailjs": {
         "title": "Email delivery",
@@ -838,7 +838,7 @@
     "locationMin": "Please tell us where the project is.",
     "selectRequired": "Please choose an option.",
     "serviceRequired": "Please choose the service you need.",
-    "areaRange": "Please enter an area between 10 and 10,000 m².",
+    "areaRange": "Please enter an area between 10 and 10,000 mÂ².",
     "workersRange": "Please enter between 1 and 100 workers.",
     "weeksRange": "Please enter between 1 and 52 weeks.",
     "termsRequired": "Please accept the privacy policy to continue."
@@ -890,7 +890,7 @@
   "prefooter": {
     "eyebrow": "Before you call",
     "title": "The questions we are asked most",
-    "body": "Costs, timelines, materials and what happens on site — the answers every client asks us for first are on one page.",
+    "body": "Costs, timelines, materials and what happens on site â€” the answers every client asks us for first are on one page.",
     "faqCta": "Read the FAQ",
     "quoteCta": "Request a quotation",
     "phoneCta": "Call {{phone}}"
@@ -932,7 +932,7 @@
       "finishing": {
         "role": "House finishing & decoration",
         "specialty": "Plastering, gypsum, tiling and ceilings",
-        "bio": "Finishing specialists prepare walls, ceilings and floors — plastering, gypsum boards, tiling, painting and the final decorative details.",
+        "bio": "Finishing specialists prepare walls, ceilings and floors â€” plastering, gypsum boards, tiling, painting and the final decorative details.",
         "badge": "Finishing",
         "responsibilities": [
           "Plastering and gypsum board ceilings",
@@ -986,27 +986,27 @@
     "emptyNote": "No testimonial on this site is invented or paid for.",
     "entries": {
       "ariceKicukiro": {
-        "attribution": "Arice M. — Kicukiro",
+        "attribution": "Arice M. â€” Kicukiro",
         "project": "Full interior plastering & painting",
         "quote": "They repaired the walls, applied plaster and wall master, then finished with silk and weatherguard paint. The rooms look clean and the finish is holding up well."
       },
       "joselineRusororo": {
-        "attribution": "Joseline U. — Rusororo",
+        "attribution": "Joseline U. â€” Rusororo",
         "project": "Ceiling, plaster & interior and exterior painting",
         "quote": "The team installed the ceiling, plastered the house and painted both the inside and outside. They protected the furniture and left the site tidy."
       },
       "jackMurugando": {
-        "attribution": "Jack — Murugando",
+        "attribution": "Jack â€” Murugando",
         "project": "Wall repairs & specialist coatings",
         "quote": "My house had badly finished walls and cracks. They corrected the plaster, applied wall master and epoxy, and the surface now looks properly finished."
       },
       "ingabireNoroveje": {
-        "attribution": "Ingabire P. — Noroveje",
+        "attribution": "Ingabire P. â€” Noroveje",
         "project": "Full-house plastering & painting",
         "quote": "They plastered the whole house, applied wall master inside and out, and finished with a clean coat of paint. The work was organised and the result is beautiful."
       },
       "kalekezBumbogo": {
-        "attribution": "Kalekez — Bumbogo",
+        "attribution": "Kalekez â€” Bumbogo",
         "project": "Gypsum ceiling, plaster & decoration",
         "quote": "They fitted the gypsum ceiling, plastered the walls and completed the decoration with matt and silk finishes. The house feels completely transformed."
       }
@@ -1017,3 +1017,4 @@
     "ctaJobInquiry": "Ask About Job Opportunities"
   }
 }
+

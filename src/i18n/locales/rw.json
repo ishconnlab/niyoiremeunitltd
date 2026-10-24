@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "siteName": "NIYO IREME UNIT COMPANY LTD",
     "defaultTitle": "NIYO IREME UNIT COMPANY LTD | Ubwubatsi n'Igitunganya Inzu i Kigali, Rwanda",
@@ -50,11 +50,11 @@
         "description": "Shiga abakuru b'gukumba imirimo, abahinga b'gutuzuza inzu n'abashakisha ikirimo ku bakuru b'NIYO IREME UNIT COMPANY LTD i Kimironko, Kigali, ubure ubu bakora imirimo yabo ku misozi."
       },
       "blog": {
-        "title": "Uruhande | Imirimo n'Ibitekerezo by’Indama mu Rwanda",
-        "description": "Soma ku imirimo yararabyeje ku mukiriya, imirimo inyenyeranyije, ubugeringo bw’ibikoresho n’ibitekerezo by’indama bya NIYO IREME UNIT COMPANY LTD i Kigali, Rwanda."
+        "title": "Uruhande | Imirimo n'Ibitekerezo byâ€™Indama mu Rwanda",
+        "description": "Soma ku imirimo yararabyeje ku mukiriya, imirimo inyenyeranyije, ubugeringo bwâ€™ibikoresho nâ€™ibitekerezo byâ€™indama bya NIYO IREME UNIT COMPANY LTD i Kigali, Rwanda."
       }
     },
-    "ogImageAlt": "NIYO IREME UNIT COMPANY LTD — ubwubatsi, igitunganya inzu n'gusiga amarangi i Kigali, Rwanda"
+    "ogImageAlt": "NIYO IREME UNIT COMPANY LTD â€” ubwubatsi, igitunganya inzu n'gusiga amarangi i Kigali, Rwanda"
   },
   "common": {
     "requestQuote": "Saba igiciro",
@@ -64,7 +64,7 @@
     "readMore": "Soma byinshi",
     "viewDetails": "Reba amakuru",
     "sendMessage": "Ohereza ubutumwa",
-    "loading": "Ibiratangira…",
+    "loading": "Ibiratangiraâ€¦",
     "backToHome": "Subira ku itangiriro",
     "backToServices": "Subira kuri serivisi",
     "openMenu": "Fungura menyu y'ubugendero",
@@ -88,7 +88,7 @@
     "notConfiguredBody": "Serivisi y'imeyili yacu ntiriyateguweho kuri uyu mubuga. Turakubikira mu buryo butandukanye kandi tuzagera nyakora.",
     "submitFailedTitle": "Tutashobora guhereza ubutumwa bwawe",
     "submitFailedBody": "Hari ikitagenze neza mu kohereza. Ongera ugerage, cyangwa uhamagare kuri teregereza cyangwa WhatsApp.",
-    "submitSuccessTitle": "Murakoze — ubutumwa bwawe bwakiriye",
+    "submitSuccessTitle": "Murakoze â€” ubutumwa bwawe bwakiriye",
     "submitSuccessBody": "Twakiriye icyifuzo cyawe kandi tuzaguhamagara vuba.",
     "sendAnother": "Ohereza ubutumwa undi",
     "scrollToTop": "Subira hejuru",
@@ -111,14 +111,14 @@
   "megaMenu": {
     "label": "TUBI SERIVISI",
     "heading": "Dukora ibyuma byiza, kuva itangiye kugeza irangiye.",
-    "description": "Ku gutunganya inzu n'gusiga amarangi kugeza kuri ubwubatsi, igenzura, gukodesha ibikoresho n'ibikoresho by'ubwubatsi — buri serivisi ikorwa n'ubukurikira bw'umutekano n'ubwitonzi.",
+    "description": "Ku gutunganya inzu n'gusiga amarangi kugeza kuri ubwubatsi, igenzura, gukodesha ibikoresho n'ibikoresho by'ubwubatsi â€” buri serivisi ikorwa n'ubukurikira bw'umutekano n'ubwitonzi.",
     "exploreAll": "Reba serivisi zose"
   },
   "blog": {
     "hero": {
       "badge": "Amajwi Nshya",
-      "title": "Ibitekerezo, Imirimo n' Ibitekerezo by’Indama",
-      "subtitle": "Kuva ku imirimo yararabyeje ku mukiriya n’imirimo inyenyeranyije kugeza kuri gukodesha ibikoresho n’ibitekerezo by’indama — simbuka ubu mu NIYO IREME UNIT COMPANY LTD."
+      "title": "Ibitekerezo, Imirimo n' Ibitekerezo byâ€™Indama",
+      "subtitle": "Kuva ku imirimo yararabyeje ku mukiriya nâ€™imirimo inyenyeranyije kugeza kuri gukodesha ibikoresho nâ€™ibitekerezo byâ€™indama â€” simbuka ubu mu NIYO IREME UNIT COMPANY LTD."
     },
     "featured": {
       "title": "Ibitekerezo Bitegemeje",
@@ -136,11 +136,11 @@
       "completed": "Imirimo Yarabayeje",
       "inProgress": "Imirimo Inyenyeranyije",
       "equipment": "Gukodesha Ibikoresho",
-      "trends": "Ibitekerezo by’Indama"
+      "trends": "Ibitekerezo byâ€™Indama"
     },
     "cta": {
       "title": "Witeguye gutangira projeki yawe?",
-      "subtitle": "Tumenye ibyo ukeneye kandi tuzagutegura kvisitwa ahantu k’ubuntu i Kimironko, Kigali.",
+      "subtitle": "Tumenye ibyo ukeneye kandi tuzagutegura kvisitwa ahantu kâ€™ubuntu i Kimironko, Kigali.",
       "primary": "Saba igiciro gito",
       "secondary": "Tuhamagare"
     }
@@ -162,7 +162,7 @@
     "contact": "Tuhamagare",
     "quickLinks": "Amahuza yihuta",
     "followUs": "Guma utwegereye",
-    "rights": "© {{year}} NIYO IREME UNIT COMPANY LTD. Amahameko yose arasobanutse.",
+    "rights": "Â© {{year}} NIYO IREME UNIT COMPANY LTD. Amahameko yose arasobanutse.",
     "developerCredit": "Urubuga na <dev>{{name}}</dev>",
     "closingSlogan": "Kunoza umurimo ni inshingano zacu!",
     "closingSloganTranslation": "Doing every job well is our responsibility!"
@@ -193,7 +193,7 @@
     "services": {
       "eyebrow": "Serivisi zacu",
       "title": "Serivisi zose umushinga wawe ukeneye",
-      "subtitle": "Kuva ku gitunganya inzu, gusiga amarangi n'amakaro kugeza kuri wallpaper, terrazzo, amasuku, igenzura, gukodesha ibikoresho n'ibikoresho by'ubwubatsi — buri serivisi ikorwa n'ubwitonzi bumwe.",
+      "subtitle": "Kuva ku gitunganya inzu, gusiga amarangi n'amakaro kugeza kuri wallpaper, terrazzo, amasuku, igenzura, gukodesha ibikoresho n'ibikoresho by'ubwubatsi â€” buri serivisi ikorwa n'ubwitonzi bumwe.",
       "cta": "Reba serivisi zose"
     },
     "why": {
@@ -237,7 +237,7 @@
     "location": {
       "eyebrow": "Dukome i Kimironko",
       "title": "Amahoro yacu ni i Kimironko, Kigali",
-      "body": "Turi i Kimironko, Kigali, kandi twaja mu bindi bice Rwanda ku mirimo minini. Ibisura ahantu, kugura ibikoresho n'ibiciro biratunganywa hanyu n'abakora imirimo — nta ikigo gito gikoresha hagati.",
+      "body": "Turi i Kimironko, Kigali, kandi twaja mu bindi bice Rwanda ku mirimo minini. Ibisura ahantu, kugura ibikoresho n'ibiciro biratunganywa hanyu n'abakora imirimo â€” nta ikigo gito gikoresha hagati.",
       "cta": "Reba inzira"
     }
   },
@@ -300,7 +300,7 @@
       "eyebrow": "Inteko yacu",
       "title": "Kunyereza umurongo w'imirimo y'ubwubatsi mu Rwanda",
       "body1": "NIYO IREME UNIT COMPANY LTD yaravunjwe i Kigali kugira ngo iyo ibere inzira y'icyizere ku mirimo y'igitunganya inzu n'ubwubatsi ku bantu b'amazu n'abakubaka ba Rwanda: abakozi b'umwuga, ibikoresho byiza, igiciro gisobanutu n'imirimo igenzurwa neza, ntabwo ikaba ikatanyaga.",
-      "body2": "Tukorera ku ahantu'abaturage n'ahakoraho i Kigali no mu Rwanda hose. Hatabari ko ari plafonds ya gypsum, umutondo mushya w'amarangi, rwuri rw'amarangi cyangwa itsinda ry'abakozi ku kazi kawe, uburyo ni bumwe — tubigana ibyo gukora, dukoresha ibikoresho byiza, dukugenzura imirimo kandi tukaguhereza igisengehezere gishimishije.",
+      "body2": "Tukorera ku ahantu'abaturage n'ahakoraho i Kigali no mu Rwanda hose. Hatabari ko ari plafonds ya gypsum, umutondo mushya w'amarangi, rwuri rw'amarangi cyangwa itsinda ry'abakozi ku kazi kawe, uburyo ni bumwe â€” tubigana ibyo gukora, dukoresha ibikoresho byiza, dukugenzura imirimo kandi tukaguhereza igisengehezere gishimishije.",
       "body3": "NIYO IREME UNIT COMPANY LTD itanga serivisi z'umwuga z'ubwubatsi, gutunganya inzu, imitako na gusiga amarangi i Kigali, u Rwanda. Muri serivisi zacu harimo kubaka no kuvugurura, plafonds, amakaro, wallpaper, terrazzo, ibirahure, gusiga sima, amasuku, igenzura ry'umushinga no gucuruza ibikoresho by'ubwubatsi. Dukoresha kandi dukodesha ibikoresho bigezweho by'ubwubatsi, kandi duhuza abakozi bafite ubumenyi n'abakoresha hakurikijwe ibyo bakeneye. Twiyemeje ubuziranenge bw'imirimo, serivisi y'umwuga, ibikoresho byiza n'ubunyamwuga bw'umukiriya.",
       "locationLabel": "Aho ikigo gihera",
       "locationValue": "Kimironko, Kigali, Rwanda"
@@ -335,7 +335,7 @@
     "hero": {
       "eyebrow": "Serivisi Dutanga",
       "title": "Serivisi zacu z'ubwubatsi, igitunganya inzu n'gusiga amarangi",
-      "subtitle": "Serivisi zisobanutse zifasha igice cyose cy'umushinga wawe w'ubwubatsi mu Rwanda — kuva ku gishushanyo cya mbere kugeza ku isuku ya nyuma."
+      "subtitle": "Serivisi zisobanutse zifasha igice cyose cy'umushinga wawe w'ubwubatsi mu Rwanda â€” kuva ku gishushanyo cya mbere kugeza ku isuku ya nyuma."
     },
     "items": {
       "finishing": {
@@ -591,7 +591,7 @@
       "projectTypeLabel": "Ubwoko bw'umushinga",
       "tierLabel": "Ubwoko bw'umusanzu w'akazi",
       "areaLabel": "Ubuso busanzwe",
-      "areaValue": "{{area}} m²",
+      "areaValue": "{{area}} mÂ²",
       "workersLabel": "Umubare w'abakozi ukeneye",
       "workersValue": "{{count}} abakozi",
       "durationLabel": "Igihe cy'umugabanyo",
@@ -602,7 +602,7 @@
       "breakdownTitle": "Ibyiciro bya buri gice",
       "notesTitle": "Ibyo uyu muhando wifatanya",
       "breakdown": {
-        "workforceLabour": "Umushaho w'umukuru w'umubakari ({{count}} abakozi × {{weeks}} ibyumweru)",
+        "workforceLabour": "Umushaho w'umukuru w'umubakari ({{count}} abakozi Ã— {{weeks}} ibyumweru)",
         "workforceSafety": "Ibikoresho by'ubwihisho ku kazi (PPE)",
         "workforceCoordinator": "Umuyobozi w'abakozi wa NIYO IREME",
         "materials": "Ibikoresho n'ibinyabiziga ku nkuta",
@@ -639,7 +639,7 @@
       "message": "Igisobanuro cy'umushinga",
       "messagePlaceholder": "Tumenye icyo ugomba gukohereza, igice cy'akazi n'igihe cyose ushobora gutangira.",
       "submit": "Saba igiciro kanjye",
-      "submitting": "Kohereza…",
+      "submitting": "Koherezaâ€¦",
       "whatsappAlternative": "Ufunzwa WhatsApp? Ohereza icyifuzo cyawe buhoro.",
       "successTitle": "Icyifuzo cyawe cya igiciro cyatumye",
       "successBody": "Murakoze, {{name}}. Twakiriye icyifuzo cyawe kandi tuzaguhamagara kuri {{phone}} kugira ngo tuyegeranye kvisitwa ahantu.",
@@ -658,9 +658,9 @@
       "exterior": "Inyuma y'inyubwa, amatarazo cyangwa ibalkoni"
     },
     "tiers": {
-      "standard": "Standard — yizeye kandi ikunda igiciro",
-      "premium": "Premium — yasabawe ku nzu zo i Kigali",
-      "luxury": "Luxury — ibikoresho by'icyiciro cy'abanza n'igitunganya cyiza"
+      "standard": "Standard â€” yizeye kandi ikunda igiciro",
+      "premium": "Premium â€” yasabawe ku nzu zo i Kigali",
+      "luxury": "Luxury â€” ibikoresho by'icyiciro cy'abanza n'igitunganya cyiza"
     }
   },
   "contact": {
@@ -675,9 +675,9 @@
     "addressNote": "Aho ikigo gihera kabisanzwe abazana iyo kvisitwa ahantu yawe kemejwe.",
     "phoneLabel": "Teregereza na WhatsApp",
     "emailLabel": "Imeyili",
-    "emailNote": "Imeyili yo kuhamagara igaragaza kuzakemezwa n'ikigo — wongere ukoreshe nomero wa teregereza kugira ngo ubwire vuba.",
+    "emailNote": "Imeyili yo kuhamagara igaragaza kuzakemezwa n'ikigo â€” wongere ukoreshe nomero wa teregereza kugira ngo ubwire vuba.",
     "hoursLabel": "Amahoro yo kukora",
-    "hoursValue": "Ku wa mbere – wa gatandatu, 8:00 – 6:00 nimunsi",
+    "hoursValue": "Ku wa mbere â€“ wa gatandatu, 8:00 â€“ 6:00 nimunsi",
     "responseNote": "Twakubwira mu munsi umwe w'akazi.",
     "callNow": "Hamagara 0781 294 928",
     "whatsappChat": "Vugana kuri WhatsApp",
@@ -708,7 +708,7 @@
     "message": "Ubutumwa",
     "messagePlaceholder": "Tumenye ku mushinga wawe, aho uri n'igihe.",
     "submit": "Ohereza ubutumwa",
-    "submitting": "Kohereza…",
+    "submitting": "Koherezaâ€¦",
     "whatsappAlternative": "Ufunzwa kuvugana? Ohereza ubutumwa kuri WhatsApp.",
     "mapTitle": "Dukome mu Kimironko",
     "mapNote": "Ikaranga cyatandikiye aho ihera i Kimironko, Kigali. Turazana aho twakuzanira igihe tuzategura kvisitwa ahantu yawe.",
@@ -723,7 +723,7 @@
       "subtitle": "Ibisobanuro bisobanutu ku serivisi zacu i Kigali, ibikoresho byacu, ibiciro byacu n'uburyo gutangira."
     },
     "searchLabel": "Shakisha ibibazo",
-    "searchPlaceholder": "Shakisha ikibazo…",
+    "searchPlaceholder": "Shakisha ikibazoâ€¦",
     "categories": {
       "all": "Ibibazo byose",
       "general": "Byumere n'ibiciro",
@@ -791,7 +791,7 @@
       },
       "collected": {
         "title": "Amakuru dusura",
-        "body": "Iyo wohereza icyifuzo cy'igiciro cyangwa ubutumwa bw'itumanaho, dusura amakuru w'andika — burundi na amazina yawe, aho imeyili, nomero wa teregereza, aho umushinga uri, akazi ukeneye n'igisobanuro cyandika. Ntiturusura amakuru y'ikariya yo kwishyura, kandi ntidutega cookies kugira ngo tukurikirane mu mubuga uri undi."
+        "body": "Iyo wohereza icyifuzo cy'igiciro cyangwa ubutumwa bw'itumanaho, dusura amakuru w'andika â€” burundi na amazina yawe, aho imeyili, nomero wa teregereza, aho umushinga uri, akazi ukeneye n'igisobanuro cyandika. Ntiturusura amakuru y'ikariya yo kwishyura, kandi ntidutega cookies kugira ngo tukurikirane mu mubuga uri undi."
       },
       "emailjs": {
         "title": "Kohereza imeyili",
@@ -838,7 +838,7 @@
     "locationMin": "Tumenye aho umushinga uri.",
     "selectRequired": "Hitamo igisengeza.",
     "serviceRequired": "Hitamo akazi ukeneye.",
-    "areaRange": "Injiza ubuso hagati y'10 na 10,000 m².",
+    "areaRange": "Injiza ubuso hagati y'10 na 10,000 mÂ².",
     "workersRange": "Injiza umubare w'abakozi hagati y'1 na 100.",
     "weeksRange": "Injiza umubare w'ibyumweru hagati y'1 na 52.",
     "termsRequired": "Erega amahameko ku bwibugu kugira ngo ukomeze."
@@ -890,7 +890,7 @@
   "prefooter": {
     "eyebrow": "Mbere yo gutuhamagare",
     "title": "Ibibazo twakunzeho kubibazo",
-    "body": "Ibiciro, igihe, ibikoresho n'ibiri ku kazi — amajwi y'ibibazo buri mukiriya yacu atubaza bwa mbere asubizwa ku ipaji imwe.",
+    "body": "Ibiciro, igihe, ibikoresho n'ibiri ku kazi â€” amajwi y'ibibazo buri mukiriya yacu atubaza bwa mbere asubizwa ku ipaji imwe.",
     "faqCta": "Sura imibazo",
     "quoteCta": "Saba igiciro",
     "phoneCta": "Hamagara {{phone}}"
@@ -932,7 +932,7 @@
       "finishing": {
         "role": "Gutuzuza no gushushanya inzu",
         "specialty": "Gufukamisha, ikabumba cya gypsum, amabatiro no ibitaro",
-        "bio": "Abahinga b'ubwiza bashyira imirongo inzuru, ibitaro n'ubutaka — gufukamisha, gukora ibarura bya gypsum, kubaka amabati, gupaka ibara no gushyira ibisobanuro by'uburyo.",
+        "bio": "Abahinga b'ubwiza bashyira imirongo inzuru, ibitaro n'ubutaka â€” gufukamisha, gukora ibarura bya gypsum, kubaka amabati, gupaka ibara no gushyira ibisobanuro by'uburyo.",
         "badge": "Gutuzuza inzu",
         "responsibilities": [
           "Gufukamisha no gukora ibarura bya gypsum",
@@ -986,27 +986,27 @@
     "emptyNote": "Nta gitekerezo cy'umukiriya cyahimbwe cyangwa cyishyuwe kuri uyu mubuga.",
     "entries": {
       "ariceKicukiro": {
-        "attribution": "Arice M. — Kicukiro",
+        "attribution": "Arice M. â€” Kicukiro",
         "project": "Gufukamisha no gupaka ibara imbere mu nzu",
         "quote": "Bakosoye inkuta, bafukamisha, bashyira wall master, hanyuma barangiza n'ibara rya silk na weatherguard. Ibyumba bisukuye kandi igitunganya kiracyafite imbaraga."
       },
       "joselineRusororo": {
-        "attribution": "Joseline U. — Rusororo",
+        "attribution": "Joseline U. â€” Rusororo",
         "project": "Ibarura, gufukamisha no gupaka ibara imbere n'inyuma",
         "quote": "Ikipe yashyize ibarura, ifukamisha inzu kandi ipaka ibara imbere n'inyuma. Barinda ibikoresho kandi basiga ahantu hasukuye."
       },
       "jackMurugando": {
-        "attribution": "Jack — Murugando",
+        "attribution": "Jack â€” Murugando",
         "project": "Gukosora inkuta no gushyira ibikoresho by'umwihariko",
         "quote": "Inzu yanjye yari ifite inkuta zitarangiye neza n'ibyuya. Bakosoye sitiko, bashyira wall master na epoxy, noneho ubuso bugaragara nk'ubwarangiye neza."
       },
       "ingabireNoroveje": {
-        "attribution": "Ingabire P. — Noroveje",
+        "attribution": "Ingabire P. â€” Noroveje",
         "project": "Gufukamisha no gupaka ibara inzu yose",
         "quote": "Bafukamishije inzu yose, bashyira wall master imbere n'inyuma, hanyuma barangiza n'ibara risukuye. Umurimo wari uteganijwe neza kandi ibisubizo ni byiza."
       },
       "kalekezBumbogo": {
-        "attribution": "Kalekez — Bumbogo",
+        "attribution": "Kalekez â€” Bumbogo",
         "project": "Ibarura rya gypsum, gufukamisha no gushushanya",
         "quote": "Bashyize ibarura rya gypsum, bafukamisha inkuta kandi barangiza gushushanya n'ibara rya matt na silk. Inzu yahindutse burundu."
       }
@@ -1017,3 +1017,4 @@
     "ctaJobInquiry": "Baza amahirwe y'akazi"
   }
 }
+

@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import {
   registerAdmin,
   loginAdmin,
@@ -15,3 +15,4 @@ router.get('/me', protect, getMe);
 router.get('/logout', protect, logoutAdmin);
 
 export default router;
+
