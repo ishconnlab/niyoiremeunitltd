@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" fill="none" role="img" aria-label="Animated technical drawing of a house frame with a crane">
+  <title>NIYO IREME — house frame under construction</title>
+  <desc>A blueprint style drawing that draws itself: foundation grid, walls, roof truss, dimension lines and a crane hook lowering a beam.</desc>
+
+  <style>
+    .ln {
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
+      animation: draw 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .ln-2 { stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw 2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+    .fade { opacity: 0; animation: fadeIn 1.2s ease forwards; }
+
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.5s; }
+    .d3 { animation-delay: 0.9s; }
+    .d4 { animation-delay: 1.3s; }
+    .d5 { animation-delay: 1.7s; }
+    .d6 { animation-delay: 2.1s; }
+    .d7 { animation-delay: 2.5s; }
+    .d8 { animation-delay: 2.9s; }
+    .d9 { animation-delay: 3.3s; }
+    .d10 { animation-delay: 3.7s; }
+
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .hook {
+      transform-box: fill-box;
+      transform-origin: top center;
+      animation: bob 4.2s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(18px); }
+    }
+
+    .pulse { animation: pulse 3.6s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.35; }
+      50% { opacity: 0.9; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ln, .ln-2 { stroke-dashoffset: 0; animation: none; }
+      .fade { opacity: 1; animation: none; }
+      .hook, .pulse { animation: none; }
+    }
+  </style>
+
+  <g stroke="#FFFFFF" fill="none" stroke-width="2.5" stroke-linecap="square">
+    <!-- Sheet border -->
+    <rect class="ln d1" x="30" y="30" width="580" height="580" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="1400" />
+
+    <!-- Foundation grid -->
+    <g class="ln-2 d2" stroke-opacity="0.22" stroke-width="1.5">
+      <path d="M90 520 H550" />
+      <path d="M90 548 H550" />
+      <path d="M120 548 l-16 18 M180 548 l-16 18 M240 548 l-16 18 M300 548 l-16 18 M360 548 l-16 18 M420 548 l-16 18 M480 548 l-16 18" />
+    </g>
+
+    <!-- Ground floor slab -->
+    <path class="ln d3" d="M80 520 H560" stroke-opacity="0.75" />
+    <path class="ln-2 d3" d="M80 498 H560" stroke-opacity="0.35" stroke-width="1.5" />
+
+    <!-- Walls -->
+    <path class="ln d4" d="M110 498 V300 M530 498 V300" />
+    <path class="ln-2 d4" d="M132 498 V300 M508 498 V300" stroke-opacity="0.4" stroke-width="1.5" />
+
+    <!-- First floor slab -->
+    <path class="ln d5" d="M80 300 H560" stroke-opacity="0.75" />
+    <path class="ln-2 d5" d="M80 278 H560" stroke-opacity="0.35" stroke-width="1.5" />
+
+    <!-- Upper walls and roof -->
+    <path class="ln d6" d="M110 278 V210 M530 278 V210" />
+    <path class="ln d7" d="M110 210 L320 96 L530 210" stroke="#FF5B00" />
+    <path class="ln-2 d7" d="M146 210 L320 126 L494 210" stroke-opacity="0.45" stroke-width="1.5" />
+
+    <!-- Truss -->
+    <path class="ln-2 d8" d="M180 210 L320 120 L460 210" stroke-opacity="0.4" stroke-width="1.5" />
+    <path class="ln-2 d8" d="M180 210 H460" stroke-opacity="0.4" stroke-width="1.5" />
+
+    <!-- Openings -->
+    <path class="ln-2 d6" d="M170 498 V410 H240 V498" stroke-opacity="0.5" stroke-width="1.5" />
+    <path class="ln-2 d6" d="M400 498 V420 H470 V498" stroke-opacity="0.5" stroke-width="1.5" />
+    <path class="ln-2 d7" d="M170 278 V228 H240 V278" stroke-opacity="0.5" stroke-width="1.5" />
+
+    <!-- Scaffolding -->
+    <g class="fade d9" stroke-opacity="0.35" stroke-width="1.5">
+      <path d="M80 498 V210 M560 498 V210" />
+      <path d="M80 210 H560" />
+      <path d="M80 300 H560 M80 400 H560" />
+      <path d="M80 210 L150 498 M150 210 L220 498 M220 210 L290 498 M290 210 L360 498 M360 210 L430 498 M430 210 L500 498 M500 210 L560 400" />
+      <path d="M560 400 L490 498" />
+    </g>
+
+    <!-- Crane -->
+    <g class="fade d8" stroke-opacity="0.45" stroke-width="1.5">
+      <path d="M320 96 V40" />
+      <path d="M60 40 H580" />
+      <path d="M320 40 L250 70 M320 40 L390 70" />
+      <path d="M470 40 V96" />
+    </g>
+
+    <!-- Hook and beam -->
+    <g class="hook">
+      <path d="M470 40 V150" stroke="#FF5B00" stroke-width="2" />
+      <path d="M458 150 H482 L476 182 H464 Z" stroke="#FF5B00" stroke-width="2" />
+      <path d="M400 214 H540" stroke="#FF5B00" stroke-width="2.5" class="pulse" />
+      <path d="M412 214 V240 M528 214 V240" stroke="#FF5B00" stroke-width="2" />
+    </g>
+
+    <!-- Dimension lines -->
+    <g class="fade d10" stroke-opacity="0.45" stroke-width="1.5">
+      <path d="M80 520 H560" />
+      <path d="M560 210 V498" />
+      <path d="M70 210 V498" />
+      <path d="M60 210 H80 M60 498 H80" />
+    </g>
+
+    <!-- Annotation nodes -->
+    <g class="fade d10" stroke-opacity="0.55" stroke-width="1.5">
+      <circle cx="110" cy="300" r="6" />
+      <circle cx="530" cy="300" r="6" />
+      <circle cx="110" cy="210" r="6" />
+      <circle cx="530" cy="210" r="6" />
+    </g>
+  </g>
+</svg>

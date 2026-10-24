@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# No private, admin or staging routes are published on this origin.
+Disallow: /api/
+
+Sitemap: https://niyoiremeunitltd.vercel.app/sitemap.xml

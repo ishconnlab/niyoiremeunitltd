@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" fill="none" role="img" aria-label="Technical line drawing of a tower crane">
+  <title>Tower crane — technical elevation drawing</title>
+  <desc>Blueprint style line art of a tower crane showing the lattice mast, jib, counter jib, counterweight, trolley, hook block and dimension lines.</desc>
+
+  <g stroke="#ffffff" stroke-width="2" stroke-linecap="square" vector-effect="non-scaling-stroke">
+
+    <!-- Ground -->
+    <path d="M40 812 H1560" stroke-width="3" />
+    <g stroke-width="1.5" stroke-opacity="0.55">
+      <path d="M70 812 l-24 26" /><path d="M150 812 l-24 26" /><path d="M230 812 l-24 26" />
+      <path d="M310 812 l-24 26" /><path d="M390 812 l-24 26" /><path d="M470 812 l-24 26" />
+      <path d="M550 812 l-24 26" /><path d="M630 812 l-24 26" /><path d="M710 812 l-24 26" />
+      <path d="M790 812 l-24 26" /><path d="M870 812 l-24 26" /><path d="M950 812 l-24 26" />
+      <path d="M1030 812 l-24 26" /><path d="M1110 812 l-24 26" /><path d="M1190 812 l-24 26" />
+      <path d="M1270 812 l-24 26" /><path d="M1350 812 l-24 26" /><path d="M1430 812 l-24 26" />
+    </g>
+
+    <!-- Foundation -->
+    <path d="M700 812 V770 H900 V812" stroke-opacity="0.85" />
+    <path d="M680 770 H920" stroke-opacity="0.6" />
+    <path d="M700 770 l-24 24 M900 770 l24 24" stroke-opacity="0.5" />
+
+    <!-- Mast (lattice) -->
+    <path d="M760 770 V150" stroke-width="3" />
+    <path d="M840 770 V150" stroke-width="3" />
+    <g stroke-width="1.5" stroke-opacity="0.7">
+      <path d="M760 150 L840 230 L760 310 L840 390 L760 470 L840 550 L760 630 L840 710 L760 770" />
+      <path d="M840 150 L760 230 L840 310 L760 390 L840 470 L760 550 L840 630 L760 710 L840 770" />
+      <path d="M760 230 H840 M760 310 H840 M760 390 H840 M760 470 H840 M760 550 H840 M760 630 H840 M760 710 H840" stroke-opacity="0.5" />
+    </g>
+
+    <!-- Slewing unit and cab -->
+    <path d="M740 150 H860" stroke-width="3" />
+    <path d="M860 150 l40 -34 h70 v70 h-110 Z" stroke-opacity="0.9" />
+    <path d="M906 124 h48 v44 h-48 Z" stroke-opacity="0.7" />
+
+    <!-- Jib (working arm) -->
+    <path d="M880 116 H1500" stroke-width="3" />
+    <path d="M880 150 H1500" stroke-width="2" stroke-opacity="0.8" />
+    <g stroke-width="1.5" stroke-opacity="0.55">
+      <path d="M900 116 L960 150 L1020 116 L1080 150 L1140 116 L1200 150 L1260 116 L1320 150 L1380 116 L1440 150 L1500 116" />
+    </g>
+
+    <!-- Counter jib and counterweight -->
+    <path d="M880 116 H640" stroke-width="3" />
+    <path d="M880 150 H640" stroke-width="2" stroke-opacity="0.8" />
+    <g stroke-width="1.5" stroke-opacity="0.55">
+      <path d="M860 116 L800 150 L740 116 L680 150 L640 116" />
+    </g>
+    <path d="M596 96 H672 V172 H596 Z" stroke-width="3" stroke-opacity="0.9" />
+    <path d="M610 96 V172 M634 96 V172 M658 96 V172" stroke-opacity="0.5" />
+
+    <!-- Apex and tie bars -->
+    <path d="M800 60 L620 116 M800 60 L880 116 M800 60 L1180 116" stroke-width="1.5" stroke-opacity="0.6" />
+    <path d="M780 60 H820" stroke-width="3" />
+    <path d="M800 40 V80" stroke-opacity="0.5" />
+
+    <!-- Trolley and hook block -->
+    <path d="M1200 116 V150" stroke-opacity="0.8" />
+    <path d="M1180 150 H1220" stroke-width="3" />
+    <path d="M1200 150 V520" stroke-opacity="0.7" />
+    <path d="M1160 520 H1240 V580 H1160 Z" stroke-width="2.5" stroke-opacity="0.9" />
+    <path d="M1174 580 V610 M1226 580 V610" stroke-opacity="0.7" />
+    <path d="M1200 610 c-18 26 -30 40 -30 56 a 30 30 0 0 0 60 0 c 0 -16 -12 -30 -30 -56 Z" stroke-width="2.5" stroke-opacity="0.9" />
+
+    <!-- Dimension lines -->
+    <g stroke-width="1.5" stroke-opacity="0.65">
+      <path d="M760 700 V120" />
+      <path d="M840 700 V120" />
+      <path d="M760 130 H840" />
+      <path d="M760 120 V140 M840 120 V140" />
+      <path d="M880 200 H1500" stroke-dasharray="12 10" />
+      <path d="M880 190 V210 M1500 190 V210" />
+    </g>
+
+    <!-- Annotation block -->
+    <g stroke-width="1.5" stroke-opacity="0.55">
+      <path d="M120 220 H420" />
+      <path d="M120 244 H340" />
+      <path d="M120 268 H380" />
+      <path d="M120 292 H260" />
+      <circle cx="120" cy="220" r="5" /><circle cx="120" cy="244" r="5" />
+      <circle cx="120" cy="268" r="5" /><circle cx="120" cy="292" r="5" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,4 @@
+# SPA history fallback: serve index.html for any unmatched route so deep links
+# and hard refreshes work. Static assets and the service worker are matched by
+# the host before this catch-all applies.
+/*  /index.html  200
