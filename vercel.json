@@ -1,5 +1,4 @@
 ﻿{
-  "version": 2,
   "rewrites": [
     {
       "source": "/((?!assets|projects|sw\\.js|manifest\\.webmanifest|robots\\.txt|sitemap\\.xml|offline\\.html|favicon\\.ico|_headers|_redirects|.*\\.).*)",
@@ -42,4 +41,3 @@
     }
   ]
 }
-
