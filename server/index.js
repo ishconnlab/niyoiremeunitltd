@@ -39,6 +39,27 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ success: true, message: 'API running' });
 });
 
+// Root route
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'NIYO IREME UNIT COMPANY LTD API',
+    version: '1.0.0',
+    endpoints: {
+      auth: '/api/auth',
+      content: '/api/content',
+      jobs: '/api/jobs',
+      upload: '/api/upload',
+      health: '/api/health',
+    },
+  });
+});
+
+// 404 handler for undefined routes
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: 'Route not found' });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
