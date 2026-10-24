@@ -1,7 +1,7 @@
-# NIYO IREME UNIT COMPANY LTD — Official Website
+# NIYO IREME UNIT COMPANY LTD - Official Website
 
-> **Official Slogan:** *“Ubwiza, Ubunyamwuga n'Ireme mu Mirimo Yacu!”*
-> *(Beauty, Professionalism, and Quality in Everything We Build!)*
+> **Official Slogan:** *"Kunoza umurimo ni inshingano zacu!"*
+> *(Doing every job well is our responsibility!)*
 > **Client:** NIYO IREME UNIT COMPANY LTD
 > **Developer:** IshConnect ([https://www.ishconnect.rw/](https://www.ishconnect.rw/))
 > **Location:** Kimironko, Kigali, Rwanda
@@ -13,10 +13,16 @@
 
 Production-ready, bilingual (English / Kinyarwanda) web application for **NIYO IREME UNIT COMPANY LTD**, a Rwandan enterprise specialising in:
 
-1. **House Finishing and Decoration** (`finishing`) — gypsum false ceilings (*plafonds*), interior and exterior decoration, surface levelling, end-to-end site supervision.
-2. **Painting Services** (`painting`) — washable acrylics, textured stucco / Venetian plaster, exterior UV coatings, paint and supplies procurement.
-3. **Construction Services** (`construction`) — ground-up builds, structural concrete slabs, terraces, porcelain and ceramic tiling, architectural glass.
-4. **Recruitment & Workforce Matching** (`workforce`) — vetting and deploying trade-tested masons, master painters, tile setters and electricians.
+1. **Painting Services** (`painting`) - interior and exterior painting, decorative wall finishes and paint supply.
+2. **Construction and Renovation** (`construction`) - construction, renovation, terraces and structural work.
+3. **Tiles and Wallpaper Installation** (`tiling`, `wallpaper`) - floor and wall tiles, tile finishing and wallpaper.
+4. **Ceilings and Terrazzo** (`ceilings`, `terrazzo`) - gypsum ceilings, ceiling finishing and terrazzo work.
+5. **Glass Installation** (`glass`) - windows, suitable glass panels and partitions.
+6. **Cleaning Services** (`cleaning`) - property cleaning and post-renovation clean-up where agreed.
+7. **Workforce Services** (`workforce`) - supplying construction workers and matching them with employers.
+8. **Construction Project Supervision** (`supervision`) - progress monitoring, quality checks and coordination.
+9. **Construction Equipment Use and Rental** (`equipment`) - modern equipment use and rental inquiries.
+10. **Building Materials Sales** (`materials`) - available building materials with prices confirmed on request.
 
 All company copy (slogans, service descriptions, "why choose us" reasons) is the client's official wording, reproduced verbatim in `src/i18n/locales/en.json` and `src/i18n/locales/rw.json`.
 
@@ -41,11 +47,11 @@ All company copy (slogans, service descriptions, "why choose us" reasons) is the
 
 | Route | Page | Description |
 |---|---|---|
-| `/` | **Home** | Hero with official slogan, 4 service cards, "why choose us" list, official intro/closing statements, 3-step process, CTA to quote. |
+| `/` | **Home** | Hero with official slogan, service overview cards, "why choose us" list, official intro/closing statements, 3-step process, CTA to quote. |
 | `/about` | **About** | Official company introduction, values, location and service area. |
-| `/services` | **Services** | All four official service categories with scope points. |
+| `/services` | **Services** | All service categories with scope points and links to detail pages. |
 | `/services/:id` | **Service Details** | Deep dive per service with scope, deliverables and quote CTA. |
-| `/gallery` | **Gallery** | Category filters, lightbox (keyboard + focus trapped), illustrative-sample disclaimer. |
+| `/gallery` | **Gallery** | Category filters, lightbox (keyboard + focus trapped), genuine project photographs and empty-state handling. |
 | `/faq` | **FAQ** | Searchable, categorised accordion with official answers. |
 | `/quote` | **Request a Quote** | Live RWF estimate, duration and workforce matching, WhatsApp summary, EmailJS submission. |
 | `/contact` | **Contact** | Contact details, OpenStreetMap embed + Google Maps links, validated EmailJS form. |

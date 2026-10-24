@@ -30,7 +30,11 @@ const env = {
   ...process.env,
 };
 
-const siteUrl = (env.VITE_SITE_URL || env.SITE_URL || 'http://localhost:3000').replace(/\/+$/, '');
+const siteUrl = (
+  env.VITE_SITE_URL ||
+  env.SITE_URL ||
+  'https://www.niyoiremeunitcompanyltd.rw'
+).replace(/\/+$/, '');
 
 if (!fs.existsSync(DIST_INDEX)) {
   console.error('dist/index.html not found - run the build first.');

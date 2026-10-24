@@ -13,12 +13,12 @@ const CONTACT_EMAIL = env.VITE_CONTACT_EMAIL || 'info@niyoireme.rw';
 export const COMPANY_INFO = {
   name: 'NIYO IREME UNIT COMPANY LTD',
   shortName: 'NIYO IREME',
-  /** Official Kinyarwanda slogan — never translated. */
-  sloganKinyarwanda: "Ubwiza, Ubunyamwuga n'Ireme mu Mirimo Yacu!",
-  /** Official Kinyarwanda introductory statement — never translated. */
+  /** Official Kinyarwanda slogan - never translated. */
+  sloganKinyarwanda: 'Kunoza umurimo ni inshingano zacu!',
+  /** Official Kinyarwanda introductory statement - never translated. */
   introKinyarwanda: 'Dutanga serivisi zigezweho kandi zinoze aho waba uri hose.',
-  /** Official Kinyarwanda closing slogan — never translated. */
-  closingSloganKinyarwanda: "Ubwiza bw'inzu yawe ni intego yacu!",
+  /** Official Kinyarwanda closing slogan - never translated. */
+  closingSloganKinyarwanda: 'Kunoza umurimo ni inshingano zacu!',
   /** Neighbourhood-level location. No street address is claimed until confirmed. */
   location: 'Kimironko, Kigali, Rwanda',
   locationRegion: 'Kigali, Rwanda',
@@ -27,8 +27,8 @@ export const COMPANY_INFO = {
   phoneRaw: '+250781294928',
   whatsappNumber: '250781294928',
   email: CONTACT_EMAIL,
-  /** Public site origin. Falls back to a localhost origin during development. */
-  siteUrl: env.VITE_SITE_URL || 'http://localhost:3000',
+  /** Public site origin. Falls back to the official production domain. */
+  siteUrl: env.VITE_SITE_URL || 'https://www.niyoiremeunitcompanyltd.rw',
   /** Map pin for the company premises in Kimironko, Kigali (client supplied). */
   mapCenter: { lat: -1.9509, lng: 30.1231 },
   mapZoom: 16,
@@ -46,6 +46,6 @@ export const MAP_LINKS = {
 
 export const SERVICE_CATEGORY_IDS = ['finishing', 'painting', 'construction', 'workforce'] as const;
 
-export const OFFICIAL_SLOGAN_EN = 'Beauty, Professionalism, and Quality in Everything We Build!';
+export const OFFICIAL_SLOGAN_EN = 'Doing every job well is our responsibility!';
 export const OFFICIAL_INTRO_EN = 'We provide modern, high-quality services wherever you are.';
-export const OFFICIAL_CLOSING_EN = 'The beauty of your home is our goal!';
+export const OFFICIAL_CLOSING_EN = 'Doing every job well is our responsibility!';

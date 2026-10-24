@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Users, CheckCircle2, ArrowRight } from 'lucide-react';
 
+import { COMPANY_INFO } from '../data/company';
 import { TEAM_MEMBERS } from '../data/team';
 import { useSeo } from '../hooks/useSeo';
 import { CraneHook } from '../components/common/CraneHook';
@@ -11,6 +12,14 @@ import { RulerDivider } from '../components/common/RulerDivider';
 
 export const Team: React.FC = () => {
   const { t } = useTranslation();
+
+  const workType = t('services.items.workforce.shortLabel');
+  const workforceRequestUrl = `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(
+    t('whatsapp.workforceRequestWorkers', { workType })
+  )}`;
+  const jobInquiryUrl = `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(
+    t('whatsapp.workforceJobInquiry')
+  )}`;
 
   useSeo({
     title: t('meta.routes.team.title'),
@@ -114,6 +123,16 @@ export const Team: React.FC = () => {
                         <span className="line-clamp-1">{t(key)}</span>
                       </div>
                     ))}
+                    {member.id === 'workforce' && (
+                      <PillButton
+                        href={workforceRequestUrl}
+                        fullWidth
+                        size="sm"
+                        className="mt-2"
+                      >
+                        {t('workforce.ctaRequestWorkers')}
+                      </PillButton>
+                    )}
                   </div>
                 </div>
               </div>
@@ -137,8 +156,8 @@ export const Team: React.FC = () => {
                 {t('team.recruit.body')}
               </p>
             </div>
-            <PillButton to="/contact" size="md" className="relative z-10 shrink-0">
-              {t('team.recruit.cta')}
+            <PillButton href={jobInquiryUrl} size="md" className="relative z-10 shrink-0">
+              {t('workforce.ctaJobInquiry')}
             </PillButton>
           </div>
         </div>

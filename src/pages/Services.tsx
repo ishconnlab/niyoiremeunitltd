@@ -7,6 +7,7 @@ import { useSeo } from '../hooks/useSeo';
 import { PageHero } from '../components/common/PageHero';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { ServiceIcon } from '../components/common/ServiceIcon';
+import { ServiceMedia } from '../components/common/ServiceMedia';
 import { LocalizedLink } from '../components/common/LocalizedLink';
 import { PillButton } from '../components/common/PillButton';
 import { asArray } from '../utils/i18n';
@@ -57,14 +58,11 @@ export const Services: React.FC = () => {
                 className="grid items-center gap-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm lg:grid-cols-2"
               >
                 <div className={index % 2 === 1 ? 'lg:order-2' : undefined}>
-                  <img
-                    src={service.image}
-                    alt={t(service.imageAltKey)}
-                    width={736}
-                    height={981}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-64 w-full object-cover sm:h-72 lg:h-80"
+                  <ServiceMedia
+                    service={service}
+                    imageClassName="h-64 w-full object-cover sm:h-72 lg:h-80"
+                    fallbackClassName="flex h-64 w-full items-center justify-center bg-brand-navy bg-grid-pattern-dark sm:h-72 lg:h-80"
+                    iconClassName="h-20 w-20 text-brand-orange"
                   />
                 </div>
 

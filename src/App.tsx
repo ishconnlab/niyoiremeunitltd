@@ -18,6 +18,8 @@ const ServiceDetails = lazy(() =>
   import('./pages/ServiceDetails').then((m) => ({ default: m.ServiceDetails }))
 );
 const Gallery = lazy(() => import('./pages/Gallery').then((m) => ({ default: m.Gallery })));
+const Blog = lazy(() => import('./pages/Blog').then((m) => ({ default: m.Blog })));
+const BlogDetail = lazy(() => import('./pages/BlogDetail').then((m) => ({ default: m.BlogDetail })));
 const Quote = lazy(() => import('./pages/Quote').then((m) => ({ default: m.Quote })));
 const Contact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })));
 const FAQ = lazy(() => import('./pages/FAQ').then((m) => ({ default: m.FAQ })));
@@ -39,6 +41,8 @@ export default function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/services/:serviceId" element={<ServiceDetails />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/quote" element={<Quote />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />

@@ -23,6 +23,8 @@ import { PillButton } from '../components/common/PillButton';
 import { RulerDivider } from '../components/common/RulerDivider';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { ServiceIcon } from '../components/common/ServiceIcon';
+import { ServiceMedia } from '../components/common/ServiceMedia';
+import { EquipmentShowcase } from '../components/common/EquipmentShowcase';
 import { asArray } from '../utils/i18n';
 
 const PROCESS_ICONS = [ClipboardList, Hammer, CheckCircle2];
@@ -198,7 +200,7 @@ export const Home: React.FC = () => {
                       <span className="shrink-0 font-bold text-brand-orange">
                         {t('home.hero.sloganLabel')}:
                       </span>
-                      <span className="truncate italic">“{COMPANY_INFO.sloganKinyarwanda}”</span>
+                      <span className="truncate italic">{COMPANY_INFO.sloganKinyarwanda}</span>
                     </div>
                   </div>
                 </div>
@@ -257,14 +259,11 @@ export const Home: React.FC = () => {
                     className="group flex h-full w-60 items-center gap-3 rounded-2xl border border-slate-200 bg-white p-2.5 shadow-sm transition-colors hover:border-brand-orange/50 sm:w-72"
                   >
                     <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-slate-100">
-                      <img
-                        src={service.image}
-                        alt=""
-                        width={112}
-                        height={112}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      <ServiceMedia
+                        service={service}
+                        imageClassName="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        fallbackClassName="flex h-full w-full items-center justify-center bg-brand-navy"
+                        iconClassName="h-6 w-6 text-brand-orange"
                       />
                     </span>
                     <span className="min-w-0">
@@ -298,14 +297,11 @@ export const Home: React.FC = () => {
                     }
                   >
                     <div className="relative overflow-hidden rounded-2xl">
-                      <img
-                        src={service.image}
-                        alt={t(service.imageAltKey)}
-                        width={736}
-                        height={981}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-56 w-full object-cover sm:h-64"
+                      <ServiceMedia
+                        service={service}
+                        imageClassName="h-56 w-full object-cover sm:h-64"
+                        fallbackClassName="flex h-56 w-full items-center justify-center bg-brand-navy bg-grid-pattern-dark sm:h-64"
+                        iconClassName="h-14 w-14 text-brand-orange"
                       />
                       <span className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white">
                         <ServiceIcon name={service.iconName} className="h-5 w-5" />
@@ -459,6 +455,9 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Modern equipment use and rental */}
+      <EquipmentShowcase />
 
       {/* Location */}
       <section className="bg-white py-20 sm:py-24">

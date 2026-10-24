@@ -163,7 +163,16 @@ export const ContactForm: React.FC = () => {
           <option value="">{t('validation.selectRequired')}</option>
           <option value="finishing">{t('contact.subjectOptions.finishing')}</option>
           <option value="painting">{t('contact.subjectOptions.painting')}</option>
+          <option value="tiling">{t('contact.subjectOptions.tiling')}</option>
+          <option value="wallpaper">{t('contact.subjectOptions.wallpaper')}</option>
+          <option value="ceilings">{t('contact.subjectOptions.ceilings')}</option>
+          <option value="terrazzo">{t('contact.subjectOptions.terrazzo')}</option>
+          <option value="glass">{t('contact.subjectOptions.glass')}</option>
+          <option value="cleaning">{t('contact.subjectOptions.cleaning')}</option>
           <option value="construction">{t('contact.subjectOptions.construction')}</option>
+          <option value="supervision">{t('contact.subjectOptions.supervision')}</option>
+          <option value="equipment">{t('contact.subjectOptions.equipment')}</option>
+          <option value="materials">{t('contact.subjectOptions.materials')}</option>
           <option value="workforce">{t('contact.subjectOptions.workforce')}</option>
           <option value="other">{t('contact.subjectOptions.other')}</option>
         </select>

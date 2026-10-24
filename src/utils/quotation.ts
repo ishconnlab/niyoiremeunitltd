@@ -230,7 +230,7 @@ export function buildQuoteSummaryText(
   }
 
   lines.push('');
-  lines.push("Ubwiza, Ubunyamwuga n'Ireme mu Mirimo Yacu!");
+  lines.push('Kunoza umurimo ni inshingano zacu!');
   lines.push('Please arrange a site visit for my project.');
 
   return lines.join('\n');

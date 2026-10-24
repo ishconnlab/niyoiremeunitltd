@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { COMPANY_INFO } from '../data/company';
 import { isSupportedLanguage } from '../i18n';
-import { applyAlternateLinks, OG_IMAGE_URL, setJsonLd, setMeta } from '../utils/seo';
+import { applyAlternateLinks, buildUrl, OG_IMAGE_URL, setJsonLd, setMeta } from '../utils/seo';
 import {
   buildBreadcrumbNode,
   buildFaqNode,
@@ -74,6 +74,7 @@ export function useSeo({
     setMeta('property', 'og:image', image);
     setMeta('property', 'og:type', type);
     setMeta('property', 'og:site_name', COMPANY_INFO.name);
+    setMeta('property', 'og:url', buildUrl(canonicalPath, language));
     setMeta('property', 'og:locale', language === 'rw' ? 'rw_RW' : 'en_US');
     setMeta('property', 'og:locale:alternate', language === 'rw' ? 'en_US' : 'rw_RW');
 

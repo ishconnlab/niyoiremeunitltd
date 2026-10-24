@@ -57,29 +57,29 @@ const ReviewCard: React.FC<{
           aria-hidden="true"
         />
 
-        <div className="relative p-6 sm:p-7">
+        <div className="relative p-4 sm:p-5">
           <CornerTicks />
 
-          <div className="flex items-center justify-between gap-4 pl-3">
+          <div className="flex items-center justify-between gap-3 pl-3">
             <QualityTicks rating={review.rating} />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
               {t('reviews.qualityLabel')}
             </span>
           </div>
-          <span className="mt-2 block pl-3 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">
+          <span className="mt-1.5 block pl-3 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">
             {t('reviews.indexLabel')} {String(index + 1).padStart(2, '0')}
           </span>
 
           <Quote
-            className="pointer-events-none absolute right-5 top-14 h-16 w-16 text-brand-orange/10"
+            className="pointer-events-none absolute right-4 top-10 h-12 w-12 text-brand-orange/10"
             aria-hidden="true"
           />
 
-          <blockquote className="relative mt-4 font-heading text-lg leading-relaxed text-brand-navy sm:text-xl">
+          <blockquote className="relative mt-3 font-heading text-base leading-relaxed text-brand-navy sm:text-lg line-clamp-3">
             {t(review.quoteKey)}
           </blockquote>
 
-          <div className="relative mt-6 flex flex-wrap items-end justify-between gap-3 border-t border-slate-100 pt-4">
+          <div className="relative mt-4 flex flex-wrap items-end justify-between gap-2.5 border-t border-slate-100 pt-3">
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
                 <img

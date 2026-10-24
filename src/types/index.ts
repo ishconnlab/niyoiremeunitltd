@@ -10,10 +10,15 @@ export type ServiceIconName =
   | 'Building2'
   | 'Users'
   | 'Layers'
+  | 'Layers3'
   | 'Grid3x3'
   | 'PanelTop'
   | 'ShoppingBag'
-  | 'BrickWall';
+  | 'BrickWall'
+  | 'Wallpaper'
+  | 'BrushCleaning'
+  | 'Truck'
+  | 'ClipboardList';
 
 export interface ServiceDefinition {
   /** Stable URL slug, also the i18n key under `services.items`. */
@@ -21,10 +26,15 @@ export interface ServiceDefinition {
   category: ServiceCategory;
   /** Lucide icon name used for the visual marker. */
   iconName: ServiceIconName;
-  /** Representative local photography for the service (`/projects/...`). */
-  image: string;
+  /**
+   * Representative local photography for the service (`/projects/...`).
+   * Omitted when the company has not supplied a genuine photograph yet, so the
+   * card falls back to an icon panel instead of presenting a stock image as
+   * completed company work.
+   */
+  image?: string;
   /** i18n key for the service-specific image alt text. */
-  imageAltKey: string;
+  imageAltKey?: string;
   /** Short label used on compact cards. */
   shortLabelKey: string;
 }
@@ -85,4 +95,19 @@ export interface QuotationEstimateResult {
     amountRWF: number;
   }[];
   noteKeys: string[];
+}
+
+export type BlogCategory = 'completed' | 'in-progress' | 'equipment' | 'trends';
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  category: BlogCategory;
+  excerpt: string;
+  content: string;
+  image: string;
+  date: string;
+  readTime: string;
+  author: string;
+  featured: boolean;
 }

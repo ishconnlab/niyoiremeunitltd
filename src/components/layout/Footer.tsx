@@ -105,6 +105,15 @@ export const Footer: React.FC = () => {
                     </LocalizedLink>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href="/admin/login"
+                    className="flex items-center gap-2 transition-colors hover:text-brand-orange"
+                  >
+                    <span className="w-4 h-4 shrink-0 text-brand-orange" aria-hidden="true">★</span>
+                    Admin Login
+                  </a>
+                </li>
               </ul>
             </nav>
 

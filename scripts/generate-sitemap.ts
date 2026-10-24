@@ -31,7 +31,11 @@ const env = {
   ...process.env,
 };
 
-const siteUrl = (env.VITE_SITE_URL || env.SITE_URL || 'http://localhost:3000').replace(/\/+$/, '');
+const siteUrl = (
+  env.VITE_SITE_URL ||
+  env.SITE_URL ||
+  'https://www.niyoiremeunitcompanyltd.rw'
+).replace(/\/+$/, '');
 
 const ROUTES: { path: string; priority: string; changefreq: string }[] = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
@@ -39,12 +43,23 @@ const ROUTES: { path: string; priority: string; changefreq: string }[] = [
   { path: '/services/finishing', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/painting', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/construction', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/ceilings', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/tiling', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/wallpaper', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/terrazzo', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/glass', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/plastering', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/cleaning', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/workforce', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/supervision', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/equipment', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/materials', priority: '0.8', changefreq: 'monthly' },
   { path: '/quote', priority: '0.9', changefreq: 'monthly' },
   { path: '/contact', priority: '0.8', changefreq: 'monthly' },
   { path: '/about', priority: '0.7', changefreq: 'monthly' },
   { path: '/team', priority: '0.6', changefreq: 'monthly' },
   { path: '/gallery', priority: '0.7', changefreq: 'monthly' },
+  { path: '/blog', priority: '0.8', changefreq: 'weekly' },
   { path: '/faq', priority: '0.6', changefreq: 'monthly' },
   { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
 ];

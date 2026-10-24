@@ -1,14 +1,16 @@
 import { ServiceDefinition } from '../types';
 
 /**
- * The nine services the company delivers.
+ * The services the company delivers.
  *
  * `category` maps every service onto one of the four quotation categories used
- * by the calculator and forms, so those working parts stay unchanged. Titles,
- * descriptions and bullet points live in `src/i18n/locales/en.json` and
- * `rw.json` under `services.items.<id>`; the Kinyarwanda copy is the source of
- * truth. Photography is served from the local `public/projects/` folder using
- * URL-safe filenames (no spaces or ampersands) so every path loads everywhere.
+ * by the calculator and forms, so those working parts stay unchanged. Services
+ * without a genuine company photograph omit `image` and render an icon panel
+ * instead. Titles, descriptions and bullet points live in
+ * `src/i18n/locales/en.json` and `rw.json` under `services.items.<id>`; the
+ * Kinyarwanda copy is the source of truth. Photography is served from the local
+ * `public/projects/` folder using URL-safe filenames (no spaces or ampersands)
+ * so every path loads everywhere.
  */
 export const SERVICES_DATA: ServiceDefinition[] = [
   {
@@ -26,6 +28,20 @@ export const SERVICES_DATA: ServiceDefinition[] = [
     image: '/projects/painting-services.jpg',
     imageAltKey: 'services.items.painting.imageAlt',
     shortLabelKey: 'services.items.painting.shortLabel',
+  },
+  {
+    id: 'supervision',
+    category: 'construction',
+    iconName: 'ClipboardList',
+    imageAltKey: 'services.items.supervision.imageAlt',
+    shortLabelKey: 'services.items.supervision.shortLabel',
+  },
+  {
+    id: 'wallpaper',
+    category: 'finishing',
+    iconName: 'Wallpaper',
+    imageAltKey: 'services.items.wallpaper.imageAlt',
+    shortLabelKey: 'services.items.wallpaper.shortLabel',
   },
   {
     id: 'construction',
@@ -52,6 +68,13 @@ export const SERVICES_DATA: ServiceDefinition[] = [
     shortLabelKey: 'services.items.tiling.shortLabel',
   },
   {
+    id: 'terrazzo',
+    category: 'construction',
+    iconName: 'Layers3',
+    imageAltKey: 'services.items.terrazzo.imageAlt',
+    shortLabelKey: 'services.items.terrazzo.shortLabel',
+  },
+  {
     id: 'glass',
     category: 'construction',
     iconName: 'PanelTop',
@@ -63,7 +86,6 @@ export const SERVICES_DATA: ServiceDefinition[] = [
     id: 'materials',
     category: 'painting',
     iconName: 'ShoppingBag',
-    image: '/projects/painting-renovation.jpg',
     imageAltKey: 'services.items.materials.imageAlt',
     shortLabelKey: 'services.items.materials.shortLabel',
   },
@@ -76,12 +98,26 @@ export const SERVICES_DATA: ServiceDefinition[] = [
     shortLabelKey: 'services.items.plastering.shortLabel',
   },
   {
+    id: 'cleaning',
+    category: 'workforce',
+    iconName: 'BrushCleaning',
+    imageAltKey: 'services.items.cleaning.imageAlt',
+    shortLabelKey: 'services.items.cleaning.shortLabel',
+  },
+  {
     id: 'workforce',
     category: 'workforce',
     iconName: 'Users',
     image: '/projects/at-work.jpg',
     imageAltKey: 'services.items.workforce.imageAlt',
     shortLabelKey: 'services.items.workforce.shortLabel',
+  },
+  {
+    id: 'equipment',
+    category: 'construction',
+    iconName: 'Truck',
+    imageAltKey: 'services.items.equipment.imageAlt',
+    shortLabelKey: 'services.items.equipment.shortLabel',
   },
 ];
 

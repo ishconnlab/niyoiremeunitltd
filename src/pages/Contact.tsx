@@ -153,12 +153,20 @@ export const Contact: React.FC = () => {
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <PillButton to="/quote">{t('common.requestQuote')}</PillButton>
             <PillButton
-              href={whatsappUrl}
+              href={`tel:${COMPANY_INFO.phoneRaw}`}
               variant="outline"
+              icon={<Phone className="h-4 w-4" />}
+              iconPosition="left"
+            >
+              {t('contact.callNow')}
+            </PillButton>
+            <PillButton
+              href={whatsappUrl}
+              variant="ghost"
               icon={<MessageSquare className="h-4 w-4" />}
               iconPosition="left"
             >
-              {t('common.whatsapp')}
+              {t('contact.whatsappChat')}
             </PillButton>
           </div>
         </div>

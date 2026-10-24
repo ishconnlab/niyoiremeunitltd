@@ -11,6 +11,9 @@ export const FAQS_DATA: FaqDefinition[] = [
   { id: 'faq-4', category: 'construction' },
   { id: 'faq-5', category: 'workforce' },
   { id: 'faq-6', category: 'general' },
+  { id: 'faq-7', category: 'general' },
+  { id: 'faq-8', category: 'general' },
+  { id: 'faq-9', category: 'general' },
 ];
 
 export const FAQ_CATEGORIES = [
