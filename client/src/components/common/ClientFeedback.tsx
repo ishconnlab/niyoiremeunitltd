@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, Quote } from 'lucide-react';
 
@@ -98,15 +98,25 @@ const ReviewCard: React.FC<{
 };
 
 /**
- * Client feedback presented as clean professional cards with manual navigation.
+ * Client feedback presented as clean professional cards with auto-slide.
  * Only feedback NIYO IREME has actually received is published here.
  */
 export const ClientFeedback: React.FC = () => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const trackRef = useRef<HTMLUListElement>(null);
   const hasReviews = CLIENT_REVIEWS.length > 0;
   const visibleCount = 2; // show 2 cards on desktop, 1 on mobile
   const maxIndex = Math.max(0, CLIENT_REVIEWS.length - visibleCount);
+
+  // Auto-slide every 5 seconds
+  useEffect(() => {
+    if (CLIENT_REVIEWS.length <= visibleCount) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [maxIndex, visibleCount]);
 
   const prev = () => setCurrentIndex((i) => (i <= 0 ? maxIndex : i - 1));
   const next = () => setCurrentIndex((i) => (i >= maxIndex ? 0 : i + 1));
@@ -168,25 +178,29 @@ export const ClientFeedback: React.FC = () => {
                 <ArrowRight className="h-5 w-5" />
               </button>
 
-              {/* Cards */}
-              <div className="grid gap-8 sm:grid-cols-2 lg:gap-12">
+              {/* Cards with auto-slide transform */}
+              <ul
+                ref={trackRef}
+                className={`grid gap-8 sm:grid-cols-2 lg:grid-cols-2 transition-transform duration-700 ease-in-out`}
+                style={{
+                  transform: `translateX(-${(currentIndex / Math.max(1, CLIENT_REVIEWS.length - visibleCount)) * 100}%)`,
+                }}
+              >
                 {visibleReviews.map((review, index) => (
                   <ReviewCard key={review.id} review={review} index={currentIndex + index} />
                 ))}
-              </div>
+              </ul>
 
               {/* Page indicator */}
-              <div className="mt-6 flex items-center justify-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wider">
-                {hasReviews && CLIENT_REVIEWS.length > visibleCount && (
-                  <>
-                    <span>
-                      {Math.min(currentIndex + visibleCount, CLIENT_REVIEWS.length)}
-                    </span>
-                    <span className="mx-1">/</span>
-                    <span>{CLIENT_REVIEWS.length}</span>
-                  </>
-                )}
-              </div>
+              {CLIENT_REVIEWS.length > visibleCount && (
+                <div className="mt-6 flex items-center justify-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <span>
+                    {Math.min(currentIndex + visibleCount, CLIENT_REVIEWS.length)}
+                  </span>
+                  <span className="mx-1">/</span>
+                  <span>{CLIENT_REVIEWS.length}</span>
+                </div>
+              )}
             </>
           ) : (
             <article className="review-card relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">

@@ -5,7 +5,7 @@ import { COMPANY_INFO } from './company';
  *
  * Each profile URL is configured with an environment variable so the company
  * can switch accounts without code changes. A channel is only rendered when a
- * URL is provided â€” the site never links to an account that does not exist.
+ * URL is provided ” the site never links to an account that does not exist.
  */
 export type SocialChannel = 'facebook' | 'instagram' | 'youtube' | 'x' | 'whatsapp';
 
@@ -42,7 +42,7 @@ const CONFIGURED_SOCIAL_LINKS: SocialLink[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = CONFIGURED_SOCIAL_LINKS;
 
-/** WhatsApp is always available â€” it is the channel the company answers on. */
+/** WhatsApp is always available ” it is the channel the company answers on. */
 export const WHATSAPP_LINK: SocialLink = {
   channel: 'whatsapp',
   labelKey: 'social.whatsapp',

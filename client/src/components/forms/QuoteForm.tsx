@@ -91,7 +91,7 @@ export const QuoteForm: React.FC = () => {
     tier === 'luxury_executive' ? 'quote.tiers.luxury' : `quote.tiers.${tier}`
   );
 
-  const estimateRange = `${formatRWF(estimate.estimatedMinRWF, locale)} â€“ ${formatRWF(
+  const estimateRange = `${formatRWF(estimate.estimatedMinRWF, locale)} “ ${formatRWF(
     estimate.estimatedMaxRWF,
     locale
   )}`;

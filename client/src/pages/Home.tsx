@@ -30,7 +30,7 @@ import { asArray } from '../utils/i18n';
 const PROCESS_ICONS = [ClipboardList, Hammer, CheckCircle2];
 
 /**
- * Hero photography. Purely illustrative â€” it shows the type of work the
+ * Hero photography. Purely illustrative ” it shows the type of work the
  * company delivers, never a documented project.
  *
  * The hero cycles through a curated set of site photos so the band feels alive
@@ -113,7 +113,7 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      {/* Hero â€” editorial headline, service pills and a navy construction band
+      {/* Hero ” editorial headline, service pills and a navy construction band
           carrying the site photography, slogan and headline figures. */}
       <section className="relative overflow-hidden bg-white pt-8">
         <RulerDivider className="absolute inset-x-0 top-0" />
@@ -231,10 +231,10 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Services â€” editorial list rather than a wall of identical cards */}
+      {/* Services ” editorial list rather than a wall of identical cards */}
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Services marquee â€” a fast, never-ending strip of logo-styled
+          {/* Services marquee ” a fast, never-ending strip of logo-styled
               service cards that replaces the static heading. */}
           <div className="flex flex-col items-center gap-2 text-center">
             <div className="inline-flex items-center gap-2">
@@ -340,7 +340,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Why choose us â€” the company's own commitments, set as a statement */}
+      {/* Why choose us ” the company's own commitments, set as a statement */}
       <section className="relative overflow-hidden bg-brand-navy py-20 text-white sm:py-24">
         <div className="absolute inset-0 bg-grid-pattern-dark" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -372,7 +372,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Process â€” a single timeline */}
+      {/* Process ” a single timeline */}
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -405,10 +405,10 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Client feedback â€” verified reviews presented as drawing annotations */}
+      {/* Client feedback ” verified reviews presented as drawing annotations */}
       <ClientFeedback />
 
-      {/* Sample work â€” deliberately uneven grid */}
+      {/* Sample work ” deliberately uneven grid */}
       <section className="bg-slate-100 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading

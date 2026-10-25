@@ -22,6 +22,7 @@ const Blog = lazy(() => import('./pages/Blog').then((m) => ({ default: m.Blog })
 const BlogDetail = lazy(() => import('./pages/BlogDetail').then((m) => ({ default: m.BlogDetail })));
 const Quote = lazy(() => import('./pages/Quote').then((m) => ({ default: m.Quote })));
 const Contact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })));
+const AdminLogin = lazy(() => import('./pages/AdminLogin').then((m) => ({ default: m.AdminLogin })));
 const FAQ = lazy(() => import('./pages/FAQ').then((m) => ({ default: m.FAQ })));
 const Privacy = lazy(() => import('./pages/Privacy').then((m) => ({ default: m.Privacy })));
 const NotFound = lazy(() => import('./pages/NotFound').then((m) => ({ default: m.NotFound })));
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/quote" element={<Quote />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />

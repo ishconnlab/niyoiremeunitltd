@@ -24,7 +24,7 @@ export function useLanguage(): LanguageApi {
       try {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, next);
       } catch {
-        /* Storage can be unavailable in private browsing â€” language still applies. */
+        /* Storage can be unavailable in private browsing ” language still applies. */
       }
     },
     [i18n]

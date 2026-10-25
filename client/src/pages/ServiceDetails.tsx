@@ -162,7 +162,7 @@ export const ServiceDetails: React.FC = () => {
     return `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 
-  // Equipment page â€” show equipment cards with rental/purchase CTAs
+  // Equipment page ” show equipment cards with rental/purchase CTAs
   if (serviceId === 'equipment') {
     return (
       <>
@@ -291,7 +291,7 @@ export const ServiceDetails: React.FC = () => {
     );
   }
 
-  // Workforce page â€” show recruitment cards instead of generic service division
+  // Workforce page ” show recruitment cards instead of generic service division
   if (serviceId === 'workforce') {
     return (
       <>

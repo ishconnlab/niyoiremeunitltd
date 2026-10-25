@@ -139,7 +139,7 @@ function markDismissed() {
   try {
     window.localStorage.setItem(DISMISS_KEY, String(Date.now()));
   } catch {
-    /* Storage may be unavailable â€” the dismissal simply lasts for this session. */
+    /* Storage may be unavailable ” the dismissal simply lasts for this session. */
   }
   emit();
 }

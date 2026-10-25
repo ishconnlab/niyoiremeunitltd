@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Phone, MessageSquare, Search, X } from 'lucide-react';
+import { Phone, MessageSquare, Search, X, ArrowDown } from 'lucide-react';
 
 import { COMPANY_INFO } from '../../data/company';
 import { EQUIPMENT_ITEMS, EquipmentCategory } from '../../data/equipment';
@@ -12,6 +12,9 @@ export const EquipmentShowcase: React.FC = () => {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<EquipmentCategory | 'all'>('all');
+  const [showAll, setShowAll] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideRef = useRef<HTMLDivElement>(null);
 
   const filteredItems = useMemo(() => {
     return EQUIPMENT_ITEMS.filter((item) => {
@@ -28,6 +31,18 @@ export const EquipmentShowcase: React.FC = () => {
     });
   }, [searchQuery, activeCategory, t]);
 
+  const itemsPerView = 4;
+  const totalSlides = Math.max(1, Math.ceil(filteredItems.length / itemsPerView));
+
+  // Auto-slide: advance every 5 seconds
+  useEffect(() => {
+    if (filteredItems.length <= itemsPerView) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [filteredItems.length, totalSlides]);
+
   const whatsappUrl = (itemName: string) =>
     `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(
       t('whatsapp.equipmentInquiry', { name: itemName })
@@ -39,6 +54,11 @@ export const EquipmentShowcase: React.FC = () => {
     { value: 'surface-preparation', label: t('equipment.filter.surfacePreparation') },
     { value: 'additional', label: t('equipment.filter.additional') },
   ];
+
+  const currentItems = filteredItems.slice(
+    currentSlide * itemsPerView,
+    (currentSlide + 1) * itemsPerView
+  );
 
   return (
     <section
@@ -110,50 +130,141 @@ export const EquipmentShowcase: React.FC = () => {
             </p>
           </div>
         ) : (
-          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {filteredItems.map((item) => (
-              <li
-                key={item.id}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 flex flex-col min-h-[420px] group"
+          <>
+            {/* Auto-slide carousel */}
+            <div
+              ref={slideRef}
+              className="relative overflow-hidden group"
+            >
+              <ul
+                className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 transition-transform duration-700 ease-in-out"
+                style={{
+                  transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
+                }}
               >
-                <div className="relative h-48 overflow-hidden rounded-xl bg-white/5 mb-4">
-                  <img
-                    src={item.image}
-                    alt={t(item.imageAltKey)}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/20" />
-                  <span className="absolute top-3 left-3 px-2 py-1 rounded-md text-[10px] font-bold bg-white/90 text-brand-navy uppercase tracking-wider">
-                    {item.category === 'painting'
-                      ? t('equipment.category.painting')
-                      : item.category === 'surface-preparation'
-                        ? t('equipment.category.surfacePreparation')
-                        : t('equipment.category.additional')}
-                  </span>
-                </div>
-                <h3 className="font-heading text-sm sm:text-base font-bold leading-snug text-white">
-                  {t(item.nameKey)}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-400 line-clamp-3">
-                  {t(item.descriptionKey)}
-                </p>
-                <div className="mt-auto pt-4 flex gap-2">
-                  <PillButton
-                    href={whatsappUrl(t(item.nameKey))}
-                    size="sm"
-                    variant="outline"
-                    fullWidth
-                    icon={<WhatsAppIcon className="h-3.5 w-3.5" />}
-                    iconPosition="left"
+                {currentItems.map((item) => (
+                  <li
+                    key={item.id}
+                    className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 flex flex-col min-h-[420px] group"
                   >
-                    {t('equipment.ctaInquire')}
-                  </PillButton>
+                    <div className="relative h-48 overflow-hidden rounded-xl bg-white/5 mb-4">
+                      <img
+                        src={item.image}
+                        alt={t(item.imageAltKey)}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/20" />
+                      <span className="absolute top-3 left-3 px-2 py-1 rounded-md text-[10px] font-bold bg-white/90 text-brand-navy uppercase tracking-wider">
+                        {item.category === 'painting'
+                          ? t('equipment.category.painting')
+                          : item.category === 'surface-preparation'
+                            ? t('equipment.category.surfacePreparation')
+                            : t('equipment.category.additional')}
+                      </span>
+                    </div>
+                    <h3 className="font-heading text-sm sm:text-base font-bold leading-snug text-white">
+                      {t(item.nameKey)}
+                    </h3>
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-400 line-clamp-3">
+                      {t(item.descriptionKey)}
+                    </p>
+                    <div className="mt-auto pt-4 flex gap-2">
+                      <PillButton
+                        href={whatsappUrl(t(item.nameKey))}
+                        size="sm"
+                        variant="outline"
+                        fullWidth
+                        icon={<WhatsAppIcon className="h-3.5 w-3.5" />}
+                        iconPosition="left"
+                      >
+                        {t('equipment.ctaInquire')}
+                      </PillButton>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Slide navigation dots */}
+              {totalSlides > 1 && (
+                <div className="mt-6 flex justify-center gap-2">
+                  {Array.from({ length: totalSlides }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        i === currentSlide ? 'bg-brand-orange' : 'bg-white/30 hover:bg-white/50'
+                      }`}
+                      aria-label={`Slide ${i + 1}`}
+                    />
+                  ))}
                 </div>
-              </li>
-            ))}
-          </ul>
+              )}
+            </div>
+
+            {filteredItems.length > itemsPerView && (
+              <div className="mt-8 flex justify-center">
+                <button
+                  onClick={() => setShowAll(!showAll)}
+                  className="flex items-center gap-2 text-sm font-bold text-brand-orange transition-colors hover:text-brand-orange-dark"
+                >
+                  {showAll ? t('equipment.showLess') : t('equipment.showMore')}
+                  {showAll ? (
+                    <X className="h-4 w-4 rotate-180" />
+                  ) : (
+                    <ArrowDown className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+            )}
+            {showAll && filteredItems.length > itemsPerView && (
+              <ul className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {filteredItems.slice(itemsPerView).map((item) => (
+                  <li
+                    key={item.id + '-extra'}
+                    className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 flex flex-col min-h-[420px] group"
+                  >
+                    <div className="relative h-48 overflow-hidden rounded-xl bg-white/5 mb-4">
+                      <img
+                        src={item.image}
+                        alt={t(item.imageAltKey)}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/20" />
+                      <span className="absolute top-3 left-3 px-2 py-1 rounded-md text-[10px] font-bold bg-white/90 text-brand-navy uppercase tracking-wider">
+                        {item.category === 'painting'
+                          ? t('equipment.category.painting')
+                          : item.category === 'surface-preparation'
+                            ? t('equipment.category.surfacePreparation')
+                            : t('equipment.category.additional')}
+                      </span>
+                    </div>
+                    <h3 className="font-heading text-sm sm:text-base font-bold leading-snug text-white">
+                      {t(item.nameKey)}
+                    </h3>
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-400 line-clamp-3">
+                      {t(item.descriptionKey)}
+                    </p>
+                    <div className="mt-auto pt-4 flex gap-2">
+                      <PillButton
+                        href={whatsappUrl(t(item.nameKey))}
+                        size="sm"
+                        variant="outline"
+                        fullWidth
+                        icon={<WhatsAppIcon className="h-3.5 w-3.5" />}
+                        iconPosition="left"
+                      >
+                        {t('equipment.ctaInquire')}
+                      </PillButton>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
         )}
 
         <div className="mt-12 rounded-2xl border border-white/10 bg-brand-navy/60 p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:justify-between gap-4">

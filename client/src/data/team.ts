@@ -6,7 +6,7 @@ import { TeamMember } from '../types';
  * Names and roles are taken from the client-supplied roster. Roles marked
  * "(to be confirmed)" are supplied verbatim from informal messages and must
  * be verified before publication. No phone numbers or WhatsApp contacts are
- * included yet â€” individual numbers must be supplied by the company before
+ * included yet ” individual numbers must be supplied by the company before
  * call/WhatsApp buttons are enabled for any member.
  *
  * Photographs are initials-based SVG placeholders. Replace each `/assets/team/<id>.svg`
@@ -41,6 +41,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     specialtyKey: 'team.members.cyuzuzo-ella-kevine.specialty',
     bioKey: 'team.members.cyuzuzo-ella-kevine.bio',
     badgeKey: 'team.members.cyuzuzo-ella-kevine.badge',
+    phone: '+250798679767',
+    whatsapp: '250798679767',
     responsibilityKeys: [
       'team.members.cyuzuzo-ella-kevine.responsibilities.0',
       'team.members.cyuzuzo-ella-kevine.responsibilities.1',
@@ -55,6 +57,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     specialtyKey: 'team.members.niyoshuti-izaac.specialty',
     bioKey: 'team.members.niyoshuti-izaac.bio',
     badgeKey: 'team.members.niyoshuti-izaac.badge',
+    phone: '+250791932833',
+    whatsapp: '250791932833',
     responsibilityKeys: [
       'team.members.niyoshuti-izaac.responsibilities.0',
     ],
@@ -106,6 +110,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     specialtyKey: 'team.members.shimiyimana-samuel.specialty',
     bioKey: 'team.members.shimiyimana-samuel.bio',
     badgeKey: 'team.members.shimiyimana-samuel.badge',
+    phone: '+250785762278',
+    whatsapp: '250785762278',
     responsibilityKeys: [
       'team.members.shimiyimana-samuel.responsibilities.0',
     ],

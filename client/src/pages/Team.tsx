@@ -24,13 +24,6 @@ export const Team: React.FC = () => {
     path: '/team',
   });
 
-  const memberWhatsAppUrl = (member: (typeof TEAM_MEMBERS)[number] | typeof LEADERSHIP) => {
-    if (!member.whatsapp) return null;
-    return `https://wa.me/${member.whatsapp}?text=${encodeURIComponent(
-      t('whatsapp.contactMember', { name: member.name })
-    )}`;
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       {/* Hero */}
@@ -138,7 +131,6 @@ export const Team: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {TEAM_MEMBERS.map((member) => {
-              const waUrl = memberWhatsAppUrl(member);
               return (
                 <div
                   key={member.id}
@@ -174,37 +166,25 @@ export const Team: React.FC = () => {
                       </p>
                     </div>
 
-                    {/* Contact buttons */}
+                    {/* Contact buttons — fall back to company contact when member has no individual number */}
                     <div className="pt-3 border-t border-slate-100">
                       <div className="grid grid-cols-2 gap-2">
-                        {member.phone ? (
+                        <PillButton
+                          href={`tel:${member.phone || COMPANY_INFO.phoneRaw}`}
+                          size="sm"
+                          variant="outline"
+                          fullWidth
+                          icon={<Phone className="h-4 w-4 text-brand-navy" />}
+                          iconPosition="left"
+                          ariaLabel={member.phone ? `Call ${member.name}` : `Call company`}
+                        >
+                          {member.phone ? 'Call' : 'Call company'}
+                        </PillButton>
+                        {member.whatsapp ? (
                           <PillButton
-                            href={`tel:${member.phone}`}
-                            size="sm"
-                            variant="outline"
-                            fullWidth
-                            icon={<Phone className="h-4 w-4 text-brand-navy" />}
-                            iconPosition="left"
-                            ariaLabel={`Call ${member.name}`}
-                          >
-                            Call
-                          </PillButton>
-                        ) : (
-                          <PillButton
-                            disabled
-                            size="sm"
-                            variant="outline"
-                            fullWidth
-                            icon={<Phone className="h-4 w-4 text-slate-400" />}
-                            iconPosition="left"
-                            ariaLabel={`Call ${member.name} - not available`}
-                          >
-                            Call
-                          </PillButton>
-                        )}
-                        {waUrl ? (
-                          <PillButton
-                            href={waUrl}
+                            href={`https://wa.me/${member.whatsapp}?text=${encodeURIComponent(
+                              t('whatsapp.contactMember', { name: member.name })
+                            )}`}
                             size="sm"
                             variant="primary"
                             fullWidth
@@ -216,15 +196,17 @@ export const Team: React.FC = () => {
                           </PillButton>
                         ) : (
                           <PillButton
-                            disabled
+                            href={`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(
+                              t('whatsapp.defaultMessage')
+                            )}`}
                             size="sm"
                             variant="outline"
                             fullWidth
-                            icon={<WhatsAppIcon className="h-4 w-4 text-slate-400" />}
+                            icon={<WhatsAppIcon className="h-4 w-4 text-brand-navy" />}
                             iconPosition="left"
-                            ariaLabel={`WhatsApp ${member.name} - not available`}
+                            ariaLabel="WhatsApp company"
                           >
-                            WhatsApp
+                            WhatsApp company
                           </PillButton>
                         )}
                       </div>

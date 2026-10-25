@@ -45,7 +45,7 @@ export const AdminLogin: React.FC = () => {
         <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 sm:p-10">
           <div className="text-center mb-8">
             <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange mx-auto mb-4">
-              <span className="text-2xl" aria-hidden="true">â˜…</span>
+              <span className="text-2xl" aria-hidden="true">✔</span>
             </div>
             <h2 className="font-heading text-2xl font-black text-brand-navy">
               Admin Login
@@ -86,7 +86,7 @@ export const AdminLogin: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition-colors"
-                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                placeholder="••••••••"
               />
             </div>
 
@@ -95,7 +95,7 @@ export const AdminLogin: React.FC = () => {
               disabled={loading}
               className="w-full py-3.5 rounded-xl bg-brand-navy text-white font-bold font-heading uppercase tracking-wider hover:bg-brand-navy-soft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Signing inâ€¦' : 'Sign In'}
+              {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 
@@ -107,7 +107,7 @@ export const AdminLogin: React.FC = () => {
               to="/"
               className="block mt-4 text-sm font-bold text-brand-orange text-center transition-colors hover:text-brand-orange-dark"
             >
-              â† Back to website
+              ← Back to website
             </LocalizedLink>
           </div>
         </div>

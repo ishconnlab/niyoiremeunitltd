@@ -6,7 +6,7 @@
  * when the language switcher changes. Photographs are initials-based SVG
  * placeholders. Replace each `/assets/equipment/<id>.svg` path with a
  * verified product photograph once supplied by the company.
- * No quantities, prices, brands, or availability are claimed here â€” those
+ * No quantities, prices, brands, or availability are claimed here ” those
  * change and must be confirmed on request.
  */
 

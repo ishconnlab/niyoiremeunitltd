@@ -1,7 +1,7 @@
 import type { BlogPost } from '../types';
 
 /**
- * Blog posts â€” real projects and company updates.
+ * Blog posts ” real projects and company updates.
  *
  * Categories:
  *   - completed: Projects worked on (from client reviews)
@@ -9,12 +9,12 @@ import type { BlogPost } from '../types';
  *   - equipment: Equipment rental and availability
  *   - trends: Industry trends and news
  *
- * All content is verified â€” no invented projects or testimonials.
+ * All content is verified ” no invented projects or testimonials.
  */
 export const BLOG_POSTS: BlogPost[] = [
   {
     id: 'kimironko-full-interior-finishing',
-    title: 'Full Interior Finishing â€” Kimironko Residence',
+    title: 'Full Interior Finishing ” Kimironko Residence',
     category: 'completed',
     excerpt:
       'Complete plastering, gypsum ceiling, tiling and painting for a modern family home in Kimironko, Kigali.',
@@ -28,7 +28,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 'rusororo-ceiling-painting',
-    title: 'Ceiling Installation & Painting â€” Rusororo',
+    title: 'Ceiling Installation & Painting ” Rusororo',
     category: 'completed',
     excerpt:
       'Gypsum ceiling installation with full interior and exterior painting for a residential property in Rusororo.',
@@ -42,7 +42,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 'murugando-wall-repairs',
-    title: 'Wall Repairs & Specialist Coatings â€” Murugando',
+    title: 'Wall Repairs & Specialist Coatings ” Murugando',
     category: 'completed',
     excerpt:
       'Correction of badly finished walls, crack repair, and epoxy coating application in Murugando.',
@@ -56,7 +56,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 'kicukiro-plastering-painting',
-    title: 'Full-house Plastering & Painting â€” Kicukiro',
+    title: 'Full-house Plastering & Painting ” Kicukiro',
     category: 'completed',
     excerpt:
       'Complete wall plastering and silk/weatherguard paint finish for a full house in Kicukiro.',
@@ -70,7 +70,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 'bumbogo-gypsum-ceiling',
-    title: 'Gypsum Ceiling & Decoration â€” Bumbogo',
+    title: 'Gypsum Ceiling & Decoration ” Bumbogo',
     category: 'completed',
     excerpt:
       'Gypsum ceiling fitting, wall plastering, and decoration with matt and silk finishes in Bumbogo.',
@@ -84,10 +84,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 'kigali-commercial-terrace',
-    title: 'Commercial Terrace Construction â€” Kigali',
+    title: 'Commercial Terrace Construction ” Kigali',
     category: 'in-progress',
     excerpt:
-      'Terrace construction for a commercial building in central Kigali â€” currently underway.',
+      'Terrace construction for a commercial building in central Kigali ” currently underway.',
     content:
       'We are currently constructing a terrace for a commercial building in central Kigali. The project includes structural work, waterproofing, and finishing. Expected completion: Q4 2026.',
     image: '/projects/construction-renovation.jpg',
@@ -98,10 +98,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 'gasabo-residential-renovation',
-    title: 'Residential Renovation â€” Gasabo District',
+    title: 'Residential Renovation ” Gasabo District',
     category: 'in-progress',
     excerpt:
-      'Full renovation of a residential property in Gasabo District â€” demolition, plastering, and finishing in progress.',
+      'Full renovation of a residential property in Gasabo District ” demolition, plastering, and finishing in progress.',
     content:
       'An ongoing renovation project in Gasabo District. The team is currently working on demolition, wall preparation, plastering, and preparing for tiling and painting.',
     image: '/projects/construction-renovation.jpg',
@@ -117,7 +117,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       'Excavators, compactors and site preparation equipment available for rental across Kigali and Rwanda.',
     content:
-      'We now have earthmoving and site preparation equipment available for rental. This includes excavators, compactors, and related equipment for excavation, site clearing, and material movement. Availability is subject to confirmation â€” contact us with your project dates and location.',
+      'We now have earthmoving and site preparation equipment available for rental. This includes excavators, compactors, and related equipment for excavation, site clearing, and material movement. Availability is subject to confirmation ” contact us with your project dates and location.',
     image: '/projects/construction-renovation.jpg',
     date: '2026-10-10',
     readTime: '2 min read',
@@ -140,10 +140,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 'rwanda-construction-trends-2026',
-    title: 'Construction Trends in Rwanda â€” 2026 Outlook',
+    title: 'Construction Trends in Rwanda ” 2026 Outlook',
     category: 'trends',
     excerpt:
-      'What is shaping the construction and finishing industry in Rwanda this year â€” materials, techniques, and regulations.',
+      'What is shaping the construction and finishing industry in Rwanda this year ” materials, techniques, and regulations.',
     content:
       'The Rwandan construction industry is evolving quickly in 2026. Key trends include increased use of gypsum ceilings, demand for weather-resistant exterior paints, sustainable building materials, and closer supervision standards on residential and commercial sites.',
     image: '/projects/technical-drawing.jpg',

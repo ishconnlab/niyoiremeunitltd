@@ -61,7 +61,7 @@ export interface TeamMember {
   id: string;
   /** Displayed full name of the team member. */
   name: string;
-  /** i18n keys â€” every string lives in the locale files. */
+  /** i18n keys ” every string lives in the locale files. */
   roleKey: string;
   specialtyKey: string;
   bioKey: string;

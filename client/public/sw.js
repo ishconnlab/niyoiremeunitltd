@@ -1,7 +1,7 @@
 /* eslint-env serviceworker */
 
 /**
- * NIYO IREME UNIT COMPANY LTD â€” service worker.
+ * NIYO IREME UNIT COMPANY LTD ” service worker.
  *
  * Strategy
  *  - Navigations: network first, falling back to the cached app shell so the

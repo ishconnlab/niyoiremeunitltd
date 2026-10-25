@@ -25,8 +25,8 @@ const absolute = (path: string): string => {
 
 /**
  * `GeneralContractor` is the most accurate schema.org subtype available for the
- * business. Opening hours are the schedule confirmed by the owner: Monâ€“Fri,
- * 08:00â€“17:00.
+ * business. Opening hours are the schedule confirmed by the owner: Mon“Fri,
+ * 08:00“17:00.
  */
 export const buildOrganizationNode = (description: string, image: string) => ({
   '@type': ['GeneralContractor', 'LocalBusiness'],

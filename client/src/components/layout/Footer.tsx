@@ -110,8 +110,7 @@ export const Footer: React.FC = () => {
                     href="/admin/login"
                     className="flex items-center gap-2 transition-colors hover:text-brand-orange"
                   >
-                    <span className="w-4 h-4 shrink-0 text-brand-orange" aria-hidden="true">â˜…</span>
-                    Admin Login
+                    <span className="w-4 h-4 shrink-0 text-brand-orange" aria-hidden="true">✔</span>
                   </a>
                 </li>
               </ul>

@@ -67,7 +67,7 @@ export function useServiceWorker(): ServiceWorkerState {
         const base = import.meta.env.BASE_URL || '/';
         const registration = await navigator.serviceWorker.register(`${base}sw.js`, {
           scope: base,
-          // Never serve a stale copy of the worker script itself â€” a cached
+          // Never serve a stale copy of the worker script itself ” a cached
           // worker file is the most common reason an update never lands.
           updateViaCache: 'none',
         });

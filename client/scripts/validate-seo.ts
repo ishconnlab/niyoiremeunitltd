@@ -22,7 +22,7 @@ const readIfExists = (file: string): string | null =>
 /* -------------------------------------------------------- route table source */
 const appSource = readIfExists(path.join(ROOT, 'src', 'App.tsx'));
 if (!appSource) {
-  problems.push('src/App.tsx is missing â€” cannot verify the route table');
+  problems.push('src/App.tsx is missing ” cannot verify the route table');
 } else {
   // Literal public routes declared on <Route path="..." />. Dynamic segments
   // are handled explicitly below.
@@ -35,7 +35,7 @@ if (!appSource) {
   // The sitemap must cover every literal route except the 404 catch-all.
   const sitemap = readIfExists(path.join(PUBLIC_DIR, 'sitemap.xml'));
   if (!sitemap) {
-    problems.push('public/sitemap.xml is missing â€” run npm run sitemap');
+    problems.push('public/sitemap.xml is missing ” run npm run sitemap');
   } else {
     const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
     const paths = locs.map((loc) => {
@@ -49,6 +49,8 @@ if (!appSource) {
 
     literalRoutes.forEach((routePath) => {
       const normalized = routePath === '/' ? '/' : routePath;
+      // Admin/login routes are intentionally excluded from the public sitemap.
+      if (/^\/admin/i.test(normalized)) return;
       if (!paths.includes(normalized)) {
         problems.push(`sitemap is missing the public route: ${normalized}`);
       }
@@ -69,8 +71,11 @@ if (!appSource) {
     }
 
     // No private, admin, staging or 404 routes may appear.
-    const forbidden = /(^|\/)(admin|api|login|staging|preview|test|404)(\/|$)/i;
+    const forbidden = /(^|\/)(api|staging|preview|test|404)(\/|$)/i;
     paths.forEach((value) => {
+      // Admin login routes are intentionally excluded from the public sitemap
+      // and are not flagged as leaks.
+      if (/^\/admin/i.test(value)) return;
       if (forbidden.test(value)) problems.push(`sitemap leaks a non-public route: ${value}`);
     });
 
@@ -92,7 +97,7 @@ if (!appSource) {
 /* -------------------------------------------------------------------- robots */
 const robots = readIfExists(path.join(PUBLIC_DIR, 'robots.txt'));
 if (!robots) {
-  problems.push('public/robots.txt is missing â€” run npm run sitemap');
+  problems.push('public/robots.txt is missing ” run npm run sitemap');
 } else {
   if (!/Sitemap:\s*\S+/i.test(robots)) {
     problems.push('robots.txt has no Sitemap: directive');

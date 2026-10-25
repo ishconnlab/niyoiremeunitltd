@@ -26,7 +26,7 @@ const existsInDist = (relative: string): boolean =>
   fs.existsSync(path.join(DIST, relative.replace(/^\//, '')));
 
 if (!fs.existsSync(DIST)) {
-  console.error('dist/ does not exist â€” run the build first.');
+  console.error('dist/ does not exist ” run the build first.');
   process.exit(1);
 }
 
@@ -124,7 +124,7 @@ if (!sw) {
     problems.push('sw.js does not support the SKIP_WAITING message');
   }
   if (/const VERSION = 'v1\.0\.0'/.test(sw)) {
-    problems.push('sw.js was not stamped with a build version â€” run the postbuild step');
+    problems.push('sw.js was not stamped with a build version ” run the postbuild step');
   }
 
   const precacheMatch = sw.match(/const PRECACHE_URLS = \[([\s\S]*?)\];/);

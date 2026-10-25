@@ -20,7 +20,7 @@ export const OfflineBanner: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-2">
         <WifiOff className="w-4 h-4 shrink-0" aria-hidden="true" />
         <span>
-          <strong className="font-bold">{t('pwa.offlineTitle')}</strong> â€” {t('pwa.offlineBody')}
+          <strong className="font-bold">{t('pwa.offlineTitle')}</strong> ” {t('pwa.offlineBody')}
         </span>
       </div>
     </div>
