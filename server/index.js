@@ -8,8 +8,7 @@ import contentRoutes from './routes/content.js';
 import jobRoutes from './routes/jobs.js';
 import uploadRoutes from './routes/upload.js';
 
-// Load env
-dotenv.config();
+// Load env (dotenv/config auto-loads on import)
 
 // Connect database
 connectDB();
