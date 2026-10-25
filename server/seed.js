@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import Admin from './models/Admin.js';
 import Content from './models/Content.js';
 import Job from './models/Job.js';
+import Setting from './models/Setting.js';
 
 const seed = async () => {
   try {
@@ -23,6 +24,19 @@ const seed = async () => {
       console.log('Super admin created:', adminEmail);
     } else {
       console.log('Super admin already exists:', adminEmail);
+    }
+
+    // Seed registration setting (disabled by default once admin exists)
+    const regSetting = await Setting.findOne({ key: 'registrationEnabled' });
+    if (!regSetting) {
+      await Setting.create({
+        key: 'registrationEnabled',
+        value: false,
+        description: 'Whether new admin registration is allowed',
+      });
+      console.log('Registration setting seeded: disabled');
+    } else {
+      console.log('Registration setting already exists:', regSetting.value);
     }
 
     // Seed initial content

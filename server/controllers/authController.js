@@ -1,10 +1,32 @@
 ﻿import asyncHandler from 'express-async-handler';
 import Admin from '../models/Admin.js';
+import Setting from '../models/Setting.js';
 import jwt from 'jsonwebtoken';
 
-// @desc    Register admin (first time setup only)
-// @route   POST /api/auth/register
-// @access  Public
+/**
+ * Get the current registration status.
+ * If no admin exists yet, registration is open (first-time setup).
+ * Otherwise, it depends on the registrationEnabled setting.
+ * @access Public
+ */
+export const getRegistrationStatus = asyncHandler(async (req, res) => {
+  const adminExists = await Admin.exists({});
+  if (!adminExists) {
+    return res.status(200).json({ success: true, registrationEnabled: true });
+  }
+
+  const setting = await Setting.findOne({ key: 'registrationEnabled' });
+  const enabled = setting ? setting.value : false;
+
+  res.status(200).json({ success: true, registrationEnabled: enabled });
+});
+
+/**
+ * Register admin (first time setup only).
+ * If no admin exists, registration is open.
+ * Otherwise, it requires the registrationEnabled setting to be true.
+ * @access Public
+ */
 export const registerAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -13,6 +35,16 @@ export const registerAdmin = asyncHandler(async (req, res) => {
   if (adminExists) {
     res.status(400);
     throw new Error('Admin already exists');
+  }
+
+  // If admins already exist, registration must be explicitly enabled
+  const anyAdminExists = await Admin.exists({});
+  if (anyAdminExists) {
+    const setting = await Setting.findOne({ key: 'registrationEnabled' });
+    if (!setting || setting.value !== true) {
+      res.status(403);
+      throw new Error('Admin registration is disabled');
+    }
   }
 
   const admin = await Admin.create({
@@ -34,9 +66,10 @@ export const registerAdmin = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Login admin
-// @route   POST /api/auth/login
-// @access  Public
+/**
+ * Login admin
+ * @access Public
+ */
 export const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -57,17 +90,44 @@ export const loginAdmin = asyncHandler(async (req, res) => {
   sendTokenResponse(admin, 200, res);
 });
 
-// @desc    Get current logged in admin
-// @route   GET /api/auth/me
-// @access  Private
+/**
+ * Get current logged in admin
+ * @access Private
+ */
 export const getMe = asyncHandler(async (req, res) => {
   const admin = await Admin.findById(req.admin.id);
   res.status(200).json({ success: true, data: admin });
 });
 
-// @desc    Logout admin / clear cookie
-// @route   GET /api/auth/logout
-// @access  Private
+/**
+ * Toggle admin registration on/off.
+ * @access Private (admin only)
+ */
+export const toggleRegistration = asyncHandler(async (req, res) => {
+  let setting = await Setting.findOne({ key: 'registrationEnabled' });
+
+  if (!setting) {
+    setting = await Setting.create({
+      key: 'registrationEnabled',
+      value: false,
+      description: 'Whether new admin registration is allowed',
+    });
+  }
+
+  setting.value = !setting.value;
+  await setting.save();
+
+  res.status(200).json({
+    success: true,
+    registrationEnabled: setting.value,
+    message: `Admin registration ${setting.value ? 'enabled' : 'disabled'}`,
+  });
+});
+
+/**
+ * Logout admin / clear cookie
+ * @access Private
+ */
 export const logoutAdmin = asyncHandler(async (req, res) => {
   res.cookie('token', 'none', {
     expires: new Date(Date.now() + 10 * 1000),
@@ -107,4 +167,3 @@ const getSignedJwtToken = (admin) => {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };
-
