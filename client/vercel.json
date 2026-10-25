@@ -1,4 +1,9 @@
-﻿{
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "https://niyoiremeunitltd.onrender.com/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
