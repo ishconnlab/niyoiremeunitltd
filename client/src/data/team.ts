@@ -1,99 +1,126 @@
 import { TeamMember } from '../types';
 
 /**
- * The leadership and the teams that carry out our work.
+ * Team members of NIYO IREME UNIT COMPANY LTD.
  *
- * No personal names, years of experience or certificates are listed here:
- * NIYO IREME UNIT COMPANY LTD presents the roles and responsibilities that
- * run on every site rather than invented credentials. All copy lives in
- * `src/i18n/locales/en.json` and `src/i18n/locales/rw.json` under
- * `team.members.<id>`.
+ * Names and roles are taken from the client-supplied roster. Roles marked
+ * "(to be confirmed)" are supplied verbatim from informal messages and must
+ * be verified before publication. No phone numbers or WhatsApp contacts are
+ * included yet â€” individual numbers must be supplied by the company before
+ * call/WhatsApp buttons are enabled for any member.
+ *
+ * Photographs are initials-based SVG placeholders. Replace each `/assets/team/<id>.svg`
+ * path with the official team photograph once supplied.
  */
 
-/**
- * The managing director (CEO) of NIYO IREME UNIT COMPANY LTD.
- *
- * The portrait is an illustrative photograph: replace `image` with the
- * official photograph and drop the `photoNoteKey` copy once it is available.
- */
 export const LEADERSHIP: TeamMember = {
   id: 'leadership',
-  image:
-    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80',
-  imageAltKey: 'team.members.leadership.imageAlt',
-  roleKey: 'team.members.leadership.role',
-  specialtyKey: 'team.members.leadership.specialty',
-  bioKey: 'team.members.leadership.bio',
-  badgeKey: 'team.members.leadership.badge',
-  photoNoteKey: 'team.members.leadership.photoNote',
+  name: 'Managing Director',
+  image: '/assets/team/cyuzuzo-ella-kevine.svg',
+  imageAltKey: 'team.leadership.imageAlt',
+  roleKey: 'team.leadership.role',
+  specialtyKey: 'team.leadership.specialty',
+  bioKey: 'team.leadership.bio',
+  badgeKey: 'team.leadership.badge',
+  photoNoteKey: 'team.leadership.photoNote',
   responsibilityKeys: [
-    'team.members.leadership.responsibilities.0',
-    'team.members.leadership.responsibilities.1',
-    'team.members.leadership.responsibilities.2',
-    'team.members.leadership.responsibilities.3',
+    'team.leadership.responsibilities.0',
+    'team.leadership.responsibilities.1',
+    'team.leadership.responsibilities.2',
+    'team.leadership.responsibilities.3',
   ],
 };
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: 'supervision',
-    image:
-      'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80',
-    imageAltKey: 'team.members.supervision.imageAlt',
-    roleKey: 'team.members.supervision.role',
-    specialtyKey: 'team.members.supervision.specialty',
-    bioKey: 'team.members.supervision.bio',
-    badgeKey: 'team.members.supervision.badge',
+    id: 'cyuzuzo-ella-kevine',
+    name: 'Cyuzuzo Ella Kevine',
+    image: '/assets/team/cyuzuzo-ella-kevine.svg',
+    imageAltKey: 'team.members.cyuzuzo-ella-kevine.imageAlt',
+    roleKey: 'team.members.cyuzuzo-ella-kevine.role',
+    specialtyKey: 'team.members.cyuzuzo-ella-kevine.specialty',
+    bioKey: 'team.members.cyuzuzo-ella-kevine.bio',
+    badgeKey: 'team.members.cyuzuzo-ella-kevine.badge',
     responsibilityKeys: [
-      'team.members.supervision.responsibilities.0',
-      'team.members.supervision.responsibilities.1',
-      'team.members.supervision.responsibilities.2',
+      'team.members.cyuzuzo-ella-kevine.responsibilities.0',
+      'team.members.cyuzuzo-ella-kevine.responsibilities.1',
     ],
   },
   {
-    id: 'finishing',
-    image:
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80',
-    imageAltKey: 'team.members.finishing.imageAlt',
-    roleKey: 'team.members.finishing.role',
-    specialtyKey: 'team.members.finishing.specialty',
-    bioKey: 'team.members.finishing.bio',
-    badgeKey: 'team.members.finishing.badge',
+    id: 'niyoshuti-izaac',
+    name: 'Niyoshuti Izaac',
+    image: '/assets/team/niyoshuti-izaac.svg',
+    imageAltKey: 'team.members.niyoshuti-izaac.imageAlt',
+    roleKey: 'team.members.niyoshuti-izaac.role',
+    specialtyKey: 'team.members.niyoshuti-izaac.specialty',
+    bioKey: 'team.members.niyoshuti-izaac.bio',
+    badgeKey: 'team.members.niyoshuti-izaac.badge',
     responsibilityKeys: [
-      'team.members.finishing.responsibilities.0',
-      'team.members.finishing.responsibilities.1',
-      'team.members.finishing.responsibilities.2',
+      'team.members.niyoshuti-izaac.responsibilities.0',
     ],
   },
   {
-    id: 'painting',
-    image:
-      'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=900&q=80',
-    imageAltKey: 'team.members.painting.imageAlt',
-    roleKey: 'team.members.painting.role',
-    specialtyKey: 'team.members.painting.specialty',
-    bioKey: 'team.members.painting.bio',
-    badgeKey: 'team.members.painting.badge',
+    id: 'niyonsenga-claude',
+    name: 'Niyonsenga Claude',
+    image: '/assets/team/niyonsenga-claude.svg',
+    imageAltKey: 'team.members.niyonsenga-claude.imageAlt',
+    roleKey: 'team.members.niyonsenga-claude.role',
+    specialtyKey: 'team.members.niyonsenga-claude.specialty',
+    bioKey: 'team.members.niyonsenga-claude.bio',
+    badgeKey: 'team.members.niyonsenga-claude.badge',
+    responsibilityKeys: [],
+  },
+  {
+    id: 'kontabure-mouse-byukusenge',
+    name: 'Kontabure Mouse Byukusenge',
+    image: '/assets/team/kontabure.svg',
+    imageAltKey: 'team.members.kontabure-mouse-byukusenge.imageAlt',
+    roleKey: 'team.members.kontabure-mouse-byukusenge.role',
+    specialtyKey: 'team.members.kontabure-mouse-byukusenge.specialty',
+    bioKey: 'team.members.kontabure-mouse-byukusenge.bio',
+    badgeKey: 'team.members.kontabure-mouse-byukusenge.badge',
     responsibilityKeys: [
-      'team.members.painting.responsibilities.0',
-      'team.members.painting.responsibilities.1',
-      'team.members.painting.responsibilities.2',
+      'team.members.kontabure-mouse-byukusenge.responsibilities.0',
+      'team.members.kontabure-mouse-byukusenge.responsibilities.1',
     ],
   },
   {
-    id: 'workforce',
-    image:
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80',
-    imageAltKey: 'team.members.workforce.imageAlt',
-    roleKey: 'team.members.workforce.role',
-    specialtyKey: 'team.members.workforce.specialty',
-    bioKey: 'team.members.workforce.bio',
-    badgeKey: 'team.members.workforce.badge',
+    id: 'pascali',
+    name: 'Pascali',
+    image: '/assets/team/paskali.svg',
+    imageAltKey: 'team.members.pascali.imageAlt',
+    roleKey: 'team.members.pascali.role',
+    specialtyKey: 'team.members.pascali.specialty',
+    bioKey: 'team.members.pascali.bio',
+    badgeKey: 'team.members.pascali.badge',
     responsibilityKeys: [
-      'team.members.workforce.responsibilities.0',
-      'team.members.workforce.responsibilities.1',
-      'team.members.workforce.responsibilities.2',
+      'team.members.pascali.responsibilities.0',
+    ],
+  },
+  {
+    id: 'shimiyimana-samuel',
+    name: 'Shimiyimana Samuel',
+    image: '/assets/team/shimiyimana-samwer.svg',
+    imageAltKey: 'team.members.shimiyimana-samuel.imageAlt',
+    roleKey: 'team.members.shimiyimana-samuel.role',
+    specialtyKey: 'team.members.shimiyimana-samuel.specialty',
+    bioKey: 'team.members.shimiyimana-samuel.bio',
+    badgeKey: 'team.members.shimiyimana-samuel.badge',
+    responsibilityKeys: [
+      'team.members.shimiyimana-samuel.responsibilities.0',
+    ],
+  },
+  {
+    id: 'hahirwa-basenga-saimoni-pitabyukusenge',
+    name: 'Hahirwa Basenga Saimoni Pitabyukusenge',
+    image: '/assets/team/hahirwa-basenga-saimoni-pitabyukusenge.svg',
+    imageAltKey: 'team.members.hahirwa-basenga-saimoni-pitabyukusenge.imageAlt',
+    roleKey: 'team.members.hahirwa-basenga-saimoni-pitabyukusenge.role',
+    specialtyKey: 'team.members.hahirwa-basenga-saimoni-pitabyukusenge.specialty',
+    bioKey: 'team.members.hahirwa-basenga-saimoni-pitabyukusenge.bio',
+    badgeKey: 'team.members.hahirwa-basenga-saimoni-pitabyukusenge.badge',
+    responsibilityKeys: [
+      'team.members.hahirwa-basenga-saimoni-pitabyukusenge.responsibilities.0',
     ],
   },
 ];
-

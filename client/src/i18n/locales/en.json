@@ -288,7 +288,115 @@
     "call": "Call about equipment",
     "whatsapp": "WhatsApp about equipment",
     "ctaRental": "Inquire About Rental",
-    "ctaPurchase": "Inquire About Buying"
+    "ctaPurchase": "Inquire About Buying",
+    "filter": {
+      "all": "All",
+      "painting": "Painting",
+      "surfacePreparation": "Surface Prep",
+      "additional": "Additional"
+    },
+    "category": {
+      "painting": "Painting",
+      "surfacePreparation": "Surface Prep",
+      "additional": "Additional"
+    },
+    "searchPlaceholder": "Search equipment...",
+    "clearSearch": "Clear search",
+    "emptyTitle": "No equipment found",
+    "emptyBody": "Try a different search term or filter.",
+    "ctaInquire": "Inquire",
+    "items": {
+      "paint-brush": {
+        "name": "Paint Brush",
+        "description": "For applying paint to edges, corners, trim, and small surfaces.",
+        "imageAlt": "Paint brush tool"
+      },
+      "paint-roller": {
+        "name": "Paint Roller",
+        "description": "For applying paint quickly and evenly to large wall and ceiling areas.",
+        "imageAlt": "Paint roller tool"
+      },
+      "paint-tray": {
+        "name": "Paint Tray",
+        "description": "Holds paint and distributes it evenly onto a roller during application.",
+        "imageAlt": "Paint tray tool"
+      },
+      "paint-bucket": {
+        "name": "Paint Bucket",
+        "description": "For mixing, carrying, and storing paint on site.",
+        "imageAlt": "Paint bucket tool"
+      },
+      "putty-knife": {
+        "name": "Putty Knife",
+        "description": "For applying and smoothing filler, putty, and surface compounds.",
+        "imageAlt": "Putty knife tool"
+      },
+      "paint-scraper": {
+        "name": "Paint Scraper",
+        "description": "For removing loose paint and preparing surfaces before repainting.",
+        "imageAlt": "Paint scraper tool"
+      },
+      "paint-edger": {
+        "name": "Paint Edger",
+        "description": "For painting clean edges along trim, ceilings, and corners without tape.",
+        "imageAlt": "Paint edger tool"
+      },
+      "extension-pole": {
+        "name": "Extension Pole",
+        "description": "Extends roller reach for high walls and ceilings without a ladder.",
+        "imageAlt": "Extension pole tool"
+      },
+      "sandpaper": {
+        "name": "Sandpaper",
+        "description": "For smoothing surfaces before painting or finishing.",
+        "imageAlt": "Sandpaper sheets"
+      },
+      "paint-mixer": {
+        "name": "Paint Mixer",
+        "description": "For thoroughly mixing paint and coatings to consistent colour and texture.",
+        "imageAlt": "Paint mixer tool"
+      },
+      "masking-tape": {
+        "name": "Masking Tape",
+        "description": "For protecting edges, trim, and areas that should not be painted.",
+        "imageAlt": "Masking tape roll"
+      },
+      "drop-cloth": {
+        "name": "Drop Cloth",
+        "description": "For protecting floors and furniture from paint splatters and dust.",
+        "imageAlt": "Drop cloth sheet"
+      },
+      "paint-sprayer": {
+        "name": "Paint Sprayer",
+        "description": "For applying paint over large areas quickly with even coverage.",
+        "imageAlt": "Paint sprayer tool"
+      },
+      "ladder": {
+        "name": "Ladder",
+        "description": "For safe access to high walls, ceilings, and exterior surfaces.",
+        "imageAlt": "Ladder equipment"
+      },
+      "wire-brush": {
+        "name": "Wire Brush",
+        "description": "For cleaning rust, old paint, and debris from metal and masonry surfaces.",
+        "imageAlt": "Wire brush tool"
+      },
+      "sponge": {
+        "name": "Sponge",
+        "description": "For cleaning surfaces and wiping down walls before and after painting.",
+        "imageAlt": "Sponge cleaning tool"
+      },
+      "air-compressor": {
+        "name": "Air Compressor",
+        "description": "Powers pneumatic tools such as spray guns and nail guns on site.",
+        "imageAlt": "Air compressor equipment"
+      },
+      "ibikawa": {
+        "name": "Ibikawa",
+        "description": "Equipment name supplied by the client. Exact tool, spelling, and English equivalent to be confirmed.",
+        "imageAlt": "Ibikawa equipment"
+      }
+    }
   },
   "about": {
     "hero": {
@@ -855,6 +963,8 @@
     "equipmentPurchase": "Hello NIYO IREME UNIT COMPANY LTD, I would like to inquire about purchasing {{name}}. Please share availability, specifications, and price.",
     "workforceRequestWorkers": "Hello NIYO IREME UNIT COMPANY LTD, I would like to request workers for a project. The type of work is {{workType}}. Please contact me to discuss availability and requirements.",
     "workforceJobInquiry": "Hello NIYO IREME UNIT COMPANY LTD, I would like to inquire about available work opportunities. Please let me know the available roles and application requirements.",
+    "contactMember": "Hello NIYO IREME UNIT COMPANY LTD, I would like to contact {{name}} regarding their work.",
+    "equipmentInquiry": "Hello NIYO IREME UNIT COMPANY LTD, I would like to inquire about {{name}}. Please share availability and price.",
     "chatTitle": "Quick enquiry",
     "chatBody": "Choose a topic and we will open WhatsApp with your message ready to send.",
     "chatCta": "Start WhatsApp chat",
@@ -917,49 +1027,102 @@
       "body": "We vet and onboard disciplined craftspeople for residential and commercial sites across Kigali and the regional districts. Join our roster of artisans.",
       "cta": "Apply to the artisan pool"
     },
+    "leadership": {
+      "badge": "Managing Director",
+      "title": "Leadership",
+      "imageAlt": "Managing director portrait",
+      "role": "Managing Director",
+      "specialty": "Overall company leadership and project oversight",
+      "bio": "Leads NIYO IREME UNIT COMPANY LTD oversees all site operations and ensures every project meets our quality benchmark",
+      "photoNote": "Photograph to be replaced with the official managing director portrait",
+      "responsibilities": [
+        "Overall company leadership",
+        "Project oversight and quality assurance",
+        "Client and partner relations",
+        "Strategic planning and site supervision"
+      ]
+    },
+    "contact": {
+      "badge": "Contact the company",
+      "title": "Reach us directly",
+      "body": "No individual phone numbers are published yet. Call or WhatsApp the company line to be connected with the right team member.",
+      "callCompany": "Call Company",
+      "whatsappCompany": "WhatsApp Company"
+    },
     "members": {
-      "supervision": {
-        "role": "Site supervision & handover",
-        "specialty": "Site visits, measurement and quality checks",
-        "bio": "Our supervisors visit your site in Kimironko or on your plot, agree the scope in writing and check the work at every stage before handover.",
-        "badge": "Supervision",
+      "cyuzuzo-ella-kevine": {
+        "role": "Marketing & Communications",
+        "specialty": "Coordination and follow-up of work and workers",
+        "bio": "Coordinates marketing activities, customer communication, and project follow-ups between the office and site teams",
+        "badge": "Marketing",
+        "imageAlt": "Cyuzuzo Ella Kevine - Marketing & Communications",
+        "photoNote": "Photograph to be replaced with the official team portrait",
         "responsibilities": [
-          "Free site visit and measurement",
-          "Written scope, schedule and price",
-          "Stage-by-stage quality checks"
+          "Customer communication and follow-up",
+          "Marketing activity coordination",
+          "Work and worker coordination"
         ]
       },
-      "finishing": {
-        "role": "House finishing & decoration",
-        "specialty": "Plastering, gypsum, tiling and ceilings",
-        "bio": "Finishing specialists prepare walls, ceilings and floors â€” plastering, gypsum boards, tiling, painting and the final decorative details.",
-        "badge": "Finishing",
+      "niyoshuti-izaac": {
+        "role": "Design",
+        "specialty": "Role to be confirmed",
+        "bio": "Design responsibilities to be confirmed by the company",
+        "badge": "Design",
+        "imageAlt": "Niyoshuti Izaac - Design",
+        "photoNote": "Photograph to be replaced with the official team portrait",
+        "responsibilities": []
+      },
+      "niyonsenga-claude": {
+        "role": "CEO",
+        "specialty": "Chief Executive Officer",
+        "bio": "Chief Executive Officer of NIYO IREME UNIT COMPANY LTD providing overall leadership and oversight",
+        "badge": "CEO",
+        "imageAlt": "Niyonsenga Claude - CEO",
+        "photoNote": "Photograph to be replaced with the official team portrait",
+        "responsibilities": []
+      },
+      "kontabure-mouse-byukusenge": {
+        "role": "Equipment & Tools Representative",
+        "specialty": "Role to be confirmed",
+        "bio": "Role and responsibilities to be confirmed by the company",
+        "badge": "Equipment",
+        "imageAlt": "Kontabure Mouse Byukusenge - Equipment & Tools Representative",
+        "photoNote": "Photograph to be replaced with the official team portrait",
+        "responsibilities": []
+      },
+      "pascali": {
+        "role": "Electrical Works Representative",
+        "specialty": "Electrical works coordination",
+        "bio": "Coordinates electrical work within the scope of assigned projects",
+        "badge": "Electrical",
+        "imageAlt": "Pascali - Electrical Works Representative",
+        "photoNote": "Photograph to be replaced with the official team portrait",
         "responsibilities": [
-          "Plastering and gypsum board ceilings",
-          "Tiling, skirting and paint preparation",
-          "Final decoration and clean handover"
+          "Electrical work coordination"
         ]
       },
-      "painting": {
-        "role": "Painting & surface coating",
-        "specialty": "Interior and exterior coating systems",
-        "bio": "Painters prepare surfaces, apply primer, filler and finish coats, and protect furniture and floors while the work is carried out.",
-        "badge": "Painting",
+      "shimiyimana-samuel": {
+        "role": "Welding Team Representative",
+        "specialty": "Welding team coordination",
+        "bio": "Represents the welding team coordinates welding work and communicates progress on site",
+        "badge": "Welding",
+        "imageAlt": "Shimiyimana Samuel - Welding Team Representative",
+        "photoNote": "Photograph to be replaced with the official team portrait",
         "responsibilities": [
-          "Surface preparation and primer",
-          "Interior and exterior coats",
-          "Protective covering and clean-up"
+          "Welding team coordination",
+          "Site progress communication"
         ]
       },
-      "workforce": {
-        "role": "Workforce coordination & recruitment",
-        "specialty": "Vetting, rostering and deployment of artisans",
-        "bio": "We vet artisans, match them to the skills your site needs, and roster them for the agreed duration with a supervisor on site throughout.",
-        "badge": "Workforce",
+      "hahirwa-basenga-saimoni-pitabyukusenge": {
+        "role": "Equipment & Tools Representative",
+        "specialty": "Equipment and tools coordination",
+        "bio": "Coordinates tools equipment availability and their proper handling on site",
+        "badge": "Equipment",
+        "imageAlt": "Hahirwa Basenga Saimoni Pitabyukusenge - Equipment & Tools",
+        "photoNote": "Photograph to be replaced with the official team portrait",
         "responsibilities": [
-          "Vetting of artisan skills",
-          "Deployment by trade and duration",
-          "Supervision on site throughout"
+          "Equipment and tools coordination",
+          "Tool availability and handling"
         ]
       }
     }
@@ -968,6 +1131,8 @@
     "eyebrow": "Client feedback",
     "title": "What clients say about our work",
     "subtitle": "Verified feedback from clients whose projects NIYO IREME has completed.",
+    "prevLabel": "Previous review",
+    "nextLabel": "Next review",
     "sheetLabel": "Review sheet",
     "indexLabel": "Review",
     "qualityLabel": "Quality",

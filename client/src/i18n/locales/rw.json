@@ -288,7 +288,115 @@
     "call": "Hamagara ku bikoresho",
     "whatsapp": "WhatsApp ku bikoresho",
     "ctaRental": "Baza iby'ubukode",
-    "ctaPurchase": "Baza ibijyanye no kugura"
+    "ctaPurchase": "Baza ibijyanye no kugura",
+    "filter": {
+      "all": "Icyo gose",
+      "painting": "Ibara",
+      "surfacePreparation": "Kuremera ubuso",
+      "additional": "Ibindi"
+    },
+    "category": {
+      "painting": "Ibara",
+      "surfacePreparation": "Kuremera ubuso",
+      "additional": "Ibindi"
+    },
+    "searchPlaceholder": "Bita ibikoresho...",
+    "clearSearch": "Suzura bikoresho",
+    "emptyTitle": "Ibikoresho ntibashobwa",
+    "emptyBody": "Subira ikibazo gahunda cyangwa guhindura ubutumwa.",
+    "ctaInquire": "Baza",
+    "items": {
+      "paint-brush": {
+        "name": "Paint Brush",
+        "description": "Icyumba cyo kugira ibara mu kigo, amazina, imibare n'ibirabira.",
+        "imageAlt": "Paint brush tool"
+      },
+      "paint-roller": {
+        "name": "Paint Roller",
+        "description": "Kugira ibara neza n'imbaraga mu bikenya n'ibitaro bikuru.",
+        "imageAlt": "Paint roller tool"
+      },
+      "paint-tray": {
+        "name": "Paint Tray",
+        "description": "Ikirengeza cy'ibara cyasaba n'icyanganya ku roller.",
+        "imageAlt": "Paint tray tool"
+      },
+      "paint-bucket": {
+        "name": "Paint Bucket",
+        "description": "Iceka y'iguzanyiriza, kwiyandikisha n'kurinda ibara ku mushinga.",
+        "imageAlt": "Paint bucket tool"
+      },
+      "putty-knife": {
+        "name": "Putty Knife",
+        "description": "Kubaza n'kugaragara imyenyezamiryangizo, putty n'ibikoresho by'ubuso.",
+        "imageAlt": "Putty knife tool"
+      },
+      "paint-scraper": {
+        "name": "Paint Scraper",
+        "description": "Kukoza ibara ritagiye mbere yo kugira ibara ikomeye.",
+        "imageAlt": "Paint scraper tool"
+      },
+      "paint-edger": {
+        "name": "Paint Edger",
+        "description": "Kugira ibara neza kurembura, ibitaro n'amagorane ntabwo na tape.",
+        "imageAlt": "Paint edger tool"
+      },
+      "extension-pole": {
+        "name": "Extension Pole",
+        "description": "Kugira roller ikirebure mu bikenya n'ibitaro bikuru ntabwo na ladder.",
+        "imageAlt": "Extension pole tool"
+      },
+      "sandpaper": {
+        "name": "Sandpaper",
+        "description": "Kugaragara ubuso mbere yo gutegura cyangwa gushyira ibara.",
+        "imageAlt": "Sandpaper sheets"
+      },
+      "paint-mixer": {
+        "name": "Paint Mixer",
+        "description": "Icyumba cy'iguzanyiza ibara n'ibikoresho by'ikiganiro.",
+        "imageAlt": "Paint mixer tool"
+      },
+      "masking-tape": {
+        "name": "Masking Tape",
+        "description": "Kubinda amazina, imibare n'amaziyo ntabwo babishobora gutegurwa na ibara.",
+        "imageAlt": "Masking tape roll"
+      },
+      "drop-cloth": {
+        "name": "Drop Cloth",
+        "description": "Kubinda ibitaro n'ibikoresho mu ibibazo n'ibyemejwe by'ibara.",
+        "imageAlt": "Drop cloth sheet"
+      },
+      "paint-sprayer": {
+        "name": "Paint Sprayer",
+        "description": "Kugira ibara mu bikuru neza n'imbaraga zishobora gutegura.",
+        "imageAlt": "Paint sprayer tool"
+      },
+      "ladder": {
+        "name": "Ladder",
+        "description": "Icyumba cy'umucyo bwiza ku bikenya bikuru, ibitaro no ku kigo.",
+        "imageAlt": "Ladder equipment"
+      },
+      "wire-brush": {
+        "name": "Wire Brush",
+        "description": "Kusukura inyenye, ibara ritagiye n'ibirambanga mu mbuga n'imbuga.",
+        "imageAlt": "Wire brush tool"
+      },
+      "sponge": {
+        "name": "Sponge",
+        "description": "Kusukura ubuso n'gutoza inkura ya kabiri n'ku mushize.",
+        "imageAlt": "Sponge cleaning tool"
+      },
+      "air-compressor": {
+        "name": "Air Compressor",
+        "description": "Icyumba cy'icyumba cya nyamiko z'ibikoresho cyangwa ngerero.",
+        "imageAlt": "Air compressor equipment"
+      },
+      "ibikawa": {
+        "name": "Ibikawa",
+        "description": "Izina ry'ibikoresho ryashoboragirije na client. Izina neza n'ikirere kirabahagarirwa.",
+        "imageAlt": "Ibikawa equipment"
+      }
+    }
   },
   "about": {
     "hero": {
@@ -855,6 +963,8 @@
     "equipmentPurchase": "Mwitangira NIYO IREME UNIT COMPANY LTD, nshaka kugura {{name}}. Tugire ubugeringo n'ibisi buri.",
     "workforceRequestWorkers": "Mwitangira NIYO IREME UNIT COMPANY LTD, nshaka guhuza abakozi ku mushinga. Ibicyo byo gukora ni {{workType}}. Hamagare nigeze kurataniza ubugeringo n'ibinyabiziga.",
     "workforceJobInquiry": "Mwitangira NIYO IREME UNIT COMPANY LTD, nshaka kumenya amahirwe y'akazi yitangajwe. Ongera ubutumwa bwa ku mirango yitangajwe n'ibinyabiziga byo kugirango.",
+    "contactMember": "Hello NIYO IREME UNIT COMPANY LTD, I would like to contact {{name}} regarding their work.",
+    "equipmentInquiry": "Hello NIYO IREME UNIT COMPANY LTD, I would like to inquire about {{name}}. Please share availability and price.",
     "chatTitle": "Ikibazo gito",
     "chatBody": "Hitamo ikiganza maze tugufungure WhatsApp ubutumwa bwawe bwiteguye kohereza.",
     "chatCta": "Tangira ikiganiro kuri WhatsApp",
@@ -917,49 +1027,102 @@
       "body": "Tugenzura kandi twakaza abahinga bariho ku mirimo y'amazu n'ibikorwa mu Kigali no mu turere tw'umwuka. Wongera mu rutonde rw'abahinga bacu.",
       "cta": "Wongera mu rutonde rw'abahinga"
     },
+    "leadership": {
+      "badge": "Umukuru w'Ikigo",
+      "title": "Ubuyobozi",
+      "imageAlt": "Amajwi y'umukuru w'ikigo",
+      "role": "Umukuru w'Ikigo",
+      "specialty": "Ubuyobozi bw'ikigo no kugenzura imirimo yose",
+      "bio": "Yibonyeza NIYO IREME UNIT COMPANY LTD, yeshira imirimo yose ku musi, kandi ibaba ko buri umushinga gikora n'ibigomba.",
+      "photoNote": "Amajwi yateguraje agahinda gahunda umukuru w'ikigo.",
+      "responsibilities": [
+        "Ubuyobozi bwa mwuka bwa ikigo",
+        "Kugenzura imirimo n'ubuziranenge",
+        "Ubuhanuzi b'umukiriya n'abashyirwa",
+        "Plani strategic no kuganza imirimo ku kazi"
+      ]
+    },
+    "contact": {
+      "badge": "Tuhagarire ikigo",
+      "title": "Tuhagarire mu mibere",
+      "body": "Ibambara by'indwara n'imezeranwa bishobora kuba bishobora gutubura. Hamagara cyangwa ubutumwa kuri WhatsApp y'ikigo ubuhe bakuru.",
+      "callCompany": "Hamagara Ikigo",
+      "whatsappCompany": "WhatsApp Ikigo"
+    },
     "members": {
-      "supervision": {
-        "role": "Gukumba imirimo no gutanga imirimo",
-        "specialty": "Gusura ahantu, gupima no kugenzura umubirro",
-        "bio": "Abakuru bacu basura ahantu i Kimironko cyangwa ku bwanjwe, banyagirana ibigomba mu mwandiko, kandi bahagenzura imirimo mu icyiciro byose mbere yo gutanga imirimo.",
-        "badge": "Gukumba imirimo",
+      "cyuzuzo-ella-kevine": {
+        "role": "Marketing n'Ikoranabuhanga",
+        "specialty": "Gusuzura kandi guhindura kazi n'abakozi",
+        "bio": "Yifata amajwi yo ku abakiriya, ubutumwa n'guhindura kazi ku mirimo y'ikigo.",
+        "badge": "Marketing",
+        "imageAlt": "Cyuzuzo Ella Kevine - Marketing n'Ikoranabuhanga",
+        "photoNote": "Amajwi yateguraje agahinda gahunda umushamihigo.",
         "responsibilities": [
-          "Gusura ahantu no gupima ku buntu",
-          "Ibigomba, igihe n'ibiciro byo mu mwandiko",
-          "Kugenzura umubirro mu icyiciro"
+          "Ubutumwa bw'abakiriya no guhindura",
+          "Ibijambo by'ikiganiro",
+          "Gusuzura kazi n'abakozi"
         ]
       },
-      "finishing": {
-        "role": "Gutuzuza no gushushanya inzu",
-        "specialty": "Gufukamisha, ikabumba cya gypsum, amabatiro no ibitaro",
-        "bio": "Abahinga b'ubwiza bashyira imirongo inzuru, ibitaro n'ubutaka â€” gufukamisha, gukora ibarura bya gypsum, kubaka amabati, gupaka ibara no gushyira ibisobanuro by'uburyo.",
-        "badge": "Gutuzuza inzu",
+      "niyoshuti-izaac": {
+        "role": "Design",
+        "specialty": "Ubushobora kubona",
+        "bio": "Ubushobora bw'ikigusa budahagarirwa n'ikigo.",
+        "badge": "Design",
+        "imageAlt": "Niyoshuti Izaac - Design",
+        "photoNote": "Amajwi yateguraje agahinda gahunda umushamihigo.",
+        "responsibilities": []
+      },
+      "niyonsenga-claude": {
+        "role": "CEO",
+        "specialty": "Umuyanjye w'Ikigo",
+        "bio": "Umuyanjye w'NIYO IREME UNIT COMPANY LTD, yishira ubuyobozi bwose no kugenzura imirimo.",
+        "badge": "CEO",
+        "imageAlt": "Niyonsenga Claude - CEO",
+        "photoNote": "Amajwi yateguraje agahinda gahunda umushamihigo.",
+        "responsibilities": []
+      },
+      "kontabure-mouse-byukusenge": {
+        "role": "Umushamihize w'Ibikoresho n'ibigenga",
+        "specialty": "Ubushobora kubona",
+        "bio": "Ikigusa n'amabwiriza yateguraje n'ikigo.",
+        "badge": "Ibikoresho",
+        "imageAlt": "Kontabure Mouse Byukusenge - Umushamihize w'Ibikoresho n'ibigenga",
+        "photoNote": "Amajwi yateguraje agahinda gahunda umushamihigo.",
+        "responsibilities": []
+      },
+      "pascali": {
+        "role": "Umushamihize w'Ikoranabyaha",
+        "specialty": "Gusuzura ibikorwa by'ikoranabyaha",
+        "bio": "Yusuzura ibikorwa by'ikoranabyaha mu rwego rw'imirimo yageye.",
+        "badge": "Koranabyaha",
+        "imageAlt": "Pascali - Umushamihize w'Ikoranabyaha",
+        "photoNote": "Amajwi yateguraje agahinda gahunda umushamihigo.",
         "responsibilities": [
-          "Gufukamisha no gukora ibarura bya gypsum",
-          "Amabati, ibisenge no gufukamisha imara y'ibara",
-          "Ibisobanuro by'uburyo no gukarubaza isumburuko"
+          "Gusuzura ibikorwa by'ikoranabyaha"
         ]
       },
-      "painting": {
-        "role": "Gupaka ibara no gufata imbaraga",
-        "specialty": "Ibara ry'imbere no ry'inyuma",
-        "bio": "Abapainteri batandukanya iminzano, bafata igiti cya mbere, bavuza akabumba kandi baramufata ibikoresho n'imbaho.",
-        "badge": "Gupaka ibara",
+      "shimiyimana-samuel": {
+        "role": "Umushamihize w'Ikipe ya Welding",
+        "specialty": "Gusuzura ibirayamahoro by'welding",
+        "bio": "Mwirindira ikipe ya welding, yufasha guhindura kazi ya ku minago, kandi yishura ibicaniro ku musi.",
+        "badge": "Welding",
+        "imageAlt": "Shimiyimana Samuel - Umushamihize w'Ikipe ya Welding",
+        "photoNote": "Amajwi yateguraje agahinda gahunda umushamihigo.",
         "responsibilities": [
-          "Gutandukanya iminzano no gufata igiti",
-          "Ibara ry'imbere no ry'inyuma",
-          "Gufata ibikoresho no gukubanza"
+          "Gusuzura ibirayamahoro by'welding",
+          "Gushura ibicaniro ry'icyiciro ku musi"
         ]
       },
-      "workforce": {
-        "role": "Gushakisha no gukora abakuru b'umukuru",
-        "specialty": "Kugenzura ubuzarityi, guhangara imirimo no gushakisha abahinga",
-        "bio": "Tugenzura ubuzarityi bw'abahinga, babwira uko umusozi wabo ukeneye, kandi tubashyira ku kazi uko byo bikenewe, hari umujyanama ku kazi igihe byose.",
-        "badge": "Gushakisha ikirimo",
+      "hahirwa-basenga-saimoni-pitabyukusenge": {
+        "role": "Umushamihize w'Ibikoresho n'ibigenga",
+        "specialty": "Gusuzura ibikoresho n'ibigenga",
+        "bio": "Yusuzura ibikoresho, ibihari n'ukoreshejwe neza ku musi.",
+        "badge": "Ibikoresho",
+        "imageAlt": "Hahirwa Basenga Saimoni Pitabyukusenge - Ibikoresho n'ibigenga",
+        "photoNote": "Amajwi yateguraje agahinda gahunda umushamihigo.",
         "responsibilities": [
-          "Kugenzura ubuzarityi bw'abahinga",
-          "Gushyira abakuru hakurikijwe ibiranga by'umusozi",
-          "Umujyanama ku kazi igihe byose"
+          "Gusuzura ibikoresho n'ibigenga",
+          "Ibihari no gufasha ku bigenga"
         ]
       }
     }
@@ -968,6 +1131,8 @@
     "eyebrow": "Ibitekerezo by'abakiriya",
     "title": "Icyo abakiriya bavuga ku mirimo yacu",
     "subtitle": "Ibitekerezo byemejwe by'abakiriya imirimo yabo NIYO IREME yarangiye.",
+    "prevLabel": "Review ya kabiri",
+    "nextLabel": "Review ya mbere",
     "sheetLabel": "Urupapuro rw'isuzuma",
     "indexLabel": "Isuzuma",
     "qualityLabel": "Ubuziranenge",

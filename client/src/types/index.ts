@@ -59,18 +59,24 @@ export interface WhyChooseItem {
 
 export interface TeamMember {
   id: string;
+  /** Displayed full name of the team member. */
+  name: string;
   /** i18n keys â€” every string lives in the locale files. */
   roleKey: string;
   specialtyKey: string;
   bioKey: string;
   badgeKey: string;
   responsibilityKeys: string[];
-  /** Illustrative photography of the type of work the team carries out. */
+  /** Photography of the team member. Local path preferred; replace placeholder once real photos are supplied. */
   image: string;
   /** Description of the photograph, read by screen readers. */
   imageAltKey: string;
   /** Optional note when the photograph is a placeholder. */
   photoNoteKey?: string;
+  /** International format phone number with + prefix (e.g. +250781294928). Omit when unverified. */
+  phone?: string;
+  /** Digits-only phone number for WhatsApp URLs (e.g. 250781294928). Omit when unverified. */
+  whatsapp?: string;
 }
 
 export interface QuotationCalculationInput {

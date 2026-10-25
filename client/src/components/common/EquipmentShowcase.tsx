@@ -1,112 +1,43 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  Blocks,
-  Droplets,
-  MessageSquare,
-  Phone,
-  Ruler,
-  ShoppingBag,
-  ShieldCheck,
-  Truck,
-  Wrench,
-  type LucideIcon,
-} from 'lucide-react';
+import { Phone, MessageSquare, Search, X } from 'lucide-react';
 
 import { COMPANY_INFO } from '../../data/company';
+import { EQUIPMENT_ITEMS, EquipmentCategory } from '../../data/equipment';
 import { PillButton } from './PillButton';
 import { SectionHeading } from './SectionHeading';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
-type EquipmentAction = 'rental' | 'purchase' | 'both';
-
-type EquipmentItem = {
-  title: string;
-  body: string;
-  use?: string;
-  action: EquipmentAction;
-  icon: LucideIcon;
-};
-
-const EQUIPMENT_ITEMS: EquipmentItem[] = [
-  {
-    title: 'Earthmoving and site preparation',
-    body: 'Available equipment for site preparation, excavation and moving materials, subject to confirmation for your project.',
-    use: 'Excavation, site clearing and material movement for building sites.',
-    action: 'rental',
-    icon: Truck,
-  },
-  {
-    title: 'Concrete and blockwork',
-    body: 'Mixers, compactors and related equipment for concrete, blockwork and structural work.',
-    use: 'Mixing, compacting and finishing concrete and blockwork.',
-    action: 'rental',
-    icon: Blocks,
-  },
-  {
-    title: 'Finishing and surface tools',
-    body: 'Equipment for surface preparation, grinding, polishing and finishing work.',
-    use: 'Surface preparation, grinding, polishing and surface finishing.',
-    action: 'rental',
-    icon: Wrench,
-  },
-  {
-    title: 'Cleaning and site care',
-    body: 'Pressure washers and clean-up equipment for post-renovation and handover cleaning.',
-    use: 'Pressure washing and post-construction site clean-up.',
-    action: 'rental',
-    icon: Droplets,
-  },
-  {
-    title: 'Measuring and quality checks',
-    body: 'Levelling, measuring and inspection tools used to check accuracy on site.',
-    use: 'Levelling, measuring and inspection for accuracy checks.',
-    action: 'rental',
-    icon: Ruler,
-  },
-  {
-    title: 'Safety and site support',
-    body: 'Safety equipment and site support items for the agreed scope of work.',
-    use: 'PPE and site support items for safe work.',
-    action: 'rental',
-    icon: ShieldCheck,
-  },
-];
-
-const MATERIALS_ITEMS: EquipmentItem[] = [
-  {
-    title: 'Building materials sales',
-    body: 'We sell available building materials and finishing supplies, and help you choose the right products for your site.',
-    use: 'Paint, tools, adhesives and finishing supplies for construction and finishing projects.',
-    action: 'purchase',
-    icon: ShoppingBag,
-  },
-];
-
-/**
- * Modern construction equipment section.
- *
- * Only equipment and building materials are shown here â€” no other services.
- * Every card offers a contextual WhatsApp inquiry for the action the item
- * actually supports (rental for equipment, purchase for materials), with the
- * item name prefilled into the message. Content-matched icons replace generic
- * visuals so each card looks like what it actually is.
- */
 export const EquipmentShowcase: React.FC = () => {
   const { t } = useTranslation();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState<EquipmentCategory | 'all'>('all');
 
-  const whatsappUrl = (messageKey: string, params: Record<string, string>) => {
-    const text = t(messageKey, params);
-    return `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(text)}`;
-  };
+  const filteredItems = useMemo(() => {
+    return EQUIPMENT_ITEMS.filter((item) => {
+      const name = t(item.nameKey).toLowerCase();
+      const description = t(item.descriptionKey).toLowerCase();
+      const query = searchQuery.toLowerCase();
+      const matchesSearch =
+        searchQuery === '' ||
+        name.includes(query) ||
+        description.includes(query);
+      const matchesCategory =
+        activeCategory === 'all' || item.category === activeCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, activeCategory, t]);
 
-  const rentalUrl = (item: EquipmentItem) =>
-    whatsappUrl('whatsapp.equipmentRental', { name: item.title });
-  const purchaseUrl = (item: EquipmentItem) =>
-    whatsappUrl('whatsapp.equipmentPurchase', { name: item.title });
+  const whatsappUrl = (itemName: string) =>
+    `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(
+      t('whatsapp.equipmentInquiry', { name: itemName })
+    )}`;
 
-  const allItems = [
-    ...EQUIPMENT_ITEMS,
-    ...MATERIALS_ITEMS,
+  const categoryOptions: { value: EquipmentCategory | 'all'; label: string }[] = [
+    { value: 'all', label: t('equipment.filter.all') },
+    { value: 'painting', label: t('equipment.filter.painting') },
+    { value: 'surface-preparation', label: t('equipment.filter.surfacePreparation') },
+    { value: 'additional', label: t('equipment.filter.additional') },
   ];
 
   return (
@@ -128,62 +59,110 @@ export const EquipmentShowcase: React.FC = () => {
           dark
         />
 
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {allItems.map((item) => {
-            const Icon = item.icon ?? Truck;
-            const isRental = item.action === 'rental' || item.action === 'both';
-            const isPurchase = item.action === 'purchase' || item.action === 'both';
-
-            return (
-              <li
-                key={item.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 sm:p-6 flex flex-col min-h-[280px]"
+        {/* Search and filter controls */}
+        <div className="mb-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" aria-hidden="true" />
+            <input
+              type="text"
+              placeholder={t('equipment.searchPlaceholder')}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-4 py-2.5 bg-white/10 border border-white/20 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-colors"
+            />
+          </div>
+          <div className="flex gap-2 w-full sm:w-auto">
+            {categoryOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => setActiveCategory(option.value)}
+                className={`
+                  px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border
+                  ${activeCategory === option.value
+                    ? 'bg-brand-orange text-white border-brand-orange'
+                    : 'bg-white/10 text-slate-300 border-white/20 hover:bg-white/20 hover:text-white'
+                  }
+                `}
               >
-                <span className="flex shrink-0 h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <h3 className="mt-4 shrink-0 font-heading text-base font-bold leading-snug text-white">
-                  {item.title}
+                {option.label}
+              </button>
+            ))}
+            {searchQuery !== '' && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-slate-300 hover:bg-white/20 hover:text-white transition-colors"
+                aria-label={t('equipment.clearSearch')}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {filteredItems.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4">
+              <Search className="h-8 w-8 text-slate-400" aria-hidden="true" />
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">{t('equipment.emptyTitle')}</h3>
+            <p className="text-sm text-slate-400 max-w-xs mx-auto">
+              {t('equipment.emptyBody')}
+            </p>
+          </div>
+        ) : (
+          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {filteredItems.map((item) => (
+              <li
+                key={item.id}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 flex flex-col min-h-[420px] group"
+              >
+                <div className="relative h-48 overflow-hidden rounded-xl bg-white/5 mb-4">
+                  <img
+                    src={item.image}
+                    alt={t(item.imageAltKey)}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
+                  <span className="absolute top-3 left-3 px-2 py-1 rounded-md text-[10px] font-bold bg-white/90 text-brand-navy uppercase tracking-wider">
+                    {item.category === 'painting'
+                      ? t('equipment.category.painting')
+                      : item.category === 'surface-preparation'
+                        ? t('equipment.category.surfacePreparation')
+                        : t('equipment.category.additional')}
+                  </span>
+                </div>
+                <h3 className="font-heading text-sm sm:text-base font-bold leading-snug text-white">
+                  {t(item.nameKey)}
                 </h3>
-                {item.use ? (
-                  <p className="mt-2 shrink-0 text-xs leading-relaxed text-slate-400">
-                    {item.use}
-                  </p>
-                ) : null}
-                <p className="mt-2 shrink-0 text-sm leading-relaxed text-slate-300 line-clamp-3">
-                  {item.body}
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-400 line-clamp-3">
+                  {t(item.descriptionKey)}
                 </p>
-                <div className="mt-auto mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
-                  {isRental && (
-                    <PillButton
-                      href={rentalUrl(item)}
-                      size="sm"
-                      variant="primary"
-                      className="text-xs sm:text-sm"
-                    >
-                      {t('equipment.ctaRental')}
-                    </PillButton>
-                  )}
-                  {isPurchase && (
-                    <PillButton
-                      href={purchaseUrl(item)}
-                      size="sm"
-                      variant="outline"
-                      className="text-xs sm:text-sm border-white/20 text-white hover:border-white"
-                    >
-                      {t('equipment.ctaPurchase')}
-                    </PillButton>
-                  )}
+                <div className="mt-auto pt-4 flex gap-2">
+                  <PillButton
+                    href={whatsappUrl(t(item.nameKey))}
+                    size="sm"
+                    variant="outline"
+                    fullWidth
+                    icon={<WhatsAppIcon className="h-3.5 w-3.5" />}
+                    iconPosition="left"
+                  >
+                    {t('equipment.ctaInquire')}
+                  </PillButton>
                 </div>
               </li>
-            );
-          })}
-        </ul>
+            ))}
+          </ul>
+        )}
 
-        <div className="mt-8 rounded-2xl border border-white/10 bg-brand-navy/60 p-5 sm:p-6">
-          <p className="text-sm leading-relaxed text-slate-300">{t('equipment.note')}</p>
-
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <div className="mt-12 rounded-2xl border border-white/10 bg-brand-navy/60 p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:justify-between gap-4">
+          <div>
+            <p className="text-sm leading-relaxed text-slate-300">
+              {t('equipment.note')}
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3">
             <PillButton to="/contact" size="md">
               {t('equipment.cta')}
             </PillButton>
@@ -214,4 +193,3 @@ export const EquipmentShowcase: React.FC = () => {
     </section>
   );
 };
-
