@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Small helpers for working with translated values whose shape is only known
  * at runtime (arrays of objects returned by `t(key, { returnObjects: true })`).
  */

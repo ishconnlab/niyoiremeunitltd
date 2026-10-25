@@ -1,4 +1,4 @@
-﻿# NIYO IREME UNIT COMPANY LTD - Official Website
+# NIYO IREME UNIT COMPANY LTD - Official Website
 
 > **Official Slogan:** *"Kunoza umurimo ni inshingano zacu!"*
 > *(Doing every job well is our responsibility!)*

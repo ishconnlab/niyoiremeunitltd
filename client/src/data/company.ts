@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Canonical, non-translatable company facts.
  *
  * Everything here is either an official brand string (name, slogans), a verified

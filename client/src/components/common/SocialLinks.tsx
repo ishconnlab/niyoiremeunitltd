@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 

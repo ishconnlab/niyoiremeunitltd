@@ -1,4 +1,4 @@
-﻿import { COMPANY_INFO } from './company';
+import { COMPANY_INFO } from './company';
 
 /**
  * Social channels.

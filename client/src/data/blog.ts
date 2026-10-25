@@ -1,4 +1,4 @@
-﻿import type { BlogPost } from '../types';
+import type { BlogPost } from '../types';
 
 /**
  * Blog posts â€” real projects and company updates.

@@ -1,4 +1,4 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const en = JSON.parse(fs.readFileSync('src/i18n/locales/en.json', 'utf8'));
 const rw = JSON.parse(fs.readFileSync('src/i18n/locales/rw.json', 'utf8'));
 

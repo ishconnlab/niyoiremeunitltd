@@ -1,4 +1,4 @@
-﻿import { ServiceDefinition } from '../types';
+import { ServiceDefinition } from '../types';
 
 /**
  * The services the company delivers.

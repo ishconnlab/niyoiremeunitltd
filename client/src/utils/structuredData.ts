@@ -1,4 +1,4 @@
-﻿import { COMPANY_INFO } from '../data/company';
+import { COMPANY_INFO } from '../data/company';
 import { FAQS_DATA } from '../data/faqs';
 import { SERVICES_DATA } from '../data/services';
 import type { SupportedLanguage } from '../i18n';

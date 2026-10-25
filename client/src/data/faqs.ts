@@ -1,4 +1,4 @@
-﻿import { FaqDefinition } from '../types';
+import { FaqDefinition } from '../types';
 
 /**
  * FAQ entries. Questions and answers are translated content and therefore live

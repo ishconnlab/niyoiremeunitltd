@@ -1,4 +1,4 @@
-﻿import { GalleryItem } from '../types';
+import { GalleryItem } from '../types';
 
 /**
  * Gallery imagery.

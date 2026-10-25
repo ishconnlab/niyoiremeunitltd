@@ -1,4 +1,4 @@
-﻿import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { LANGUAGE_STORAGE_KEY, isSupportedLanguage, type SupportedLanguage } from '../i18n';

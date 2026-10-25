@@ -1,4 +1,4 @@
-﻿/* eslint-env serviceworker */
+/* eslint-env serviceworker */
 
 /**
  * NIYO IREME UNIT COMPANY LTD â€” service worker.

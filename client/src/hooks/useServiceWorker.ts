@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export interface ServiceWorkerState {
   /** True when a new version is waiting to be activated. */

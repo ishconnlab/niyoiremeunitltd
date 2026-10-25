@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Client feedback.
  *
  * NIYO IREME UNIT COMPANY LTD publishes feedback only from clients whose

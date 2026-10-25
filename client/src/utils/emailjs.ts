@@ -1,4 +1,4 @@
-﻿import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 const getEnv = (key: string): string => {
   try {

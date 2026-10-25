@@ -1,4 +1,4 @@
-﻿export type ServiceCategory = 'finishing' | 'painting' | 'construction' | 'workforce';
+export type ServiceCategory = 'finishing' | 'painting' | 'construction' | 'workforce';
 
 export type FinishingTier = 'standard' | 'premium' | 'luxury_executive';
 

@@ -1,4 +1,4 @@
-﻿import {
+import {
   QuotationCalculationInput,
   QuotationEstimateResult,
   FinishingTier,

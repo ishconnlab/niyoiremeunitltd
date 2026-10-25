@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { LocalizedLink } from './LocalizedLink';
 import { cn } from '../../utils/cn';
