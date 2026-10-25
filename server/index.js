@@ -19,16 +19,10 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-// CORS — support production frontend and local dev origins
-const allowedOrigins = [
-  process.env.CORS_ORIGIN,
-  'http://localhost:3000',
-  'http://192.168.124.215:3000',
-].filter(Boolean);
-
+// CORS — live production frontend only
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: process.env.CORS_ORIGIN || 'https://niyoiremeunitltd.vercel.app',
     credentials: true,
   })
 );
