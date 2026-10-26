@@ -85,11 +85,15 @@ test('authenticated service, blog, publishing, contacts and media workflows', { 
     const publicSettings = await (await fetch(`${origin}/api/settings/public`)).json();
     assert.equal(publicSettings.data.whatsappContacts.length, 2);
 
-    const contentCreate = await fetch(`${origin}/api/content`, { method: 'POST', headers: session, body: JSON.stringify({ section: 'home', key: contentKey, value: { title: 'Editable homepage headline' }, isActive: true }) });
+    const contentCreate = await fetch(`${origin}/api/content`, { method: 'POST', headers: session, body: JSON.stringify({ section: 'home', key: contentKey, value: { title: 'Editable homepage headline' } }) });
     assert.equal(contentCreate.status, 201);
     const createdContent = (await contentCreate.json()).data;
+    assert.equal(createdContent.isActive, false, 'new website content must be unpublished until approved');
     const publicContent = await (await fetch(`${origin}/api/content?section=home`)).json();
-    assert.ok(publicContent.data.some((item) => item.key === contentKey));
+    assert.equal(publicContent.data.some((item) => item.key === contentKey), false, 'unpublished content must stay hidden');
+    assert.equal((await fetch(`${origin}/api/content/${createdContent._id}`, { method: 'PUT', headers: session, body: JSON.stringify({ isActive: true }) })).status, 200);
+    const publishedContent = await (await fetch(`${origin}/api/content?section=home`)).json();
+    assert.ok(publishedContent.data.some((item) => item.key === contentKey), 'published content must appear publicly');
     assert.equal((await fetch(`${origin}/api/content/${createdContent._id}`, { method: 'PUT', headers: session, body: JSON.stringify({ isActive: false }) })).status, 200);
     const hiddenContent = await (await fetch(`${origin}/api/content?section=home`)).json();
     assert.equal(hiddenContent.data.some((item) => item.key === contentKey), false, 'inactive content must be hidden from public pages');

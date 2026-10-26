@@ -8,15 +8,18 @@ import { SERVICES_DATA } from '../../data/services';
 import { LocalizedLink } from '../common/LocalizedLink';
 import { PillButton } from '../common/PillButton';
 import { ServiceMegaMenu } from './ServiceMegaMenu';
+import { ServiceIcon } from '../common/ServiceIcon';
 import { SocialLinks } from '../common/SocialLinks';
 import { cn } from '../../utils/cn';
 import { useCmsServices } from '../../hooks/useCmsServices';
+import { groupServicesForMenu } from '../../data/serviceMenu';
 import { contentValue, useCmsContent } from '../../hooks/useCmsContent';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [expandedMobileServiceGroup, setExpandedMobileServiceGroup] = useState('renovation');
   const location = useLocation();
   const { services: cmsServices } = useCmsServices();
   const companyContent = useCmsContent('company');
@@ -25,6 +28,7 @@ export const Header: React.FC = () => {
   const phoneRaw = typeof company.phoneRaw === 'string' && company.phoneRaw ? company.phoneRaw : COMPANY_INFO.phoneRaw;
   const email = typeof company.email === 'string' && company.email ? company.email : COMPANY_INFO.email;
   const menuServices = cmsServices ?? SERVICES_DATA.map((service) => ({ slug: service.id, title: t(`services.items.${service.id}.title`) }));
+  const serviceGroups = groupServicesForMenu(menuServices);
 
   const navLinks = [
     { key: 'home', path: '/' },
@@ -243,30 +247,23 @@ export const Header: React.FC = () => {
                     <ChevronRight className="h-4 w-4 text-slate-400" aria-hidden="true" />
                   </LocalizedLink>
 
-                  <p className="px-2.5 pb-1 pt-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                    {t('header.servicesMenu')}
-                  </p>
-                  <ul className="grid gap-0.5">
-                    {menuServices.map((service) => (
-                      <li key={service.slug}>
-                        <LocalizedLink
-                          to={`/services/${service.slug}`}
-                          onClick={() => setMobileMenuOpen(false)}
-                          aria-current={
-                            location.pathname === `/services/${service.slug}` ? 'page' : undefined
-                          }
-                          className={cn(
-                            'flex min-h-10 items-center rounded-lg px-2.5 py-2 text-sm font-medium transition-colors',
-                            location.pathname === `/services/${service.slug}`
-                              ? 'bg-brand-orange/10 text-brand-orange'
-                              : 'text-slate-700 hover:bg-white hover:text-brand-orange'
-                          )}
-                        >
-                          {service.title}
-                        </LocalizedLink>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mt-2 space-y-1.5">
+                    {serviceGroups.map((group) => {
+                      const expanded = expandedMobileServiceGroup === group.id;
+                      return <section key={group.id} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                        <button type="button" aria-expanded={expanded} onClick={() => setExpandedMobileServiceGroup(expanded ? '' : group.id)} className="flex min-h-11 w-full items-center gap-2.5 px-3 py-2 text-left text-sm font-bold text-brand-navy hover:bg-slate-50">
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-orange/10 text-brand-orange"><ServiceIcon name={group.iconName} className="h-4 w-4" /></span><span className="min-w-0 flex-1">{group.title}</span><span className="text-xs font-semibold text-slate-400">{group.services.length}</span><ChevronRight className={`h-4 w-4 text-slate-400 transition-transform ${expanded ? 'rotate-90' : ''}`} aria-hidden="true" />
+                        </button>
+                        {expanded && <ul className="border-t border-slate-100 p-1.5">
+                          {group.services.map((service) => <li key={service.slug}>
+                            <LocalizedLink to={`/services/${service.slug}`} onClick={() => setMobileMenuOpen(false)} aria-current={location.pathname === `/services/${service.slug}` ? 'page' : undefined} className={`flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${location.pathname === `/services/${service.slug}` ? 'bg-brand-orange/10 text-brand-orange' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-orange'}`}>
+                              {service.title}
+                            </LocalizedLink>
+                          </li>)}
+                        </ul>}
+                      </section>;
+                    })}
+                  </div>
                 </div>
               );
             })}

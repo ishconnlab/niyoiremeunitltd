@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { Facebook, Github, Instagram, Twitter, Youtube } from 'lucide-react';
 
 import { SOCIAL_LINKS, WHATSAPP_LINK, type SocialChannel, type SocialLink } from '../../data/social';
 import { WhatsAppIcon } from './WhatsAppIcon';
@@ -12,6 +12,7 @@ const ICONS: Record<SocialChannel, React.ComponentType<{ className?: string }>> 
   instagram: Instagram,
   youtube: Youtube,
   x: Twitter,
+  github: Github,
   whatsapp: WhatsAppIcon,
 };
 
@@ -39,7 +40,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
 
   const cmsLinks = (cmsSocial || []).flatMap((record): SocialLink[] => {
     const channel = record.key as SocialChannel;
-    if (!['facebook', 'instagram', 'youtube', 'x'].includes(channel)) return [];
+    if (!['facebook', 'instagram', 'youtube', 'x', 'github'].includes(channel)) return [];
     const value = contentValue(record);
     const url = typeof value.url === 'string' ? value.url.trim() : typeof record.value === 'string' ? record.value.trim() : '';
     try {
@@ -48,7 +49,9 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
     } catch { return []; }
     return [{ channel, labelKey: `social.${channel}`, url }];
   });
-  const profileLinks = cmsSocial?.length ? cmsLinks : SOCIAL_LINKS;
+  const linksByChannel = new Map(SOCIAL_LINKS.map((link) => [link.channel, link]));
+  cmsLinks.forEach((link) => linksByChannel.set(link.channel, link));
+  const profileLinks = [...linksByChannel.values()];
   const links: SocialLink[] = includeWhatsApp ? [...profileLinks, WHATSAPP_LINK] : profileLinks;
 
   if (links.length === 0) return null;

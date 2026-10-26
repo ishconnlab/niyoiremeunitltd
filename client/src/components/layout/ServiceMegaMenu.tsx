@@ -1,321 +1,72 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { ChevronRight, X } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 import { SERVICES_DATA } from '../../data/services';
+import { groupServicesForMenu } from '../../data/serviceMenu';
 import { LocalizedLink } from '../common/LocalizedLink';
 import { ServiceIcon } from '../common/ServiceIcon';
-import { cn } from '../../utils/cn';
 import { useCmsServices } from '../../hooks/useCmsServices';
 
-/**
- * Multi-level nested service dropdown.
- *
- * Level 1: Service category (e.g. Painting, Construction & Renovation)
- * Level 2: Specific services / sub-options within each category
- *
- * Supports hover to open submenus, click to navigate, Escape to close,
- * click outside to close, and full keyboard accessibility.
- */
-export const ServiceMegaMenu: React.FC<{
-  isOpen: boolean;
-  onClose: () => void;
-}> = ({ isOpen, onClose }) => {
-  const { t } = useTranslation();
+export const ServiceMegaMenu: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const location = useLocation();
-  const menuRef = useRef<HTMLDivElement>(null);
-  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const { services: cmsServices } = useCmsServices();
+  const fallbackServices = SERVICES_DATA.map((service) => ({
+    slug: service.id,
+    title: service.id.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()),
+  }));
+  const services = cmsServices ?? fallbackServices;
+  const groups = groupServicesForMenu(services);
+  const [activeGroup, setActiveGroup] = useState('renovation');
+  const selectedGroup = groups.find((group) => group.id === activeGroup) ?? groups[0];
 
   useEffect(() => {
-    if (!isOpen) {
-      setOpenSubmenu(null);
-      return;
-    }
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        onClose();
-      }
+    if (!isOpen) return;
+    const onPointerDown = (event: MouseEvent) => {
+      if (panelRef.current && !panelRef.current.contains(event.target as Node)) onClose();
     };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpenSubmenu(null);
-        onClose();
-      }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
     };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onClose]);
 
-  const isActive = (path: string) => {
-    if (path === '/') return location.pathname === '/';
-    return location.pathname === path || location.pathname.startsWith(`${path}/`);
-  };
+  if (!isOpen) return null;
 
-  /**
-   * Build nested menu structure from SERVICES_DATA.
-   * Groups services by category and defines sub-items per service.
-   */
-  const buildNestedMenu = () => {
-    if (cmsServices) return cmsServices.map((service) => ({
-      id: service.slug,
-      title: service.title,
-      iconName: 'Building2' as const,
-      subItems: [],
-      hasChildren: false,
-    }));
-    return SERVICES_DATA.map((service) => {
-      const subItems = getSubItems(service.id);
-      return {
-        ...service,
-        subItems,
-        hasChildren: subItems.length > 0,
-      };
-    });
-  };
-
-  const getSubItems = (serviceId: string) => {
-    const SUB_ITEMS: Record<string, Array<{ id: string; titleKey: string; path: string }>> = {
-      painting: [
-        { id: 'painting-interior', titleKey: 'nav.sub.paintingInterior', path: '/services/painting?type=interior' },
-        { id: 'painting-exterior', titleKey: 'nav.sub.paintingExterior', path: '/services/painting?type=exterior' },
-        { id: 'painting-decorative', titleKey: 'nav.sub.paintingDecorative', path: '/services/painting?type=decorative' },
-      ],
-      construction: [
-        { id: 'construction-house', titleKey: 'nav.sub.constructionHouse', path: '/services/construction?type=house' },
-        { id: 'construction-renovation', titleKey: 'nav.sub.constructionRenovation', path: '/services/construction?type=renovation' },
-        { id: 'construction-terrace', titleKey: 'nav.sub.constructionTerrace', path: '/services/construction?type=terrace' },
-      ],
-      tiling: [
-        { id: 'tiling-floor', titleKey: 'nav.sub.tilingFloor', path: '/services/tiling?type=floor' },
-        { id: 'tiling-wall', titleKey: 'nav.sub.tilingWall', path: '/services/tiling?type=wall' },
-      ],
-      wallpaper: [
-        { id: 'wallpaper-install', titleKey: 'nav.sub.wallpaperInstall', path: '/services/wallpaper?type=install' },
-      ],
-      ceilings: [
-        { id: 'ceilings-gypsum', titleKey: 'nav.sub.ceilingsGypsum', path: '/services/ceilings?type=gypsum' },
-        { id: 'ceilings-decorative', titleKey: 'nav.sub.ceilingsDecorative', path: '/services/ceilings?type=decorative' },
-      ],
-      terrazzo: [
-        { id: 'terrazzo-floor', titleKey: 'nav.sub.terrazzoFloor', path: '/services/terrazzo?type=floor' },
-      ],
-      glass: [
-        { id: 'glass-windows', titleKey: 'nav.sub.glassWindows', path: '/services/glass?type=windows' },
-        { id: 'glass-panels', titleKey: 'nav.sub.glassPanels', path: '/services/glass?type=panels' },
-        { id: 'glass-partitions', titleKey: 'nav.sub.glassPartitions', path: '/services/glass?type=partitions' },
-      ],
-      cleaning: [
-        { id: 'cleaning-post', titleKey: 'nav.sub.cleaningPost', path: '/services/cleaning?type=post' },
-        { id: 'cleaning-office', titleKey: 'nav.sub.cleaningOffice', path: '/services/cleaning?type=office' },
-        { id: 'cleaning-home', titleKey: 'nav.sub.cleaningHome', path: '/services/cleaning?type=home' },
-      ],
-      workforce: [
-        { id: 'workforce-request', titleKey: 'nav.sub.workforceRequest', path: '/services/workforce?type=request' },
-        { id: 'workforce-jobs', titleKey: 'nav.sub.workforceJobs', path: '/services/workforce?type=jobs' },
-      ],
-      supervision: [
-        { id: 'supervision-daily', titleKey: 'nav.sub.supervisionDaily', path: '/services/supervision?type=daily' },
-        { id: 'supervision-quality', titleKey: 'nav.sub.supervisionQuality', path: '/services/supervision?type=quality' },
-        { id: 'supervision-reporting', titleKey: 'nav.sub.supervisionReporting', path: '/services/supervision?type=reporting' },
-      ],
-      equipment: [
-        { id: 'equipment-earthmoving', titleKey: 'nav.sub.equipmentEarthmoving', path: '/services/equipment?type=earthmoving' },
-        { id: 'equipment-concrete', titleKey: 'nav.sub.equipmentConcrete', path: '/services/equipment?type=concrete' },
-        { id: 'equipment-safety', titleKey: 'nav.sub.equipmentSafety', path: '/services/equipment?type=safety' },
-      ],
-      materials: [
-        { id: 'materials-paint', titleKey: 'nav.sub.materialsPaint', path: '/services/materials?type=paint' },
-        { id: 'materials-tools', titleKey: 'nav.sub.materialsTools', path: '/services/materials?type=tools' },
-        { id: 'materials-adhesives', titleKey: 'nav.sub.materialsAdhesives', path: '/services/materials?type=adhesives' },
-      ],
-      plastering: [
-        { id: 'plastering-wall', titleKey: 'nav.sub.plasteringWall', path: '/services/plastering?type=wall' },
-        { id: 'plastering-repair', titleKey: 'nav.sub.plasteringRepair', path: '/services/plastering?type=repair' },
-      ],
-      finishing: [
-        { id: 'finishing-interior', titleKey: 'nav.sub.finishingInterior', path: '/services/finishing?type=interior' },
-        { id: 'finishing-exterior', titleKey: 'nav.sub.finishingExterior', path: '/services/finishing?type=exterior' },
-      ],
-    };
-    return SUB_ITEMS[serviceId] || [];
-  };
-
-  const nestedMenu = buildNestedMenu();
-
-  return (
-    <nav
-      ref={menuRef}
-      id="services-mega-menu"
-      aria-label={t('header.servicesMenu')}
-      aria-expanded={isOpen}
-      className="relative inline-block w-full xl:w-auto"
-    >
-      {/* Backdrop ” covers viewport when open, closes on click */}
-      {isOpen ? (
-        <div
-          className="fixed inset-0 z-[59] bg-black/25 backdrop-blur-sm"
-          onClick={onClose}
-          aria-hidden="true"
-        />
-      ) : null}
-
-      {/* Trigger button ” always visible */}
-      <button
-        type="button"
-        aria-expanded={isOpen}
-        aria-controls="services-mega-menu-panel"
-        aria-haspopup="menu"
-        className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-semibold transition-colors text-slate-700 hover:text-brand-orange hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
-        onMouseEnter={() => {}}
-      >
-        {t('nav.services')}
-        <ChevronRight
-          className={cn('h-4 w-4 transition-transform', isOpen && 'rotate-90')}
-          aria-hidden="true"
-        />
-      </button>
-
-      {/* Panel ” nested dropdown below trigger */}
-      {isOpen ? (
-        <div
-          ref={menuRef}
-          id="services-mega-menu-panel"
-          role="menu"
-          className="absolute left-1/2 -translate-x-1/2 z-[60] mt-1 w-full max-w-[26rem] min-w-[20rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-slate-200 bg-white shadow-2xl opacity-0 translate-y-1 pointer-events-none transition-all duration-200 ease-out"
-          style={{
-            opacity: isOpen ? 1 : 0,
-            transform: isOpen ? 'translate(-50%, 0)' : 'translate(-50%, 8px)',
-            pointerEvents: isOpen ? 'auto' : 'none',
-          }}
-        >
-          <div className="p-4">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">
-              {t('header.servicesMenu')}
-            </p>
-            <ul className="space-y-1">
-              {nestedMenu.map((service) => (
-                <li key={service.id}>
-                  {service.hasChildren ? (
-                    // Parent item with submenu trigger
-                    <div
-                      key={service.id}
-                      className="relative group"
-                      onMouseEnter={() => setOpenSubmenu(service.id)}
-                      onMouseLeave={() => {
-                        if (openSubmenu === service.id) setOpenSubmenu(null);
-                      }}
-                    >
-                      <LocalizedLink
-                        to={`/services/${service.id}`}
-                        role="menuitem"
-                        onClick={onClose}
-                        aria-current={
-                          isActive(`/services/${service.id}`) ? 'page' : undefined
-                        }
-                        className="flex items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 text-left transition-all duration-150 hover:bg-slate-50 hover:border-brand-navy/10"
-                      >
-                        <span className="shrink-0 flex h-9 w-9 items-center justify-center rounded-lg bg-brand-orange/5 text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">
-                          <ServiceIcon name={service.iconName} className="h-4 w-4" />
-                        </span>
-                        <span className="block font-heading text-sm font-black text-brand-navy transition-colors group-hover:text-brand-orange">
-                          {'title' in service ? service.title : t(`services.items.${service.id}.title`)}
-                        </span>
-                        <ChevronRight className="shrink-0 h-3.5 w-3.5 text-slate-400 transition-colors group-hover:text-brand-orange" aria-hidden="true" />
-                      </LocalizedLink>
-
-                      {/* Submenu panel */}
-                      {openSubmenu === service.id && (
-                        <div
-                          className="absolute left-full top-0 z-[70] w-full max-w-[20rem] min-w-[16rem] rounded-2xl border border-slate-200 bg-white shadow-2xl ml-1 opacity-0 translate-y-1 pointer-events-none transition-all duration-200 ease-out"
-                          style={{
-                            opacity: openSubmenu === service.id ? 1 : 0,
-                            transform: openSubmenu === service.id ? 'translateY(0)' : 'translateY(-8px)',
-                            pointerEvents: openSubmenu === service.id ? 'auto' : 'none',
-                          }}
-                        >
-                          <div className="p-3">
-                            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                              {'title' in service ? service.title : t(`services.items.${service.id}.title`)}
-                            </p>
-                            <ul className="space-y-1">
-                              {service.subItems.map((sub) => (
-                                <li key={sub.id}>
-                                  <a
-                                    href={sub.path}
-                                    role="menuitem"
-                                    className="flex items-center gap-2 rounded-lg border border-transparent px-3 py-2 text-left text-sm transition-colors hover:bg-slate-50 hover:text-brand-orange hover:border-brand-navy/10"
-                                  >
-                                    <span className="block truncate font-medium text-brand-navy group-hover:text-brand-orange transition-colors">
-                                      {t(sub.titleKey)}
-                                    </span>
-                                    <ChevronRight className="shrink-0 h-3 w-3 text-slate-400" aria-hidden="true" />
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    // Leaf item - direct link
-                    <LocalizedLink
-                      key={service.id}
-                      to={`/services/${service.id}`}
-                      role="menuitem"
-                      onClick={onClose}
-                      aria-current={
-                        isActive(`/services/${service.id}`) ? 'page' : undefined
-                      }
-                      className="flex items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 text-left transition-all duration-150 hover:bg-slate-50 hover:border-brand-navy/10 group"
-                    >
-                      <span className="shrink-0 flex h-9 w-9 items-center justify-center rounded-lg bg-brand-orange/5 text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">
-                        <ServiceIcon name={service.iconName} className="h-4 w-4" />
-                      </span>
-                      <span className="block font-heading text-sm font-black text-brand-navy group-hover:text-brand-orange transition-colors">
-                        {'title' in service ? service.title : t(`services.items.${service.id}.title`)}
-                      </span>
-                      <ChevronRight className="shrink-0 h-3.5 w-3.5 text-slate-400 group-hover:text-brand-orange transition-colors" aria-hidden="true" />
-                    </LocalizedLink>
-                  )}
-                </li>
-              ))}
-              <li className="mt-3 pt-3 border-t border-slate-200">
-                <LocalizedLink
-                  to="/services"
-                  role="menuitem"
-                  onClick={onClose}
-                  className="flex items-center justify-between w-full rounded-xl border border-transparent px-3 py-2.5 text-left transition-all duration-150 hover:bg-slate-50 hover:border-brand-navy/10 group"
-                >
-                  <span className="text-sm font-black text-brand-navy group-hover:text-brand-orange transition-colors">
-                    {t('megaMenu.exploreAll')}
-                  </span>
-                  <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-brand-orange transition-colors" aria-hidden="true" />
-                </LocalizedLink>
-              </li>
-            </ul>
-          </div>
-
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label={t('common.closeMenu')}
-            className="absolute top-4 right-4 z-[10] flex h-10 w-10 items-center justify-center rounded-full text-slate-400 hover:text-brand-navy hover:bg-slate-100 transition-colors"
-          >
-            <X className="h-5 w-5" aria-hidden="true" />
-          </button>
+  return <>
+    <button type="button" aria-label="Close services menu" tabIndex={-1} onClick={onClose} className="fixed inset-0 z-[59] cursor-default bg-slate-950/20" />
+    <section ref={panelRef} id="services-mega-menu" aria-label="Browse services" className="absolute left-1/2 top-full z-[60] mt-3 w-[min(56rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-2xl">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-4 py-4 sm:px-5">
+        <div><p className="text-xs font-bold uppercase tracking-widest text-brand-orange">NIYO IREME UNIT LTD</p><h2 className="mt-1 font-heading text-lg font-extrabold text-brand-navy">Browse our services</h2></div>
+        <LocalizedLink to="/services" onClick={onClose} className="inline-flex min-h-10 items-center gap-1 rounded-full border border-slate-200 px-4 text-sm font-bold text-brand-navy hover:border-brand-orange hover:text-brand-orange">View all services <ChevronRight className="h-4 w-4" aria-hidden="true" /></LocalizedLink>
+      </div>
+      <div className="grid max-h-[min(70vh,34rem)] min-h-64 grid-cols-1 overflow-y-auto sm:grid-cols-[minmax(12rem,0.8fr)_minmax(0,1.8fr)] sm:overflow-hidden">
+        <div className="border-b border-slate-100 bg-slate-50 p-2 sm:border-b-0 sm:border-r sm:p-3" aria-label="Service categories">
+          {groups.map((group) => <button key={group.id} type="button" onMouseEnter={() => setActiveGroup(group.id)} onFocus={() => setActiveGroup(group.id)} onClick={() => setActiveGroup(group.id)} aria-expanded={selectedGroup?.id === group.id} className={`flex min-h-12 w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold transition-colors ${selectedGroup?.id === group.id ? 'bg-white text-brand-navy shadow-sm ring-1 ring-slate-200' : 'text-slate-600 hover:bg-white hover:text-brand-navy'}`}>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-orange/10 text-brand-orange"><ServiceIcon name={group.iconName} className="h-4 w-4" /></span><span className="min-w-0 flex-1">{group.title}</span><span className="text-xs text-slate-400">{group.services.length}</span><ChevronRight className="h-4 w-4 text-slate-400" aria-hidden="true" />
+          </button>)}
         </div>
-      ) : null}
-    </nav>
-  );
+        <div className="min-w-0 p-3 sm:p-4">
+          {selectedGroup ? <>
+            <h3 className="mb-3 px-1 text-xs font-bold uppercase tracking-widest text-slate-500">{selectedGroup.title}</h3>
+            <ul className="grid gap-2 sm:grid-cols-2">
+              {selectedGroup.services.map((service) => <li key={service.slug}>
+                <LocalizedLink to={`/services/${service.slug}`} onClick={onClose} aria-current={location.pathname === `/services/${service.slug}` ? 'page' : undefined} className="group flex min-h-14 items-start gap-3 rounded-xl border border-slate-100 p-3 transition-colors hover:border-brand-orange/40 hover:bg-orange-50/50">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-navy/5 text-brand-navy group-hover:bg-brand-orange group-hover:text-white"><ServiceIcon name="Building2" className="h-4 w-4" /></span>
+                  <span className="min-w-0"><span className="block text-sm font-bold text-brand-navy group-hover:text-brand-orange">{service.title}</span>{service.overview && <span className="mt-1 line-clamp-2 block text-xs leading-5 text-slate-500">{service.overview}</span>}</span>
+                </LocalizedLink>
+              </li>)}
+            </ul>
+          </> : <p className="p-4 text-sm text-slate-600">Services are being updated. Please visit the services page.</p>}
+        </div>
+      </div>
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 bg-slate-50 px-4 py-3 text-xs text-slate-600 sm:px-5"><span>Choose a category to browse related work.</span><LocalizedLink to="/contact" onClick={onClose} className="font-bold text-brand-navy hover:text-brand-orange">Ask us about your project</LocalizedLink></div>
+    </section>
+  </>;
 };
-

@@ -40,7 +40,8 @@ const contentSchema = new mongoose.Schema(
     },
     isActive: {
       type: Boolean,
-      default: true,
+      // New website content stays unpublished until an administrator approves it.
+      default: false,
     },
     order: {
       type: Number,

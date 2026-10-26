@@ -7,10 +7,10 @@ type Section = 'services' | 'blog' | 'content' | 'whatsapp';
 type RecordItem = CmsService | CmsBlogPost | Record<string, unknown>;
 
 const blankFor = (section: Section): Record<string, unknown> => section === 'services'
-  ? { slug: '', title: '', overview: '', description: '', problems: [], includedWork: [], materials: [], workflow: [], deliverables: [], benefits: [], customization: [], costFactors: [], faqs: [], relatedServices: [], mainImage: '', gallery: [], seoTitle: '', seoDescription: '', status: 'draft', isActive: true, showOnHomePage: false, order: 0 }
+  ? { slug: '', title: '', overview: '', description: '', problems: [], includedWork: [], materials: [], workflow: [], deliverables: [], benefits: [], customization: [], costFactors: [], faqs: [], relatedServices: [], mainImage: '', gallery: [], seoTitle: '', seoDescription: '', status: 'draft', isActive: false, showOnHomePage: false, order: 0 }
   : section === 'blog'
     ? { title: '', slug: '', excerpt: '', body: '', featuredImage: null, images: [], youtubeVideoId: '', categories: [], tags: [], author: 'NIYO IREME UNIT LTD', status: 'draft', publishedAt: null, seoTitle: '', seoDescription: '' }
-    : { section: 'hero', key: '', value: '', imageUrl: '', isActive: true, order: 0 };
+    : { section: 'hero', key: '', value: '', imageUrl: '', isActive: false, order: 0 };
 
 const parseList = (data: unknown): RecordItem[] => Array.isArray(data) ? data as RecordItem[] : [];
 
@@ -70,7 +70,12 @@ export const AdminWorkspace: React.FC<{ onLogout: () => void; registrationEnable
       const id = (selected as { _id?: string } | null)?._id;
       const url = section === 'services' ? '/services' : section === 'blog' ? '/blog' : '/content';
       const result = await apiRequest<{ data: RecordItem }>(id ? `${url}/${id}` : url, { method: id ? 'PUT' : 'POST', body: JSON.stringify(payload) });
-      setSelected(result.data); setJson(JSON.stringify(result.data, null, 2)); setNotice(section === 'blog' && payload.status === 'published' ? 'Article published.' : 'Changes saved.');
+      setSelected(result.data); setJson(JSON.stringify(result.data, null, 2));
+      setNotice(section === 'blog' && payload.status === 'published'
+        ? 'Article published.'
+        : section === 'content'
+          ? payload.isActive === false ? 'Website content saved as unpublished.' : 'Website content published.'
+          : 'Changes saved.');
       await refresh();
       window.dispatchEvent(new Event('niyo:cms-updated'));
     } catch (cause) {
@@ -133,7 +138,12 @@ export const AdminWorkspace: React.FC<{ onLogout: () => void; registrationEnable
   };
 
   const tabs: Array<[Section, string]> = [['services', 'Services'], ['blog', 'Blog'], ['content', 'Website content'], ['whatsapp', 'WhatsApp contacts']];
-  const statusOf = (item: RecordItem) => String((item as { status?: string }).status || ((item as { isActive?: boolean }).isActive === false ? 'inactive' : 'active'));
+  const statusOf = (item: RecordItem) => {
+    const record = item as { status?: string; isActive?: boolean; section?: string };
+    if (record.status) return record.status;
+    if (record.section) return record.isActive === false ? 'Unpublished' : 'Published';
+    return record.isActive === false ? 'Inactive' : 'Active';
+  };
   const filteredRecords = records.filter((item) => {
     const value = item as { title?: string; key?: string; slug?: string; section?: string };
     return `${value.title || ''} ${value.key || ''} ${value.slug || ''} ${value.section || ''}`.toLowerCase().includes(recordSearch.trim().toLowerCase());
@@ -157,7 +167,7 @@ export const AdminWorkspace: React.FC<{ onLogout: () => void; registrationEnable
         </aside>
         <section className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-6">
           <div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="font-heading text-xl font-bold text-brand-navy">{selected ? 'Edit record' : `New ${section === 'content' ? 'website content' : section === 'blog' ? 'article' : 'service'}`}</h2><p className="mt-1 text-xs text-slate-500">Edit labelled fields below. Article content is plain text and displayed safely.</p></div><label className="inline-flex min-h-10 cursor-pointer items-center rounded-full border border-slate-300 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50">{uploading ? 'Uploading…' : 'Upload image'}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={(event) => { void uploadImage(event.target.files?.[0]); event.currentTarget.value = ''; }} className="sr-only" /></label></div>
-          {parsedRecord ? <div className="mt-4"><AdminRecordEditor value={parsedRecord as Record<string, JsonValue>} onChange={(record) => setJson(JSON.stringify(record, null, 2))} /></div> : <p role="alert" className="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">The advanced JSON has a syntax error. Correct it below to continue editing.</p>}
+          {parsedRecord ? <div className="mt-4"><AdminRecordEditor key={`${section}-${(selected as { _id?: string } | null)?._id ?? 'new'}`} value={parsedRecord as Record<string, JsonValue>} onChange={(record) => setJson(JSON.stringify(record, null, 2))} /></div> : <p role="alert" className="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">The advanced JSON has a syntax error. Correct it below to continue editing.</p>}
           {uploading && <div className="mt-4" role="status" aria-live="polite"><p className="mb-2 text-sm font-semibold text-slate-700">Uploading image…</p><div role="progressbar" aria-label="Image upload in progress" aria-valuemin={0} aria-valuemax={100} className="h-2 overflow-hidden rounded-full bg-slate-200"><span className="block h-full w-1/2 animate-pulse rounded-full bg-brand-orange" /></div></div>}
           <details className="mt-4 rounded-xl border border-slate-200"><summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-slate-700">Advanced JSON editor</summary><textarea aria-label="Record JSON" spellCheck={false} value={json} onChange={(event) => setJson(event.target.value)} className="min-h-[320px] w-full rounded-b-xl border-t border-slate-200 bg-slate-950 p-4 font-mono text-xs leading-5 text-emerald-100 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/30" /></details>
           {error && <p role="alert" className="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-700">{error}</p>}{notice && <p role="status" className="mt-3 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">{notice}</p>}

@@ -89,6 +89,58 @@ const seed = async () => {
         isActive: true, order: 0,
       },
       {
+        section: 'about', key: 'hero',
+        value: { eyebrow: 'About NIYO IREME UNIT LTD', title: 'Finishing work centred on your home', subtitle: 'Home renovation, construction finishing and interior design services for residential and project needs.' },
+        isActive: true, order: 0,
+      },
+      {
+        section: 'services', key: 'hero',
+        value: { eyebrow: 'NIYO IREME UNIT LTD', title: 'Services for your home and project', subtitle: 'Renovation, construction, finishing and project support, planned around the scope you need.' },
+        isActive: true, order: 0,
+      },
+      {
+        section: 'gallery', key: 'hero',
+        value: { eyebrow: 'Our work', title: 'Project gallery', subtitle: 'Browse examples of renovation, construction and finishing work.' },
+        isActive: true, order: 0,
+      },
+      {
+        section: 'faq', key: 'hero',
+        value: { eyebrow: 'Help and answers', title: 'Frequently asked questions', subtitle: 'Straight answers about our services and how to get started.' },
+        isActive: true, order: 0,
+      },
+      {
+        section: 'contact', key: 'hero',
+        value: { eyebrow: 'Get in touch', title: 'Contact NIYO IREME UNIT LTD', subtitle: 'Tell us about the project or service you would like to discuss.' },
+        isActive: true, order: 0,
+      },
+      {
+        section: 'team', key: 'hero',
+        value: { eyebrow: 'Our team', title: 'Construction and finishing professionals', subtitle: 'Contact us to discuss the people and skills needed for your project.' },
+        isActive: true, order: 0,
+      },
+      {
+        section: 'privacy', key: 'hero',
+        value: { eyebrow: 'Website information', title: 'Privacy policy', subtitle: 'How information submitted through this website is handled.' },
+        isActive: true, order: 0,
+      },
+      ...['facebook', 'instagram', 'youtube', 'x', 'github'].map((channel, index) => ({
+        section: 'social', key: channel, value: { url: '' }, isActive: false, order: index,
+      })),
+      ...[
+        ['/', 'NIYO IREME UNIT LTD | PRO FINISH • HOME RENOVATION', 'Home renovation, painting, interior design, tile and ceiling installation, finishing works and project support in Kigali.'],
+        ['/about', 'About NIYO IREME UNIT LTD', 'Learn about NIYO IREME UNIT LTD and its renovation, construction finishing and interior design services.'],
+        ['/services', 'Services | NIYO IREME UNIT LTD', 'Explore home renovation, construction finishing, painting, tile installation and project support services.'],
+        ['/gallery', 'Project gallery | NIYO IREME UNIT LTD', 'Browse examples of renovation, construction and finishing work.'],
+        ['/blog', 'Renovation and finishing guides | NIYO IREME UNIT LTD', 'Practical ideas about renovation planning, painting, tiling and finishing work.'],
+        ['/contact', 'Contact NIYO IREME UNIT LTD', 'Contact NIYO IREME UNIT LTD to discuss renovation, construction finishing and interior design.'],
+        ['/faq', 'Frequently asked questions | NIYO IREME UNIT LTD', 'Answers about services, project scope, materials and contacting NIYO IREME UNIT LTD.'],
+        ['/quote', 'Request a quotation | NIYO IREME UNIT LTD', 'Share your project requirements to discuss scope and next steps.'],
+        ['/team', 'Our team | NIYO IREME UNIT LTD', 'Construction workforce and project support from NIYO IREME UNIT LTD.'],
+        ['/privacy', 'Privacy policy | NIYO IREME UNIT LTD', 'Information about how this website handles data submitted through its forms.'],
+      ].map(([key, title, description], index) => ({
+        section: 'seo', key, value: { title, description }, isActive: true, order: index,
+      })),
+      {
         section: 'services',
         key: 'equipment',
         value: {

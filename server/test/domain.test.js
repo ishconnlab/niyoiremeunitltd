@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import Service from '../models/Service.js';
 import BlogPost from '../models/BlogPost.js';
+import Content from '../models/Content.js';
 import { extractYouTubeVideoId } from '../utils/youtube.js';
 import { cleanContacts } from '../controllers/settingsController.js';
 
@@ -19,6 +20,18 @@ test('service image galleries validate their maximum size', async () => {
 test('published services require a three-image relevant gallery', async () => {
   const service = new Service({ slug: 'published-example', title: 'Painting', overview: 'Paint a property', description: 'Description', status: 'published', gallery: [{ url: '/one.jpg', alt: 'One' }, { url: '/two.jpg', alt: 'Two' }] });
   await assert.rejects(service.validate(), /at least three gallery images/);
+});
+
+test('website content starts unpublished and can be published or unpublished', async () => {
+  const content = new Content({ section: 'home', key: 'hero-draft', value: { title: 'Draft headline' } });
+  assert.equal(content.isActive, false);
+  await content.validate();
+  content.isActive = true;
+  await content.validate();
+  assert.equal(content.isActive, true);
+  content.isActive = false;
+  await content.validate();
+  assert.equal(content.isActive, false);
 });
 
 test('blog posts can be published without images or a video', async () => {

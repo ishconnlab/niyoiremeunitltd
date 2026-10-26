@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
 
@@ -25,10 +25,25 @@ const blankArrayItem = (key: string, items: JsonValue[]): JsonValue => {
 const humanize = (key: string) => key.replace(/([A-Z])/g, ' $1').replace(/[_-]/g, ' ').replace(/^./, (letter) => letter.toUpperCase());
 
 export const AdminRecordEditor: React.FC<{ value: Record<string, JsonValue>; onChange: (value: Record<string, JsonValue>) => void }> = ({ value, onChange }) => {
+  const [pageIndex, setPageIndex] = useState(0);
+  const fields = Object.entries(value).filter(([key]) => !['_id', '__v', 'createdAt', 'updatedAt'].includes(key));
+  const groups: Array<{ title: string; keys: string[] }> = [
+    { title: 'Main content', keys: ['section', 'key', 'title', 'slug', 'overview', 'excerpt', 'description', 'body', 'value', 'eyebrow', 'subtitle', 'question', 'answer', 'caption', 'author', 'category', 'categories', 'tags'] },
+    { title: 'Service details', keys: ['problems', 'includedWork', 'materials', 'workflow', 'deliverables', 'benefits', 'costFactors', 'customization', 'faqs', 'relatedServices', 'points', 'steps'] },
+    { title: 'Images and media', keys: ['imageUrl', 'mainImage', 'heroImage', 'featuredImage', 'images', 'gallery', 'youtubeVideoId', 'videoUrl'] },
+    { title: 'Publishing and SEO', keys: ['status', 'isActive', 'showOnHomePage', 'featured', 'publishedAt', 'order', 'seoTitle', 'seoDescription'] },
+  ];
+  const groupedFields = groups.map((group) => ({ ...group, entries: fields.filter(([key]) => group.keys.includes(key)) })).filter((group) => group.entries.length > 0);
+  const assigned = new Set(groupedFields.flatMap((group) => group.entries.map(([key]) => key)));
+  const otherFields = fields.filter(([key]) => !assigned.has(key));
+  if (otherFields.length > 0) groupedFields.push({ title: 'Other fields', keys: [], entries: otherFields });
+  const pages = fields.length > 10 ? groupedFields : [{ title: 'Content details', keys: [], entries: fields }];
+  const activePageIndex = Math.min(pageIndex, pages.length - 1);
   const renderField = (key: string, fieldValue: JsonValue, path: Array<string | number>): React.ReactNode => {
     if (key === '_id' || key === '__v' || key === 'createdAt' || key === 'updatedAt') return null;
     const id = `admin-field-${path.map(String).join('-')}`;
-    const label = humanize(key);
+    const isWebsiteContent = typeof value.section === 'string';
+    const label = key === 'isActive' && isWebsiteContent ? 'Publish on website' : humanize(key);
     const set = (next: JsonValue) => {
       const updated = updateAt(value, path, next) as Record<string, JsonValue>;
       if (path[0] === 'gallery' && Array.isArray(updated.gallery)) {
@@ -61,7 +76,7 @@ export const AdminRecordEditor: React.FC<{ value: Record<string, JsonValue>; onC
       </fieldset>;
     }
 
-    if (typeof fieldValue === 'boolean') return <label key={id} className="flex min-h-11 items-center gap-3 rounded-lg border border-slate-200 px-3 text-sm font-semibold text-slate-800"><input id={id} type="checkbox" checked={fieldValue} onChange={(event) => set(event.target.checked)} className="h-4 w-4 accent-brand-orange" />{label}</label>;
+    if (typeof fieldValue === 'boolean') return <label key={id} className="flex min-h-11 items-center gap-3 rounded-lg border border-slate-200 px-3 text-sm font-semibold text-slate-800"><input id={id} type="checkbox" checked={fieldValue} onChange={(event) => set(event.target.checked)} className="h-4 w-4 accent-brand-orange" /><span>{label}{key === 'isActive' && isWebsiteContent && <span className="mt-0.5 block text-xs font-normal text-slate-500">{fieldValue ? 'Published content is visible on the website.' : 'Unpublished content stays hidden from public pages.'}</span>}</span></label>;
 
     if (typeof fieldValue === 'number') return <label key={id} className="block min-w-0 text-sm font-semibold text-slate-800">{label}<input id={id} type="number" value={fieldValue} onChange={(event) => set(Number(event.target.value))} className="mt-1 min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/25" /></label>;
 
@@ -78,5 +93,13 @@ export const AdminRecordEditor: React.FC<{ value: Record<string, JsonValue>; onC
     return <label key={id} className="block min-w-0 text-sm font-semibold text-slate-800">{label}{options.length ? <select id={id} value={text} onChange={(event) => set(event.target.value)} className="mt-1 min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 font-normal focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/25">{options.map((option) => <option key={option} value={option}>{humanize(option)}</option>)}</select> : multiline ? <textarea id={id} rows={key === 'body' || key === 'description' ? 8 : 4} value={text} onChange={(event) => set(event.target.value)} className="mt-1 min-h-24 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/25" /> : <input id={id} value={text} onChange={(event) => set(event.target.value)} className="mt-1 min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/25" />}</label>;
   };
 
-  return <div className="space-y-4">{Object.entries(value).map(([key, fieldValue]) => renderField(key, fieldValue, [key]))}</div>;
+  return <div className="space-y-4">
+    {pages.length > 1 && <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 sm:p-4">
+      <p className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-500">Form sections · {activePageIndex + 1} of {pages.length}</p>
+      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Editor form sections">{pages.map((page, index) => <button key={page.title} type="button" role="tab" aria-selected={index === activePageIndex} onClick={() => setPageIndex(index)} className={`min-h-10 rounded-full px-3.5 text-sm font-semibold transition-colors ${index === activePageIndex ? 'bg-brand-navy text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-brand-navy'}`}>{page.title}<span className="ml-1.5 text-xs opacity-70">{page.entries.length}</span></button>)}</div>
+    </div>}
+    <h3 className="font-heading text-lg font-bold text-brand-navy">{pages[activePageIndex]?.title}</h3>
+    <div className="space-y-4">{pages[activePageIndex]?.entries.map(([key, fieldValue]) => renderField(key, fieldValue, [key]))}</div>
+    {pages.length > 1 && <div className="flex items-center justify-between border-t border-slate-200 pt-3"><button type="button" disabled={activePageIndex === 0} onClick={() => setPageIndex((current) => Math.max(0, current - 1))} className="min-h-10 rounded-full border border-slate-300 px-4 text-sm font-semibold text-slate-700 disabled:opacity-40">Previous section</button><span className="text-xs text-slate-500">{activePageIndex + 1} / {pages.length}</span><button type="button" disabled={activePageIndex === pages.length - 1} onClick={() => setPageIndex((current) => Math.min(pages.length - 1, current + 1))} className="min-h-10 rounded-full bg-brand-navy px-4 text-sm font-semibold text-white disabled:opacity-40">Next section</button></div>}
+  </div>;
 };

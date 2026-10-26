@@ -14,7 +14,7 @@ const { width, height } = await mark.metadata();
 const headerHeight = Math.round(386 * height / width);
 await mark.clone().resize(386, headerHeight).png().toFile(path.join(output, 'niyoireme-header.png'));
 for (const size of [192, 512]) {
-  await mark.clone().resize(size, size, { fit: 'contain', background: '#080808' }).png().toFile(path.join(output, `niyoireme-icon-${size}.png`));
+  await mark.clone().resize(size, size, { fit: 'contain', background: '#0e224e' }).flatten({ background: '#0e224e' }).png().toFile(path.join(output, `niyoireme-icon-${size}.png`));
 }
 
 const background = Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="630" fill="#07111e"/><path d="M0 0h14v630H0z" fill="#f4bd35"/><circle cx="970" cy="320" r="360" fill="#111d2a"/><path d="M40 500h600" stroke="#f4bd35" stroke-width="3"/><text x="58" y="170" font-family="Arial,sans-serif" font-size="54" font-weight="700" fill="#fff">NIYO IREME UNIT LTD</text><text x="60" y="240" font-family="Arial,sans-serif" font-size="26" font-weight="600" fill="#f4bd35">PRO FINISH • HOME RENOVATION</text><text x="60" y="310" font-family="Arial,sans-serif" font-size="22" fill="#d7dee8">FINISHING WORKS &amp; INTERIOR DESIGN</text><text x="60" y="560" font-family="Arial,sans-serif" font-size="24" font-weight="600" fill="#fff">Quality. Precision. Excellence.</text></svg>`);
