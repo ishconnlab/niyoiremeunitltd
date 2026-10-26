@@ -197,7 +197,7 @@ export function buildQuoteSummaryText(
 ): string {
   const lines: string[] = [];
 
-  lines.push('*NIYO IREME UNIT COMPANY LTD ” QUOTATION REQUEST*');
+  lines.push('*NIYO IREME UNIT LTD — QUOTATION REQUEST*');
   lines.push('--------------------------------------');
 
   if (context.name) lines.push(`*Name:* ${context.name}`);
@@ -230,7 +230,7 @@ export function buildQuoteSummaryText(
   }
 
   lines.push('');
-  lines.push('Kunoza umurimo ni inshingano zacu!');
+  lines.push('Quality. Precision. Excellence.');
   lines.push('Please arrange a site visit for my project.');
 
   return lines.join('\n');

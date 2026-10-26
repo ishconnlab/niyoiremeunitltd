@@ -11,6 +11,10 @@ import { ServiceIcon } from '../components/common/ServiceIcon';
 import { LocalizedLink } from '../components/common/LocalizedLink';
 import { PillButton } from '../components/common/PillButton';
 import { asArray } from '../utils/i18n';
+import { useCmsServices } from '../hooks/useCmsServices';
+import { useWhatsAppContacts } from '../hooks/useWhatsAppContacts';
+import { WhatsAppInquiry } from '../components/common/WhatsAppInquiry';
+import type { CmsService, WhatsAppContact } from '../types/cms';
 
 type EquipmentItem = {
   title: string;
@@ -110,9 +114,12 @@ const RECRUIT_ITEMS: RecruitItem[] = [
 export const ServiceDetails: React.FC = () => {
   const { t } = useTranslation();
   const { serviceId } = useParams<{ serviceId: string }>();
+  const { services: cmsServices } = useCmsServices();
+  const contacts = useWhatsAppContacts();
 
+  const cmsService = cmsServices?.find((item) => item.slug === serviceId);
   const service = SERVICES_DATA.find((item) => item.id === serviceId);
-  const serviceTitle = service ? t(`services.items.${service.id}.title`) : t('services.items.finishing.title');
+  const serviceTitle = cmsService?.title || (service ? t(`services.items.${service.id}.title`) : t('services.items.finishing.title'));
 
   const breadcrumbs = useMemo(
     () => [
@@ -124,17 +131,28 @@ export const ServiceDetails: React.FC = () => {
   );
 
   useSeo({
-    title: service
+    title: cmsService
+      ? cmsService.seoTitle || `${serviceTitle} | NIYO IREME UNIT LTD`
+      : service
       ? t('meta.routes.serviceDetails.title', { service: serviceTitle })
       : t('meta.routes.services.title'),
-    description: service
+    description: cmsService
+      ? cmsService.seoDescription || cmsService.overview
+      : service
       ? t('meta.routes.serviceDetails.description', { service: serviceTitle })
       : t('meta.routes.services.title'),
-    path: service ? `/services/${service.id}` : '/services',
-    noIndex: !service,
-    image: service?.image,
-    breadcrumbs: service ? breadcrumbs : undefined,
+    path: cmsService ? `/services/${cmsService.slug}` : service ? `/services/${service.id}` : '/services',
+    noIndex: cmsServices ? !cmsService : !service,
+    image: cmsService?.mainImage || service?.image,
+    breadcrumbs: service || cmsService ? breadcrumbs : undefined,
   });
+
+  if (cmsService) return <CmsServiceDetail service={cmsService} contacts={contacts} related={cmsServices || []} />;
+
+  if (cmsServices) return <>
+    <PageHero eyebrow="NIYO IREME UNIT LTD" title="Service not found" subtitle="This service may have been updated or is no longer available." compact />
+    <section className="py-16 text-center"><PillButton to="/services">Browse services</PillButton></section>
+  </>;
 
   if (!service) {
     return (
@@ -480,5 +498,55 @@ export const ServiceDetails: React.FC = () => {
       </section>
     </>
   );
+};
+
+const CmsServiceDetail: React.FC<{ service: CmsService; contacts: WhatsAppContact[]; related: CmsService[] }> = ({ service, contacts, related }) => {
+  const fields: Array<[string, string[] | undefined]> = [
+    ['What this service addresses', service.problems],
+    ['Work included', service.includedWork],
+    ['Materials and equipment', service.materials],
+    ['How we work', service.workflow],
+    ['What to expect', service.deliverables],
+    ['Benefits', service.benefits],
+    ['Ways to tailor the work', service.customization],
+    ['What affects project cost', service.costFactors],
+  ];
+  const gallery = service.gallery?.length ? service.gallery : (service.mainImage ? [{ url: service.mainImage, alt: `${service.title} example` }] : []);
+  return <>
+    <PageHero eyebrow="NIYO IREME UNIT LTD • FINISHING WORKS & INTERIOR DESIGN" title={service.title} subtitle={service.overview} />
+    <article className="py-14 sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="font-heading text-2xl font-extrabold text-brand-navy">About this service</h2>
+          <p className="mt-4 whitespace-pre-line text-base leading-7 text-slate-700">{service.description}</p>
+        </div>
+        {gallery.length > 0 && <section className="mt-10" aria-label={`${service.title} gallery`}>
+          <h2 className="mb-4 font-heading text-xl font-bold text-brand-navy">Examples and related finishes</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{gallery.slice(0, 10).map((image, index) => <figure key={`${image.url}-${index}`} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+            <img src={image.url} alt={image.alt || `${service.title} example ${index + 1}`} width={720} height={480} loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" />
+            <figcaption className="px-3 py-2 text-xs text-slate-600">{image.alt || `${service.title} example ${index + 1}`}</figcaption>
+          </figure>)}</div>
+          <p className="mt-2 text-xs text-slate-500">Images illustrate the type of finish or work discussed; they are not a claim about a specific project unless identified by the company.</p>
+        </section>}
+        <div className="mt-12 grid gap-5 md:grid-cols-2">{fields.filter(([, values]) => values?.length).map(([heading, values]) => <section key={heading} className="rounded-2xl border border-slate-200 bg-white p-5">
+          <h2 className="font-heading text-lg font-bold text-brand-navy">{heading}</h2>
+          <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">{values?.map((value) => <li key={value} className="flex gap-2"><span className="text-brand-orange" aria-hidden="true">•</span><span>{value}</span></li>)}</ul>
+        </section>)}</div>
+        {(service.faqs?.length ?? 0) > 0 && <section className="mx-auto mt-12 max-w-3xl">
+          <h2 className="font-heading text-2xl font-extrabold text-brand-navy">Frequently asked questions</h2>
+          <div className="mt-4 space-y-3">{service.faqs?.map((faq) => <details key={faq.question} className="rounded-xl border border-slate-200 bg-white p-4"><summary className="cursor-pointer font-semibold text-brand-navy">{faq.question}</summary><p className="mt-3 whitespace-pre-line text-sm leading-6 text-slate-700">{faq.answer}</p></details>)}</div>
+        </section>}
+        <section className="mt-12 rounded-3xl bg-brand-navy p-6 text-white sm:p-9">
+          <h2 className="font-heading text-2xl font-extrabold">Discuss your project</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-200">Contact us to review the site, agree the scope and discuss available options. Cost and timing depend on the property and selected work.</p>
+          <div className="mt-5 flex flex-wrap items-center gap-3"><PillButton to="/quote">Request a quotation</PillButton><WhatsAppInquiry serviceName={service.title} contacts={contacts} /></div>
+        </section>
+        {related.filter((item) => item.slug !== service.slug).length > 0 && <section className="mt-12">
+          <h2 className="font-heading text-2xl font-extrabold text-brand-navy">Related services</h2>
+          <div className="mt-4 flex flex-wrap gap-3">{related.filter((item) => item.slug !== service.slug).slice(0, 6).map((item) => <LocalizedLink key={item.slug} to={`/services/${item.slug}`} className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-brand-navy hover:border-brand-orange">{item.title}</LocalizedLink>)}</div>
+        </section>}
+      </div>
+    </article>
+  </>;
 };
 

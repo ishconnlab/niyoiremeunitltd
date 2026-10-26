@@ -7,20 +7,25 @@ import { useSeo } from '../hooks/useSeo';
 import { PageHero } from '../components/common/PageHero';
 import { PillButton } from '../components/common/PillButton';
 import { cn } from '../utils/cn';
+import { contentValue, useCmsContent } from '../hooks/useCmsContent';
 
 export const FAQ: React.FC = () => {
   const { t } = useTranslation();
   const [category, setCategory] = useState<string>('all');
   const [query, setQuery] = useState('');
   const [openId, setOpenId] = useState<string | null>(FAQS_DATA[0]?.id ?? null);
+  const cmsFaqs = useCmsContent('faq');
+  const faqs = useMemo(() => cmsFaqs?.length
+    ? cmsFaqs.map((record) => {
+      const value = contentValue(record);
+      return { id: record.key, category: typeof value.category === 'string' ? value.category : 'general', question: String(value.question || ''), answer: String(value.answer || '') };
+    }).filter((faq) => faq.question && faq.answer)
+    : FAQS_DATA.map((faq) => ({ ...faq, question: t(`faq.items.${faq.id}.question`), answer: t(`faq.items.${faq.id}.answer`) })), [cmsFaqs, t]);
 
   const faqEntities = useMemo(
     () =>
-      FAQS_DATA.map((faq) => ({
-        question: t(`faq.items.${faq.id}.question`),
-        answer: t(`faq.items.${faq.id}.answer`),
-      })),
-    [t]
+      faqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+    [faqs]
   );
 
   const breadcrumbs = useMemo(
@@ -42,16 +47,14 @@ export const FAQ: React.FC = () => {
   const filtered = useMemo(() => {
     const term = query.trim().toLowerCase();
 
-    return FAQS_DATA.filter((faq) => {
+    return faqs.filter((faq) => {
       const matchesCategory = category === 'all' || faq.category === category;
       if (!matchesCategory) return false;
       if (!term) return true;
 
-      const question = t(`faq.items.${faq.id}.question`).toLowerCase();
-      const answer = t(`faq.items.${faq.id}.answer`).toLowerCase();
-      return question.includes(term) || answer.includes(term);
+      return faq.question.toLowerCase().includes(term) || faq.answer.toLowerCase().includes(term);
     });
-  }, [category, query, t]);
+  }, [category, faqs, query]);
 
   return (
     <>
@@ -160,7 +163,7 @@ export const FAQ: React.FC = () => {
                         className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left sm:gap-4 sm:px-6 sm:py-5"
                       >
                         <span className="font-heading text-[15px] font-bold text-brand-navy sm:text-base">
-                          {t(`faq.items.${faq.id}.question`)}
+                          {faq.question}
                         </span>
                         <ChevronDown
                           className={cn(
@@ -174,7 +177,7 @@ export const FAQ: React.FC = () => {
                     {isOpen ? (
                       <div id={panelId} role="region" aria-labelledby={buttonId} className="px-6 pb-6">
                         <p className="text-sm leading-relaxed text-slate-600">
-                          {t(`faq.items.${faq.id}.answer`)}
+                          {faq.answer}
                         </p>
                       </div>
                     ) : null}

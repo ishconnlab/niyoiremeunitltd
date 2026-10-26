@@ -25,7 +25,7 @@ export const getJobs = asyncHandler(async (req, res) => {
 // @route   GET /api/jobs/:id
 // @access  Public
 export const getJob = asyncHandler(async (req, res) => {
-  const job = await Job.findById(req.params.id);
+  const job = await Job.findOne({ _id: req.params.id, isActive: true });
 
   if (!job) {
     res.status(404);
@@ -47,17 +47,11 @@ export const createJob = asyncHandler(async (req, res) => {
 // @route   PUT /api/jobs/:id
 // @access  Private (super_admin)
 export const updateJob = asyncHandler(async (req, res) => {
-  let job = await Job.findById(req.params.id);
-
-  if (!job) {
-    res.status(404);
-    throw new Error('Job not found');
-  }
-
-  job = await Job.findByIdAndUpdate(req.params.id, req.body, {
+  const job = await Job.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
+  if (!job) return res.status(404).json({ success: false, message: 'Job not found' });
 
   res.status(200).json({ success: true, data: job });
 });

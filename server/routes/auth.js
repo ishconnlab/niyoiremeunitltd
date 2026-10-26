@@ -14,7 +14,7 @@ const router = express.Router();
 router.post('/register', registerAdmin);
 router.post('/login', loginAdmin);
 router.get('/me', protect, getMe);
-router.get('/logout', protect, logoutAdmin);
+router.post('/logout', protect, logoutAdmin);
 router.get('/register/status', getRegistrationStatus);
 router.post('/register/toggle', protect, toggleRegistration);
 

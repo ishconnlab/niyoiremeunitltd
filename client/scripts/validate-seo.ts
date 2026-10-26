@@ -83,10 +83,9 @@ if (!appSource) {
     const urlBlocks = sitemap.match(/<url>[\s\S]*?<\/url>/g) ?? [];
     urlBlocks.forEach((block, index) => {
       const hasEn = block.includes('hreflang="en"');
-      const hasRw = block.includes('hreflang="rw"');
       const hasXDefault = block.includes('hreflang="x-default"');
-      if (!hasEn || !hasRw || !hasXDefault) {
-        problems.push(`sitemap entry ${index + 1} is missing en/rw/x-default alternates`);
+      if (!hasEn || !hasXDefault) {
+        problems.push(`sitemap entry ${index + 1} is missing en/x-default alternates`);
       }
     });
 
@@ -105,6 +104,7 @@ if (!robots) {
   if (!/User-agent:\s*\*/i.test(robots)) {
     problems.push('robots.txt is missing a User-agent directive');
   }
+  if (!/Disallow:\s*\/admin\//i.test(robots)) problems.push('robots.txt must disallow administrator pages');
   notes.push('robots.txt references the sitemap');
 }
 

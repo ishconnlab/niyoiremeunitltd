@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { cn } from '../../utils/cn';
+import { useLocation } from 'react-router-dom';
+import { contentValue, useCmsContent } from '../../hooks/useCmsContent';
 
 export interface PageHeroProps {
   eyebrow?: string;
@@ -26,7 +28,16 @@ export const PageHero: React.FC<PageHeroProps> = ({
   children,
   className,
   compact = false,
-}) => (
+}) => {
+  const { pathname } = useLocation();
+  const section = pathname === '/services' ? 'services' : pathname.startsWith('/services/') ? 'serviceDetail' : pathname.slice(1).split('/')[0];
+  const records = useCmsContent(section);
+  const hero = contentValue(records?.find((record) => record.key === 'hero'));
+  const displayEyebrow = typeof hero.eyebrow === 'string' && hero.eyebrow ? hero.eyebrow : eyebrow;
+  const displayTitle = typeof hero.title === 'string' && hero.title ? hero.title : title;
+  const displaySubtitle = typeof hero.subtitle === 'string' && hero.subtitle ? hero.subtitle : subtitle;
+
+  return (
   <section
     className={cn(
       'relative overflow-hidden bg-brand-navy text-white',
@@ -56,11 +67,11 @@ export const PageHero: React.FC<PageHeroProps> = ({
 
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
-        {eyebrow ? (
+        {displayEyebrow ? (
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-8 h-[2px] bg-brand-orange" aria-hidden="true" />
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-              {eyebrow}
+              {displayEyebrow}
             </span>
           </div>
         ) : null}
@@ -71,12 +82,12 @@ export const PageHero: React.FC<PageHeroProps> = ({
             compact ? 'text-3xl sm:text-4xl lg:text-5xl' : 'text-4xl sm:text-5xl lg:text-6xl'
           )}
         >
-          {title}
+          {displayTitle}
         </h1>
 
-        {subtitle ? (
+        {displaySubtitle ? (
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl text-pretty">
-            {subtitle}
+            {displaySubtitle}
           </p>
         ) : null}
 
@@ -84,5 +95,6 @@ export const PageHero: React.FC<PageHeroProps> = ({
       </div>
     </div>
   </section>
-);
+  );
+};
 

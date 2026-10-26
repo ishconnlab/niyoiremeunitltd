@@ -8,17 +8,15 @@
 
 /** Contact email is configurable until the company confirms its official address. */
 const env = (import.meta as { env?: Record<string, string | undefined> }).env ?? {};
-const CONTACT_EMAIL = env.VITE_CONTACT_EMAIL || 'info@niyoiremeunitltd.com';
+const CONTACT_EMAIL = env.VITE_CONTACT_EMAIL || '';
 
 export const COMPANY_INFO = {
-  name: 'NIYO IREME UNIT COMPANY LTD',
-  shortName: 'NIYO IREME',
-  /** Official Kinyarwanda slogan - never translated. */
-  sloganKinyarwanda: 'Kunoza umurimo ni inshingano zacu!',
-  /** Official Kinyarwanda introductory statement - never translated. */
-  introKinyarwanda: 'Dutanga serivisi zigezweho kandi zinoze aho waba uri hose.',
-  /** Official Kinyarwanda closing slogan - never translated. */
-  closingSloganKinyarwanda: 'Kunoza umurimo ni inshingano zacu!',
+  name: 'NIYO IREME UNIT LTD',
+  shortName: 'NIYO IREME UNIT LTD',
+  registeredName: 'NIYO IREME UNIT COMPANY LTD',
+  tagline: 'Quality. Precision. Excellence.',
+  intro: "Your home's beauty and quality are our priority.",
+  closingTagline: 'Quality. Precision. Excellence.',
   /** Neighbourhood-level location. No street address is claimed until confirmed. */
   location: 'Kimironko, Kigali, Rwanda',
   locationRegion: 'Kigali, Rwanda',
@@ -46,7 +44,7 @@ export const MAP_LINKS = {
 
 export const SERVICE_CATEGORY_IDS = ['finishing', 'painting', 'construction', 'workforce'] as const;
 
-export const OFFICIAL_SLOGAN_EN = 'Doing every job well is our responsibility!';
-export const OFFICIAL_INTRO_EN = 'We provide modern, high-quality services wherever you are.';
-export const OFFICIAL_CLOSING_EN = 'Doing every job well is our responsibility!';
+export const OFFICIAL_SLOGAN_EN = 'Quality. Precision. Excellence.';
+export const OFFICIAL_INTRO_EN = "Your home's beauty and quality are our priority.";
+export const OFFICIAL_CLOSING_EN = 'Quality. Precision. Excellence.';
 

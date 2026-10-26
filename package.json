@@ -1,0 +1,12 @@
+{
+  "name": "niyo-ireme-unit-ltd",
+  "private": true,
+  "scripts": {
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server run dev",
+    "build": "npm --prefix client run build",
+    "lint": "npm --prefix client run lint",
+    "test": "npm --prefix client test && npm --prefix server test",
+    "seed": "npm --prefix server run seed"
+  }
+}

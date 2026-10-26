@@ -29,7 +29,7 @@ export const AppLoader: React.FC = () => (
     <div className="relative flex h-full w-full items-center justify-center px-6">
       <div className="flex w-full max-w-sm flex-col items-center gap-4 rounded-2xl border border-white/15 bg-brand-navy/50 px-8 py-10 shadow-2xl backdrop-blur-md">
         <img
-          src="/assets/brand/logo-mark.svg"
+          src="/assets/brand/niyoireme-icon-192.png"
           alt={COMPANY_INFO.name}
           width={120}
           height={120}
@@ -41,7 +41,7 @@ export const AppLoader: React.FC = () => (
         </p>
 
         <p className="text-center text-sm font-semibold italic text-brand-orange">
-          {COMPANY_INFO.sloganKinyarwanda}
+          {COMPANY_INFO.tagline}
         </p>
 
         <div className="relative h-[3px] w-44 overflow-hidden rounded-full bg-white/15">

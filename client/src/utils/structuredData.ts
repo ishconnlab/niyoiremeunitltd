@@ -25,21 +25,20 @@ const absolute = (path: string): string => {
 
 /**
  * `GeneralContractor` is the most accurate schema.org subtype available for the
- * business. Opening hours are the schedule confirmed by the owner: Mon“Fri,
- * 08:00“17:00.
+ * business. No business hours are included because none have been confirmed.
  */
 export const buildOrganizationNode = (description: string, image: string) => ({
   '@type': ['GeneralContractor', 'LocalBusiness'],
   '@id': ORGANIZATION_ID,
   name: COMPANY_INFO.name,
   alternateName: COMPANY_INFO.shortName,
-  slogan: COMPANY_INFO.sloganKinyarwanda,
+  slogan: COMPANY_INFO.tagline,
   description,
   url: `${SITE_ORIGIN}/`,
   telephone: COMPANY_INFO.phoneDisplay,
-  email: COMPANY_INFO.email,
+  ...(COMPANY_INFO.email ? { email: COMPANY_INFO.email } : {}),
   image,
-  logo: `${SITE_ORIGIN}/assets/brand/icon-512.png`,
+  logo: `${SITE_ORIGIN}/assets/brand/niyoireme-icon-512.png`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Kimironko',
@@ -55,16 +54,8 @@ export const buildOrganizationNode = (description: string, image: string) => ({
     '@type': 'Country',
     name: COMPANY_INFO.country,
   },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '17:00',
-    },
-  ],
-  availableLanguage: ['en', 'rw'],
-  knowsLanguage: ['en', 'rw'],
+  availableLanguage: ['en'],
+  knowsLanguage: ['en'],
 });
 
 /** Site-wide `WebSite` node, tied to the organization as publisher. */
@@ -99,16 +90,19 @@ export const buildBreadcrumbNode = (
   path: string,
   language: SupportedLanguage,
   crumbs: { name: string; path: string }[]
-) => ({
-  '@type': 'BreadcrumbList',
-  '@id': `${absolute(path)}#breadcrumb`,
-  itemListElement: crumbs.map((crumb, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    name: crumb.name,
-    item: `${absolute(crumb.path)}?lang=${language}`,
-  })),
-});
+) => {
+  void language;
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${absolute(path)}#breadcrumb`,
+    itemListElement: crumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: absolute(crumb.path),
+    })),
+  };
+};
 
 /** Catalog of the four real service divisions, offered by the organization. */
 export const buildServiceListNode = (

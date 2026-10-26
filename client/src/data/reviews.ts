@@ -29,41 +29,5 @@ export interface ClientReview {
   rating: number;
 }
 
-export const CLIENT_REVIEWS: ClientReview[] = [
-  {
-    id: 'arice-kicukiro',
-    attributionKey: 'reviews.entries.ariceKicukiro.attribution',
-    projectKey: 'reviews.entries.ariceKicukiro.project',
-    quoteKey: 'reviews.entries.ariceKicukiro.quote',
-    rating: 5,
-  },
-  {
-    id: 'joseline-rusororo',
-    attributionKey: 'reviews.entries.joselineRusororo.attribution',
-    projectKey: 'reviews.entries.joselineRusororo.project',
-    quoteKey: 'reviews.entries.joselineRusororo.quote',
-    rating: 5,
-  },
-  {
-    id: 'jack-murugando',
-    attributionKey: 'reviews.entries.jackMurugando.attribution',
-    projectKey: 'reviews.entries.jackMurugando.project',
-    quoteKey: 'reviews.entries.jackMurugando.quote',
-    rating: 5,
-  },
-  {
-    id: 'ingabire-noroveje',
-    attributionKey: 'reviews.entries.ingabireNoroveje.attribution',
-    projectKey: 'reviews.entries.ingabireNoroveje.project',
-    quoteKey: 'reviews.entries.ingabireNoroveje.quote',
-    rating: 5,
-  },
-  {
-    id: 'kalekez-bumbogo',
-    attributionKey: 'reviews.entries.kalekezBumbogo.attribution',
-    projectKey: 'reviews.entries.kalekezBumbogo.project',
-    quoteKey: 'reviews.entries.kalekezBumbogo.quote',
-    rating: 5,
-  },
-];
+export const CLIENT_REVIEWS: ClientReview[] = [];
 

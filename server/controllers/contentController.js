@@ -23,11 +23,16 @@ export const getContent = asyncHandler(async (req, res) => {
   });
 });
 
+export const getAdminContent = asyncHandler(async (_req, res) => {
+  const content = await Content.find().sort({ section: 1, order: 1, createdAt: -1 });
+  res.json({ success: true, count: content.length, data: content });
+});
+
 // @desc    Get single content item
 // @route   GET /api/content/:id
 // @access  Public
 export const getContentItem = asyncHandler(async (req, res) => {
-  const content = await Content.findById(req.params.id);
+  const content = await Content.findOne({ _id: req.params.id, isActive: true });
 
   if (!content) {
     res.status(404);
@@ -49,17 +54,11 @@ export const createContent = asyncHandler(async (req, res) => {
 // @route   PUT /api/content/:id
 // @access  Private (super_admin)
 export const updateContent = asyncHandler(async (req, res) => {
-  let content = await Content.findById(req.params.id);
-
-  if (!content) {
-    res.status(404);
-    throw new Error('Content not found');
-  }
-
-  content = await Content.findByIdAndUpdate(req.params.id, req.body, {
+  const content = await Content.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
+  if (!content) return res.status(404).json({ success: false, message: 'Content not found' });
 
   res.status(200).json({ success: true, data: content });
 });

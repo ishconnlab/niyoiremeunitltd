@@ -40,6 +40,7 @@ const siteUrl = (
 const ROUTES: { path: string; priority: string; changefreq: string }[] = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/services', priority: '0.9', changefreq: 'monthly' },
+  { path: '/services/interior-design', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/finishing', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/painting', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/construction', priority: '0.8', changefreq: 'monthly' },
@@ -51,9 +52,11 @@ const ROUTES: { path: string; priority: string; changefreq: string }[] = [
   { path: '/services/plastering', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/cleaning', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/workforce', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/workforce-matching', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/supervision', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/equipment', priority: '0.8', changefreq: 'monthly' },
   { path: '/services/materials', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/project-photography', priority: '0.8', changefreq: 'monthly' },
   { path: '/quote', priority: '0.9', changefreq: 'monthly' },
   { path: '/contact', priority: '0.8', changefreq: 'monthly' },
   { path: '/about', priority: '0.7', changefreq: 'monthly' },
@@ -64,16 +67,15 @@ const ROUTES: { path: string; priority: string; changefreq: string }[] = [
   { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
 ];
 
-const LANGUAGES = ['en', 'rw'] as const;
+const LANGUAGES = ['en'] as const;
 const lastmod = new Date().toISOString().slice(0, 10);
 
 /** Canonical, language-neutral URL for a route (no query string). */
 const canonical = (routePath: string) =>
   `${siteUrl}${routePath === '/' ? '/' : routePath}`;
 
-/** Language-specific URL used only for the hreflang alternates. */
-const localized = (routePath: string, lang: string) =>
-  `${siteUrl}${routePath === '/' ? '/' : routePath}?lang=${lang}`;
+/** English URL used for hreflang alternates. */
+const localized = (routePath: string) => canonical(routePath);
 
 const escapeXml = (value: string) =>
   value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -81,11 +83,11 @@ const escapeXml = (value: string) =>
 const entries = ROUTES.map((route) => {
   const alternates = LANGUAGES.map(
     (lang) =>
-      `    <xhtml:link rel="alternate" hreflang="${lang}" href="${escapeXml(localized(route.path, lang))}" />`
+      `    <xhtml:link rel="alternate" hreflang="${lang}" href="${escapeXml(localized(route.path))}" />`
   ).join('\n');
 
   const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(
-    localized(route.path, 'en')
+    localized(route.path)
   )}" />`;
 
   return `  <url>
@@ -111,6 +113,7 @@ Allow: /
 
 # No private, admin or staging routes are published on this origin.
 Disallow: /api/
+Disallow: /admin/
 
 Sitemap: ${siteUrl}/sitemap.xml
 `;

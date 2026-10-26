@@ -21,16 +21,13 @@ const env = (value: unknown): string => (typeof value === 'string' ? value.trim(
 const viteEnv = (import.meta as { env?: Record<string, string | undefined> }).env ?? {};
 
 /**
- * Placeholder used while a channel has no configured URL. Every channel keeps
- * a working link so the icon row is never broken; swap the real profile URLs in
- * via the environment and they take over automatically.
+ * Channels without a confirmed profile are omitted. Avoid publishing a guessed
+ * or placeholder destination as a company social account.
  */
-const FALLBACK_SOCIAL_URL = 'https://github.com/niyoiremeunit-oss';
-
 const social = (channel: SocialChannel, labelKey: string, value: unknown): SocialLink => ({
   channel,
   labelKey,
-  url: env(value) || FALLBACK_SOCIAL_URL,
+  url: env(value),
 });
 
 const CONFIGURED_SOCIAL_LINKS: SocialLink[] = [
@@ -40,7 +37,7 @@ const CONFIGURED_SOCIAL_LINKS: SocialLink[] = [
   social('x', 'social.x', viteEnv.VITE_X_URL),
 ];
 
-export const SOCIAL_LINKS: SocialLink[] = CONFIGURED_SOCIAL_LINKS;
+export const SOCIAL_LINKS: SocialLink[] = CONFIGURED_SOCIAL_LINKS.filter((link) => Boolean(link.url));
 
 /** WhatsApp is always available ” it is the channel the company answers on. */
 export const WHATSAPP_LINK: SocialLink = {

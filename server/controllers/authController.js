@@ -1,7 +1,6 @@
 ﻿import asyncHandler from 'express-async-handler';
 import Admin from '../models/Admin.js';
 import Setting from '../models/Setting.js';
-import jwt from 'jsonwebtoken';
 
 /**
  * Get the current registration status.
@@ -12,7 +11,7 @@ import jwt from 'jsonwebtoken';
 export const getRegistrationStatus = asyncHandler(async (req, res) => {
   const adminExists = await Admin.exists({});
   if (!adminExists) {
-    return res.status(200).json({ success: true, registrationEnabled: true });
+    return res.status(200).json({ success: true, registrationEnabled: process.env.ALLOW_INITIAL_ADMIN_REGISTRATION === 'true' });
   }
 
   const setting = await Setting.findOne({ key: 'registrationEnabled' });
@@ -28,7 +27,12 @@ export const getRegistrationStatus = asyncHandler(async (req, res) => {
  * @access Public
  */
 export const registerAdmin = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const email = String(req.body.email || '').trim().toLowerCase();
+  const password = req.body.password;
+  if (!email || typeof password !== 'string' || password.length < 8) {
+    res.status(400);
+    throw new Error('A valid email and password of at least 8 characters are required');
+  }
 
   const adminExists = await Admin.findOne({ email });
 
@@ -39,6 +43,10 @@ export const registerAdmin = asyncHandler(async (req, res) => {
 
   // If admins already exist, registration must be explicitly enabled
   const anyAdminExists = await Admin.exists({});
+  if (!anyAdminExists && process.env.ALLOW_INITIAL_ADMIN_REGISTRATION !== 'true') {
+    res.status(403);
+    throw new Error('Initial admin setup is disabled. Seed the first administrator before enabling registration.');
+  }
   if (anyAdminExists) {
     const setting = await Setting.findOne({ key: 'registrationEnabled' });
     if (!setting || setting.value !== true) {
@@ -54,12 +62,7 @@ export const registerAdmin = asyncHandler(async (req, res) => {
   });
 
   if (admin) {
-    res.status(201).json({
-      _id: admin._id,
-      email: admin.email,
-      role: admin.role,
-      token: getSignedJwtToken(admin),
-    });
+    sendTokenResponse(admin, 201, res);
   } else {
     res.status(400);
     throw new Error('Invalid admin data');
@@ -71,7 +74,12 @@ export const registerAdmin = asyncHandler(async (req, res) => {
  * @access Public
  */
 export const loginAdmin = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const email = String(req.body.email || '').trim().toLowerCase();
+  const { password } = req.body;
+  if (!email || typeof password !== 'string' || !password) {
+    res.status(400);
+    throw new Error('Email and password are required');
+  }
 
   const admin = await Admin.findOne({ email }).select('+password');
 
@@ -129,10 +137,7 @@ export const toggleRegistration = asyncHandler(async (req, res) => {
  * @access Private
  */
 export const logoutAdmin = asyncHandler(async (req, res) => {
-  res.cookie('token', 'none', {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true,
-  });
+  res.clearCookie('token', cookieOptions());
   res.status(200).json({ success: true, data: {} });
 });
 
@@ -140,20 +145,10 @@ export const logoutAdmin = asyncHandler(async (req, res) => {
 const sendTokenResponse = (admin, statusCode, res) => {
   const token = admin.getSignedJwtToken();
 
-  const options = {
-    expires: new Date(
-      Date.now() + parseInt(process.env.JWT_EXPIRE, 10) * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-  };
-
-  if (process.env.NODE_ENV === 'production') {
-    options.secure = true;
-  }
+  const options = { ...cookieOptions(), maxAge: 7 * 24 * 60 * 60 * 1000 };
 
   res.status(statusCode).cookie('token', token, options).json({
     success: true,
-    token,
     admin: {
       _id: admin._id,
       email: admin.email,
@@ -162,8 +157,9 @@ const sendTokenResponse = (admin, statusCode, res) => {
   });
 };
 
-const getSignedJwtToken = (admin) => {
-  return jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
-};
+const cookieOptions = () => ({
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'lax',
+  path: '/',
+});

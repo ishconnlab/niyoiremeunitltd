@@ -1,7 +1,7 @@
 {
-  "name": "NIYO IREME UNIT COMPANY LTD",
-  "short_name": "NIYO IREME",
-  "description": "Construction, house finishing, painting and workforce services in Kimironko, Kigali, Rwanda.",
+  "name": "NIYO IREME UNIT LTD — PRO FINISH • HOME RENOVATION",
+  "short_name": "NIYO IREME UNIT LTD",
+  "description": "Home renovation, finishing works and interior design in Kigali, Rwanda.",
   "id": "/",
   "start_url": "/",
   "scope": "/",
@@ -16,33 +16,33 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/assets/brand/icon-192.png",
+      "src": "/assets/brand/niyoireme-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/brand/icon-512.png",
+      "src": "/assets/brand/niyoireme-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/brand/maskable-192.png",
+      "src": "/assets/brand/niyoireme-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/assets/brand/maskable-512.png",
+      "src": "/assets/brand/niyoireme-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/assets/brand/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/assets/brand/niyoireme-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any"
     }
   ],
@@ -52,14 +52,14 @@
       "sizes": "540x960",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "NIYO IREME UNIT COMPANY LTD on a phone"
+      "label": "NIYO IREME UNIT LTD on a phone"
     },
     {
       "src": "/assets/brand/screenshot-wide.png",
       "sizes": "1280x800",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "NIYO IREME UNIT COMPANY LTD on a desktop"
+      "label": "NIYO IREME UNIT LTD on a desktop"
     }
   ],
   "shortcuts": [
@@ -68,14 +68,14 @@
       "short_name": "Quote",
       "description": "Start a free project quotation request.",
       "url": "/quote",
-      "icons": [{ "src": "/assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [{ "src": "/assets/brand/niyoireme-icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Contact us",
       "short_name": "Contact",
       "description": "Call, WhatsApp or message our Kigali team.",
       "url": "/contact",
-      "icons": [{ "src": "/assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [{ "src": "/assets/brand/niyoireme-icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
 }

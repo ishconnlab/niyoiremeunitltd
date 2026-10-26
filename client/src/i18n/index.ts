@@ -1,11 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-
 import en from './locales/en.json';
-import rw from './locales/rw.json';
 
-export const SUPPORTED_LANGUAGES = ['en', 'rw'] as const;
+export const SUPPORTED_LANGUAGES = ['en'] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 export const LANGUAGE_STORAGE_KEY = 'niyoireme.lang';
@@ -14,26 +11,15 @@ export const isSupportedLanguage = (value: string | null | undefined): value is 
   !!value && (SUPPORTED_LANGUAGES as readonly string[]).includes(value);
 
 void i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    resources: {
-      en: { translation: en },
-      rw: { translation: rw },
-    },
+    lng: 'en',
+    resources: { en: { translation: en } },
     supportedLngs: [...SUPPORTED_LANGUAGES],
     fallbackLng: 'en',
-    nonExplicitSupportedLngs: true,
-    load: 'languageOnly',
     interpolation: {
       // React already escapes interpolated values.
       escapeValue: false,
-    },
-    detection: {
-      order: ['querystring', 'localStorage', 'navigator', 'htmlTag'],
-      lookupQuerystring: 'lang',
-      lookupLocalStorage: LANGUAGE_STORAGE_KEY,
-      caches: ['localStorage'],
     },
   });
 

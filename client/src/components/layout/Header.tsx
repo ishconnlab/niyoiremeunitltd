@@ -5,18 +5,26 @@ import { ChevronRight, Mail, Menu, Phone, X } from 'lucide-react';
 
 import { COMPANY_INFO } from '../../data/company';
 import { SERVICES_DATA } from '../../data/services';
-import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import { LocalizedLink } from '../common/LocalizedLink';
 import { PillButton } from '../common/PillButton';
 import { ServiceMegaMenu } from './ServiceMegaMenu';
 import { SocialLinks } from '../common/SocialLinks';
 import { cn } from '../../utils/cn';
+import { useCmsServices } from '../../hooks/useCmsServices';
+import { contentValue, useCmsContent } from '../../hooks/useCmsContent';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
+  const { services: cmsServices } = useCmsServices();
+  const companyContent = useCmsContent('company');
+  const company = contentValue(companyContent?.find((record) => record.key === 'contact'));
+  const phoneDisplay = typeof company.phoneDisplay === 'string' && company.phoneDisplay ? company.phoneDisplay : COMPANY_INFO.phoneDisplay;
+  const phoneRaw = typeof company.phoneRaw === 'string' && company.phoneRaw ? company.phoneRaw : COMPANY_INFO.phoneRaw;
+  const email = typeof company.email === 'string' && company.email ? company.email : COMPANY_INFO.email;
+  const menuServices = cmsServices ?? SERVICES_DATA.map((service) => ({ slug: service.id, title: t(`services.items.${service.id}.title`) }));
 
   const navLinks = [
     { key: 'home', path: '/' },
@@ -67,29 +75,27 @@ export const Header: React.FC = () => {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <div className="flex min-w-0 items-center gap-4 xl:gap-6">
             <a
-              href={`tel:${COMPANY_INFO.phoneRaw}`}
+              href={`tel:${phoneRaw}`}
               className="flex shrink-0 items-center gap-1.5 font-semibold text-slate-800 transition-colors hover:text-brand-orange"
             >
               <Phone className="h-3.5 w-3.5 text-brand-orange" aria-hidden="true" />
-              {COMPANY_INFO.phoneDisplay}
+              {phoneDisplay}
             </a>
-            <a
-              href={`mailto:${COMPANY_INFO.email}`}
+            {email && <a
+              href={`mailto:${email}`}
               className="hidden items-center gap-1.5 truncate text-slate-600 transition-colors hover:text-brand-orange xl:flex"
             >
               <Mail className="h-3.5 w-3.5 text-brand-orange" aria-hidden="true" />
-              {COMPANY_INFO.email}
-            </a>
+              {email}
+            </a>}
           </div>
 
           <p className="hidden items-center gap-2 text-[11px] font-semibold italic text-slate-700 xl:flex">
-            {COMPANY_INFO.sloganKinyarwanda}
+            {COMPANY_INFO.tagline}
           </p>
 
-          <div className="flex shrink-0 items-center gap-4 xl:gap-5">
+          <div className="flex shrink-0 items-center gap-4">
             <SocialLinks variant="light" className="gap-0.5" />
-            <span className="h-4 w-px bg-slate-200" aria-hidden="true" />
-            <LanguageSwitcher variant="segmented" />
           </div>
         </div>
       </div>
@@ -102,13 +108,19 @@ export const Header: React.FC = () => {
             className="flex min-w-0 items-center gap-2 rounded-lg p-1 sm:gap-3"
             aria-label={COMPANY_INFO.name}
           >
-            <img
-              src="/assets/brand/logo-horizontal.svg"
-              alt={COMPANY_INFO.name}
-              width={640}
-              height={120}
-              className="h-9 w-auto max-w-[42vw] object-contain sm:h-12 sm:max-w-[52vw] xl:max-w-none"
-            />
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0e224e] p-1 shadow-sm ring-1 ring-amber-300 sm:h-14 sm:w-14">
+              <img
+                src="/assets/brand/niyoireme-header.png"
+                alt={COMPANY_INFO.name}
+                width={386}
+                height={402}
+                className="h-full w-full object-contain"
+              />
+            </span>
+            <span className="hidden min-w-0 flex-col sm:flex">
+              <span className="truncate text-xs font-black uppercase tracking-wide text-brand-navy sm:text-sm">NIYO IREME UNIT LTD</span>
+              <span className="truncate text-[9px] font-semibold uppercase tracking-wider text-slate-500">PRO FINISH • HOME RENOVATION</span>
+            </span>
           </LocalizedLink>
 
           <nav
@@ -163,10 +175,6 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <div className="xl:hidden">
-              <LanguageSwitcher variant="compact" />
-            </div>
-
             <div className="hidden xl:block">
               <PillButton to="/quote" size="md">
                 {t('header.cta')}
@@ -239,22 +247,22 @@ export const Header: React.FC = () => {
                     {t('header.servicesMenu')}
                   </p>
                   <ul className="grid gap-0.5">
-                    {SERVICES_DATA.map((service) => (
-                      <li key={service.id}>
+                    {menuServices.map((service) => (
+                      <li key={service.slug}>
                         <LocalizedLink
-                          to={`/services/${service.id}`}
+                          to={`/services/${service.slug}`}
                           onClick={() => setMobileMenuOpen(false)}
                           aria-current={
-                            location.pathname === `/services/${service.id}` ? 'page' : undefined
+                            location.pathname === `/services/${service.slug}` ? 'page' : undefined
                           }
                           className={cn(
                             'flex min-h-10 items-center rounded-lg px-2.5 py-2 text-sm font-medium transition-colors',
-                            location.pathname === `/services/${service.id}`
+                            location.pathname === `/services/${service.slug}`
                               ? 'bg-brand-orange/10 text-brand-orange'
                               : 'text-slate-700 hover:bg-white hover:text-brand-orange'
                           )}
                         >
-                          {t(`services.items.${service.id}.title`)}
+                          {service.title}
                         </LocalizedLink>
                       </li>
                     ))}
@@ -265,27 +273,20 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="mt-5 flex flex-col gap-3 border-t border-slate-100 pt-5">
-            <div className="flex items-center justify-between gap-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                {t('common.language')}
-              </span>
-              <LanguageSwitcher variant="segmented" />
-            </div>
-
             <PillButton to="/quote" fullWidth>
               {t('header.cta')}
             </PillButton>
             <a
-              href={`tel:${COMPANY_INFO.phoneRaw}`}
+              href={`tel:${phoneRaw}`}
               className="flex min-h-11 items-center justify-center gap-2 rounded-full bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-200"
             >
               <Phone className="h-4 w-4 text-brand-orange" aria-hidden="true" />
-              {COMPANY_INFO.phoneDisplay}
+              {phoneDisplay}
             </a>
 
             <div className="flex items-center justify-between gap-3 pt-1">
               <p className="min-w-0 flex-1 text-[11px] font-semibold italic text-slate-500">
-                {COMPANY_INFO.sloganKinyarwanda}
+                {COMPANY_INFO.tagline}
               </p>
               <SocialLinks variant="light" className="shrink-0 gap-0.5" />
             </div>

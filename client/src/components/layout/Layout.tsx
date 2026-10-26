@@ -10,11 +10,13 @@ import { InstallPrompt } from '../common/InstallPrompt';
 import { UpdatePrompt } from '../common/UpdatePrompt';
 import { OfflineBanner } from '../common/OfflineBanner';
 import { ScrollToTop } from '../common/ScrollToTop';
+import { CmsContentProvider } from '../../hooks/useCmsContent';
 
 export const Layout: React.FC = () => {
   const { t } = useTranslation();
 
   return (
+    <CmsContentProvider>
     <div className="flex min-h-screen flex-col bg-slate-50 text-slate-800 antialiased">
       <a
         href="#main-content"
@@ -37,6 +39,7 @@ export const Layout: React.FC = () => {
       <InstallPrompt />
       <ScrollToTop />
     </div>
+    </CmsContentProvider>
   );
 };
 

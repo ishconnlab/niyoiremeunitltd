@@ -5,6 +5,7 @@ import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { SOCIAL_LINKS, WHATSAPP_LINK, type SocialChannel, type SocialLink } from '../../data/social';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { cn } from '../../utils/cn';
+import { contentValue, useCmsContent } from '../../hooks/useCmsContent';
 
 const ICONS: Record<SocialChannel, React.ComponentType<{ className?: string }>> = {
   facebook: Facebook,
@@ -34,10 +35,21 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
   className,
 }) => {
   const { t } = useTranslation();
+  const cmsSocial = useCmsContent('social');
 
-  const links: SocialLink[] = includeWhatsApp
-    ? [...SOCIAL_LINKS, WHATSAPP_LINK]
-    : SOCIAL_LINKS;
+  const cmsLinks = (cmsSocial || []).flatMap((record): SocialLink[] => {
+    const channel = record.key as SocialChannel;
+    if (!['facebook', 'instagram', 'youtube', 'x'].includes(channel)) return [];
+    const value = contentValue(record);
+    const url = typeof value.url === 'string' ? value.url.trim() : typeof record.value === 'string' ? record.value.trim() : '';
+    try {
+      const parsed = new URL(url);
+      if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return [];
+    } catch { return []; }
+    return [{ channel, labelKey: `social.${channel}`, url }];
+  });
+  const profileLinks = cmsSocial?.length ? cmsLinks : SOCIAL_LINKS;
+  const links: SocialLink[] = includeWhatsApp ? [...profileLinks, WHATSAPP_LINK] : profileLinks;
 
   if (links.length === 0) return null;
 

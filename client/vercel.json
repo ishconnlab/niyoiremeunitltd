@@ -6,6 +6,7 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "https://niyoiremeunitltd.onrender.com/api/$1" },
+    { "source": "/uploads/(.*)", "destination": "https://niyoiremeunitltd.onrender.com/uploads/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

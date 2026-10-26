@@ -7,6 +7,7 @@ import { SERVICES_DATA } from '../../data/services';
 import { LocalizedLink } from '../common/LocalizedLink';
 import { ServiceIcon } from '../common/ServiceIcon';
 import { cn } from '../../utils/cn';
+import { useCmsServices } from '../../hooks/useCmsServices';
 
 /**
  * Multi-level nested service dropdown.
@@ -25,6 +26,7 @@ export const ServiceMegaMenu: React.FC<{
   const location = useLocation();
   const menuRef = useRef<HTMLDivElement>(null);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const { services: cmsServices } = useCmsServices();
 
   useEffect(() => {
     if (!isOpen) {
@@ -63,6 +65,13 @@ export const ServiceMegaMenu: React.FC<{
    * Groups services by category and defines sub-items per service.
    */
   const buildNestedMenu = () => {
+    if (cmsServices) return cmsServices.map((service) => ({
+      id: service.slug,
+      title: service.title,
+      iconName: 'Building2' as const,
+      subItems: [],
+      hasChildren: false,
+    }));
     return SERVICES_DATA.map((service) => {
       const subItems = getSubItems(service.id);
       return {
@@ -218,7 +227,7 @@ export const ServiceMegaMenu: React.FC<{
                           <ServiceIcon name={service.iconName} className="h-4 w-4" />
                         </span>
                         <span className="block font-heading text-sm font-black text-brand-navy transition-colors group-hover:text-brand-orange">
-                          {t(`services.items.${service.id}.title`)}
+                          {'title' in service ? service.title : t(`services.items.${service.id}.title`)}
                         </span>
                         <ChevronRight className="shrink-0 h-3.5 w-3.5 text-slate-400 transition-colors group-hover:text-brand-orange" aria-hidden="true" />
                       </LocalizedLink>
@@ -235,7 +244,7 @@ export const ServiceMegaMenu: React.FC<{
                         >
                           <div className="p-3">
                             <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                              {t(`services.items.${service.id}.title`)}
+                              {'title' in service ? service.title : t(`services.items.${service.id}.title`)}
                             </p>
                             <ul className="space-y-1">
                               {service.subItems.map((sub) => (
@@ -273,7 +282,7 @@ export const ServiceMegaMenu: React.FC<{
                         <ServiceIcon name={service.iconName} className="h-4 w-4" />
                       </span>
                       <span className="block font-heading text-sm font-black text-brand-navy group-hover:text-brand-orange transition-colors">
-                        {t(`services.items.${service.id}.title`)}
+                        {'title' in service ? service.title : t(`services.items.${service.id}.title`)}
                       </span>
                       <ChevronRight className="shrink-0 h-3.5 w-3.5 text-slate-400 group-hover:text-brand-orange transition-colors" aria-hidden="true" />
                     </LocalizedLink>

@@ -8,19 +8,25 @@ import { PageHero } from '../components/common/PageHero';
 import { MapEmbed } from '../components/common/MapEmbed';
 import { ContactForm } from '../components/forms/ContactForm';
 import { PillButton } from '../components/common/PillButton';
+import { contentValue, useCmsContent } from '../hooks/useCmsContent';
+import { useWhatsAppContacts } from '../hooks/useWhatsAppContacts';
+import { WhatsAppInquiry } from '../components/common/WhatsAppInquiry';
 
 export const Contact: React.FC = () => {
   const { t } = useTranslation();
+  const companyContent = useCmsContent('company');
+  const whatsappContacts = useWhatsAppContacts();
+  const contact = contentValue(companyContent?.find((record) => record.key === 'contact'));
+  const phoneDisplay = typeof contact.phoneDisplay === 'string' && contact.phoneDisplay ? contact.phoneDisplay : COMPANY_INFO.phoneDisplay;
+  const phoneRaw = typeof contact.phoneRaw === 'string' && contact.phoneRaw ? contact.phoneRaw : COMPANY_INFO.phoneRaw;
+  const email = typeof contact.email === 'string' && contact.email ? contact.email : COMPANY_INFO.email;
+  const location = typeof contact.location === 'string' && contact.location ? contact.location : t('contact.addressValue');
 
   useSeo({
     title: t('meta.routes.contact.title'),
     description: t('meta.routes.contact.description'),
     path: '/contact',
   });
-
-  const whatsappUrl = `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(
-    t('whatsapp.defaultMessage')
-  )}`;
 
   return (
     <>
@@ -49,10 +55,10 @@ export const Contact: React.FC = () => {
                     </dt>
                     <dd className="mt-1">
                       <a
-                        href={`tel:${COMPANY_INFO.phoneRaw}`}
+                        href={`tel:${phoneRaw}`}
                         className="font-heading text-base font-black text-brand-navy transition-colors hover:text-brand-orange"
                       >
-                        {COMPANY_INFO.phoneDisplay}
+                        {phoneDisplay}
                       </a>
                     </dd>
                   </div>
@@ -65,19 +71,12 @@ export const Contact: React.FC = () => {
                       {t('common.whatsapp')}
                     </dt>
                     <dd className="mt-1">
-                      <a
-                        href={whatsappUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-heading text-base font-black text-brand-navy transition-colors hover:text-brand-orange"
-                      >
-                        {COMPANY_INFO.phoneDisplay}
-                      </a>
+                      <WhatsAppInquiry serviceName="General enquiry" contacts={whatsappContacts} />
                     </dd>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                {email && <div className="flex items-start gap-3">
                   <Mail className="mt-1 h-5 w-5 shrink-0 text-brand-orange" aria-hidden="true" />
                   <div>
                     <dt className="text-xs font-bold uppercase tracking-wider text-slate-500">
@@ -85,15 +84,15 @@ export const Contact: React.FC = () => {
                     </dt>
                     <dd className="mt-1">
                       <a
-                        href={`mailto:${COMPANY_INFO.email}`}
+                        href={`mailto:${email}`}
                         className="font-semibold text-brand-navy transition-colors hover:text-brand-orange"
                       >
-                        {COMPANY_INFO.email}
+                        {email}
                       </a>
                       <p className="mt-1 text-xs text-slate-500">{t('contact.emailNote')}</p>
                     </dd>
                   </div>
-                </div>
+                </div>}
 
                 <div className="flex items-start gap-3">
                   <MapPin className="mt-1 h-5 w-5 shrink-0 text-brand-orange" aria-hidden="true" />
@@ -102,7 +101,7 @@ export const Contact: React.FC = () => {
                       {t('contact.addressLabel')}
                     </dt>
                     <dd className="mt-1 font-semibold text-brand-navy">
-                      {t('contact.addressValue')}
+                      {location}
                     </dd>
                     <p className="mt-1 text-xs text-slate-500">{t('contact.addressNote')}</p>
                   </div>
@@ -153,20 +152,12 @@ export const Contact: React.FC = () => {
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <PillButton to="/quote">{t('common.requestQuote')}</PillButton>
             <PillButton
-              href={`tel:${COMPANY_INFO.phoneRaw}`}
+              href={`tel:${phoneRaw}`}
               variant="outline"
               icon={<Phone className="h-4 w-4" />}
               iconPosition="left"
             >
               {t('contact.callNow')}
-            </PillButton>
-            <PillButton
-              href={whatsappUrl}
-              variant="ghost"
-              icon={<MessageSquare className="h-4 w-4" />}
-              iconPosition="left"
-            >
-              {t('contact.whatsappChat')}
             </PillButton>
           </div>
         </div>

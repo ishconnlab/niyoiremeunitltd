@@ -23,17 +23,13 @@ test('organization node is a GeneralContractor with verified contact details', (
 
   assert.ok(types.includes('GeneralContractor'));
   assert.equal(node.telephone, '+250 781 294 928');
-  assert.equal(node.email, 'info@niyoiremeunitltd.com');
+  assert.equal(node.email, undefined, 'unconfirmed email addresses must not be published');
   assert.equal(roundTrip(node).address.addressCountry, 'RW');
   assert.equal(roundTrip(node).address.addressLocality, 'Kimironko');
 });
 
-test('organization node publishes the confirmed Monday-Friday opening hours', () => {
-  const hours = buildOrganizationNode('x', 'y').openingHoursSpecification[0];
-
-  assert.deepEqual(hours.dayOfWeek, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']);
-  assert.equal(hours.opens, '08:00');
-  assert.equal(hours.closes, '17:00');
+test('organization node does not publish unconfirmed opening hours', () => {
+  assert.equal((buildOrganizationNode('x', 'y') as Record<string, unknown>).openingHoursSpecification, undefined);
 });
 
 test('organization node does not fabricate ratings or reviews', () => {
@@ -54,7 +50,7 @@ test('website and webpage nodes link back to the organization by @id', () => {
 });
 
 test('breadcrumb nodes are ordered and carry language alternates', () => {
-  const node = buildBreadcrumbNode('/services/painting', 'rw', [
+  const node = buildBreadcrumbNode('/services/painting', 'en', [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
     { name: 'Painting', path: '/services/painting' },
@@ -65,7 +61,7 @@ test('breadcrumb nodes are ordered and carry language alternates', () => {
     node.itemListElement.map((item) => item.position),
     [1, 2, 3]
   );
-  assert.ok(node.itemListElement[0].item.endsWith('?lang=rw'));
+  assert.equal(node.itemListElement[0].item, 'https://niyoiremeunitltd.vercel.app/');
 });
 
 test('service list node wraps each division as a Service with a provider reference', () => {

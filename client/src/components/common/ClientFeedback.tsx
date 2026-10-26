@@ -73,7 +73,7 @@ const ReviewCard: React.FC<{
           <div className="flex items-center gap-3">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
               <img
-                src="/assets/brand/logo-mark.svg"
+                src="/assets/brand/niyoireme-icon-192.png"
                 alt=""
                 aria-hidden="true"
                 loading="lazy"
@@ -124,6 +124,8 @@ export const ClientFeedback: React.FC = () => {
   const visibleReviews = hasReviews
     ? CLIENT_REVIEWS.slice(currentIndex, currentIndex + visibleCount)
     : [];
+
+  if (!hasReviews) return null;
 
   return (
     <section className="reviews-section bg-slate-50 py-20 sm:py-24">

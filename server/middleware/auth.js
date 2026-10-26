@@ -11,7 +11,7 @@ export const protect = asyncHandler(async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
-  } else if (req.cookies.token) {
+  } else if (req.cookies?.token) {
     token = req.cookies.token;
   }
 
@@ -23,6 +23,10 @@ export const protect = asyncHandler(async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.admin = await Admin.findById(decoded.id);
+    if (!req.admin) {
+      res.status(401);
+      throw new Error('Admin account no longer exists');
+    }
     next();
   } catch (error) {
     res.status(401);
@@ -33,10 +37,10 @@ export const protect = asyncHandler(async (req, res, next) => {
 // Grant access to specific roles
 export const authorize = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.admin.role)) {
+    if (!req.admin || !roles.includes(req.admin.role)) {
       res.status(403);
       throw new Error(
-        `User role ${req.admin.role} is not authorized to access this route`
+        `User role ${req.admin?.role || 'unknown'} is not authorized to access this route`
       );
     }
     next();

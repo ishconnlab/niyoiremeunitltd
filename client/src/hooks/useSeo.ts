@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { COMPANY_INFO } from '../data/company';
 import { isSupportedLanguage } from '../i18n';
+import { contentValue, useCmsContent } from './useCmsContent';
 import { applyAlternateLinks, buildUrl, OG_IMAGE_URL, setJsonLd, setMeta } from '../utils/seo';
 import {
   buildBreadcrumbNode,
@@ -55,6 +56,7 @@ export function useSeo({
 }: SeoOptions): void {
   const location = useLocation();
   const { i18n } = useTranslation();
+  const seoRecords = useCmsContent('seo');
 
   const language = useMemo(() => {
     const candidate = i18n.resolvedLanguage ?? i18n.language;
@@ -62,37 +64,41 @@ export function useSeo({
   }, [i18n.resolvedLanguage, i18n.language]);
 
   const canonicalPath = path ?? location.pathname;
+  const seoOverride = contentValue(seoRecords?.find((record) => record.key === canonicalPath));
+  const pageTitle = typeof seoOverride.title === 'string' && seoOverride.title ? seoOverride.title : title;
+  const pageDescription = typeof seoOverride.description === 'string' && seoOverride.description ? seoOverride.description : description;
+  const pageImage = typeof seoOverride.image === 'string' && seoOverride.image ? seoOverride.image : image;
 
   useEffect(() => {
-    document.title = title;
+    document.title = pageTitle;
 
-    setMeta('name', 'description', description);
+    setMeta('name', 'description', pageDescription);
     setMeta('name', 'robots', noIndex ? 'noindex, nofollow' : 'index, follow');
 
-    setMeta('property', 'og:title', title);
-    setMeta('property', 'og:description', description);
-    setMeta('property', 'og:image', image);
+    setMeta('property', 'og:title', pageTitle);
+    setMeta('property', 'og:description', pageDescription);
+    setMeta('property', 'og:image', pageImage);
     setMeta('property', 'og:type', type);
     setMeta('property', 'og:site_name', COMPANY_INFO.name);
     setMeta('property', 'og:url', buildUrl(canonicalPath, language));
-    setMeta('property', 'og:locale', language === 'rw' ? 'rw_RW' : 'en_US');
-    setMeta('property', 'og:locale:alternate', language === 'rw' ? 'en_US' : 'rw_RW');
+    setMeta('property', 'og:locale', 'en_US');
+    document.head.querySelector('meta[property="og:locale:alternate"]')?.remove();
 
     setMeta('name', 'twitter:card', 'summary_large_image');
-    setMeta('name', 'twitter:title', title);
-    setMeta('name', 'twitter:description', description);
-    setMeta('name', 'twitter:image', image);
+    setMeta('name', 'twitter:title', pageTitle);
+    setMeta('name', 'twitter:description', pageDescription);
+    setMeta('name', 'twitter:image', pageImage);
 
     applyAlternateLinks(canonicalPath, language);
-  }, [title, description, canonicalPath, image, type, noIndex, language]);
+  }, [pageTitle, pageDescription, canonicalPath, pageImage, type, noIndex, language]);
 
   useEffect(() => {
     // A single `@graph` keeps the organization, website and page nodes linked
     // by `@id` so search engines read one consistent entity, not contradictions.
     const graph: unknown[] = [
-      buildOrganizationNode(description, image),
+      buildOrganizationNode(pageDescription, pageImage),
       buildWebsiteNode(language),
-      buildWebPageNode(canonicalPath, language, title, description),
+      buildWebPageNode(canonicalPath, language, pageTitle, pageDescription),
     ];
 
     if (breadcrumbs && breadcrumbs.length > 0) {
@@ -115,6 +121,6 @@ export function useSeo({
       '@context': 'https://schema.org',
       '@graph': graph,
     });
-  }, [title, description, canonicalPath, image, language, breadcrumbs, serviceList, faqs, jsonLd]);
+  }, [pageTitle, pageDescription, canonicalPath, pageImage, language, breadcrumbs, serviceList, faqs, jsonLd]);
 }
 

@@ -11,19 +11,18 @@ import {
   Play,
 } from 'lucide-react';
 
-import { COMPANY_INFO, OFFICIAL_INTRO_EN, MAP_LINKS } from '../data/company';
+import { COMPANY_INFO, MAP_LINKS } from '../data/company';
 import { GALLERY_DATA } from '../data/gallery';
 import { SERVICES_DATA } from '../data/services';
+import { useCmsServices } from '../hooks/useCmsServices';
+import { contentValue, useCmsContent } from '../hooks/useCmsContent';
 import { useSeo } from '../hooks/useSeo';
-import { useLanguage } from '../hooks/useLanguage';
 import { CircularTouchBadge } from '../components/common/CircularTouchBadge';
 import { ClientFeedback } from '../components/common/ClientFeedback';
 import { LocalizedLink } from '../components/common/LocalizedLink';
 import { PillButton } from '../components/common/PillButton';
 import { RulerDivider } from '../components/common/RulerDivider';
 import { SectionHeading } from '../components/common/SectionHeading';
-import { ServiceIcon } from '../components/common/ServiceIcon';
-import { ServiceMedia } from '../components/common/ServiceMedia';
 import { EquipmentShowcase } from '../components/common/EquipmentShowcase';
 import { asArray } from '../utils/i18n';
 
@@ -52,11 +51,12 @@ const HERO_SLIDES = [
 
 const HERO_SLIDE_INTERVAL_MS = 4500;
 
-const HeroSlideshow: React.FC<{ alt: string }> = ({ alt }) => {
+const HeroSlideshow: React.FC<{ alt: string; image?: string }> = ({ alt, image }) => {
   const [active, setActive] = useState(0);
+  const slides = image ? [image] : HERO_SLIDES;
 
   useEffect(() => {
-    if (HERO_SLIDES.length < 2) return;
+    if (slides.length < 2) return;
 
     const prefersReducedMotion =
       typeof window !== 'undefined' &&
@@ -65,15 +65,15 @@ const HeroSlideshow: React.FC<{ alt: string }> = ({ alt }) => {
     if (prefersReducedMotion) return;
 
     const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % HERO_SLIDES.length);
+      setActive((current) => (current + 1) % slides.length);
     }, HERO_SLIDE_INTERVAL_MS);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   return (
     <div className="absolute inset-0" aria-hidden={false}>
-      {HERO_SLIDES.map((src, index) => (
+      {slides.map((src, index) => (
         <img
           key={src}
           src={src}
@@ -95,7 +95,19 @@ const HeroSlideshow: React.FC<{ alt: string }> = ({ alt }) => {
 
 export const Home: React.FC = () => {
   const { t } = useTranslation();
-  const { isKinyarwanda } = useLanguage();
+  const { services: cmsServices } = useCmsServices();
+  const cmsHome = useCmsContent('home');
+  const cmsBenefits = useCmsContent('benefits');
+  const cmsCompany = useCmsContent('company');
+  const heroRecord = cmsHome?.find((record) => record.key === 'hero');
+  const hero = contentValue(heroRecord);
+  const processContent = contentValue(cmsHome?.find((record) => record.key === 'process'));
+  const companyContact = contentValue(cmsCompany?.find((record) => record.key === 'contact'));
+  const heroText = (key: string, fallback: string) => typeof hero[key] === 'string' && hero[key] ? String(hero[key]) : fallback;
+  const companyText = (key: string, fallback: string) => typeof companyContact[key] === 'string' && companyContact[key] ? String(companyContact[key]) : fallback;
+  const phoneDisplay = companyText('phoneDisplay', COMPANY_INFO.phoneDisplay);
+  const phoneRaw = companyText('phoneRaw', COMPANY_INFO.phoneRaw);
+  const location = companyText('location', COMPANY_INFO.location);
 
   useSeo({
     title: t('meta.routes.home.title'),
@@ -103,13 +115,23 @@ export const Home: React.FC = () => {
     path: '/',
   });
 
-  const nativeIntro = isKinyarwanda ? COMPANY_INFO.introKinyarwanda : OFFICIAL_INTRO_EN;
-  const translatedIntro = isKinyarwanda ? OFFICIAL_INTRO_EN : COMPANY_INFO.introKinyarwanda;
+  const nativeIntro = COMPANY_INFO.intro;
 
   const galleryPreview = GALLERY_DATA.slice(0, 5);
-  const whyItems = asArray<{ title: string }>(
-    t('services.whyChoose.items', { returnObjects: true })
-  );
+  const configuredHomeServices = cmsServices?.filter((item) => item.showOnHomePage);
+  const serviceCards = configuredHomeServices?.length ? configuredHomeServices : cmsServices ?? SERVICES_DATA.map((item, index) => ({
+    slug: item.id,
+    title: t(`services.items.${item.id}.title`),
+    overview: t(`services.items.${item.id}.description`),
+    mainImage: item.image || '',
+    order: index,
+  }));
+  const whyItems = cmsBenefits?.length
+    ? cmsBenefits.map((record) => ({ ...contentValue(record), title: String(contentValue(record).title || record.key) }))
+    : asArray<{ title: string }>(t('services.whyChoose.items', { returnObjects: true }));
+  const processSteps = Array.isArray(processContent.steps)
+    ? processContent.steps as Array<{ title: string; body: string }>
+    : asArray<{ title: string; body: string }>(t('home.process.steps', { returnObjects: true }));
 
   return (
     <>
@@ -124,13 +146,13 @@ export const Home: React.FC = () => {
               <div className="mb-3 inline-flex items-center gap-2">
                 <span className="h-[2px] w-6 bg-brand-orange" aria-hidden="true" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  {t('home.hero.eyebrow')}
+                  {heroText('eyebrow', t('home.hero.eyebrow'))}
                 </span>
               </div>
 
               <h1 className="font-heading text-4xl font-black leading-[1.1] tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                <span className="block text-brand-navy">{t('home.hero.titleTop')}</span>
-                <span className="mt-1 block text-brand-orange">{t('home.hero.titleBottom')}</span>
+                <span className="block text-brand-navy">{heroText('titleTop', t('home.hero.titleTop'))}</span>
+                <span className="mt-1 block text-brand-orange">{heroText('titleBottom', t('home.hero.titleBottom'))}</span>
               </h1>
             </div>
 
@@ -146,12 +168,12 @@ export const Home: React.FC = () => {
                   {t('home.hero.ctaPrimary')}
                 </PillButton>
                 <PillButton
-                  href={`tel:${COMPANY_INFO.phoneRaw}`}
+                  href={`tel:${phoneRaw}`}
                   size="lg"
                   variant="outline"
                   icon={<Phone className="h-4 w-4" />}
                 >
-                  {t('home.hero.ctaSecondary', { phone: COMPANY_INFO.phoneDisplay })}
+                  {t('home.hero.ctaSecondary', { phone: phoneDisplay })}
                 </PillButton>
               </div>
             </div>
@@ -160,14 +182,12 @@ export const Home: React.FC = () => {
               <div className="mt-1 h-12 w-[3px] shrink-0 rounded-full bg-brand-orange" aria-hidden="true" />
               <div>
                 <p className="text-xs font-medium leading-relaxed text-slate-600 sm:text-sm">
-                  {t('home.hero.intro', { intro: nativeIntro })}
+                  {heroText('intro', t('home.hero.intro', { intro: nativeIntro }))}
                 </p>
-                <p className="mt-2 text-xs italic leading-relaxed text-slate-400">
-                  {t('home.hero.introTranslated', { introTranslated: translatedIntro })}
-                </p>
+                <p className="mt-2 text-xs italic leading-relaxed text-slate-500">{COMPANY_INFO.tagline}</p>
                 <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-navy">
                   <MapPin className="h-3.5 w-3.5 text-brand-orange" aria-hidden="true" />
-                  {COMPANY_INFO.location}
+                  {location}
                 </p>
               </div>
             </div>
@@ -182,7 +202,7 @@ export const Home: React.FC = () => {
             <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
               <div className="home-reveal relative lg:col-span-8 lg:h-full">
                 <div className="relative aspect-[16/9] overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl chamfer-tl lg:aspect-auto lg:h-full lg:min-h-[420px]">
-                  <HeroSlideshow alt={t('home.hero.heroPhotoAlt')} />
+                  <HeroSlideshow alt={t('home.hero.heroPhotoAlt')} image={typeof hero.heroImage === 'string' ? hero.heroImage : heroRecord?.imageUrl} />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
                   <LocalizedLink
@@ -200,7 +220,7 @@ export const Home: React.FC = () => {
                       <span className="shrink-0 font-bold text-brand-orange">
                         {t('home.hero.sloganLabel')}:
                       </span>
-                      <span className="truncate italic">{COMPANY_INFO.sloganKinyarwanda}</span>
+                      <span className="truncate italic">{COMPANY_INFO.tagline}</span>
                     </div>
                   </div>
                 </div>
@@ -251,27 +271,22 @@ export const Home: React.FC = () => {
             style={{ maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)' }}
           >
             <ul className="service-marquee-track flex w-max items-stretch gap-4">
-              {[...SERVICES_DATA, ...SERVICES_DATA].map((service, index) => (
-                <li key={`${service.id}-${index}`} className="shrink-0" aria-hidden={index >= SERVICES_DATA.length}>
+              {[...serviceCards, ...serviceCards].map((service, index) => (
+                <li key={`${service.slug}-${index}`} className="shrink-0" aria-hidden={index >= serviceCards.length}>
                   <LocalizedLink
-                    to={`/services/${service.id}`}
-                    tabIndex={index >= SERVICES_DATA.length ? -1 : undefined}
+                    to={`/services/${service.slug}`}
+                    tabIndex={index >= serviceCards.length ? -1 : undefined}
                     className="group flex h-full w-60 items-center gap-3 rounded-2xl border border-slate-200 bg-white p-2.5 shadow-sm transition-colors hover:border-brand-orange/50 sm:w-72"
                   >
                     <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-slate-100">
-                      <ServiceMedia
-                        service={service}
-                        imageClassName="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        fallbackClassName="flex h-full w-full items-center justify-center bg-brand-navy"
-                        iconClassName="h-6 w-6 text-brand-orange"
-                      />
+                      {service.mainImage ? <img src={service.mainImage} alt="" width={56} height={56} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /> : <span className="block h-full w-full bg-brand-navy" />}
                     </span>
                     <span className="min-w-0">
                       <span className="block truncate font-heading text-sm font-black text-brand-navy">
-                        {t(`services.items.${service.id}.title`)}
+                        {service.title}
                       </span>
                       <span className="mt-0.5 block truncate text-[11px] font-semibold uppercase tracking-wider text-brand-orange">
-                        {t(`services.items.${service.id}.shortLabel`)}
+                        {service.overview}
                       </span>
                     </span>
                   </LocalizedLink>
@@ -281,12 +296,12 @@ export const Home: React.FC = () => {
           </div>
 
           <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
-            {SERVICES_DATA.map((service, index) => {
+            {serviceCards.map((service, index) => {
               const flipped = index % 2 === 1;
 
               return (
                 <article
-                  key={service.id}
+                  key={service.slug}
                   className="grid items-center gap-8 py-10 md:grid-cols-12 md:gap-10"
                 >
                   <div
@@ -297,15 +312,7 @@ export const Home: React.FC = () => {
                     }
                   >
                     <div className="relative overflow-hidden rounded-2xl">
-                      <ServiceMedia
-                        service={service}
-                        imageClassName="h-56 w-full object-cover sm:h-64"
-                        fallbackClassName="flex h-56 w-full items-center justify-center bg-brand-navy bg-grid-pattern-dark sm:h-64"
-                        iconClassName="h-14 w-14 text-brand-orange"
-                      />
-                      <span className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white">
-                        <ServiceIcon name={service.iconName} className="h-5 w-5" />
-                      </span>
+                      {service.mainImage ? <img src={service.mainImage} alt="" width={736} height={480} loading="lazy" decoding="async" className="h-56 w-full object-cover sm:h-64" /> : <div className="h-56 bg-brand-navy bg-grid-pattern-dark sm:h-64" />}
                     </div>
                   </div>
 
@@ -314,13 +321,13 @@ export const Home: React.FC = () => {
                       {String(index + 1).padStart(2, '0')}
                     </p>
                     <h3 className="mt-2 font-heading text-2xl font-black text-brand-navy sm:text-3xl">
-                      {t(`services.items.${service.id}.title`)}
+                      {service.title}
                     </h3>
                     <p className="mt-3 max-w-xl leading-relaxed text-slate-600">
-                      {t(`services.items.${service.id}.description`)}
+                      {service.overview}
                     </p>
                     <LocalizedLink
-                      to={`/services/${service.id}`}
+                      to={`/services/${service.slug}`}
                       className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-orange transition-colors hover:text-brand-orange-dark"
                     >
                       {t('common.viewDetails')}
@@ -385,9 +392,7 @@ export const Home: React.FC = () => {
               className="absolute left-0 right-0 top-6 hidden h-px bg-slate-200 md:block"
               aria-hidden="true"
             />
-            {asArray<{ title: string; body: string }>(
-              t('home.process.steps', { returnObjects: true })
-            ).map((step, index) => {
+            {processSteps.map((step, index) => {
               const Icon = PROCESS_ICONS[index] ?? ClipboardList;
               return (
                 <li key={step.title} className="relative">
@@ -476,7 +481,7 @@ export const Home: React.FC = () => {
 
               <div className="mt-6 flex items-center gap-3 text-slate-700">
                 <MapPin className="h-5 w-5 text-brand-orange" aria-hidden="true" />
-                <span className="font-heading text-lg font-bold">{COMPANY_INFO.location}</span>
+                <span className="font-heading text-lg font-bold">{location}</span>
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">

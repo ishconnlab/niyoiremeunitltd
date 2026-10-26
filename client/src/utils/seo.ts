@@ -1,18 +1,19 @@
 import { COMPANY_INFO } from '../data/company';
-import { SUPPORTED_LANGUAGES, type SupportedLanguage } from '../i18n';
+import type { SupportedLanguage } from '../i18n';
 
 /** Origin without a trailing slash. */
 export const SITE_ORIGIN = COMPANY_INFO.siteUrl.replace(/\/+$/, '');
 
-/** Absolute URL for a path + language, e.g. `/services?lang=rw`. */
+/** Absolute canonical URL for the English site. */
 export const buildUrl = (path: string, language: SupportedLanguage): string => {
+  void language;
   const normalized = path.startsWith('/') ? path : `/${path}`;
   const withoutQuery = normalized.split('?')[0];
-  return `${SITE_ORIGIN}${withoutQuery}?lang=${language}`;
+  return `${SITE_ORIGIN}${withoutQuery}`;
 };
 
-/** Absolute URL for the social sharing image. */
-export const OG_IMAGE_URL = `${SITE_ORIGIN}/assets/brand/og-image.png`;
+/** Absolute URL for the approved brand's social sharing image. */
+export const OG_IMAGE_URL = `${SITE_ORIGIN}/assets/brand/niyoireme-og.png`;
 
 export const setMeta = (attr: 'name' | 'property', key: string, content: string): void => {
   let element = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -44,11 +45,19 @@ export const removeLink = (rel: string): void => {
  */
 export const applyAlternateLinks = (path: string, language: SupportedLanguage): void => {
   setLink('canonical', buildUrl(path, language));
-
-  SUPPORTED_LANGUAGES.forEach((lang) => {
-    setLink(`alternate-${lang}`, buildUrl(path, lang));
-  });
-  setLink('alternate-x-default', buildUrl(path, 'en'));
+  const setAlternate = (lang: string) => {
+    let element = document.head.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${lang}"]`);
+    if (!element) {
+      element = document.createElement('link');
+      element.rel = 'alternate';
+      element.hreflang = lang;
+      document.head.appendChild(element);
+    }
+    element.href = buildUrl(path, 'en');
+  };
+  setAlternate('en');
+  setAlternate('x-default');
+  document.head.querySelector('link[rel="alternate"][hreflang="rw"]')?.remove();
 };
 
 /**

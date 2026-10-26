@@ -8,11 +8,13 @@ import { PageHero } from '../components/common/PageHero';
 import { PillButton } from '../components/common/PillButton';
 import { Lightbox } from '../components/common/Lightbox';
 import { cn } from '../utils/cn';
+import { useCmsContent } from '../hooks/useCmsContent';
 
 export const Gallery: React.FC = () => {
   const { t } = useTranslation();
   const [category, setCategory] = useState<string>('all');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const cmsGallery = useCmsContent('gallery');
 
   useSeo({
     title: t('meta.routes.gallery.title'),
@@ -20,14 +22,19 @@ export const Gallery: React.FC = () => {
     path: '/gallery',
   });
 
-  const items = useMemo(
-    () => (category === 'all' ? GALLERY_DATA : GALLERY_DATA.filter((item) => item.category === category)),
-    [category]
-  );
+  const allItems = cmsGallery?.length
+    ? cmsGallery.flatMap((record) => {
+      const value = record.value && typeof record.value === 'object' && !Array.isArray(record.value) ? record.value as Record<string, unknown> : {};
+      const image = record.imageUrl || (typeof value.image === 'string' ? value.image : typeof value.url === 'string' ? value.url : '');
+      if (!image) return [];
+      return [{ id: record.key, category: typeof value.category === 'string' ? value.category : 'finishing', image, caption: typeof value.caption === 'string' ? value.caption : record.key }];
+    })
+    : GALLERY_DATA.map((item) => ({ id: item.id, category: item.category, image: item.image, caption: t(item.captionKey) }));
+  const items = useMemo(() => category === 'all' ? allItems : allItems.filter((item) => item.category === category), [allItems, category]);
 
   const lightboxItems = items.map((item) => ({
     src: item.image,
-    alt: t(item.captionKey),
+    alt: item.caption,
   }));
 
   return (
@@ -80,7 +87,7 @@ export const Gallery: React.FC = () => {
                   <figure className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
                     <img
                       src={item.image}
-                      alt={t(item.captionKey)}
+                      alt={item.caption}
                       width={736}
                       height={552}
                       loading="lazy"
@@ -96,7 +103,7 @@ export const Gallery: React.FC = () => {
                       <Expand className="h-4 w-4" aria-hidden="true" />
                     </button>
                     <figcaption className="px-4 py-3 text-xs font-semibold text-slate-600">
-                      {t(item.captionKey)}
+                      {item.caption}
                     </figcaption>
                   </figure>
                 </li>

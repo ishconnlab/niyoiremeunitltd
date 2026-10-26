@@ -16,7 +16,7 @@
     "test": "tsx scripts/run-tests.ts",
     "test:watch": "tsx --test --watch src/utils/quotation.test.ts",
     "i18n:check": "tsx scripts/check-i18n.ts",
-    "assets": "tsx scripts/generate-assets.ts",
+    "assets": "tsx scripts/generate-assets.ts && node scripts/generate-brand-assets.js",
     "sitemap": "tsx scripts/generate-sitemap.ts"
   },
   "dependencies": {

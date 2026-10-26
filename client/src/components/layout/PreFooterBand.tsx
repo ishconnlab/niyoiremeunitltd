@@ -4,6 +4,7 @@ import { HelpCircle, Phone } from 'lucide-react';
 
 import { COMPANY_INFO } from '../../data/company';
 import { PillButton } from '../common/PillButton';
+import { contentValue, useCmsContent } from '../../hooks/useCmsContent';
 
 /**
  * Band that sits directly above the footer.
@@ -14,6 +15,10 @@ import { PillButton } from '../common/PillButton';
  */
 export const PreFooterBand: React.FC = () => {
   const { t } = useTranslation();
+  const companyContent = useCmsContent('company');
+  const company = contentValue(companyContent?.find((record) => record.key === 'contact'));
+  const phoneDisplay = typeof company.phoneDisplay === 'string' && company.phoneDisplay ? company.phoneDisplay : COMPANY_INFO.phoneDisplay;
+  const phoneRaw = typeof company.phoneRaw === 'string' && company.phoneRaw ? company.phoneRaw : COMPANY_INFO.phoneRaw;
 
   return (
     <section className="border-t border-slate-200 bg-white">
@@ -47,13 +52,13 @@ export const PreFooterBand: React.FC = () => {
             </PillButton>
 
             <PillButton
-              href={`tel:${COMPANY_INFO.phoneRaw}`}
+              href={`tel:${phoneRaw}`}
               size="md"
               variant="ghost"
               icon={<Phone className="h-4 w-4" />}
               iconPosition="left"
             >
-              {t('prefooter.phoneCta', { phone: COMPANY_INFO.phoneDisplay })}
+              {t('prefooter.phoneCta', { phone: phoneDisplay })}
             </PillButton>
           </div>
         </div>

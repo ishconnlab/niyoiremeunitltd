@@ -2,8 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MapPin } from 'lucide-react';
 
-import { COMPANY_INFO, OFFICIAL_SLOGAN_EN } from '../data/company';
+import { COMPANY_INFO } from '../data/company';
 import { useSeo } from '../hooks/useSeo';
+import { contentValue, useCmsContent } from '../hooks/useCmsContent';
 import { PageHero } from '../components/common/PageHero';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { PillButton } from '../components/common/PillButton';
@@ -11,6 +12,9 @@ import { asArray } from '../utils/i18n';
 
 export const About: React.FC = () => {
   const { t } = useTranslation();
+  const aboutContent = useCmsContent('about');
+  const companyStory = contentValue(aboutContent?.find((record) => record.key === 'company'));
+  const storyText = (key: string, fallback: string) => typeof companyStory[key] === 'string' && companyStory[key] ? String(companyStory[key]) : fallback;
 
   useSeo({
     title: t('meta.routes.about.title'),
@@ -37,10 +41,10 @@ export const About: React.FC = () => {
                 badge={t('about.story.eyebrow')}
                 title={t('about.story.title')}
               />
-              <p className="text-base leading-relaxed text-slate-600">{t('about.story.body1')}</p>
-              <p className="mt-5 text-base leading-relaxed text-slate-600">{t('about.story.body2')}</p>
+              <p className="text-base leading-relaxed text-slate-600">{storyText('body1', t('about.story.body1'))}</p>
+              <p className="mt-5 text-base leading-relaxed text-slate-600">{storyText('body2', t('about.story.body2'))}</p>
               <p className="mt-5 border-l-4 border-brand-orange bg-slate-50 p-5 text-base leading-relaxed text-slate-700">
-                {t('about.story.body3')}
+                {storyText('body3', t('about.story.body3'))}
               </p>
             </div>
 
@@ -103,9 +107,9 @@ export const About: React.FC = () => {
         />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <p className="font-heading text-2xl font-black italic sm:text-3xl">
-            {COMPANY_INFO.sloganKinyarwanda}
+            {COMPANY_INFO.tagline}
           </p>
-          <p className="mt-3 text-slate-300">{OFFICIAL_SLOGAN_EN}</p>
+          <p className="mt-3 text-slate-300">{storyText('intro', COMPANY_INFO.intro)}</p>
         </div>
       </section>
 

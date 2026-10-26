@@ -173,10 +173,10 @@ test('buildQuoteSummaryText contains the client details and the official slogan'
     }
   );
 
-  assert.ok(summary.includes('NIYO IREME UNIT COMPANY LTD'));
+  assert.ok(summary.includes('NIYO IREME UNIT LTD'));
   assert.ok(summary.includes('Jean Pierre Habimana'));
   assert.ok(summary.includes('Gacuriro, Kigali'));
-  assert.ok(summary.includes('Kunoza umurimo ni inshingano zacu!'));
+  assert.ok(summary.includes('Quality. Precision. Excellence.'));
   assert.ok(summary.includes('120 m²'));
 });
 

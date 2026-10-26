@@ -7,9 +7,20 @@ import { LocalizedLink } from '../common/LocalizedLink';
 import { PillButton } from '../common/PillButton';
 import { InstallAppButton } from '../common/InstallAppButton';
 import { SocialLinks } from '../common/SocialLinks';
+import { contentValue, useCmsContent } from '../../hooks/useCmsContent';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
+  const footerContent = useCmsContent('footer');
+  const companyContent = useCmsContent('company');
+  const footer = contentValue(footerContent?.find((record) => record.key === 'footer'));
+  const company = contentValue(companyContent?.find((record) => record.key === 'contact'));
+  const footerText = (key: string, fallback: string) => typeof footer[key] === 'string' && footer[key] ? String(footer[key]) : fallback;
+  const companyText = (key: string, fallback: string) => typeof company[key] === 'string' && company[key] ? String(company[key]) : fallback;
+  const phoneDisplay = companyText('phoneDisplay', COMPANY_INFO.phoneDisplay);
+  const phoneRaw = companyText('phoneRaw', COMPANY_INFO.phoneRaw);
+  const email = companyText('email', COMPANY_INFO.email);
+  const location = companyText('location', COMPANY_INFO.location);
 
   const navigation = [
     { key: 'home', path: '/' },
@@ -44,7 +55,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left">
             <div>
               <p className="font-heading text-2xl font-black italic sm:text-3xl">
-                {COMPANY_INFO.closingSloganKinyarwanda}
+                {footerText('closingTagline', COMPANY_INFO.closingTagline)}
               </p>
               <p className="mt-2 text-sm text-slate-300">{t('footer.closingSloganTranslation')}</p>
             </div>
@@ -69,19 +80,21 @@ export const Footer: React.FC = () => {
               <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-white">
                 {t('footer.aboutTitle')}
               </h2>
-              <img
-                src="/assets/brand/logo-horizontal-dark.svg"
-                alt={COMPANY_INFO.name}
-                width={640}
-                height={120}
-                className="mt-4 h-12 w-auto"
-                loading="lazy"
-              />
+              <span className="mt-4 inline-flex h-28 w-28 items-center justify-center rounded-2xl bg-[#0e224e] p-2 shadow-md ring-1 ring-amber-300">
+                <img
+                  src="/assets/brand/niyoireme-header.png"
+                  alt={`${COMPANY_INFO.name} full logo`}
+                  width={386}
+                  height={402}
+                  className="h-full w-full object-contain"
+                  loading="lazy"
+                />
+              </span>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
-                {t('meta.defaultDescription')}
+                {footerText('description', t('meta.defaultDescription'))}
               </p>
               <p className="mt-5 rounded-xl border border-white/10 bg-brand-navy/60 p-3 text-xs font-semibold italic text-brand-orange">
-                {COMPANY_INFO.sloganKinyarwanda}
+                {COMPANY_INFO.tagline}
               </p>
 
               <div className="mt-6">
@@ -110,7 +123,7 @@ export const Footer: React.FC = () => {
                     href="/admin/login"
                     className="flex items-center gap-2 transition-colors hover:text-brand-orange"
                   >
-                    <span className="w-4 h-4 shrink-0 text-brand-orange" aria-hidden="true">✔</span>
+                    Admin
                   </a>
                 </li>
               </ul>
@@ -124,11 +137,11 @@ export const Footer: React.FC = () => {
               <ul className="mt-4 space-y-3 text-sm text-slate-300">
                 <li>
                   <a
-                    href={`tel:${COMPANY_INFO.phoneRaw}`}
+                    href={`tel:${phoneRaw}`}
                     className="flex items-start gap-2 transition-colors hover:text-brand-orange"
                   >
                     <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" aria-hidden="true" />
-                    {COMPANY_INFO.phoneDisplay}
+                    {phoneDisplay}
                   </a>
                 </li>
                 <li>
@@ -145,15 +158,15 @@ export const Footer: React.FC = () => {
                     {t('common.whatsapp')}
                   </a>
                 </li>
-                <li>
+                {email && <li>
                   <a
-                    href={`mailto:${COMPANY_INFO.email}`}
+                    href={`mailto:${email}`}
                     className="flex items-start gap-2 transition-colors hover:text-brand-orange"
                   >
                     <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" aria-hidden="true" />
-                    {COMPANY_INFO.email}
+                    {email}
                   </a>
-                </li>
+                </li>}
                 <li>
                   <a
                     href={MAP_LINKS.googleSearch}
@@ -162,7 +175,7 @@ export const Footer: React.FC = () => {
                     className="flex items-start gap-2 transition-colors hover:text-brand-orange"
                   >
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" aria-hidden="true" />
-                    {COMPANY_INFO.location}
+                    {location}
                   </a>
                 </li>
               </ul>

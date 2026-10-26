@@ -13,6 +13,7 @@ import {
 import { COMPANY_INFO } from '../../data/company';
 import { SERVICE_CATEGORY_IDS } from '../../data/company';
 import { WhatsAppIcon } from '../common/WhatsAppIcon';
+import { useWhatsAppContacts } from '../../hooks/useWhatsAppContacts';
 
 interface TopicMeta {
   icon: LucideIcon;
@@ -34,6 +35,7 @@ const TOPIC_META: Record<string, TopicMeta> = {
  */
 export const WhatsAppButton: React.FC = () => {
   const { t } = useTranslation();
+  const contacts = useWhatsAppContacts();
   const [isOpen, setIsOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -53,7 +55,8 @@ export const WhatsAppButton: React.FC = () => {
   }, [isOpen]);
 
   const openWhatsApp = (message: string) => {
-    const url = `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const number = contacts[0]?.number.replace(/\D/g, '') || COMPANY_INFO.whatsappNumber;
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     setIsOpen(false);
   };
