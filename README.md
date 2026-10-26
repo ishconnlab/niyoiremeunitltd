@@ -26,6 +26,8 @@ The existing `/admin` entry uses cookie-based authentication. Seed an initial ad
 
 The admin workspace uses labelled fields for service, blog, website content and WhatsApp contact records. Image fields can be uploaded, reordered, edited or removed; service galleries require at least three images before publishing. The editor includes a draft preview and an advanced structured-data view. The website content area covers homepage hero and process copy, About copy, benefits, gallery entries, FAQs, footer copy, contact details, social profiles, page hero copy and route metadata. Public page components read active website content records, and saved changes refresh those records without a full reload.
 
+The admin workspace has dedicated navigation for services, blog, website content, public WhatsApp contacts and registration settings. Record lists support backend search, status filters and 10/25/50-row pagination; API errors are shown separately from a genuinely empty database. Long records use section steps with a final review preview. The raw JSON editor is optional: it reports line/column errors and only applies valid objects, while the visual form remains intact. Updates and navigation away from unsaved work prompt before discarding it.
+
 Existing records can be opened and edited or deleted from their admin list. New website content starts unpublished; use the publication control and save to publish or unpublish it. Services use both a draft/published state and an active toggle, while articles use draft/published status. Long records are split into labeled editor sections so publishing and SEO fields remain easy to find. The public services menu groups active services into nested categories on desktop and mobile. Social profile records are editable in website content and only approved, configured profile URLs are shown.
 
 Services and articles have public read routes and protected management routes. Public reads return only active published services and published articles. Article body content is plain text with line breaks; optional YouTube input is validated and converted to a video ID. Blog image galleries allow zero to five images, including the optional featured image. Blog posts support draft and published states, categories, tags, authors, featured images and SEO fields.
@@ -34,11 +36,11 @@ WhatsApp contacts are limited to five approved international numbers. Visitors c
 
 Backend routes:
 
-- `GET /api/services`, `GET /api/services/:slug`; admin CRUD at `/api/services` and `/api/services/:id`.
-- `GET /api/blog`, `GET /api/blog/:slug`; admin CRUD at `/api/blog` and `/api/blog/:id`.
+- `GET /api/services`, `GET /api/services/:slug`; admin CRUD at `/api/services` and `/api/services/:id`. Admin listing accepts `page`, `limit` (10, 25 or 50), `search`, `status` and `active` query parameters.
+- `GET /api/blog`, `GET /api/blog/:slug`; admin CRUD at `/api/blog` and `/api/blog/:id`. Admin listing accepts `page`, `limit`, `search`, `status` and `category`.
 - `GET /api/settings/public`; protected `PUT /api/settings/whatsapp-contacts`.
 - Protected `POST /api/upload` accepts JPEG, PNG and WebP images up to 5 MB.
-- Existing auth, jobs and content routes remain under `/api/auth`, `/api/jobs` and `/api/content`. Website content uses section/key records (for example `home` + `hero`, `faq` + `faq-quote`, or `seo` + `/about`).
+- Existing auth, jobs and content routes remain under `/api/auth`, `/api/jobs` and `/api/content`. Website content uses section/key records (for example `home` + `hero`, `faq` + `faq-quote`, or `seo` + `/about`). Admin content listing accepts `page`, `limit`, `search`, `section` and `active`.
 
 Upload storage uses local files in development. Production uploads require persistent Cloudinary storage; configure `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` and `CLOUDINARY_API_SECRET` in the server environment. Do not put these secrets in client environment variables. Configure `CORS_ORIGIN` as a comma-separated list of approved frontend origins.
 

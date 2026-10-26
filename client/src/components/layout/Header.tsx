@@ -26,6 +26,8 @@ export const Header: React.FC = () => {
   const company = contentValue(companyContent?.find((record) => record.key === 'contact'));
   const phoneDisplay = typeof company.phoneDisplay === 'string' && company.phoneDisplay ? company.phoneDisplay : COMPANY_INFO.phoneDisplay;
   const phoneRaw = typeof company.phoneRaw === 'string' && company.phoneRaw ? company.phoneRaw : COMPANY_INFO.phoneRaw;
+  const phoneAltDisplay = typeof company.phoneAltDisplay === 'string' && company.phoneAltDisplay ? company.phoneAltDisplay : COMPANY_INFO.phoneAltDisplay;
+  const phoneAltRaw = typeof company.phoneAltRaw === 'string' && company.phoneAltRaw ? company.phoneAltRaw : COMPANY_INFO.phoneAltRaw;
   const email = typeof company.email === 'string' && company.email ? company.email : COMPANY_INFO.email;
   const menuServices = cmsServices ?? SERVICES_DATA.map((service) => ({ slug: service.id, title: t(`services.items.${service.id}.title`) }));
   const serviceGroups = groupServicesForMenu(menuServices);
@@ -84,6 +86,10 @@ export const Header: React.FC = () => {
             >
               <Phone className="h-3.5 w-3.5 text-brand-orange" aria-hidden="true" />
               {phoneDisplay}
+            </a>
+            <a href={`tel:${phoneAltRaw}`} className="hidden shrink-0 items-center gap-1.5 font-semibold text-slate-800 transition-colors hover:text-brand-orange 2xl:flex">
+              <Phone className="h-3.5 w-3.5 text-brand-orange" aria-hidden="true" />
+              {phoneAltDisplay}
             </a>
             {email && <a
               href={`mailto:${email}`}
@@ -279,6 +285,13 @@ export const Header: React.FC = () => {
             >
               <Phone className="h-4 w-4 text-brand-orange" aria-hidden="true" />
               {phoneDisplay}
+            </a>
+            <a
+              href={`tel:${phoneAltRaw}`}
+              className="flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-orange hover:text-brand-orange"
+            >
+              <Phone className="h-4 w-4 text-brand-orange" aria-hidden="true" />
+              {phoneAltDisplay}
             </a>
 
             <div className="flex items-center justify-between gap-3 pt-1">

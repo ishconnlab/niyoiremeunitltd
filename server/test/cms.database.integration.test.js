@@ -55,6 +55,10 @@ test('authenticated service, blog, publishing, contacts and media workflows', { 
     assert.ok((await (await fetch(`${origin}/api/services/${serviceSlug}`)).json()).data);
     const adminServices = await fetch(`${origin}/api/services/admin`, { headers: { Cookie: cookie } });
     assert.equal(adminServices.status, 200);
+    const searchedServices = await fetch(`${origin}/api/services/admin?page=1&limit=10&search=${serviceSlug}`, { headers: { Cookie: cookie } });
+    const serviceList = await searchedServices.json();
+    assert.equal(serviceList.total, 1, 'admin service search returns a filtered total');
+    assert.equal(serviceList.data[0].slug, serviceSlug);
     const createdService = (await createService.clone().json()).data;
     const serviceDraft = await fetch(`${origin}/api/services/${createdService._id}`, { method: 'PUT', headers: session, body: JSON.stringify({ status: 'draft' }) });
     assert.equal(serviceDraft.status, 200);
@@ -67,6 +71,8 @@ test('authenticated service, blog, publishing, contacts and media workflows', { 
     const createDraft = await fetch(`${origin}/api/blog`, { method: 'POST', headers: session, body: JSON.stringify({ slug: blogSlug, title: 'Integration article', excerpt: 'Article excerpt', body: 'Plain text article body', status: 'draft', images: [], youtubeVideoId: '' }) });
     assert.equal(createDraft.status, 201, 'articles without images or video must save');
     const createdPost = (await createDraft.json()).data;
+    const searchedPosts = await fetch(`${origin}/api/blog/admin?page=1&limit=10&search=${blogSlug}`, { headers: { Cookie: cookie } });
+    assert.equal((await searchedPosts.json()).total, 1, 'admin blog search returns a filtered total');
     assert.equal((await fetch(`${origin}/api/blog/${blogSlug}`)).status, 404);
     const publishPost = await fetch(`${origin}/api/blog/${createdPost._id}`, { method: 'PUT', headers: session, body: JSON.stringify({ status: 'published', youtubeVideoId: 'https://youtu.be/dQw4w9WgXcQ' }) });
     assert.equal(publishPost.status, 200);
@@ -89,6 +95,8 @@ test('authenticated service, blog, publishing, contacts and media workflows', { 
     assert.equal(contentCreate.status, 201);
     const createdContent = (await contentCreate.json()).data;
     assert.equal(createdContent.isActive, false, 'new website content must be unpublished until approved');
+    const searchedContent = await fetch(`${origin}/api/content/admin?page=1&limit=10&search=${contentKey}`, { headers: { Cookie: cookie } });
+    assert.equal((await searchedContent.json()).total, 1, 'admin website content search returns a filtered total');
     const publicContent = await (await fetch(`${origin}/api/content?section=home`)).json();
     assert.equal(publicContent.data.some((item) => item.key === contentKey), false, 'unpublished content must stay hidden');
     assert.equal((await fetch(`${origin}/api/content/${createdContent._id}`, { method: 'PUT', headers: session, body: JSON.stringify({ isActive: true }) })).status, 200);

@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import Service from '../models/Service.js';
+import { adminListQuery, adminListResponse } from '../utils/adminPagination.js';
 
 export const getServices = asyncHandler(async (req, res) => {
   const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
@@ -19,8 +20,14 @@ export const getService = asyncHandler(async (req, res) => {
 });
 
 export const getAdminServices = asyncHandler(async (req, res) => {
-  const items = await Service.find().sort({ order: 1, updatedAt: -1 }).lean();
-  res.json({ success: true, data: items });
+  const { query, page, limit } = adminListQuery(req, { fields: ['title', 'slug', 'overview'] });
+  if (['draft', 'published'].includes(req.query.status)) query.status = req.query.status;
+  if (['true', 'false'].includes(req.query.active)) query.isActive = req.query.active === 'true';
+  const [items, total] = await Promise.all([
+    Service.find(query).sort({ order: 1, updatedAt: -1 }).skip((page - 1) * limit).limit(limit).lean(),
+    Service.countDocuments(query),
+  ]);
+  res.json(adminListResponse(items, total, page, limit));
 });
 
 export const createService = asyncHandler(async (req, res) => {

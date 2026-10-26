@@ -13,6 +13,7 @@ export const AdminLogin: React.FC = () => {
   const [regStatus, setRegStatus] = useState<boolean | null>(null);
   const [regLoading, setRegLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [adminLabel, setAdminLabel] = useState('');
   const [registering, setRegistering] = useState(false);
   const [checkingSession, setCheckingSession] = useState(true);
 
@@ -21,7 +22,8 @@ export const AdminLogin: React.FC = () => {
       try {
         const status = await apiRequest<{ registrationEnabled: boolean }>('/auth/register/status');
         setRegStatus(status.registrationEnabled);
-        await apiRequest('/auth/me');
+        const session = await apiRequest<{ data?: { email?: string } }>('/auth/me');
+        setAdminLabel(session.data?.email || 'Administrator');
         setLoggedIn(true);
       } catch {
         setLoggedIn(false);
@@ -29,15 +31,17 @@ export const AdminLogin: React.FC = () => {
     })();
   }, []);
 
-  const toggleRegistration = async () => {
+  const toggleRegistration = async (): Promise<boolean> => {
     setRegLoading(true);
     try {
       const data = await apiRequest<{ registrationEnabled: boolean }>('/auth/register/toggle', {
         method: 'POST',
       });
       setRegStatus(data.registrationEnabled);
+      return true;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update registration setting');
+      return false;
     } finally {
       setRegLoading(false);
     }
@@ -50,12 +54,13 @@ export const AdminLogin: React.FC = () => {
 
     try {
       const endpoint = registering ? '/auth/register' : '/auth/login';
-      const data = await apiRequest<{ success?: boolean; admin?: unknown }>(endpoint, {
+      const data = await apiRequest<{ success?: boolean; admin?: { email?: string } }>(endpoint, {
         method: 'POST',
         body: JSON.stringify({ email: email.trim().toLowerCase(), password }),
       });
       if (!data.success && !data.admin) throw new Error('The server did not confirm authentication.');
-      await apiRequest('/auth/me');
+      const session = await apiRequest<{ data?: { email?: string } }>('/auth/me');
+      setAdminLabel(session.data?.email || data.admin?.email || email.trim().toLowerCase());
       setLoggedIn(true);
       setError('');
       setRegistering(false);
@@ -69,6 +74,7 @@ export const AdminLogin: React.FC = () => {
   const handleLogout = async () => {
     try { await apiRequest('/auth/logout', { method: 'POST' }); } catch { /* local session UI still clears */ }
     setLoggedIn(false);
+    setAdminLabel('');
     setRegStatus(null);
     setError('');
   };
@@ -76,7 +82,7 @@ export const AdminLogin: React.FC = () => {
   if (checkingSession) return <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-600">Connecting to admin service…</div>;
 
   if (loggedIn) {
-    return <AdminWorkspace onLogout={() => void handleLogout()} registrationEnabled={regStatus} onToggleRegistration={() => void toggleRegistration()} registrationLoading={regLoading} />;
+    return <AdminWorkspace onLogout={() => void handleLogout()} adminLabel={adminLabel} registrationEnabled={regStatus} onToggleRegistration={toggleRegistration} registrationLoading={regLoading} />;
   }
 
   return (

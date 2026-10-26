@@ -1,5 +1,6 @@
 ﻿import asyncHandler from 'express-async-handler';
 import Content from '../models/Content.js';
+import { adminListQuery, adminListResponse } from '../utils/adminPagination.js';
 
 // @desc    Get all content
 // @route   GET /api/content
@@ -23,9 +24,15 @@ export const getContent = asyncHandler(async (req, res) => {
   });
 });
 
-export const getAdminContent = asyncHandler(async (_req, res) => {
-  const content = await Content.find().sort({ section: 1, order: 1, createdAt: -1 });
-  res.json({ success: true, count: content.length, data: content });
+export const getAdminContent = asyncHandler(async (req, res) => {
+  const { query, page, limit } = adminListQuery(req, { fields: ['section', 'key', 'value.title', 'value.description'] });
+  if (req.query.section) query.section = String(req.query.section).slice(0, 40);
+  if (['true', 'false'].includes(req.query.active)) query.isActive = req.query.active === 'true';
+  const [content, total] = await Promise.all([
+    Content.find(query).sort({ section: 1, order: 1, updatedAt: -1 }).skip((page - 1) * limit).limit(limit),
+    Content.countDocuments(query),
+  ]);
+  res.json(adminListResponse(content, total, page, limit));
 });
 
 // @desc    Get single content item

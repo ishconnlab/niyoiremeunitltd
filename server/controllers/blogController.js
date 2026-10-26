@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import BlogPost from '../models/BlogPost.js';
 import { extractYouTubeVideoId } from '../utils/youtube.js';
+import { adminListQuery, adminListResponse } from '../utils/adminPagination.js';
 
 const normalizeInput = (body) => {
   const input = { ...body };
@@ -40,8 +41,14 @@ export const getPost = asyncHandler(async (req, res) => {
 });
 
 export const getAdminPosts = asyncHandler(async (req, res) => {
-  const items = await BlogPost.find().sort({ updatedAt: -1 }).lean();
-  res.json({ success: true, data: items });
+  const { query, page, limit } = adminListQuery(req, { fields: ['title', 'slug', 'excerpt', 'author', 'categories', 'tags'] });
+  if (['draft', 'published'].includes(req.query.status)) query.status = req.query.status;
+  if (req.query.category) query.categories = String(req.query.category).slice(0, 80);
+  const [items, total] = await Promise.all([
+    BlogPost.find(query).sort({ updatedAt: -1 }).skip((page - 1) * limit).limit(limit).lean(),
+    BlogPost.countDocuments(query),
+  ]);
+  res.json(adminListResponse(items, total, page, limit));
 });
 
 export const createPost = asyncHandler(async (req, res) => {

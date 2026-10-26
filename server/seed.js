@@ -85,7 +85,7 @@ const seed = async () => {
       },
       {
         section: 'company', key: 'contact',
-        value: { phoneDisplay: '+250 781 294 928', phoneRaw: '+250781294928', email: '', location: '' },
+        value: { phoneDisplay: '+250 781 294 928', phoneRaw: '+250781294928', phoneAltDisplay: '0798 679 767', phoneAltRaw: '+250798679767', email: '', location: '' },
         isActive: true, order: 0,
       },
       {
@@ -123,7 +123,7 @@ const seed = async () => {
         value: { eyebrow: 'Website information', title: 'Privacy policy', subtitle: 'How information submitted through this website is handled.' },
         isActive: true, order: 0,
       },
-      ...['facebook', 'instagram', 'youtube', 'x', 'github'].map((channel, index) => ({
+      ...['facebook', 'instagram', 'youtube', 'x'].map((channel, index) => ({
         section: 'social', key: channel, value: { url: '' }, isActive: false, order: index,
       })),
       ...[

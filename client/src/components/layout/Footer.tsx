@@ -19,6 +19,8 @@ export const Footer: React.FC = () => {
   const companyText = (key: string, fallback: string) => typeof company[key] === 'string' && company[key] ? String(company[key]) : fallback;
   const phoneDisplay = companyText('phoneDisplay', COMPANY_INFO.phoneDisplay);
   const phoneRaw = companyText('phoneRaw', COMPANY_INFO.phoneRaw);
+  const phoneAltDisplay = companyText('phoneAltDisplay', COMPANY_INFO.phoneAltDisplay);
+  const phoneAltRaw = companyText('phoneAltRaw', COMPANY_INFO.phoneAltRaw);
   const email = companyText('email', COMPANY_INFO.email);
   const location = companyText('location', COMPANY_INFO.location);
 
@@ -142,6 +144,15 @@ export const Footer: React.FC = () => {
                   >
                     <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" aria-hidden="true" />
                     {phoneDisplay}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`tel:${phoneAltRaw}`}
+                    className="flex items-start gap-2 transition-colors hover:text-brand-orange"
+                  >
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" aria-hidden="true" />
+                    {phoneAltDisplay}
                   </a>
                 </li>
                 <li>

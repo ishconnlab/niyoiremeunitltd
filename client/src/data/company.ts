@@ -23,6 +23,8 @@ export const COMPANY_INFO = {
   country: 'Rwanda',
   phoneDisplay: '+250 781 294 928',
   phoneRaw: '+250781294928',
+  phoneAltDisplay: '0798 679 767',
+  phoneAltRaw: '+250798679767',
   whatsappNumber: '250781294928',
   email: CONTACT_EMAIL,
   /** Public site origin. Falls back to the official production domain. */

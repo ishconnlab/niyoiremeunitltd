@@ -7,7 +7,7 @@ import { COMPANY_INFO } from './company';
  * can switch accounts without code changes. A channel is only rendered when a
  * URL is provided ” the site never links to an account that does not exist.
  */
-export type SocialChannel = 'facebook' | 'instagram' | 'youtube' | 'x' | 'github' | 'whatsapp';
+export type SocialChannel = 'facebook' | 'instagram' | 'youtube' | 'x' | 'whatsapp';
 
 export interface SocialLink {
   channel: SocialChannel;
@@ -35,7 +35,6 @@ const CONFIGURED_SOCIAL_LINKS: SocialLink[] = [
   social('instagram', 'social.instagram', viteEnv.VITE_INSTAGRAM_URL),
   social('youtube', 'social.youtube', viteEnv.VITE_YOUTUBE_URL),
   social('x', 'social.x', viteEnv.VITE_X_URL),
-  social('github', 'social.github', viteEnv.VITE_GITHUB_URL),
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = CONFIGURED_SOCIAL_LINKS.filter((link) => Boolean(link.url));
