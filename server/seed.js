@@ -48,9 +48,9 @@ const seed = async () => {
       {
         section: 'home', key: 'hero',
         value: {
-          eyebrow: 'FINISHING WORKS & INTERIOR DESIGN',
-          titleTop: 'Quality workmanship',
-          titleBottom: 'for every home',
+          eyebrow: 'NIYO IREME UNIT',
+          titleTop: 'FINISHING WORKS & INTERIOR',
+          titleBottom: 'DESIGN',
           intro: "Your home's beauty and quality are our priority.",
           heroImage: '/projects/interior-finishing.jpg',
         },
@@ -179,6 +179,15 @@ const seed = async () => {
       if (!exists) {
         await Content.create(item);
         console.log('Content seeded:', item.section, item.key);
+      } else if (
+        item.section === 'home' && item.key === 'hero' &&
+        exists.value?.titleTop === 'Quality workmanship' &&
+        ['for every home', 'for every home we build'].includes(exists.value?.titleBottom)
+      ) {
+        // Migrate only the previous default hero copy; preserve any custom admin edits.
+        exists.value = { ...(exists.value || {}), ...item.value };
+        await exists.save();
+        console.log('Updated default homepage hero copy');
       } else {
         console.log('Content already exists:', item.section, item.key);
       }
